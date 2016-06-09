@@ -43,21 +43,18 @@ body {
 #contentlist {
     float: left;
     width: 24%;
-    font-size: large;
     border-top: 4px solid #345693;
 }
-#contentlist > ul {
-    margin-left: 17%;
-    margin-top: 6%;
-}
-#contentlist > ul > li >a:hover {
+
+/*#contentlist > ul > li >a:hover {
     color: ghostwhite;
     background: darkslateblue;
-}
-#contentlist > ul > li {
+} */
+#contentlist > p {
     font-size: 22px;
     font-weight: bold;
     list-style: none;
+    margin-left: 6%;
 }
 #header1 {
     margin-left: 5%;
