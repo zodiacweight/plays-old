@@ -14,56 +14,21 @@
         // arrayElementObject - объект, обозначенный фигурными скобками, сразу вложенный в replics[this.id]. Он содержит
         // в себе один элемент вида ключ: значение(изображение, абзацс - слова героя или несколько таких абзацсев).
         part1: [
-            {
-                "Author's words": ["Judy, Beatriz and Woman-devil take part in this part. Judy is visiting Woman-devil's" +
-                "living place and meet her together with Beatriz. Beatriz and Judy negotiated that Beatriz would wrote to" +
-                "Woman-devil a letter where she would discuss date, time and place of meeting. Before Judy came her friends" +
-                "were not <span class='from_vocabulary'> squared off </span> by the question about Judy's walking to Woman-devil."]
-            },
-            {"Cassandra": ["Judy, you are so brave!"]},
-            {
-                "Judy": ["Do you think there is a <span class='from_vocabulary'>jeopardy</span> to accept the idea to go" +
-                "thither?"]
-            },
-            {"Cassandra": ["Do you see, devil is associated with evil for human. It was said in our recent conversation."]},
-            {
-                "Judy": ["But I don't trust this prejudices. I do not like your <span class='from_vocabulary'>tumult, </span>" +
-                "but I like the idea. I have Beatriz who <span class='from_vocabulary'>warants</span> that there is no serious" +
-                "<span class='from_vocabulary'>menace</span> for us. Let her be responsible for her words. And" +
-                "<span class='from_vocabulary'>Resignation </span> is the one what remains to you."]
-            },
-            {"Cassandra": ["It is like you have impression <span class='from_vocabulary'>scarcity</span>."]},
-            {
-                "Judy": ["I don't have impression <span class='from_vocabulary'> fertility </span>. I will not <span" +
-                "class='from_vocabulary'> abdicate</span> the unusual intriguing proposal of Beatriz. I think it will be" +
-                " something just <span class='from_vocabulary'>pulsatile</span> to meet with those who created the" +
-                "extradecomposers! They are interesting creatures! So it is such <span class='from_vocabulary'>eagerness" +
-                "</span>! Beatriz has already send a letter to Woman-devil. In this letter she asked her such some questions" +
-                "which <span class='from_vocabulary'> imply</span> the information which can help successfully to plan our" +
-                "meeting."]
-            },
-            {
-                "Helen": ["You will be a great <span class='from_vocabulary'>connoiseur</span> possessing knowledges in the" +
-                " extra-decomposers area, won't you?"]
-            },
-            {"Judy": ["Maybe, but now I am not planning became a scientist like Christian."]},
-            {
-                "Author's words": ["A little time later Judy and Beatriz met each-other and talk about the trip to Woman-devil." +
-                "Beatriz told Judy about such aspects as date, time and place of meeting. There were a few dates when the host" +
-                "would be not at home. Beatriz said that Judy that she could go in any of them."]
-            },
-            {"Beatriz": ["There is a necessarity that the host did not see us."]},
-            {"Judy": ["Why it is so?"]},
-            {
-                "Beatriz": ["According to the Woman-devil's words precense of extraneous people can <span class='from_vocabulary'>" +
-                "<span class='from_vocabulary'>summon</span> host's <span class='from_vocabulary'>backlash</span>"]
-            },
-            {"Judy": ["It is strange. What is wrong with this host?"]},
-            {
-                "Beatriz": ["YOu know, you do not know, of course, the host is not absolutely adequate. But do not worry," +
-                "please. Also you do not know how strong is Woman-devil. She will defense you from any psycho. But what should " +
-                "we talk about it if he will not be at home when we go."]
-            }
+            {"Author's words": ["Ramon, Randi and W are spies. They live in the basement of the Quentin's house. Quentin know about it nothing."]},
+            {"Author's words": ["The characters are sitting in Quentin's living place and talk between each-other."]},
+            {"Ramon": ["It was so impressive!"]},
+            {"Snake": ["Oh, of course. I understand you."]},
+            {"Ramon": ["How do you know about it?"]},
+            {"Snake": ["I can read human thoughts. I know about Quentin's thoughts and I know who is he from them."]},
+            {"W": ["It is curious!"]},
+            {"Ramon": ["Do you mean the snake's ability to read human thoughts?"]},
+            {"W": ["Of course, I mean exactly this."]},
+            {"Ramon": ["But what if we have some perslonal thoughts and embarass them in front of you?"]},
+            {"Snake": ["I do not hear the thoughts which are not actual for me. Relax."]},
+            {"Randi": ["But if we have some thoughts related with our common deals I will wish all of us to discuss them " +
+            "aloud including you."]},
+            {"Snake": ["Of course. I know you can not read thoughts like me."]},
+            {"W": ["Frankly, I like sso cruel stories not very mych."]}
         ],
         part2: [
             {"Author's words": ["There Woman-devil and Lilian are sitting in the bottom of the lake."]},
@@ -172,19 +137,19 @@
             {"Medusa": ["I never have intentions to kill just for joy, too."]},
             {
                 "Woman-devil": [" Yes, really, they are a terrific life specie. But there is explaination how can they be able " +
-                "to do what representatives of other species can not do. Human nature is a terrific thing. It is not what is" +
-                "nature of the special marine creature like you. There is such conception as human psychology. Besides there is" +
-                "such fact that human life goes on not in the same world where your life goes on, what is a very important" +
-                "circumstance. You live calm life in this paradise world compared with scary life of some people. Life of people" +
-                "is very rich with different events what there is no telling about life of such marine animals as you. The events" +
+                "to do what representatives of other species can not do. Human nature is a terrific thing. It is not what is " +
+                "nature of the special marine creature like you. There is such conception as human psychology. Besides there is " +
+                "such fact that human life goes on not in the same world where your life goes on, what is a very important " +
+                "circumstance. You live calm life in this paradise world compared with scary life of some people. Life of people " +
+                "is very rich with different events what there is no telling about life of such marine animals as you. The events " +
                 "of which human life consist are very different and can be characterized as something <span class='from_vocabulary'>" +
                 "antithetical</span>. There are such events and factors among them which can <span class='from_vocabulary'>tangibly" +
-                "</span> influence on a human. Human mind is formed under influence of these factors. I know Quentin's storie which" +
+                "</span> influence on a human. Human mind is formed under influence of these factors. I know Quentin's storie which " +
                 "is about how has he become an frenetic (маньяк)."]
             },
             {
                 "Woman-devil": ["The house where Quentin lives now does not have legitimate owners now and it is known for me why." +
-                "Quentin has <span class='from_vocabulary'>mercilessly</span> killed legitimacy host of this house. It was what is" +
+                " Quentin has <span class='from_vocabulary'>mercilessly</span> killed legitimacy host of this house. It was what is " +
                 "called a tragedy for adequate people."]
             },
             {"Lilian": ["You, must be, went to the human world to stop such people as Quentin?"]},
@@ -193,19 +158,19 @@
             {
                 "Woman-devil": ["I will engage him. I <span class='from_vocabulary'>reflected</span> about this question and I have " +
                 "concluded that I can use him not badly. Maybe you will trust me soon, maybe you will not. Don't worry, please." +
-                "Anything will be alright."]
+                " Anything will be alright."]
             },
             {"Medusa": ["How will you use him?"]},
             {
-                "Woman-devil": ["I will use him not with dark purposes, on the contrary. Please, do not worry. As I said," +
-                "you will be in safety here. I will not let him to <span class='from_vocabulary'>imbue</span> here too" +
-                "deeply. Moreover there will be no necessarity for him to tamper in this lake according to my purposes." +
+                "Woman-devil": ["I will use him not with dark purposes, on the contrary. Please, do not worry. As I said, " +
+                "you will be in safety here. I will not let him to <span class='from_vocabulary'>imbue</span> here too " +
+                "deeply. Moreover there will be no necessarity for him to tamper in this lake according to my purposes. " +
                 "I will talk with him out and very far from this lake"]
             },
             {"Medusa": ["You can live out of water and speak with people! It is surprising!"]},
             {
                 "Woman-devil": ["Of course, I can. Why not? Lilian can, too. But, of course, it is better for her to keep in the" +
-                "lake and not to stick out."]
+                " lake and not to stick out."]
             },
             {"Medusa": ["Did Quentin told you why he has became a frenetic?"]},
             {"Woman-devil": ["No, he did not."]},
@@ -213,8 +178,8 @@
             {"Woman-devil": ["Do you mean an accident in the result of which he has became a frenetic?"]},
             {"Medusa": ["Yes."]},
             {
-                "Woman-devil": ["I think it will be very difficult for your understanding. It is about human life. It was" +
-                "life in completely other world. You have no representation about this world. So i don't think you would" +
+                "Woman-devil": ["I think it will be very difficult for your understanding. It is about human life. It was " +
+                "life in completely other world. You have no representation about this world. So i don't think you would " +
                 "understand the narrative."]
             }
             /* {"": [""]},
@@ -229,21 +194,27 @@
              {"": [""]} */],
         // replics[this.id]
         part3: [
-
+            {"Author's words": ["This morning Quentin went to the train station. There will be something unexpectable for"+
+            "him in the station, but he has not know about it yet."]},
             {
                 "Voice on the terminal": ["Do not be daunted by the snake. It is not a <span class='from_vocabulary'>hazard" +
                 "</span> for you."]
             },
+            {"Author's words":["Quentin turned and saw that there is a big snake <span class='from_vocabulary'>creeping"+
+            "</span> straight to him. He began silently watch in it. When the snake had <span class='from_vocabulary'>"+
+            "precipitated</span> to him it began talk with him."]},
+            {"Snake":["Hi, Quentin."]},
+            {"Quentin":["What do you want from me?"]},
+            {"Snake":["We must get acquainted and discuss something."]},
+            {"Author's words": ["Quentin was <span class='from_vocabulary'>daunted</span>, of course, how can this snake"+
+            " know about his personal dark life."]},
+            {"Quentin": ["I can understand nothing."]},
             {"image": ["<img src='../images/with_characters/pimgpsh_fullsize_distr.jpg'>"]},
-            {
-                "Snake": ["I want you were <span class='from_vocabulary'>pacified</span>.", "Agreed?"
-                    /*["I want you were <span class='from_vocabulary'>pacified</span>."],*/
-                ]
-            },
-            {
-                "Quentin": ["Are you trying to <span class='from_vocabulary'>imbue</span> me that you are not black entity for" +
-                "a human despite the denomination which you are called?"]
-            }
+            {"Snake": ["I want you were <span class='from_vocabulary'>pacified</span>.", "Agreed?"]},
+            {"Quentin": ["Are you trying to <span class='from_vocabulary'>imbue</span> me that you are not black entity for" +
+                "a human despite the denomination which you are called?"]},
+            {"Author's words": ["Of course, Quentin felt hard <span class='from_vocabulary'>tumult</span> after this"+
+            "meeting."]}
         ],
         part4: [
             {"Woman-devi": ["My conversation with Quentin was excellent!"]},
@@ -251,20 +222,19 @@
         ]
     };
     var headers = {
-        part1: "Judy and Woman-devil",
+        part1: "Spies",
         part2: "Woman-devil's intention",
         part3: "Quentin and Woman-devil",
-        part4: "More"
+        part4: "New events"
     };
-    window.onload = function () {
-        // Клик на part.
-        var checkroles = {};
+   //  window.onload = function () {
+        // Клик на part
             var replics_of_choicedpart = {}, // реплики выбранной части.
             innerContent, contentlist = document.getElementById("contentlist");
             var roleslist = document.getElementById("roleslist"),
             area_forcontent = document.getElementById("for_content"),
             text = document.getElementById("text"),
-            arrayElementObject,
+            arrayElementObject,  checkboxes = [],
             subjectName, className,
             setContents = function(replics_of_choicedpart, contents, subjectName, className){
                 var innerContent={
@@ -272,8 +242,19 @@
                     h4:subjectName,
                     contents:contents
                 };
-                replics_of_choicedpart.wordsofchar.push(innerContent); // В список реплик героев выбранной части добавляется
-                // новый объект innerContent. Этот же объект заносится в переменную innerContent ниже.
+                switch (className) {
+                    case "authorwords":
+                        replics_of_choicedpart.authorwords.push(innerContent);
+                        break;
+
+                    case "words_of_char":
+                        replics_of_choicedpart.wordsofchar.push(innerContent);
+                        break;
+                }
+                /*replics_of_choicedpart.replicsdivs.push("<div class='"+innerContent.class+"'> <h4>" + innerContent.h4 +
+                    "</h4><p>" + innerContent.contents[0] + "</p></div>"); */
+               // В список реплик героев выбранной части добавляется
+                // новый объект innerContent. Этот же объект заносится в переменную innerContent ниже, где вызывается эта функция.
                 return innerContent;
             },
             addInnerHtml = function(html, innerContent){
@@ -282,6 +263,9 @@
             };
         // Клик по "About characters":
         document.getElementById("about_characters").onclick = function () {
+            if (roleslist.innerHTML != "") {
+                roleslist.innerHTML = "";
+            }
             text.innerHTML = "<h2>About characters</h2>" + p_aboutcharacters["About_characters"];
             area_forcontent.style.borderLeft = "3px solid #345693";
             contentlist.style.borderRight = "none";
@@ -291,25 +275,26 @@
             document.getElementById(part).onclick = function () // назначается обработчик события -- ВНУТРИ ЦИКЛА!
             {   // выполняется функция, привязанная к обработчику события -- ПОСЛЕ ВЫПОЛНЕНИЯ ЦИКЛА!!!
                 //console.log({id:this.id, part:this.id});
+                var presrolesobject = {}, presrolesarray = [];
                 area_forcontent.style.borderLeft = "3px solid #345693";
                 contentlist.style.borderRight = "none";
-                checkroles = {};
-                roleslist.innerHTML = "<strong>There are the following characters in this part:</strong><ul>";
+                roleslist.innerHTML = "<strong>There are the following characters in this part:</strong>";
                 text.innerHTML = "<h2>" + this.id + " "+ headers[this.id] +"</h2>";
-                replics_of_choicedpart.authorwords = [];
+                replics_of_choicedpart.authorwords = []; // Для объектов со свойствами реплик
                 replics_of_choicedpart.wordsofchar = [];
-                for (var index in replics[this.id]) { // пробег по part от arrayElementObject {} к arrayElementObject {}
-                    // Цикл пробегает по part (replics[this.id]){
-                    // arrayElementObject = { "image": ["<img class='inobject' src='../images/roles/pimgpsh_fullsize_distr.jpg'>"] }
-                    arrayElementObject = replics[this.id][index];
+                replics_of_choicedpart.authorwords_divs= []; // Divs, выведенные на страницу при клике по part,
+                replics_of_choicedpart.replicsofchar_divs = []; //содержащие в себе реплики
+                for (var index in replics[this.id]) { // пробег по partn (replics[this.id]) от arrayElementObject
+                    // (реплики одного героя) к arrayElementObject(реплике другого героя)
+                    arrayElementObject = replics[this.id][index]; // реплика героя: {}
                     //console.log({arrayElementObject: arrayElementObject});
                     subjectName = Object.keys(arrayElementObject)[0]; // ключ (единственный) из объекта arrayElementObject:
                     // image, author или наименование героя.
                     if (subjectName != "image") {
-                        if (!(subjectName in checkroles)) {
-                            checkroles[subjectName] = true;
-                            roleslist.innerHTML += '<li><input type="checkbox" class="checkcharacter" value=' +
-                                subjectName + '>' + subjectName + '</li>';
+                        if (!(subjectName in presrolesobject)) {
+                            presrolesobject[subjectName] = true;
+                            presrolesarray.push(subjectName);
+                            roleslist.innerHTML += "<p><input type='checkbox' class='checkcharacter'>"+subjectName+"</p>";
                         }
                         /*console.log({
                             replic:replics[this.id][index],
@@ -321,7 +306,8 @@
                         } else {
                             className = 'words_of_char';
                         }
-                        // Передается: объект - реплики выбранной части, слова текущей реплики, ключ (герой) текущей реплики, имя класса
+                        // innerContent получает очередной объект innerContent. В функции этот объект добавляется в
+                        // replics_of_choicedpart.authorwords  или replics_of_choicedpart.wordsofchar.
                         innerContent = setContents(replics_of_choicedpart, [arrayElementObject[subjectName]], subjectName, className);
                         console.log('innerContent', innerContent);
                         addInnerHtml(text, innerContent); // В содержимое элемента text добавляется innerContent, судя по содержанию.
@@ -337,11 +323,11 @@
                         text.innerHTML += arrayElementObject['image'];
                     }
                 }
-                roleslist.innerHTML += '</ul><div><input id="choicecharacter" type="button" value="выделить реплики"></div>';
-
+                roleslist.innerHTML += '<div><input id="choicecharacter" type="button" value="paint replics"></div>';
+                checkboxes = document.getElementsByClassName("checkcharacter");
+                replics_of_choicedpart.authorreplics_divs = document.getElementsByClassName("authorwords");
+                replics_of_choicedpart.replicsofchar_divs = document.getElementsByClassName("words_of_char");
                 // Выбор героя
-                var previouschecked = {},
-                checks = document.getElementsByClassName('checkcharacter');
                 /* Клик по кнопке - запускается функция. В этой функции:
                  * Если элемент чекнут
                  *   Если value == "Author's words"
@@ -355,62 +341,64 @@
                          * Если элемент есть в объекте previouschecked, он оттуда удаляется. Цикл пробегает по
                          * replics_of_choicedpart.authorwords и удаляет текстуру элемента.
                      * То же самое для элементов с другим value.
-
                  *
                  * Предполагаемый код: */
                  document.getElementById("choicecharacter").onclick = function () {
-                 var count_authorwords,  count_charwords, role, valueofcheck,
+                 var rundivs, name_in_h4, name_in_checkbox, checkedroles = {},
+                 length_of_checks = checkboxes.length,
                  length_authorwords = replics_of_choicedpart['authorwords'].length,
                  length_charwords = replics_of_choicedpart['wordsofchar'].length;
                 // Пробег по списку чекбоксов
-                     for (var runchecks = 0, length_of_checks = checks.length; runchecks < length_of_checks; runchecks ++) {
-                        valueofcheck = checks[runchecks].value;
-                        console.log({value: valueofcheck});
-                     // если чекбокс отмечен:
-                         if (checks[runchecks].checked) {
-                             if (! (valueofcheck in previouschecked)) {
-                                 previouschecked[valueofcheck] = true;
-                                 if (valueofcheck=="Author's words") {
-                                     for (count_authorwords = 0; count_authorwords < length_authorwords; count_authorwords ++ ){
-                                         replics_of_choicedpart['authorwords'][count_authorwords].style.backgroundImage=
-                                             "url(../images/textures/'полотно.jpg)'";
-                                     }
-                                 }
-                                 else {
-                                     for (count_charwords = 0; count_charwords < length_charwords; count_charwords ++ ){
-                                         //role = replics_of_choicedpart['wordsofchar'][count_charwords].getElementsByTagName('h4')[0].innerText;
-                                         if (role == valueofcheck) {
-                                             replics_of_choicedpart['wordsofchar'][count_charwords ].style.backgroundImage="url(../images/textures/'гранит.jpg)'";
-                                         }
-                                     }
+                    for (var runchecks = 0; runchecks < length_of_checks; runchecks ++) {
+                          name_in_checkbox = presrolesarray[runchecks];
+                          if (checkboxes[runchecks].checked) {
+                             checkedroles[presrolesarray[runchecks]] = true;
+                              if (presrolesarray[runchecks]=="Author's words") {
+                                  for (rundivs = 0; rundivs < length_authorwords; rundivs ++ ){
+                                          if (replics_of_choicedpart.authorreplics_divs[rundivs].style.backgroundColor=="") {
+                                          replics_of_choicedpart.authorreplics_divs[rundivs].style.backgroundColor="cornflowerblue";
+                                          }
+                                  }
+                              }
+                              else {
+                                  for (rundivs = 0; rundivs < length_charwords; rundivs ++) {
+                                  name_in_h4 = replics_of_choicedpart.replicsofchar_divs[rundivs].getElementsByTagName('H4')[0].innerText;
+                                      if (name_in_checkbox ==  name_in_h4 ) {
+                                          if (replics_of_choicedpart.replicsofchar_divs[rundivs].style.backgroundColor=="") {
+                                              replics_of_choicedpart.replicsofchar_divs[rundivs].style.backgroundColor= "pink";
+                                          }
 
-                                 }
-                             }
-                         }
-                         else {
+                                      }
+                                  }
+                              }
+                          }
+                          else { // Если элемент не чекнут в этом клике
+                              if (presrolesarray[runchecks]=="Author's words") {
+                                  for (rundivs = 0; rundivs < length_authorwords; rundivs ++ ){
+                                          if (replics_of_choicedpart.authorreplics_divs[rundivs].style.backgroundColor!="") {
+                                              replics_of_choicedpart.authorreplics_divs[rundivs].style.backgroundColor="";
+                                          }
+                                  }
+                              }
+                              else {
+                                      for (rundivs = 0; rundivs < length_charwords; rundivs++) {
+                                          name_in_h4 = replics_of_choicedpart.replicsofchar_divs[rundivs].getElementsByTagName('H4')[0].innerText;
+                                          if (name_in_checkbox == name_in_h4) {
+                                              if (replics_of_choicedpart.replicsofchar_divs[rundivs].style.backgroundColor != "") {
+                                                  replics_of_choicedpart.replicsofchar_divs[rundivs].style.backgroundColor = "";
+                                              }
 
-                             if (valueofcheck in previouschecked) {
-                                 delete previouschecked[valueofcheck];
-                                 if (valueofcheck == "Author's words") {
-                                     for (count_authorwords = 0; count_authorwords < length_authorwords; count_authorwords ++ ){
-                                         replics_of_choicedpart['authorwords'][count_authorwords].style.backgroundImage="none";
-                                     }
-                                 }
-                                 else {
-                                     for (count_charwords = 0; count_charwords < length_charwords; count_charwords ++ ){
-                                         replics_of_choicedpart['wordsofchar'][count_charwords].style.backgroundImage="none";
-                                     }
-                                 }
-                             }
-                         }
-                     }
-                 }
-
-
+                                          }
+                                      }
+                              }
+                          }
+                    }
+                    //alert (Object.keys(checkedroles));
+                 };
             }
 
         }
-    };
+    //}
 
 
 

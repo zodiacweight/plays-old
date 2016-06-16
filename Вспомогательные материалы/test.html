@@ -3,15 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <style>
+        /*Программа, подобная фрагменту java script кода, который отвечает за подцветку реплик. Массив checkboxes
+        - это такой же массив, как checkboxes для выбора героев, а массив painteddivs - это как массивы
+        replics_of_choicedpart['authorreplics_divs'] и replics_of_choicedpart['replicsofchar_divs']*/
+        input {
+            margin-bottom: 45px;
+        }
+        #click {
+            margin-left: 30px;
+            margin-bottom: 27px;
+        }
+        .painteddivs {
+            border: 1px solid;
+            height: 30px;
+            margin-bottom: 4px;
+            width: 20%;
+            margin-left: 10%;
+        }
+    </style>
 </head>
 <body>
-    <script>
-        var person = {
-            high: "146sm"
-        };
-        person.name = 'Вася';
-        person.age = 25;
-        alert(person['high']);
-    </script>
+       <div id="container"></div>
+       <div id="divs_for_painting"></div>
+        <script>
+            var i, c, number = 20, numbers = [], checkboxes, painteddivs;
+            var container = document.getElementById("container"),
+            for_divs = document.getElementById("divs_for_painting");
+            for (i=0; i<7; i++) {
+                container.innerHTML+="<input type='checkbox' class='checkbox'>";
+                for_divs.innerHTML+="<div class='painteddivs'></div>";
+            }
+            container.innerHTML+="<button type='button' id='click'>Кликнуть</button>";
+            checkboxes = document.getElementsByClassName("checkbox");
+            painteddivs = document.getElementsByClassName("painteddivs");
+            for (i=0; i<checkboxes.length; i++) {
+                number +=20;
+                numbers.push(number);
+                checkboxes[i].value = numbers[i];
+                painteddivs[i].innerText=numbers[i];
+            }
+            document.getElementById("click").onclick = function () {
+                for (var j=0; j<checkboxes.length; j++) {
+                    if(checkboxes[j].checked) { // Если чекбокс чекнут,
+                       for (c = 0; c < painteddivs.length; c++) { // цикл пробегает по по дивам.
+                           // Если текст в диве соответствует значению чекнутого чекбокса:
+                           if(painteddivs[c].innerText == checkboxes[j].value) {
+                               // если этот чекбокс еще не имеет фонового цвета, придать ему фоновый цвет:
+                               if (painteddivs[c].style.backgroundColor=="") {
+                                   painteddivs[c].style.backgroundColor="darkorange";
+                                   alert(checkboxes[j].value);
+                               }
+                               // в противном случае, если он уже имеет цвет, цвет у него так и остается.
+                           }
+                       }
+                    }
+                    else { // если элемент не чекнут, так же пройти по дивам и найти див с innerText, соответствующим
+                        // value нечекнутого элемента.
+                        for (c = 0; c < painteddivs.length; c++) { // цикл пробегает по по дивам.
+                            //Если текст в диве соответствует значению нечекнутого чекбокса:
+                            if(painteddivs[c].innerText == checkboxes[j].value) {
+                                // он не должен иметь цвет. Если у него есть цвет, он его теряет:
+                                if (painteddivs[c].style.backgroundColor!="") {
+                                    painteddivs[c].style.backgroundColor="";
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        </script>
 </body>
 </html>
