@@ -14,6 +14,67 @@
         // arrayElementObject - объект, обозначенный фигурными скобками, сразу вложенный в replics[this.id]. Он содержит
         // в себе один элемент вида ключ: значение(изображение, абзацс - слова героя или несколько таких абзацсев).
         part1: [
+                    {
+                        "Author's words": ["Judy, Beatriz and Woman-devil take part in this part. Judy is visiting Woman-devil's" +
+                    "living place and meet her together with Beatriz. Beatriz and Judy negotiated that Beatriz would wrote to" +
+                    "Woman-devil a letter where she would discuss date, time and place of meeting. Before Judy came her friends" +
+                    "were not <span class='from_vocabulary'> squared off </span> by the question about Judy's walking to Woman-devil."]
+                    },
+                    {"Cassandra": ["Judy, you are so brave!"]},
+                    {
+                        "Judy": ["Do you think there is a <span class='from_vocabulary'>jeopardy</span> to accept the idea to go" +
+                    "thither?"]
+                    },
+                    {"Cassandra": ["Do you see, devil is associated with evil for human. It was said in our recent conversation."]},
+                    {
+                        "Judy": ["But I don't trust this prejudices. I do not like your <span class='from_vocabulary'>tumult, </span>" +
+                    "but I like the idea. I have Beatriz who <span class='from_vocabulary'>warants</span> that there is no serious" +
+                    "<span class='from_vocabulary'>menace</span> for us. Let her be responsible for her words. And" +
+                    "<span class='from_vocabulary'>Resignation </span> is the one what remains to you."]
+                    },
+                    {"Cassandra": ["It is like you have impression <span class='from_vocabulary'>scarcity</span>."]},
+                    {
+                        "Judy": ["I don't have impression <span class='from_vocabulary'> fertility </span>. I will not <span" +
+                    "class='from_vocabulary'> abdicate</span> the unusual intriguing proposal of Beatriz. I think it will be" +
+                    " something just <span class='from_vocabulary'>pulsatile</span> to meet with those who created the" +
+                    "extradecomposers! They are interesting creatures! So it is such <span class='from_vocabulary'>eagerness" +
+                    "</span>! Beatriz has already send a letter to Woman-devil. In this letter she asked her such some questions" +
+                    "which <span class='from_vocabulary'> imply</span> the information which can help successfully to plan our" +
+                    "meeting."]
+                    },
+                    {
+                        "Helen": ["You will be a great <span class='from_vocabulary'>connoiseur</span> possessing knowledges in the" +
+                    " extra-decomposers area, won't you?"]
+                    },
+                    {"Judy": ["Maybe, but now I am not planning became a scientist like Christian."]},
+                    {
+                        "Author's words": ["A little time later Judy and Beatriz met each-other and talk about the trip to Woman-devil." +
+                    "Beatriz told Judy about such aspects as date, time and place of meeting. There were a few dates when the host" +
+                    "would be not at home. Beatriz said that Judy that she could go in any of them."]
+                    },
+                    {"Beatriz": ["There is a necessarity that the host did not see us."]},
+                    {"Judy": ["Why it is so?"]},
+                    {
+                        "Beatriz": ["According to the Woman-devil's words precense of extraneous people can <span class='from_vocabulary'>" +
+                    "<span class='from_vocabulary'>summon</span> host's <span class='from_vocabulary'>backlash</span>"]
+                    },
+                    {"Judy": ["It is strange. What is wrong with this host?"]},
+                    {
+                        "Beatriz": ["You know, you do not know, of course, the host is not absolutely adequate. But do not worry," +
+                    "please. Also you do not know how strong is Woman-devil. She will defense you from any psycho. But what should " +
+                    "we talk about it if he will not be at home when we go."]
+                    },
+                    {"Judy":["There is one interesting question for me. Is it so dirty in the lake as in the swamp"]},
+                    {"Beatriz":["No, of course, it is not. I told that it is not so dirty in this lake. Have you forgotten?"]},
+                    {"Judy": ["Yes. You told. I have forgotten. I am sorry."]},
+                    {"Beatriz": ["Not so big trouble. Do not hold it in your mind so sensually"]},
+            {"Author's words":["Judy and Beatriz met Woman-devil near Judy's living place. Woman-devil arrived there"+
+                    "on her horse. Beatriz presented her and Judy to each-other."]},
+                    {"Beatriz":["This is the Woman=devil, the person about whom I told you, Helen and Cassandra. She is a great "+
+                    "inhabitant on out planet. She has created <span class='from_vocabulary'>indispensable </span> remedy ... to defense"+
+                    "this planet from carrion depletion."]}
+        ],
+        part2: [
             {"Author's words": ["Ramon, Randi and W are spies. They live in the basement of the Quentin's house. Quentin know about it nothing."]},
             {"Author's words": ["The characters are sitting in Quentin's living place and talk between each-other."]},
             {"Ramon": ["It was so impressive!"]},
@@ -30,7 +91,7 @@
             {"Snake": ["Of course. I know you can not read thoughts like me."]},
             {"W": ["Frankly, I like sso cruel stories not very mych."]}
         ],
-        part2: [
+        part3: [
             {"Author's words": ["There Woman-devil and Lilian are sitting in the bottom of the lake."]},
             {"image": ["<img src='../images/with_characters/Woman-devil%20in%20her%20chair.jpg'>"]},
             {"Woman-devil": ["Lilian, can you scratch my nails on the legs?"]},
@@ -193,7 +254,7 @@
              {"": [""]},
              {"": [""]} */],
         // replics[this.id]
-        part3: [
+        part4: [
             {"Author's words": ["This morning Quentin went to the train station. There will be something unexpectable for"+
             "him in the station, but he has not know about it yet."]},
             {
@@ -216,7 +277,7 @@
             {"Author's words": ["Of course, Quentin felt hard <span class='from_vocabulary'>tumult</span> after this"+
             "meeting."]}
         ],
-        part4: [
+        part5: [
             {"Woman-devi": ["My conversation with Quentin was excellent!"]},
             {"Lilian": ["Will we always be in safety?"]}
         ]
@@ -323,7 +384,7 @@
                         text.innerHTML += arrayElementObject['image'];
                     }
                 }
-                roleslist.innerHTML += '<div><input id="choicecharacter" type="button" value="paint replics"></div>';
+                roleslist.innerHTML += '<div><input id="paintreplics" type="button" value="paint replics"></div>';
                 checkboxes = document.getElementsByClassName("checkcharacter");
                 replics_of_choicedpart.authorreplics_divs = document.getElementsByClassName("authorwords");
                 replics_of_choicedpart.replicsofchar_divs = document.getElementsByClassName("words_of_char");
@@ -338,12 +399,12 @@
                   *  То же самое для элементов с другим value.
                  * В противном случае
                      * Если value == "Author's words"
-                         * Если элемент есть в объекте previouschecked, он оттуда удаляется. Цикл пробегает по
+                         * Если элемент есть в объекте previouhecked, он оттуда удаляется. Цикл пробегает по
                          * replics_of_choicedpart.authorwords и удаляет текстуру элемента.
                      * То же самое для элементов с другим value.
                  *
                  * Предполагаемый код: */
-                 document.getElementById("choicecharacter").onclick = function () {
+                 document.getElementById("paintreplics").onclick = function () {
                  var rundivs, name_in_h4, name_in_checkbox, checkedroles = {},
                  length_of_checks = checkboxes.length,
                  length_authorwords = replics_of_choicedpart['authorwords'].length,
@@ -355,8 +416,8 @@
                              checkedroles[presrolesarray[runchecks]] = true;
                               if (presrolesarray[runchecks]=="Author's words") {
                                   for (rundivs = 0; rundivs < length_authorwords; rundivs ++ ){
-                                          if (replics_of_choicedpart.authorreplics_divs[rundivs].style.backgroundColor=="") {
-                                          replics_of_choicedpart.authorreplics_divs[rundivs].style.backgroundColor="cornflowerblue";
+                                          if (!(replics_of_choicedpart.authorreplics_divs[rundivs].classList.contains ("paintedauthorreplics"))) {
+                                            replics_of_choicedpart.authorreplics_divs[rundivs].classList.add("paintedauthorreplics");
                                           }
                                   }
                               }
@@ -364,10 +425,7 @@
                                   for (rundivs = 0; rundivs < length_charwords; rundivs ++) {
                                   name_in_h4 = replics_of_choicedpart.replicsofchar_divs[rundivs].getElementsByTagName('H4')[0].innerText;
                                       if (name_in_checkbox ==  name_in_h4 ) {
-                                          if (replics_of_choicedpart.replicsofchar_divs[rundivs].style.backgroundColor=="") {
-                                              replics_of_choicedpart.replicsofchar_divs[rundivs].style.backgroundColor= "pink";
-                                          }
-
+                                          replics_of_choicedpart.replicsofchar_divs[rundivs].classList.add("paintedreplicsofchar");
                                       }
                                   }
                               }
@@ -375,8 +433,8 @@
                           else { // Если элемент не чекнут в этом клике
                               if (presrolesarray[runchecks]=="Author's words") {
                                   for (rundivs = 0; rundivs < length_authorwords; rundivs ++ ){
-                                          if (replics_of_choicedpart.authorreplics_divs[rundivs].style.backgroundColor!="") {
-                                              replics_of_choicedpart.authorreplics_divs[rundivs].style.backgroundColor="";
+                                          if (replics_of_choicedpart.authorreplics_divs[rundivs].classList.contains("paintedauthorreplics")) {
+                                              replics_of_choicedpart.authorreplics_divs[rundivs].classList.remove("paintedauthorreplics");
                                           }
                                   }
                               }
@@ -384,16 +442,14 @@
                                       for (rundivs = 0; rundivs < length_charwords; rundivs++) {
                                           name_in_h4 = replics_of_choicedpart.replicsofchar_divs[rundivs].getElementsByTagName('H4')[0].innerText;
                                           if (name_in_checkbox == name_in_h4) {
-                                              if (replics_of_choicedpart.replicsofchar_divs[rundivs].style.backgroundColor != "") {
-                                                  replics_of_choicedpart.replicsofchar_divs[rundivs].style.backgroundColor = "";
+                                              if (replics_of_choicedpart.replicsofchar_divs[rundivs].classList.contains("paintedreplicsofchar")) {
+                                                  replics_of_choicedpart.replicsofchar_divs[rundivs].classList.remove("paintedreplicsofchar");
                                               }
-
                                           }
                                       }
                               }
                           }
                     }
-                    //alert (Object.keys(checkedroles));
                  };
             }
 

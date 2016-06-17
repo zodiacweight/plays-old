@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        .color {
+            background-color: #345693;
+            color: aliceblue;
+        }
+        .location {
+            width: 60%;
+            margin-left: 10%;
+        }
+        #container {
+            border: 2px solid;
+        }
+    </style>
+</head>
+<body>
+<div id="container" class="location">Does it contain a class?</div>
+    <script>
+        var container = document.getElementById("container");
+        container.onclick = function () {
+            this.classList.toggle("color");
+        }
+    </script>
+</body>
+</html>
