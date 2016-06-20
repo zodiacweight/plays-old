@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Time</title>
+    <script>
+        console.log("Start timer");
+        var nd = new Date, diff = 0, cnt=0;
+        while(diff < 5000) {
+            ++cnt;
+            diff = new Date - nd;
+            if(diff==2500) console.log("Half time!");
+        }
+        console.log("Hello, cnt: "+cnt); // 2340690
+    </script>
+</head>
+<body>
+
+</body>
+</html>
