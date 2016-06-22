@@ -10,11 +10,23 @@
         <div id="header1"><h1> Woman-devil and Extra-decomposers</h1></div>
     </div>
     <div id="contentlist">
-        <p id="about_characters">About characters</p>
-        <p id="part1">part 1</p>
-        <p id="part2">part 2</p>
-        <p id="part3">part 3</p>
-        <p id="part4">part 4</p>
+        <h2 onclick="showPlay(0, Extradecomposers)">Extra-decomposers</h2>
+        <!--todo: генерировать меню динамически и сделать так, чтобы у элементы с классом items-paragraphs появлялись и
+        исчезали не за счет регулирования display между block и none, а через свойство innerHTML при клике по тем
+         элементам, в которые они вложены. -->
+        <div class="items-paragraphs">
+            <p onclick =  'loadAboutCharacters("Extradecomposers")'>About characters</p>
+            <p id="Part13">Part 13</p>
+            <p id="Part14">Part 14</p>
+            <p id="Part15">Part 15</p>
+            <p id="Part16">Part 16</p>
+            <p id="Part17">Part 17</p>
+        </div>
+        <h2 onclick="showPlay(1, maniac)">New characters</h2>
+        <div class="items-paragraphs">
+            <p onclick =  'loadAboutCharacters("maniac")'>About characters</p>
+            <p id="Part1m">Part 1</p>
+        </div>
     </div>
     <div id="for_content">
         <div id="roleslist"></div>
