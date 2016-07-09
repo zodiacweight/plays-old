@@ -4,14 +4,14 @@ var Extradecomposers, maniac, headers;
 // 1. Создаём новый объект XMLHttpRequest
 var xhr = new XMLHttpRequest();
 // 2. Конфигурируем его: GET-запрос на URL 'replicsobjects.json'
-xhr.open('GET', 'replicsobjects.json');
+xhr.open('GET', 'HTML/replicsobjects.json');
 // 3. Отсылаем запрос
 xhr.send();
 xhr.onload = function () {
-    console.log('%c console.log', 'background-color:yellow');
-    console.info('%c console.info', 'color:blue'); // Ctrl+D --скопировать строку без выделения ниже (курсор должен быть на строке)
-    console.warn('console.warn'); // Ctrl+ ↑, ↓ -- переместить строку вверх/вниз (курсор должен быть на строке)
-    console.error('console.error');
+    //console.log('%c console.log', 'background-color:yellow');
+    //console.info('%c console.info', 'color:blue'); // Ctrl+D --скопировать строку без выделения ниже (курсор должен быть на строке)
+    //console.warn('console.warn'); // Ctrl+ ↑, ↓ -- переместить строку вверх/вниз (курсор должен быть на строке)
+    //console.error('console.error');
     // 4. Если код ответа сервера не 200, то это ошибка
     if (xhr.status != 200) {
         // обработать ошибку
@@ -25,6 +25,9 @@ xhr.onload = function () {
         // вывести результат
         // responseText -- текст ответа.
     }
+};
+xhr.onerror = function(event){
+    console.log(event);
 };
 var contentlist = document.getElementById("contentlist"), roleslist = document.getElementById("roleslist"),
     area_forcontent = document.getElementById("for_content"),
