@@ -26,7 +26,7 @@ xhr.onload = function () {
         // responseText -- текст ответа.
     }
 };
-var roleslist = document.getElementById("roleslist"),
+var contentlist = document.getElementById("contentlist"), roleslist = document.getElementById("roleslist"),
     area_forcontent = document.getElementById("for_content"),
     text = document.getElementById("text"),
     arrayElementObject, checkboxes = [],
@@ -35,14 +35,13 @@ var roleslist = document.getElementById("roleslist"),
         var innerContent = {
             class: className,
             h4: subjectName,
-            contents: contents
+            contents: contents // слова героя
         };
         switch (className) {
             case "authorwords":
                 //console.log('case: authorwords', 'subjectName = '+subjectName);
                 replics_of_choicedpart.authorwords.push(innerContent);
                 break;
-
             case "words_of_char":
                 replics_of_choicedpart.wordsofchar.push(innerContent);
                 break;
@@ -53,17 +52,10 @@ var roleslist = document.getElementById("roleslist"),
         // новый объект innerContent. Этот же объект заносится в переменную innerContent ниже, где вызывается эта функция.
         return innerContent;
     },
-    addInnerHtml = function (html, innerContent, replics, partn) {
-        var i = 0, number_of_replics = partn.length;
-        var intv = setInterval(function () { // Переменная intv - номер счетчика.
-            if (i < number_of_replics) {
-                html.innerHTML += "<div class='" + innerContent.class + "'> <h4>" + innerContent.h4 +
-                    "</h4><p>" + innerContent.contents[0] + "</p></div>";
-                i++;
-            } else {
-                clearInterval(intv);
-            }
-        }, 400);
+    addInnerHtml = function (html, innerContent) {
+        html.innerHTML += "<div class='" + innerContent.class + "'> <h4>" + innerContent.h4 +
+            "</h4><p>" + innerContent.contents[0] + "</p></div>";
+
     };
 var groups_of_items = document.getElementsByClassName("items-paragraphs"),
     titlesOfPlays = document.getElementById("contentlist").getElementsByTagName("H2"),
@@ -121,8 +113,7 @@ function showPlay(indexOfItemsGroup, replics) {
             {   // выполняется функция, привязанная к обработчику события -- ПОСЛЕ ВЫПОЛНЕНИЯ ЦИКЛА!!!
                 //console.log({id:this.id, part:this.id});
                 var replics_of_choicedpart = {}, // реплики выбранной части.
-                    innerContent, contentlist = document.getElementById("contentlist");
-                var presrolesobject = {}, presrolesarray = [];
+                innerContent, presrolesobject = {}, presrolesarray = [];
                 area_forcontent.style.borderLeft = "3px solid #345693";
                 contentlist.style.borderRight = "none";
                 roleslist.innerHTML = "<strong>There are the following characters in this part:</strong>";
@@ -131,7 +122,7 @@ function showPlay(indexOfItemsGroup, replics) {
                     number = parseInt(number);
                 }
                 text.innerText = "";
-                text.innerHTML = "<h2>" + "Part " + number + "<span id = \"title_of_episode\">" + headers[this.id] + "</span>" + "</h2>";
+                text.innerHTML = "<h2>" + "Part " + number + "<span id = \"title_of_episode\">" + headers[this.id] + "</span></h2>";
                 replics_of_choicedpart.authorwords = []; // Для объектов со свойствами реплик
                 replics_of_choicedpart.wordsofchar = [];
                 replics_of_choicedpart.authorwords_divs = []; // Divs, выведенные на страницу при клике по part,
@@ -146,7 +137,7 @@ function showPlay(indexOfItemsGroup, replics) {
                         text.innerHTML += arrayElementObject[subjectName];
                     }
                     else {
-                        if (!(subjectName in presrolesobject) && subjectName.indexOf('&') < 0 && subjectName.indexOf('letter') < 0) {
+                        if (!(subjectName in presrolesobject) && subjectName.indexOf(' &') < 0 && subjectName.indexOf("as answer") < 0) {
                             presrolesobject[subjectName] = true;
                             presrolesarray.push(subjectName);
                             if (subjectName == "Snake") {
@@ -166,7 +157,7 @@ function showPlay(indexOfItemsGroup, replics) {
                         // replics_of_choicedpart.authorwords  или replics_of_choicedpart.wordsofchar.
                         innerContent = setContents(replics_of_choicedpart, [arrayElementObject[subjectName]], subjectName, className);
                         //console.log('innerContent', innerContent);
-                        addInnerHtml(text, innerContent, replics, replics[part]); // В содержимое элемента text добавляется innerContent, судя по содержанию.
+                        addInnerHtml(text, innerContent); // В содержимое элемента text добавляется innerContent, судя по содержанию.
                         console.log({
                             className: className,
                             subjectName: subjectName,
@@ -176,81 +167,86 @@ function showPlay(indexOfItemsGroup, replics) {
                         });
                     }
                 }
-                if (number=="16") {
-                   var SnakeRole = document.getElementById("Snake");
-                    if (SnakeRole !== null) {
-                        SnakeRole.innerText+=" (Woman-devil)";
+                    if (replics==Extradecomposers) {
+                        if (number=="16") {
+                           var SnakeRole = document.getElementById("Snake");
+                            if (SnakeRole !== null) {
+                                SnakeRole.innerText+=" (Woman-devil)";
+                            }
+                        }
+                        else if(number=="14"){
+                            var parWithCheckboxes = roleslist.getElementsByTagName("P");
+                            parWithCheckboxes[1].innerHTML+="<span class='labels_for_roles'> (Not very much replics)</span>";
+                            parWithCheckboxes[3].innerHTML+="<span class='labels_for_roles'> (Only one replic!)</span>";
+                        }
                     }
-                }
-                roleslist.innerHTML += '<div><input id="paintreplics" type="button" value="paint replics"></div>';
-                checkboxes = document.getElementsByClassName("checkcharacter");
-                replics_of_choicedpart.authorreplics_divs = document.getElementsByClassName("authorwords");
-                replics_of_choicedpart.replicsofchar_divs = document.getElementsByClassName("words_of_char");
-                document.getElementById("paintreplics").onclick = function () {
-                    var rundivs, name_in_h4, name_in_checkbox, checkedroles = {},
-                        length_of_checks = checkboxes.length,
-                        length_authorwords = replics_of_choicedpart['authorwords'].length,
-                        length_charwords = replics_of_choicedpart['wordsofchar'].length;
-                    // Пробег по списку чекбоксов
-                    for (var runchecks = 0; runchecks < length_of_checks; runchecks++) {
-                        name_in_checkbox = presrolesarray[runchecks];
-                        if (checkboxes[runchecks].checked) {
-                            checkedroles[name_in_checkbox] = true;
-                            if (presrolesarray[runchecks] == "Author's words") {
-                                for (rundivs = 0; rundivs < length_authorwords; rundivs++) {
-                                    if (!(replics_of_choicedpart.authorreplics_divs[rundivs].classList.contains("paintedauthorreplics"))) {
-                                        replics_of_choicedpart.authorreplics_divs[rundivs].classList.add("paintedauthorreplics");
+                    roleslist.innerHTML += '<div><input id="paintreplics" type="button" value="paint replics"></div>';
+                    checkboxes = document.getElementsByClassName("checkcharacter");
+                    replics_of_choicedpart.authorreplics_divs = document.getElementsByClassName("authorwords");
+                    replics_of_choicedpart.replicsofchar_divs = document.getElementsByClassName("words_of_char");
+                    document.getElementById("paintreplics").onclick = function () {
+                        var rundivs, name_in_h4, name_in_checkbox, checkedroles = {},
+                            length_of_checks = checkboxes.length,
+                            length_authorwords = replics_of_choicedpart['authorwords'].length,
+                            length_charwords = replics_of_choicedpart['wordsofchar'].length;
+                        // Пробег по списку чекбоксов
+                        for (var runchecks = 0; runchecks < length_of_checks; runchecks++) {
+                            name_in_checkbox = presrolesarray[runchecks];
+                            if (checkboxes[runchecks].checked) {
+                                checkedroles[name_in_checkbox] = true;
+                                if (presrolesarray[runchecks] == "Author's words") {
+                                    for (rundivs = 0; rundivs < length_authorwords; rundivs++) {
+                                        if (!(replics_of_choicedpart.authorreplics_divs[rundivs].classList.contains("paintedauthorreplics"))) {
+                                            replics_of_choicedpart.authorreplics_divs[rundivs].classList.add("paintedauthorreplics");
+                                        }
+                                    }
+                                }
+                                else {
+                                    for (rundivs = 0; rundivs < length_charwords; rundivs++) {
+                                        name_in_h4 = replics_of_choicedpart.replicsofchar_divs[rundivs].getElementsByTagName('H4')[0].innerText;
+                                        console.log(' name_in_h4 = ' + name_in_h4);
+                                        if (name_in_h4.indexOf(name_in_checkbox) > -1) {
+                                            replics_of_choicedpart.replicsofchar_divs[rundivs].classList.add("paintedreplicsofchar");
+                                        }
                                     }
                                 }
                             }
-                            else {
-                                for (rundivs = 0; rundivs < length_charwords; rundivs++) {
-                                    name_in_h4 = replics_of_choicedpart.replicsofchar_divs[rundivs].getElementsByTagName('H4')[0].innerText;
-                                    console.log(' name_in_h4 = ' + name_in_h4);
-                                    if (name_in_h4.indexOf(name_in_checkbox) > -1) {
-                                        replics_of_choicedpart.replicsofchar_divs[rundivs].classList.add("paintedreplicsofchar");
+                            else { // Если элемент не чекнут в этом клике
+                                if (name_in_checkbox == "Author's words") {
+                                    for (rundivs = 0; rundivs < length_authorwords; rundivs++) {
+                                        if (replics_of_choicedpart.authorreplics_divs[rundivs].classList.contains("paintedauthorreplics")) {
+                                            replics_of_choicedpart.authorreplics_divs[rundivs].classList.remove("paintedauthorreplics");
+                                        }
+                                    }
+                                }
+                                else {
+                                    for (rundivs = 0; rundivs < length_charwords; rundivs++) {
+                                        name_in_h4 = replics_of_choicedpart.replicsofchar_divs[rundivs].getElementsByTagName('H4')[0].innerText;
+                                        if (name_in_h4.indexOf(" &") == -1) {
+                                            if (name_in_h4.indexOf(name_in_checkbox) >= 0) {
+                                                if (replics_of_choicedpart.replicsofchar_divs[rundivs].classList.contains("paintedreplicsofchar")) {
+                                                    replics_of_choicedpart.replicsofchar_divs[rundivs].classList.remove("paintedreplicsofchar");
+                                                }
+                                            }
+                                        }
+                                        else {
+                                            var names_in_con = name_in_h4.split(" & ");
+                                            for (var runNames_in_con = 0; runNames_in_con < names_in_con.length; runNames_in_con++) {
+                                                if (names_in_con[runNames_in_con] in checkedroles) {
+                                                    break;
+                                                }
+                                            }
+                                            if (runNames_in_con == names_in_con.length) {
+                                                if (replics_of_choicedpart.replicsofchar_divs[rundivs].classList.contains("paintedreplicsofchar")) {
+                                                    replics_of_choicedpart.replicsofchar_divs[rundivs].classList.remove("paintedreplicsofchar");
+                                                }
+                                            }
+                                        }
                                     }
                                 }
                             }
                         }
-                        else { // Если элемент не чекнут в этом клике
-                            if (name_in_checkbox == "Author's words") {
-                                for (rundivs = 0; rundivs < length_authorwords; rundivs++) {
-                                    if (replics_of_choicedpart.authorreplics_divs[rundivs].classList.contains("paintedauthorreplics")) {
-                                        replics_of_choicedpart.authorreplics_divs[rundivs].classList.remove("paintedauthorreplics");
-                                    }
-                                }
-                            }
-                            else {
-                                for (rundivs = 0; rundivs < length_charwords; rundivs++) {
-                                    name_in_h4 = replics_of_choicedpart.replicsofchar_divs[rundivs].getElementsByTagName('H4')[0].innerText;
-                                    if (name_in_h4.indexOf(" &") == -1) {
-                                        if (name_in_h4.indexOf(name_in_checkbox) >= 0) {
-                                            if (replics_of_choicedpart.replicsofchar_divs[rundivs].classList.contains("paintedreplicsofchar")) {
-                                                replics_of_choicedpart.replicsofchar_divs[rundivs].classList.remove("paintedreplicsofchar");
-                                            }
-                                        }
-                                    }
-                                    else {
-
-                                        var names_in_con = name_in_h4.split(" & ");
-                                        for (var runNames_in_con = 0; runNames_in_con < names_in_con.length; runNames_in_con++) {
-                                            if (names_in_con[runNames_in_con] in checkedroles) {
-                                                break;
-                                            }
-                                        }
-                                        if (runNames_in_con == names_in_con.length) {
-                                            if (replics_of_choicedpart.replicsofchar_divs[rundivs].classList.contains("paintedreplicsofchar")) {
-                                                replics_of_choicedpart.replicsofchar_divs[rundivs].classList.remove("paintedreplicsofchar");
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
                     }
-                };
-                //  }
 
             }
         }
