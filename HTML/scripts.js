@@ -117,15 +117,13 @@ function showPlay(indexOfItemsGroup, replics) {
                 //console.log({id:this.id, part:this.id});
                 var replics_of_choicedpart = {}, // реплики выбранной части.
                 innerContent, presrolesobject = {}, presrolesarray = [];
-                area_forcontent.style.borderLeft = "3px solid #345693";
-                contentlist.style.borderRight = "none";
-                roleslist.innerHTML = "<strong>There are the following characters in this part:</strong>";
-                var number = this.id.substring(4);
-                if (indexOfItemsGroup > 0) {
-                    number = parseInt(number);
+                if (!(area_forcontent.classList.contains("addStylesForContent"))) {
+                    area_forcontent.classList.add("addStylesForContent");
+                    contentlist.style.borderRight = "none";
                 }
+                roleslist.innerHTML = "<strong>There are the following characters in this part:</strong>";
                 text.innerText = "";
-                text.innerHTML = "<h2>" + "Part " + number + "<span id = \"title_of_episode\">" + headers[this.id] + "</span></h2>";
+                text.innerHTML = "<h2>" + part + "<span id = \"title_of_episode\">" + headers[this.id] + "</span></h2>";
                 replics_of_choicedpart.authorwords = []; // Для объектов со свойствами реплик
                 replics_of_choicedpart.wordsofchar = [];
                 replics_of_choicedpart.authorwords_divs = []; // Divs, выведенные на страницу при клике по part,

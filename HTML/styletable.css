@@ -14,10 +14,11 @@
     #contentlist {
         float: left;
         width: 22%;
+        height: 570px;
         border-top: 4px solid #345693;
         border-right: 3px solid #345693;
     }
-    #contentlist > h2 {
+   #contentlist > h2 {
         margin-left: 25px;
         padding: 6px;
         margin-right: 8%;
@@ -80,6 +81,9 @@
         float: left;
         width: 77%;
         border-top: 4px solid #345693;
+    }
+    .addStylesForContent {
+        border-left: 3px solid #345693;
     }
     #for_content > * {
         margin-left: 3%;
