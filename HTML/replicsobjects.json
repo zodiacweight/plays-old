@@ -2,8 +2,13 @@
 
   "ExtraDecomposers" : {
     "about_characters": "There are such following characters in this play as a few people and different unusual characters.  They live in very unusual world and often collide with different unusual events. There is such character as Woman-devil living on the bottom of Pacific ocean and creating many perfect wonders using her magical forces. Anything she creates with defined purpose.",
+<<<<<<< HEAD
     "Part7": [
        {"Christian": ["Hi, Helen!"]},
+=======
+    "Part 1.7": [
+      {"Christian": ["Hi, Helen!"]},
+>>>>>>> c5f4449c6183f93a0b3b1d8a58569967fb8590cc
       {"Helen": ["Hi, Christian! How are you, your work?"]},
       {"Christian": ["Stable."]},
       {"Helen": ["Is it interesting?"]},
@@ -69,6 +74,7 @@
       {     "Mrs Jakins": ["Can you never told it me?"]},
       {     "Christian": ["I think you all will know about it soon anyway."]}
     ],
+<<<<<<< HEAD
     "Part9": {
       "Helen": ["Beatriz, get up, please! I have cooked a feast for you."],
       "Beatriz": ["Thank you, Helen."],
@@ -130,6 +136,69 @@
       "Beatriz": ["Good bye."]
      },
     "Part10": [
+=======
+    "Part 1.9": [
+      {"Helen": ["Beatriz, get up, please! I have cooked a feast for you."]},
+      {"Beatriz": ["Thank you, Helen."]},
+      {"Helen": ["If you are hungry lets go with me."]},
+      {"Beatriz": ["<i>(After the feast)</i> Thank you, Helen. I have sated."]},
+      {"Helen": ["I am glad to please you. I have one proposal for you. I hope you remember my friends. I, Judy and Cassandra are going to visit one city to spend our time. We would like to get you with us."]},
+      {"Beatriz": ["What will we do in this city?"]},
+      {"Helen": ["We will lay on the beach, play games and see many interesting things."]},
+      {"Beatriz": ["What game?"]},
+      {"Author's words": ["Helen tells Beatriz in particular."]},
+      {"Beatriz": ["I am not sure I need such game. I can not change my size in this embodiment."]},
+      {"Helen": ["But I read about extra-decomposers, the species you belong to. It was written extra-decomposers can do that. Why you think you can not?"]},
+      {"Beatriz": ["I do not know how. So the game is not for me."]},
+      {"Helen": ["I can speak with scientists and know how you can change your size. But I am a bit surprised listening from you that you do not know. So who must know?"]},
+      {"Beatriz": ["I do not know this, too. I am rather sure I must leave you soon."]},
+      {"Helen": ["Beatriz, what is wrong with you? What  <span class=\"from_vocabulary\">whims</span> have gone on you? Do you know you can change your size to a human size? So you will can play this game."]},
+      {"Beatriz": ["Sorry, Helen, but I can  <span class=\"from_vocabulary\">praise</span> how I live in your aquarium in no way. It can seem like  <span class=\"from_vocabulary\">whims</span>, but these are not  <span class=\"from_vocabulary\">whims</span> really."]},
+      {"Helen": ["I understand you why you want to leave this place and why it is not suitable  <span class=\"from_vocabulary\">haven</span> for you. There are 2 facts about you such as your world vision and your destination in this world. I know the space in my tank is not so  <span class=\"from_vocabulary\">far-flung</span>. Maybe there is no place enough  <span class=\"from_vocabulary\">far-flung</span> for you, because you have  <span class=\"from_vocabulary\">insatiable fervor</span> to see the world. Besides the fact that the aquarium is a  <span class=\"from_vocabulary\">confined</span> space, also the animals are in  <span class=\"from_vocabulary\">confined</span> quantity in it. So it is  <span class=\"from_vocabulary\">utterly</span> unsuitable  <span class=\"from_vocabulary\">haven</span> for you. It may be applicable only as a temporary habitat. An ocean where there is huge  <span class=\"from_vocabulary\">plethora</span> of different beings is another thing. Other fact is that you are a scavenger and you have the mission which is an  <span class=\"from_vocabulary\">inalienable</span> part of your life. In the same time life in my tank and performing your mission are 2  <span class=\"from_vocabulary\">irreconcilable</span> things. Anything of this is understandable for me. Of course I will part with you when you want."]},
+      {"Beatriz": ["Thank you, Helen, for your concern to me! I think I will miss you to a certain degree, but my nature  <span class=\"from_vocabulary\">compells</span> me to abandon you though I do not want you to feel  <span class=\"from_vocabulary\">dejection</span> about my leaving you."]},
+      {"Helen": ["The reasons of it are  <span class=\"from_vocabulary\">irrefutable</span> for me. You have already explained me, Christian has, too. I know he is a human who deals with extra-decomposers in his everyday life. But I am interested in the question about growing your size and your possibility to take part with us in the game in our holidays. I am not sure we can  <span class=\"from_vocabulary\">repeal</span> this idea right now by not talking with Christain."]},
+      {"Beatriz": ["Sorry, Helen. I am going to  <span class=\"from_vocabulary\">rebuff</span> it. It refers to my mission again."]},
+      {"Helen": ["I hoped we would have a cool time. Why you are telling that I have to abolish this positive idea? Do you think the cool  <span class=\"from_vocabulary\">unwinding</span> times will  <span class=\"from_vocabulary\">derail</span> it?"]},
+      {"Beatriz": ["Helen, I want you to understand me correctly. I do not want  <span class=\"from_vocabulary\">foster resentment</span> in you or  <span class=\"from_vocabulary\">incense</span> you. I do not have intentions to  <span class=\"from_vocabulary\">impose dejection</span> on you. The idea is that it is my  <span class=\"from_vocabulary\">commitment</span> to  <span class=\"from_vocabulary\">attend</span> in common world. I can not  <span class=\"from_vocabulary\">afford</span> to stay on your aquarium too long. The enormous <span class=\"from_vocabulary\">superflous</span> pollution is the fact which is most important now. There is  <span class=\"from_vocabulary\">immense raft</span> of carrion poisoning nature availability of which can lead to catastophic  <span class=\"from_vocabulary\">aftermaths</span> which I must  <span class=\"from_vocabulary\">confront</span> as you know. There are many other decomposers who is performing this mission, but I must take part in it, too. I must go and  <span class=\"from_vocabulary\">fullfill</span> my mission. It is not desirable to  <span class=\"from_vocabulary\">postponel</span> this. I do not have it right now, but I do not have to continue life in your aquarium too long."]},
+      {"Helen": ["Now I understand you. I understand it is a real  <span class=\"from_vocabulary\">favourl</span> that you have  <span class=\"from_vocabulary\">aptitudesl</span> to  <span class=\"from_vocabulary\">swayl</span> to our  <span class=\"from_vocabulary\">contaminatedl</span> world. Of course, I can not  <span class=\"from_vocabulary\">confrontl</span> to realization of your intentions. With all of these facts I am releasing you. It must be you will have to exert  <span class=\"from_vocabulary\">fulfillingl</span> your  <span class=\"from_vocabulary\">missionl</span>."]},
+      {"Beatriz": ["My mission is just to eat what I am designed to eat."]},
+      {"Helen": ["I see you are not like me and my friends in something. Besides I know you would not accept my offer if I made it you earlier because you have not suitable size for such game."]},
+      {"Beatriz": ["Of course I would not."]},
+      {"Helen": ["When are you going to return to nature?"]},
+      {"Beatriz": ["In a few days. When you are going to leave your house?"]},
+      {"Helen": ["In 9 days. May we part before I will gone from the house?"]},
+      {"Beatriz": ["I think, yes. I can tell you about the  <span class=\"from_vocabulary\">declinel</span> situation in nature if you want."]},
+      {"Helen": ["I do not know whether I want or do not. It is scary."]},
+      {"Beatriz": ["Is there another question about whether it is interesting for you or not?"]},
+      {"Helen": ["I am afraid it can have undesirable sequels on my mood."]},
+      {"Beatriz": ["That is why I must  <span class=\"from_vocabulary\">exertl</span> performing my mission."]},
+      {"Helen": ["I meant something other. I meant the information you want to give me can bear undiserable  <span class=\"from_vocabulary\">consequencesl</span> in my feeling."]},
+      {"Beatriz": ["I understand you. You worry about the information which I wanted to give you. Then I think it will be better to you not to listen it."]},
+      {"Helen": ["Yes. But in the same time I would like know that anything will be fine. It would be better than to know nothing. Besides I worry about something another."]},
+      {"Beatriz": ["I see only one problem which is this carrion  <span class=\"from_vocabulary\">disseminationl</span>. Are you worried by something else?"]},
+      {"Helen": ["It is interesting how long may be continuance of your life."]},
+      {"Beatriz": ["Why does it bother you? Does it  <span class=\"from_vocabulary\">boil downl</span> to the question if you and me will can meet each other again some day?"]},
+      {"Helen": ["No. It does not."]},
+      {"Beatriz": ["Why this question is your  <span class=\"from_vocabulary\">unrestl</span> then?"]},
+      {"Helen": ["Because I want you to live as long as it is possible."]},
+      {"Beatriz": ["The continuance of my life is determined by the continuance of this  <span class=\"from_vocabulary\">superfluousl</span> pollution period."]},
+      {"Helen": ["Do you not know how long this period will be continuing?"]},
+      {"Beatriz": ["I do not."]},
+      {"Helen": ["Tell me, please, do you like life in my aquarium at least a little bit?"]},
+      {"Beatriz": ["I fear whatever the answer  <span class=\"from_vocabulary\">summonedl</span> your  <span class=\"from_vocabulary\">backlashl</span>. I do not want you to be  <span class=\"from_vocabulary\">outragedl</span>, but it  <span class=\"from_vocabulary\">turnes outl</span> the life in your aquarium is not so enjoyable compared with ocean and swamp. Understand me, please. I do not want look  <span class=\"from_vocabulary\">preposterousl</span> in connection with I had the desire to see the life in an aquarium and after that I said I had not liked it. I am sorry. I simply could not predict what could be the life in an aquarium."]},
+      {"Helen": ["Do not worry. Your  <span class=\"from_vocabulary\">rebuffl</span> is very  <span class=\"from_vocabulary\">pertinent</span>. I understand every your word. I have already listened that you do not like the size of my aquarium, but I am interested if you like the life in it at least a little bit. Do you like cosiness animals in my aquarium?"]},
+      {"Beatriz": ["It is nice looking in the aquarium. It is made masterfully: these pretty castle of the  <span class=\"from_vocabulary\">flagstonesl</span>, bottom, location of the stones and algas. Anything of these is pleasing look. But other thing - size of the space."]},
+      {"Helen": ["I have already understood you. Tell me, where are you going to live?"]},
+      {"Beatriz": ["Near the swamp where I lived earlier. There is what I have to do near the swamp to  <span class=\"from_vocabulary\">reinstatel</span> nature balance. Seems to me there are some  <span class=\"from_vocabulary\">superfluously contaminatedl</span> places near the swamp."]},
+      {"Helen": ["All right. But we will need Sam's assistance again. Seems to me we can go to the swamp successfully not  <span class=\"from_vocabulary\">longeringl</span> only when he has enough free time to help us. Otherwise it will be more difficult to go to the swamp through public transport. It will be  <span class=\"from_vocabulary\">hamperedl</span> because we do not  <span class=\"from_vocabulary\">wield tangiblel</span> experience moving over such long distances."]},
+      {"Beatriz": ["If you think so I hope we will have opportunity to do as you suggest with Sam's assistance. But I hope we will can go without somebody's help in a pinch."]},
+      {"Helen": ["May I go and do my affairs further?"]},
+      {"Beatriz": ["Yes, you may."]},
+      {"Helen": ["Good bye."]},
+      {"Beatriz": ["Good bye."]}
+],
+    "Part 1.10": [
+>>>>>>> c5f4449c6183f93a0b3b1d8a58569967fb8590cc
       {"Helen": ["Hi, Judy, Cassandra. Go ahead and take your seats, please."]},
       {"Cassandra": ["Hi, Helen. Nice to meet you!"]},
       {"Judy": ["Hi, Helen."]},
@@ -240,7 +309,7 @@
       {"Helen":["Of course. Thank you for time spending and communication with us. We wish you good luck in your job."]},
       {"Christian":["Thank you! I also wish good luck to all of you."]}
     ],
-    "Part11": [
+    "Part 1.11": [
       {"Author's words": ["Helen got a letter. She had come home from a market and when she had come in the second floor she saw a big envelope on the floor with a label \"Helen, read it.\""]},
       {"Beatriz’s letter": ["Hi, Helen. This is Beatriz, the same extra-decomposer in human view which lived in your aquarium some times ago. I hope, you remember me. I would like know how is Christian and help him with something. I think I have found a clue for his success and I can help. Christian must visit one place where he can reach what he must reach. I would like to tell you about a place where I live now. A man <span class=\"from_vocabulary\">wields</span> a house with a court and an <span class=\"from_vocabulary\">immense</span> lake. I live in this lake with <span class=\"from_vocabulary\">raft</span> of other marine inhabitants. Recently I have known something here. Here Christian has an opportunity to know very much about <span class=\"from_vocabulary\">provenance</span> of extra-decomposers. He  must come to the lake, be under the surface of it and talk with me. Here he can know what he cannot know somewhere <span class=\"from_vocabulary\">outwards</span> of this hydrosphere. There is very much impressive regardless <span class=\"from_vocabulary\">provenance</span> of extra-decomposers. Besides there is one creature who is responsible for birth of extra-decomposers. If he and Christian meet each-other he can tell Christian very much about that. But he must not know that Christian considers this <span class=\"from_vocabulary\">appointment</span> his scientific <span class=\"from_vocabulary\">scrutiny</span>. In other words Christian can have <span class=\"from_vocabulary\">appointment</span> with this lake inhabitant as just a guest, but not as a scientist. The devil will not approve a meeting if it is a meeting with a scientist who presumes information from communication with the devil’s to <span class=\"from_vocabulary\">play out</span> important role in his scientific career. The devil will <span class=\"from_vocabulary\">despise</span> such interlocutor and not speak with him. Besides the human who <span class=\"from_vocabulary\">wields</span> all this estate must not know about Christian’s visit. It is possible to get into the lake by flying on a big strong swan over the fence and gates. Don’t think that it is <span class=\"from_vocabulary\">unfathomable</span> to get to the domain without host’s invitation or approval. A swan approvals such visits independently from the host. He does not know about the devil living in the lake <span class=\"from_vocabulary\">albeit</span> the lake appertain him like the court and the house. This letter was delivered to you by one of the swans which live in the demesne of this human. Anything of these words is <span class=\"from_vocabulary\">sheer</span> true."]},
       {"Author's words": ["Helen was a bit preoccupated with this information. It was unexpectable for her. She did not understand many things. She decided to <span class=\"from_vocabulary\">pen</span> a response to this letter."]},
@@ -273,7 +342,7 @@
       {"Helen": ["I am <span class=\"from_vocabulary\">longing for</span> this meeting, too."]}
 
     ],
-    "Part12": [
+    "Part 1.12": [
       {"Author's words":["Helen, Judy and Cassandra come to the Helen's home from their walking. Helen decides to take the shower Judy at the first turn as one of her guests. Judy has gone to the shower. Helen and Cassandra is noticing that Beatriz is <span class=\"from_vocabulary\">attending </span> in the aquarium. They are glad to see her. Beatriz is <span class=\"from_vocabulary\">soaring </span>in water. Helen and Cassandra are climbing up to a <span class=\"from_vocabulary\">ladder. </span> They are reaching the second floor and come to the room where the hole to the water space is. Helen and Cassandra see that Beatriz is hanging over the hole <span class=\"from_vocabulary\">jarring </span> her wigs."]},
       {"Beatriz":["Hi, girls! Hi, Helen! Nice to meet both of you! I remember you very well. You, Helen, got the letter from me and I hope now is suitable time for us to speak."]},
       {"Helen":["Hi, dear! But why your tail is looking like a natural tail?"]},
@@ -341,7 +410,7 @@
       {"Cassandra":["But I cannot say I am <span class=\"from_vocabulary\">longing for</span> the meetings with a devil creature very much."]},
       {"Helen":["We must thoroughly think do we have to go or we do not. It is about Christian, too."]}
     ],
-    "Part13": [
+    "Part 1.13": [
       {"Helen": ["Hi, Christian."]},
       {"Christian": ["Hi, girls."]},
       {"Judy & Cassandra & Beatriz": ["Hi, Christian."]},
@@ -395,7 +464,7 @@
       {"Judy": ["But I have no possibility to <span class=\"from_vocabulary\">mine</span> a diving suit. Can I talk with the woman-devil out of the lake?"]},
       {"Beatriz": ["I will have to negotiate with her about it. Do you see, there is necessaty to hide from eyes of the hosts. So you will have to talk somewhere in the court where the hosts will not see you. Somewhere near the lake behind the trees."]}
     ],
-    "Part14": [
+    "Part 1.14": [
       {"Author's words": ["Judy, Beatriz and Woman-devil take part in this part. Judy is visiting Woman-devil's living place and meet her together with Beatriz. Beatriz and Judy negotiated that Beatriz would wrote to Woman-devil a letter where she would discuss date, time and place of meeting. Before Judy came her friends were not <span class=\"from_vocabulary\"> squared off </span> by the question about Judy's walking to Woman-devil."]
       },
       {"Cassandra": ["Judy, you are so brave!"]},
@@ -520,8 +589,9 @@
       {"Judy": ["Thank you."]},
       {"Author's words": ["Judy is going in direction to home. Woman-devil and Beatriz are flying off on the horse."]}
     ],
-    "Part15": [
-      {"Author's words": ["There Woman-devil, Beatriz and Lilian are sitting in the bottom of the lake."]},
+    "Part 1.15": [],
+    "Part 2.1": [
+      {"Author's words": ["There Woman-devil, Beatriz and Lilian are sitting in the bottom of the ocean."]},
       {"image": ["<img src=\"../images/with_characters/Woman-devil%20in%20her%20chair.jpg\">"]},
       {"Woman-devil": ["Beatriz, can you scratch my nails on the legs?"]},
       {"Beatriz": ["Of course, I can."]},
@@ -594,6 +664,23 @@
       {"Beatriz": ["It is wonderful that I can do it!"]},
       {"Lilian": ["I can't?"]},
       {"Woman-devil": ["You can't, unfortunately. Do not <span class=\"from_vocabulary\">take offense</span> at me, please. But it is true that Beatriz was a human earlier. Now she would like to be a human again. You have never been somebody except a mermaid."]},
+      {"Lilian": ["I understand you."]},
+      {"Woman-devil": ["But I think life will not be <span class=\"from_vocabulary\">pious</span> after we complete our mission."]},
+      {"Medusa":["I think so. It is enough enthralling in this water space!"]},
+      {"Beatriz": ["So, we are going to terminate our mission and rebuild our life and life purposes?"]},
+      {"Woman-devil": ["Yes, of course. It is not so interesting if it is the same during the whole life."]},
+      {"Beatriz": ["I am interested about my life in human <span class=\"from_vocabulary\">incarnation</span> at near future. Will I have parents at least adoptive ones?"]},
+      {"Woman-devil": ["I think, you will. We will seek adoptive parents for you. I hope we will find somebody."]},
+      {"Lilian":["I wonder if I can live without carrion."]},
+      {"Woman-devil": ["You can, trust me. But you can not know so much about yourself as me just basing only on your own feelings."]},
+      {"Beatriz": ["I will miss you, Lady Devil, when I live with adoptive parents."]},
+      {"Woman-devil": ["I will miss you, too."]},
+      {"Beatriz":["Will we have a possibility to meet again someday?"]},
+      {"Woman-devil": ["It is not a very high probability."]},
+      {"Beatriz": [""]},
+      {"Lilian": [""]},
+      {"Woman-devil": [""]},
+      {"Lilian": [""]},
       {"Lilian": ["..."]},
       {"Woman-devil": ["..."]},
       {"Medusa":["..."]},
@@ -601,7 +688,7 @@
       {"Beatriz": ["..."]},
       {"Woman-devil": ["..."]}
     ],
-    "Part16": [
+    "Part 2.2": [
       {"Author's words": ["This morning Joe went to the train station. There will be something unexpectable for him in the station, but he has not know about it yet."]},
       {
         "Voice on the terminal": ["Do not be daunted by the snake. It is not a <span class=\"from_vocabulary\">hazard </span> for you."]
@@ -616,6 +703,10 @@
       {"Snake": ["I want you were <span class=\"from_vocabulary\">pacified</span>.", "Agreed?"]},
       {"Joe": ["Are you trying to <span class=\"from_vocabulary\">imbue</span> me that you are not black entity for a human despite the denomination which you are called?"]},
       {"Author's words": ["Of course, Joe felt hard <span class=\"from_vocabulary\">tumult</span> after this meeting."]},
+      {"Snake": ["We must discuss something. Listen to me, please. I have to say that I am grudge by your behavior in the ocean coast."]},
+      {"Joe": ["What's wrong!?"]},
+      {"Snake": ["It is not as clean as we would like, I mean me and some other marine animals."]},
+      {"Joe": ["Snake, may I be interested how can you speak like a human?"]},
       {"Joe": ["..."]},
       {"Snake": ["..."]},
       {"Joe": ["..."]},
@@ -632,7 +723,11 @@
       {"Joe": ["..."]},
       {"Snake": ["..."]}
     ],
-    "Part17": [
+    "Part 2.3": [
+      {"Author's words": ["There is a hooligan company of plunderers in this country with evil intensions. They like to attack banks and shops with different expansive things to have them free. This is a next day when they have decided to commit another crime. Now they are walking on the land covered with thick snow and speak about their plans."]},
+      {"Willy": ["This bank is not so far from there. That's why I have choosen it to make it our today <span class=\"from_vocabulary\">booty</span>."]},
+      {"T": ["How much kilometers from there?"]},
+      {"Willy": ["I can't say exactly."]},
       {"Woman-devi": ["My conversation with Joe was excellent!"]},
       {"Lilian": ["Will we always be in safety?"]}
     ]
@@ -657,16 +752,17 @@
     ]
   },
   "headers" : {
-    "Part7": "Helen in a guest of Chrisian and mrs Jakins",
-    "Part9": "Discussion between Helen and Beatriz",
-    "Part10": "Christian tells to the girls more",
-    "Part11": "A special new",
-    "Part12": "Meeting of Helen, Judy and Cassandra with Beatriz",
-    "Part13": "Christian gets Beatriz's proposal",
-    "Part14": "Judy and Woman-devil",
-    "Part15": "Woman-devil's intention",
-    "Part16": "Joe and Woman-devil",
-    "Part17": "New events",
+    "Part 1.7": "Helen in a guest of Chrisian and mrs Jakins",
+    "Part 1.9": "Discussion between Helen and Beatriz",
+    "Part 1.10": "Christian tells to the girls more",
+    "Part 1.11": "A special new",
+    "Part 1.12": "Meeting of Helen, Judy and Cassandra with Beatriz",
+    "Part 1.13": "Christian gets Beatriz's proposal",
+    "Part 1.14": "Judy and Woman-devil",
+    "Part 1.15": "Conversation between Helen, Cassandra and Judy",
+    "Part 2.1": "Woman-devil's intention",
+    "Part 2.2": "Joe and Woman-devil",
+    "Part 2.3": "New events",
     "Part1m": "Sharing impressions"
   }
 }
