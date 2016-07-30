@@ -123,7 +123,8 @@ function showPlay(indexOfItemsGroup, replics) {
                 }
                 roleslist.innerHTML = "<strong>There are the following characters in this part:</strong>";
                 text.innerText = "";
-                text.innerHTML = "<h2>" + part + "<span id = \"title_of_episode\">" + headers[this.id] + "</span></h2>";
+                text.innerHTML = "<div id='top_of_play'><h2>" + this.id + "<span id = \"title_of_episode\">" + headers[this.id] + "</span></h2>"+
+                "<input type='button' id='paintWordsFromVocab'></div>";
                 replics_of_choicedpart.authorwords = []; // Для объектов со свойствами реплик
                 replics_of_choicedpart.wordsofchar = [];
                 replics_of_choicedpart.authorwords_divs = []; // Divs, выведенные на страницу при клике по part,
@@ -145,7 +146,11 @@ function showPlay(indexOfItemsGroup, replics) {
                                 roleslist.innerHTML += "<p><input type='checkbox' class='checkcharacter'><span id='Snake'>"+
                                     subjectName + "</span></p>";
                             }
-                            else {roleslist.innerHTML += "<p><input type='checkbox' class='checkcharacter'>"
+                            else {
+                                if (subjectName=="Mrs Jakins") {
+                                    subjectName+=" (Christian's grandma)";
+                                }
+                                roleslist.innerHTML += "<p><input type='checkbox' class='checkcharacter'>"
                                 + subjectName + "</p>";
                             }
                         }
@@ -168,7 +173,7 @@ function showPlay(indexOfItemsGroup, replics) {
                         });
                     }
                 }
-                    if (replics==Extradecomposers) {
+                   /* if (replics==Extradecomposers) {
                         if (number=="16") {
                            var SnakeRole = document.getElementById("Snake");
                             if (SnakeRole !== null) {
@@ -180,8 +185,15 @@ function showPlay(indexOfItemsGroup, replics) {
                             parWithCheckboxes[1].innerHTML+="<span class='labels_for_roles'> (Not very much replics)</span>";
                             parWithCheckboxes[3].innerHTML+="<span class='labels_for_roles'> (Only one replic!)</span>";
                         }
-                    }
+                    } */
+
                     roleslist.innerHTML += '<div><input id="paintreplics" type="button" value="paint replics"></div>';
+                    var fromVocabulary = document.getElementsByClassName("from_vocabulary");
+                    document.getElementById("paintWordsFromVocab").onclick = function () {
+                        for (var runWords = 0; runWords < fromVocabulary.length; runWords++) {
+                            fromVocabulary[runWords].classList.toggle("paintedWordsFromVocabulary");
+                        }
+                    };
                     checkboxes = document.getElementsByClassName("checkcharacter");
                     replics_of_choicedpart.authorreplics_divs = document.getElementsByClassName("authorwords");
                     replics_of_choicedpart.replicsofchar_divs = document.getElementsByClassName("words_of_char");
