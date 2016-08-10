@@ -1,8 +1,40 @@
-/**
- * Created by User on 05.08.2016.
- */
 // Щелкнуть на вкладке > move to opposite group
 var Extradecomposers, maniac, headers;
+var contentlist = document.getElementById("contentlist"), toChooseRoles = document.getElementById("toChooseRoles"),
+    area_forcontent = document.getElementById("for_content"),
+    text = document.getElementById("text"),
+    groups_of_items = document.getElementsByClassName("items-paragraphs"),
+    titlesOfPlays = document.getElementById("contentlist").getElementsByTagName("H2"),
+    listOfCheckboxes,
+    arrayElementObject, checkboxes = [],replics_of_choicedpart={},
+    subjectName, className, itemsAboutCharacters = [], presrolesobject = {},
+    presrolesarray = [];
+setContents = function (replics_of_choicedpart, contents, subjectName, className) {
+    var innerContent = {
+        class: className,
+        h4: subjectName,
+        contents: contents // слова героя
+    };
+    switch (className) {
+        case "authorwords":
+            //console.log('case: authorwords', 'subjectName = '+subjectName);
+            replics_of_choicedpart.authorwords.push(innerContent);
+            break;
+        case "words_of_char":
+            replics_of_choicedpart.wordsofchar.push(innerContent);
+            break;
+    }
+    /*    replics_of_choicedpart.replicsdivs.push("<div class='"+innerContent.class+"'> <h4>" + innerContent.h4 +
+     "</h4><p>" + innerContent.contents[0] + "</p></div>"); */
+    // В список реплик героев выбранной части добавляется
+    // новый объект innerContent. Этот же объект заносится в переменную innerContent ниже, где вызывается эта функция.
+    return innerContent;
+};
+addInnerHtml = function (html, innerContent) {
+    html.innerHTML += "<div class='" + innerContent.class + "'> <h4>" + innerContent.h4 +
+        "</h4><p>" + innerContent.contents[0] + "</p></div>";
+
+};
 // Извлечь файл json и сохранить в эти переменные объекты, которые находятся в этом файле.
 // 1. Создаём новый объект XMLHttpRequest
 var xhr = new XMLHttpRequest();
@@ -25,6 +57,7 @@ xhr.onload = function () {
         Extradecomposers = data.ExtraDecomposers;
         maniac = data.Maniac;
         headers = data.headers;
+        text.innerHTML="<h2>About characters</h2><p>"+Extradecomposers["about_characters"]+"</p>";
         // вывести результат
         // responseText -- текст ответа.
     }
@@ -32,40 +65,8 @@ xhr.onload = function () {
 xhr.onerror = function(event){
     console.log(event);
 };
-var contentlist = document.getElementById("contentlist"), roleslist = document.getElementById("roleslist"),
-    area_forcontent = document.getElementById("for_content"),
-    text = document.getElementById("text"),
-    arrayElementObject, checkboxes = [],
-    subjectName, className,
-    setContents = function (replics_of_choicedpart, contents, subjectName, className) {
-        var innerContent = {
-            class: className,
-            h4: subjectName,
-            contents: contents // слова героя
-        };
-        switch (className) {
-            case "authorwords":
-                //console.log('case: authorwords', 'subjectName = '+subjectName);
-                replics_of_choicedpart.authorwords.push(innerContent);
-                break;
-            case "words_of_char":
-                replics_of_choicedpart.wordsofchar.push(innerContent);
-                break;
-        }
-        /*    replics_of_choicedpart.replicsdivs.push("<div class='"+innerContent.class+"'> <h4>" + innerContent.h4 +
-         "</h4><p>" + innerContent.contents[0] + "</p></div>"); */
-        // В список реплик героев выбранной части добавляется
-        // новый объект innerContent. Этот же объект заносится в переменную innerContent ниже, где вызывается эта функция.
-        return innerContent;
-    },
-    addInnerHtml = function (html, innerContent) {
-        html.innerHTML += "<div class='" + innerContent.class + "'> <h4>" + innerContent.h4 +
-            "</h4><p>" + innerContent.contents[0] + "</p></div>";
-
-    };
-var groups_of_items = document.getElementsByClassName("items-paragraphs"),
-    titlesOfPlays = document.getElementById("contentlist").getElementsByTagName("H2"),
-    itemsAboutCharacters = [];
+contentlist.style.borderRight="3px solid #345693";
+contentlist.style.height="530px";
 for (var runItems = 0; runItems < groups_of_items.length; runItems++) { // пробег по groups_of_items
     groups_of_items[runItems].style.display = "none";
     itemsAboutCharacters[runItems] = groups_of_items[runItems].getElementsByTagName("P")[0];
@@ -85,28 +86,36 @@ for (var runtitles = 0; runtitles < titlesOfPlays.length; runtitles++) {
     };
 }
 function loadAboutCharacters(play, about_characters) {
-    if (roleslist.innerHTML != "") {
-        roleslist.innerHTML = "";
+    if (toChooseRoles.innerHTML != "") {
+        toChooseRoles.innerHTML = "";
+    }
+    if(contentlist.style.borderRight=="") {
+        contentlist.style.borderRight="3px solid #345693";
+        area_forcontent.style.borderLeft="none";
     }
     text.innerHTML = "<h2>About Characters</h2>" + "<p>" + play['about_characters'] + "</p>";
-    /*if (play['about_characters'].length > 1) {
-     //alert(play['about_characters'].length);
-     text.innerHTML+="<p>"+play['about_characters'][1]+"</p>";
-     } */
 }
 function regularVisibility(indexOfItemsGroup) {
     var vis_of_items = groups_of_items[indexOfItemsGroup].style.display;
     switch (vis_of_items) {
         case "none":
             groups_of_items[indexOfItemsGroup].style.display = "block";
+            if (indexOfItemsGroup==0) {
+                contentlist.style.height="";
+            }
             break;
         case "block":
             groups_of_items[indexOfItemsGroup].style.display = "none";
             break;
     }
 }
+
+function loadPart (idOfPlay, replics, content_of_play) {
+
+}
 function showPlay(indexOfItemsGroup, replics) {
     regularVisibility(indexOfItemsGroup);
+    var parts_with_numbers = Object.keys(replics);
     for (var part in replics) {
         if (part != "about_characters") {
             document.getElementById(part).onmouseover = function getStylesForItem2() {
@@ -117,42 +126,56 @@ function showPlay(indexOfItemsGroup, replics) {
             };
             document.getElementById(part).onclick = function () // назначается обработчик события -- ВНУТРИ ЦИКЛА!
             {
-                var replics_of_choicedpart = {}, // реплики выбранной части.
-                    innerContent, presrolesobject = {}, presrolesarray = [];
                 if (!(area_forcontent.classList.contains("addStylesForContent"))) {
                     area_forcontent.classList.add("addStylesForContent");
                     contentlist.style.borderRight = "none";
                 }
-                roleslist.innerHTML = "<strong>There are the following characters in this part:</strong>";
-                text.innerText = "";
-                text.innerHTML = "<div id='top_of_play'><h2>" + this.id + "<span id = \"title_of_episode\">" + headers[this.id] + "</span></h2>"+
+                toChooseRoles.style.backgroundColor="rgba(11, 82, 97, 0.25)";
+                toChooseRoles.innerHTML = "<h4>There are the following characters in this part:</h4>"+
+                    "<div id='listOfCheckboxes'></div>";
+                text.innerHTML = "<div id='top_of_play'></div><div id='content_of_play'></div>";
+                var top_of_play = document.getElementById("top_of_play"), content_of_play = document.getElementById("content_of_play");
+                top_of_play.innerHTML = "<div><h2 id='headerForPlay'>" + this.id + " " + headers[this.id] + "</h2></div>" +
+                    "<div id='buttons'><input type='button' value='<' id='scrollBack'><input type='button' value='>' id='scrollFront'>" +
                     "<input type='button' id='paintWordsFromVocab'></div>";
+                /*replics_of_choicedpart.authorwords_divs = []; // Divs, выведенные на страницу при клике по part,
+                 replics_of_choicedpart.replicsofchar_divs = [];  */ //содержащие в себе реплики
+                if (contentlist.style.borderRight != "") {
+                    contentlist.style.borderRight = "";
+                    area_forcontent.style.borderLeft = "3px solid #345693";
+                }
+                var idOfPlay=this.id;
+                //  loadPart(idOfPlay, replics, content_of_play);
+                // начало кода, общего для кликов по part и кликов по кнопкам со стрелками:
+                presrolesobject={}; presrolesarray=[];
+                listOfCheckboxes = document.getElementById("listOfCheckboxes");
                 replics_of_choicedpart.authorwords = []; // Для объектов со свойствами реплик
                 replics_of_choicedpart.wordsofchar = [];
-                replics_of_choicedpart.authorwords_divs = []; // Divs, выведенные на страницу при клике по part,
-                replics_of_choicedpart.replicsofchar_divs = []; //содержащие в себе реплики
-                for (var index in replics[this.id]) {
-                    arrayElementObject = replics[this.id][index]; // реплика героя: {}
+                for (var index in replics[idOfPlay]) { // replics[this.id] - part, replics[this.id][index] - объект-реплика
+                    arrayElementObject = replics[idOfPlay][index]; // реплика героя: {}
                     //console.log({arrayElementObject: arrayElementObject});
                     subjectName = Object.keys(arrayElementObject)[0]; // ключ (единственный) из объекта arrayElementObject:
-                    // image, author или наименование героя.
+                    // Добавка каждой реплики в text:
                     if (subjectName == "image") {
-                        text.innerHTML += arrayElementObject[subjectName];
+                        content_of_play.innerHTML += arrayElementObject[subjectName];
                     }
                     else {
                         if (!(subjectName in presrolesobject) && subjectName.indexOf(' &') < 0 && subjectName.indexOf("as answer") < 0) {
                             presrolesobject[subjectName] = true;
                             presrolesarray.push(subjectName);
-                            if (subjectName == "Snake") {
-                                roleslist.innerHTML += "<p><input type='checkbox' class='checkcharacter'><span id='Snake'>"+
-                                    subjectName + "</span></p>";
-                            }
-                            else {
-                                if (subjectName=="Mrs Jakins") {
-                                    subjectName+=" (Christian's grandma)";
-                                }
-                                roleslist.innerHTML += "<p><input type='checkbox' class='checkcharacter'>"
-                                    + subjectName + "</p>";
+                            switch (subjectName) {
+                                case "Snake":
+                                    listOfCheckboxes.innerHTML += "<p><input type='checkbox' class='checkcharacter'>"+
+                                        subjectName + " (Woman-devil)</p>";
+                                    break;
+                                case "Mrs Jakins":
+                                    listOfCheckboxes.innerHTML += "<p><input type='checkbox' class='checkcharacter'>" + subjectName+" (Christian's grandma)</p>";
+                                    break;
+                                case "Mr Jakins":
+                                    listOfCheckboxes.innerHTML +="<p><input type='checkbox' class='checkcharacter'>" + subjectName+" (Christian's grandpa)</p>";
+                                    break;
+                                default:
+                                    listOfCheckboxes.innerHTML += "<p><input type='checkbox' class='checkcharacter'>" + subjectName+"</p>";
                             }
                         }
                         if (subjectName == "Author's words") {
@@ -160,35 +183,83 @@ function showPlay(indexOfItemsGroup, replics) {
                         } else {
                             className = 'words_of_char';
                         }
-                        // innerContent получает очередной объект innerContent. В функции этот объект добавляется в
-                        // replics_of_choicedpart.authorwords  или replics_of_choicedpart.wordsofchar.
                         innerContent = setContents(replics_of_choicedpart, [arrayElementObject[subjectName]], subjectName, className);
-                        //console.log('innerContent', innerContent);
-                        addInnerHtml(text, innerContent); // В содержимое элемента text добавляется innerContent, судя по содержанию.
-                        console.log({
-                            className: className,
-                            subjectName: subjectName,
-                            '[arrayElementObject[subjectName]': arrayElementObject[subjectName],
-                            replics_of_choicedpart: replics_of_choicedpart,
-                            text: text
-                        });
+                        addInnerHtml(content_of_play, innerContent); // В содержимое элемента text добавляется innerContent, судя по содержанию.
                     }
                 }
-                /* if (replics==Extradecomposers) {
-                 if (number=="16") {
-                 var SnakeRole = document.getElementById("Snake");
-                 if (SnakeRole !== null) {
-                 SnakeRole.innerText+=" (Woman-devil)";
-                 }
-                 }
-                 else if(number=="14"){
-                 var parWithCheckboxes = roleslist.getElementsByTagName("P");
-                 parWithCheckboxes[1].innerHTML+="<span class='labels_for_roles'> (Not very much replics)</span>";
-                 parWithCheckboxes[3].innerHTML+="<span class='labels_for_roles'> (Only one replic!)</span>";
-                 }
-                 } */
-
-                roleslist.innerHTML += '<div><input id="paintreplics" type="button" value="paint replics"></div>';
+                // конец
+                toChooseRoles.innerHTML += '<div><input id="paintreplics" type="button" value="paint replics"></div>';
+                var PartNumber = this.id, // part m.n
+                    countPlay = parts_with_numbers.indexOf(PartNumber); // числовой индекс этой part m.n
+                document.getElementById("scrollBack").onclick = function () {
+                    if (countPlay == 1) {
+                        countPlay = parts_with_numbers.length - 1;
+                    }
+                    else {
+                        countPlay--;
+                    }
+                    // код, общий для кнопок со стрелками
+                    PartNumber = parts_with_numbers[countPlay];
+                    document.getElementById("headerForPlay").innerText = PartNumber + " " + headers[PartNumber];
+                    content_of_play.innerHTML = "";
+                    document.getElementById("listOfCheckboxes").innerHTML = "";
+                    // loadPart(PartNumber, replics, content_of_play);
+                    // конец
+                    //Код, общий для обеих стрелок и part
+                    replics_of_choicedpart.authorwords = []; // Для объектов со свойствами реплик
+                    replics_of_choicedpart.wordsofchar = [];
+                    presrolesobject={}; presrolesarray=[];
+                    for (var addReplicsInBack in replics[PartNumber]) { // пробег по replics[PartNumber] (части)
+                        arrayElementObject = replics[PartNumber][addReplicsInBack]; // {роль: слова} или {ключ изображения: тег изображения}
+                        //console.log({arrayElementObject: arrayElementObject});
+                        subjectName = Object.keys(arrayElementObject)[0]; // ключ (единственный) из объекта arrayElementObject:
+                        listOfCheckboxes = document.getElementById("listOfCheckboxes");
+                        if (subjectName == "image") {
+                            content_of_play.innerHTML += arrayElementObject[subjectName];
+                        }
+                        else {
+                            if (!(subjectName in presrolesobject) && subjectName.indexOf(' &') < 0 && subjectName.indexOf("as answer") < 0) {
+                                presrolesobject[subjectName] = true;
+                                presrolesarray.push(subjectName);
+                                switch (subjectName) {
+                                    case "Snake":
+                                        listOfCheckboxes.innerHTML += "<p><input type='checkbox' class='checkcharacter'>"+
+                                            subjectName + " (Woman-devil)</p>";
+                                        break;
+                                    case "Mrs Jakins":
+                                        listOfCheckboxes.innerHTML += "<p><input type='checkbox' class='checkcharacter'>" + subjectName+" (Christian's grandma)</p>";
+                                        break;
+                                    case "Mr Jakins":
+                                        listOfCheckboxes.innerHTML +="<p><input type='checkbox' class='checkcharacter'>" + subjectName+" (Christian's grandpa)</p>";
+                                        break;
+                                    default:
+                                        listOfCheckboxes.innerHTML += "<p><input type='checkbox' class='checkcharacter'>" + subjectName+"</p>";
+                                }
+                            }
+                            if (subjectName == "Author's words") {
+                                className = 'authorwords';
+                            }
+                            else {
+                                className = 'words_of_char';
+                            }
+                            // innerContent получает очередной объект innerContent. В функции этот объект добавляется в
+                            // replics_of_choicedpart.authorwords  или replics_of_choicedpart.wordsofchar.
+                            innerContent = setContents(replics_of_choicedpart, [arrayElementObject[subjectName]], subjectName, className);
+                            //console.log('innerContent', innerContent);
+                            addInnerHtml(content_of_play, innerContent);
+                        }
+                    }
+                    // конец
+                };
+                document.getElementById("scrollFront").onclick = function () {
+                    countPlay = parts_with_numbers.indexOf(PartNumber);
+                    if (countPlay == parts_with_numbers.length - 1) {
+                        countPlay = 1;
+                    }
+                    else {
+                        countPlay++;
+                    }
+                };
                 var fromVocabulary = document.getElementsByClassName("from_vocabulary");
                 document.getElementById("paintWordsFromVocab").onclick = function () {
                     for (var runWords = 0; runWords < fromVocabulary.length; runWords++) {
@@ -262,7 +333,7 @@ function showPlay(indexOfItemsGroup, replics) {
                     }
                 }
 
-            }
+            }; // закрывается if, сразу выше должен закрываться onclick по part
         }
 
     }

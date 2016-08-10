@@ -5,8 +5,10 @@ var contentlist = document.getElementById("contentlist"), toChooseRoles = docume
     text = document.getElementById("text"),
     groups_of_items = document.getElementsByClassName("items-paragraphs"),
     titlesOfPlays = document.getElementById("contentlist").getElementsByTagName("H2"),
-    arrayElementObject, checkboxes = [],
-    subjectName, className,
+    listOfCheckboxes,
+    arrayElementObject, checkboxes = [],replics_of_choicedpart={},
+    subjectName, className, itemsAboutCharacters = [], presrolesobject = {},
+    presrolesarray = [];
     setContents = function (replics_of_choicedpart, contents, subjectName, className) {
         var innerContent = {
             class: className,
@@ -27,13 +29,12 @@ var contentlist = document.getElementById("contentlist"), toChooseRoles = docume
         // В список реплик героев выбранной части добавляется
         // новый объект innerContent. Этот же объект заносится в переменную innerContent ниже, где вызывается эта функция.
         return innerContent;
-    },
+    };
     addInnerHtml = function (html, innerContent) {
         html.innerHTML += "<div class='" + innerContent.class + "'> <h4>" + innerContent.h4 +
             "</h4><p>" + innerContent.contents[0] + "</p></div>";
 
     };
-var itemsAboutCharacters = [];
 // Извлечь файл json и сохранить в эти переменные объекты, которые находятся в этом файле.
 // 1. Создаём новый объект XMLHttpRequest
 var xhr = new XMLHttpRequest();
@@ -108,9 +109,10 @@ function regularVisibility(indexOfItemsGroup) {
             break;
     }
 }
-/*function loadPart (partn) {
 
-} */
+function loadPart (idOfPlay, replics, content_of_play) {
+
+}
 function showPlay(indexOfItemsGroup, replics) {
     regularVisibility(indexOfItemsGroup);
     var parts_with_numbers = Object.keys(replics);
@@ -124,34 +126,33 @@ function showPlay(indexOfItemsGroup, replics) {
             };
             document.getElementById(part).onclick = function () // назначается обработчик события -- ВНУТРИ ЦИКЛА!
             {
-                var replics_of_choicedpart = {}, // реплики выбранной части.
-                    innerContent, presrolesobject = {}, presrolesarray = [];
                 if (!(area_forcontent.classList.contains("addStylesForContent"))) {
                     area_forcontent.classList.add("addStylesForContent");
                     contentlist.style.borderRight = "none";
                 }
-                // начало 1-го фрагмента повторяющегося кода, который было бы желательно вынести в отдельную функцию:
+                toChooseRoles.style.backgroundColor="rgba(11, 82, 97, 0.25)";
                 toChooseRoles.innerHTML = "<h4>There are the following characters in this part:</h4>"+
                 "<div id='listOfCheckboxes'></div>";
-                var listOfCheckboxes=document.getElementById("listOfCheckboxes");
                 text.innerHTML = "<div id='top_of_play'></div><div id='content_of_play'></div>";
                 var top_of_play = document.getElementById("top_of_play"), content_of_play = document.getElementById("content_of_play");
                 top_of_play.innerHTML = "<div><h2 id='headerForPlay'>" + this.id + " " + headers[this.id] + "</h2></div>" +
                     "<div id='buttons'><input type='button' value='<' id='scrollBack'><input type='button' value='>' id='scrollFront'>" +
                     "<input type='button' id='paintWordsFromVocab'></div>";
-                replics_of_choicedpart.authorwords = []; // Для объектов со свойствами реплик
-                replics_of_choicedpart.wordsofchar = [];
-                replics_of_choicedpart.authorwords_divs = []; // Divs, выведенные на страницу при клике по part,
-                replics_of_choicedpart.replicsofchar_divs = []; //содержащие в себе реплики
-                // конец 1-го фрагмента этого кода
+                /*replics_of_choicedpart.authorwords_divs = []; // Divs, выведенные на страницу при клике по part,
+                replics_of_choicedpart.replicsofchar_divs = [];  */ //содержащие в себе реплики
                 if (contentlist.style.borderRight != "") {
                     contentlist.style.borderRight = "";
                     area_forcontent.style.borderLeft = "3px solid #345693";
                 }
-                // начало 2-го фрагмента кода, который было бы желательно перенести в функцию loadPart:
-                for (var index in replics[this.id]) { // пробег по partn (replics[this.id]) от arrayElementObject
-                    // (реплики одного героя) к arrayElementObject(реплике другого героя) replics[this.id][index] - реплика
-                    arrayElementObject = replics[this.id][index]; // реплика героя: {}
+                var idOfPlay=this.id;
+              //  loadPart(idOfPlay, replics, content_of_play);
+                // начало кода, общего для кликов по part и кликов по кнопкам со стрелками:
+                presrolesobject={}; presrolesarray=[];
+                listOfCheckboxes = document.getElementById("listOfCheckboxes");
+                replics_of_choicedpart.authorwords = []; // Для объектов со свойствами реплик
+                replics_of_choicedpart.wordsofchar = [];
+                for (var index in replics[idOfPlay]) { // replics[this.id] - part, replics[this.id][index] - объект-реплика
+                    arrayElementObject = replics[idOfPlay][index]; // реплика героя: {}
                     //console.log({arrayElementObject: arrayElementObject});
                     subjectName = Object.keys(arrayElementObject)[0]; // ключ (единственный) из объекта arrayElementObject:
                     // Добавка каждой реплики в text:
@@ -164,8 +165,8 @@ function showPlay(indexOfItemsGroup, replics) {
                             presrolesarray.push(subjectName);
                             switch (subjectName) {
                                 case "Snake":
-                                    listOfCheckboxes.innerHTML += "<p><input type='checkbox' class='checkcharacter'><span id='Snake'>"+
-                                    subjectName + "</span></p>";
+                                    listOfCheckboxes.innerHTML += "<p><input type='checkbox' class='checkcharacter'>"+
+                                        subjectName + " (Woman-devil)</p>";
                                     break;
                                 case "Mrs Jakins":
                                     listOfCheckboxes.innerHTML += "<p><input type='checkbox' class='checkcharacter'>" + subjectName+" (Christian's grandma)</p>";
@@ -184,18 +185,10 @@ function showPlay(indexOfItemsGroup, replics) {
                         }
                         innerContent = setContents(replics_of_choicedpart, [arrayElementObject[subjectName]], subjectName, className);
                         addInnerHtml(content_of_play, innerContent); // В содержимое элемента text добавляется innerContent, судя по содержанию.
-                        // text заменить на content_of_play
-                        console.log({
-                            className: className,
-                            subjectName: subjectName,
-                            '[arrayElementObject[subjectName]': arrayElementObject[subjectName],
-                            replics_of_choicedpart: replics_of_choicedpart,
-                            text: text
-                        });
                     }
                 }
+                // конец
                 toChooseRoles.innerHTML += '<div><input id="paintreplics" type="button" value="paint replics"></div>';
-                // конец 2-го фрагмента кода
                 var PartNumber = this.id, // part m.n
                     countPlay = parts_with_numbers.indexOf(PartNumber); // числовой индекс этой part m.n
                 document.getElementById("scrollBack").onclick = function () {
@@ -205,23 +198,22 @@ function showPlay(indexOfItemsGroup, replics) {
                     else {
                         countPlay--;
                     }
+                    // код, общий для кнопок со стрелками
                     PartNumber = parts_with_numbers[countPlay];
-                    presrolesobject = {};
-                    presrolesarray = [];
-                    // начало
                     document.getElementById("headerForPlay").innerText = PartNumber + " " + headers[PartNumber];
-                    replics_of_choicedpart.authorwords = []; // Для объектов со свойствами реплик
-                    replics_of_choicedpart.wordsofchar = [];
-                    /*replics_of_choicedpart.authorwords_divs = []; // Divs, выведенные на страницу при клике по part,
-                    replics_of_choicedpart.replicsofchar_divs = []; */ //содержащие в себе реплики
                     content_of_play.innerHTML = "";
                     document.getElementById("listOfCheckboxes").innerHTML = "";
-                    for (var addReplicsInBack in replics[PartNumber]) { // пробег по replics[PartNumber] (части)
+                   // loadPart(PartNumber, replics, content_of_play);
+                    // конец
+                   //Код, общий для обеих стрелок и part
+                   replics_of_choicedpart.authorwords = []; // Для объектов со свойствами реплик
+                   replics_of_choicedpart.wordsofchar = [];
+                    presrolesobject={}; presrolesarray=[];
+                   for (var addReplicsInBack in replics[PartNumber]) { // пробег по replics[PartNumber] (части)
                         arrayElementObject = replics[PartNumber][addReplicsInBack]; // {роль: слова} или {ключ изображения: тег изображения}
                         //console.log({arrayElementObject: arrayElementObject});
                         subjectName = Object.keys(arrayElementObject)[0]; // ключ (единственный) из объекта arrayElementObject:
-                        //console.log({arrayElementObject: arrayElementObject});
-                        // image, author или наименование героя.
+                        listOfCheckboxes = document.getElementById("listOfCheckboxes");
                          if (subjectName == "image") {
                          content_of_play.innerHTML += arrayElementObject[subjectName];
                          }
@@ -231,17 +223,17 @@ function showPlay(indexOfItemsGroup, replics) {
                                  presrolesarray.push(subjectName);
                                 switch (subjectName) {
                                      case "Snake":
-                                         listOfCheckboxes.innerHTML += "<p><input type='checkbox' class='checkcharacter'><span id='Snake'>"+
-                                             subjectName + "</span></p>";
+                                         listOfCheckboxes.innerHTML += "<p><input type='checkbox' class='checkcharacter'>"+
+                                             subjectName + " (Woman-devil)</p>";
                                          break;
                                      case "Mrs Jakins":
-                                         document.getElementById("listOfCheckboxes").innerHTML += "<p><input type='checkbox' class='checkcharacter'>" + subjectName+" (Christian's grandma)</p>";
+                                         listOfCheckboxes.innerHTML += "<p><input type='checkbox' class='checkcharacter'>" + subjectName+" (Christian's grandma)</p>";
                                          break;
                                      case "Mr Jakins":
-                                         document.getElementById("listOfCheckboxes").innerHTML +="<p><input type='checkbox' class='checkcharacter'>" + subjectName+" (Christian's grandpa)</p>";
+                                         listOfCheckboxes.innerHTML +="<p><input type='checkbox' class='checkcharacter'>" + subjectName+" (Christian's grandpa)</p>";
                                          break;
                                      default:
-                                         document.getElementById("listOfCheckboxes").innerHTML += "<p><input type='checkbox' class='checkcharacter'>" + subjectName+"</p>";
+                                         listOfCheckboxes.innerHTML += "<p><input type='checkbox' class='checkcharacter'>" + subjectName+"</p>";
                                  }
                              }
                              if (subjectName == "Author's words") {
@@ -257,6 +249,7 @@ function showPlay(indexOfItemsGroup, replics) {
                              addInnerHtml(content_of_play, innerContent);
                          }
                     }
+                    // конец
                 };
                     document.getElementById("scrollFront").onclick = function () {
                         countPlay = parts_with_numbers.indexOf(PartNumber);
@@ -266,7 +259,7 @@ function showPlay(indexOfItemsGroup, replics) {
                         else {
                             countPlay++;
                         }
-                    };
+               };
                     var fromVocabulary = document.getElementsByClassName("from_vocabulary");
                     document.getElementById("paintWordsFromVocab").onclick = function () {
                         for (var runWords = 0; runWords < fromVocabulary.length; runWords++) {
@@ -304,7 +297,6 @@ function showPlay(indexOfItemsGroup, replics) {
                                 }
                             }
                             else { // Если элемент не чекнут в этом клике
-                                    alert(name_in_checkbox);
                                     if (name_in_checkbox == "Author's words") {
                                         for (rundivs = 0; rundivs < length_authorwords; rundivs++) {
                                             if (replics_of_choicedpart.authorreplics_divs[rundivs].classList.contains("paintedauthorreplics")) {

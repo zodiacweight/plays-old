@@ -18,24 +18,16 @@
     </style>
 </head>
 <body>
-        <input type="button" value="кликнуть" id="click">
+<input type="button" id="click" value="Кликнуть">
         <script>
-            /*
-            При каждом клике key получает значение с самого первого ключа и в цикле меняет это значение на каждый следующий ключ
-            */
-            var i= 0, key, people = {
-                Jill: "pupil",
-                Natalie: "specialist",
-                Catherine: "scientist",
-                James: "teacher"
+            function tryToFillObject (testingObject) {
+               testingObject.add="added string";
+            }
+            document.getElementById("click").onclick=function() {
+                var testingObject={};
+                tryToFillObject(testingObject);
+                alert(testingObject.add);
             };
-           document.getElementById("click").onclick=function () {
-               i++;
-               for (key in people) {
-                   alert(people[key]);
-                   alert("key ="+key);
-               }
-           }
         </script>
 
 </body>
