@@ -111,7 +111,46 @@ function regularVisibility(indexOfItemsGroup) {
 }
 
 function loadPart (idOfPlay, replics, content_of_play) {
-
+    presrolesobject={}; presrolesarray=[];
+    listOfCheckboxes = document.getElementById("listOfCheckboxes");
+    replics_of_choicedpart.authorwords = []; // Для объектов со свойствами реплик
+    replics_of_choicedpart.wordsofchar = [];
+    for (var index in replics[idOfPlay]) { // replics[this.id] - part, replics[this.id][index] - объект-реплика
+        arrayElementObject = replics[idOfPlay][index]; // реплика героя: {}
+        //console.log({arrayElementObject: arrayElementObject});
+        subjectName = Object.keys(arrayElementObject)[0]; // ключ (единственный) из объекта arrayElementObject:
+        // Добавка каждой реплики в text:
+        if (subjectName == "image") {
+            content_of_play.innerHTML += arrayElementObject[subjectName];
+        }
+        else {
+            if (!(subjectName in presrolesobject) && subjectName.indexOf(' &') < 0 && subjectName.indexOf("as answer") < 0) {
+                presrolesobject[subjectName] = true;
+                presrolesarray.push(subjectName);
+                switch (subjectName) {
+                    case "Snake":
+                        listOfCheckboxes.innerHTML += "<p><input type='checkbox' class='checkcharacter'>"+
+                            subjectName + " (Woman-devil)</p>";
+                        break;
+                    case "Mrs Jakins":
+                        listOfCheckboxes.innerHTML += "<p><input type='checkbox' class='checkcharacter'>" + subjectName+" (Christian's grandma)</p>";
+                        break;
+                    case "Mr Jakins":
+                        listOfCheckboxes.innerHTML +="<p><input type='checkbox' class='checkcharacter'>" + subjectName+" (Christian's grandpa)</p>";
+                        break;
+                    default:
+                        listOfCheckboxes.innerHTML += "<p><input type='checkbox' class='checkcharacter'>" + subjectName+"</p>";
+                }
+            }
+            if (subjectName == "Author's words") {
+                className = 'authorwords';
+            } else {
+                className = 'words_of_char';
+            }
+            innerContent = setContents(replics_of_choicedpart, [arrayElementObject[subjectName]], subjectName, className);
+            addInnerHtml(content_of_play, innerContent); // В содержимое элемента text добавляется innerContent, судя по содержанию.
+        }
+    }
 }
 function showPlay(indexOfItemsGroup, replics) {
     regularVisibility(indexOfItemsGroup);
@@ -145,9 +184,9 @@ function showPlay(indexOfItemsGroup, replics) {
                     area_forcontent.style.borderLeft = "3px solid #345693";
                 }
                 var idOfPlay=this.id;
-              //  loadPart(idOfPlay, replics, content_of_play);
+              loadPart(idOfPlay, replics, content_of_play);
                 // начало кода, общего для кликов по part и кликов по кнопкам со стрелками:
-                presrolesobject={}; presrolesarray=[];
+              /*  presrolesobject={}; presrolesarray=[];
                 listOfCheckboxes = document.getElementById("listOfCheckboxes");
                 replics_of_choicedpart.authorwords = []; // Для объектов со свойствами реплик
                 replics_of_choicedpart.wordsofchar = [];
@@ -186,7 +225,7 @@ function showPlay(indexOfItemsGroup, replics) {
                         innerContent = setContents(replics_of_choicedpart, [arrayElementObject[subjectName]], subjectName, className);
                         addInnerHtml(content_of_play, innerContent); // В содержимое элемента text добавляется innerContent, судя по содержанию.
                     }
-                }
+                } */
                 // конец
                 toChooseRoles.innerHTML += '<div><input id="paintreplics" type="button" value="paint replics"></div>';
                 var PartNumber = this.id, // part m.n
@@ -203,10 +242,10 @@ function showPlay(indexOfItemsGroup, replics) {
                     document.getElementById("headerForPlay").innerText = PartNumber + " " + headers[PartNumber];
                     content_of_play.innerHTML = "";
                     document.getElementById("listOfCheckboxes").innerHTML = "";
-                   // loadPart(PartNumber, replics, content_of_play);
+                   loadPart(PartNumber, replics, content_of_play);
                     // конец
                    //Код, общий для обеих стрелок и part
-                   replics_of_choicedpart.authorwords = []; // Для объектов со свойствами реплик
+                    /*replics_of_choicedpart.authorwords = []; // Для объектов со свойствами реплик
                    replics_of_choicedpart.wordsofchar = [];
                     presrolesobject={}; presrolesarray=[];
                    for (var addReplicsInBack in replics[PartNumber]) { // пробег по replics[PartNumber] (части)
@@ -248,7 +287,7 @@ function showPlay(indexOfItemsGroup, replics) {
                              //console.log('innerContent', innerContent);
                              addInnerHtml(content_of_play, innerContent);
                          }
-                    }
+                    } */
                     // конец
                 };
                     document.getElementById("scrollFront").onclick = function () {
@@ -259,6 +298,12 @@ function showPlay(indexOfItemsGroup, replics) {
                         else {
                             countPlay++;
                         }
+                        // код, общий для кнопок со стрелками
+                        PartNumber = parts_with_numbers[countPlay];
+                        document.getElementById("headerForPlay").innerText = PartNumber + " " + headers[PartNumber];
+                        content_of_play.innerHTML = "";
+                        document.getElementById("listOfCheckboxes").innerHTML = "";
+                        loadPart(PartNumber, replics, content_of_play);
                };
                     var fromVocabulary = document.getElementsByClassName("from_vocabulary");
                     document.getElementById("paintWordsFromVocab").onclick = function () {
