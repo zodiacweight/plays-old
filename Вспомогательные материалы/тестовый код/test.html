@@ -4,30 +4,32 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
-        /*Программа, подобная фрагменту java script кода, который отвечает за подцветку реплик. Массив checkboxes
-        - это такой же массив, как checkboxes для выбора героев, а массив painteddivs - это как массивы
-        replics_of_choicedpart['authorreplics_divs'] и replics_of_choicedpart['replicsofchar_divs']*/
-
-        #click {
-            margin-left: 3%;
-            margin-top: 4%;
-            font-size: 20px;
-            padding: 4px;
-        }
-
+           #header {
+               margin-left: 5%;
+               font-size: 19px;
+           }
     </style>
 </head>
 <body>
-<input type="button" id="click" value="Кликнуть">
+<button id="check">Проверить undefined</button>
         <script>
-            function tryToFillObject (testingObject) {
-               testingObject.add="added string";
-            }
-            document.getElementById("click").onclick=function() {
-                var testingObject={};
-                tryToFillObject(testingObject);
-                alert(testingObject.add);
+            var newObject = {
+                name: "Banny",
+                clever: "false"
             };
+            takeObjectOutOfEvent ();
+            document.getElementById("check").onclick = function () {
+                takeObjectInEvent ();
+            };
+            function takeObjectOutOfEvent () {
+                var OutOfEvent=newObject;
+                alert("Вне события: "+OutOfEvent===undefined);
+            }
+            function takeObjectInEvent () {
+                var InEvent = newObject;
+                alert("В событии: "+InEvent===undefined);
+            }
+
         </script>
 
 </body>
