@@ -1,19 +1,18 @@
 // Щелкнуть на вкладке > move to opposite group
-var Extradecomposers, black_agent;
-var inBody = document.getElementsByTagName("Body")[0].getElementsByTagName("Div"),
-    header = document.getElementById("header"),
+var Extradecomposers, black_agent /*playsByDefault */;
+//var playsByDefault = {name: "Kelly"};
+var header = document.getElementById("header"),
     beginning = document.getElementById("beginning"),
     mainImage = document.getElementById("mainImage"),
     littleImages = document.getElementById("littleImages"),
     enter = document.getElementById("enter"),
-    enterButtons,
     contentlist = document.getElementById("contentlist"), toChooseRoles = document.getElementById("toChooseRoles"),
     forLoadingPart = document.getElementById("forLoadingPart"),
     areaForPart = document.getElementById("areaForPart"),
 // groups_of_items = document.getElementsByClassName("items-paragraphs"),
 //titlesOfPlays = document.getElementById("contentlist").getElementsByTagName("H2"),
     listOfCheckboxes, arrayElementObject, checkboxes = [], replics_of_choicedpart={}, parts_with_numbers =[],
-    subjectName, className, itemsAboutCharacters = [], presrolesobject = {},
+    subjectName, className, itemsAboutCharacters = [], presrolesobject = {}, /* buttonsToChoicePlays, */
     presrolesarray = [];
 setContents = function (replics_of_choicedpart, contents, subjectName, className) {
     var innerContent = {
@@ -41,17 +40,11 @@ addInnerHtml = function (html, innerContent) {
         "</h4><p>" + innerContent.contents[0] + "</p></div>";
 
 };
-beginning.style.display="none";
-contentlist.style.display="none";
-forLoadingPart.style.display="none";
-setTimeout(function() {
-    beginning.style.display = "block";
-}, 1000);
 // Извлечь файл json и сохранить в эти переменные объекты, которые находятся в этом файле.
 // 1. Создаём новый объект XMLHttpRequest
 var xhr = new XMLHttpRequest();
 // 2. Конфигурируем его: GET-запрос на URL 'replicsobjects.json'
-xhr.open('GET', 'HTML/replicsobjects.json');
+xhr.open('GET', 'replicsobjects.json');
 // 3. Отсылаем запрос
 xhr.send();
 xhr.onload = function () {
@@ -75,73 +68,81 @@ xhr.onload = function () {
 xhr.onerror = function(event){
     console.log(event);
 };
+beginning.style.display="none";
+contentlist.style.display="none";
+forLoadingPart.style.display="none";
+setTimeout(function() {
+    beginning.style.display = "block";
+}, 1000);
+/*
+ setComponentsOfBiginningByDefault();
+ function setComponentsOfBiginningByDefault () {
+ }*/
+
+window.onload = function () {
+    var playsByDefault = Extradecomposers;
+    alert(Extradecomposers===undefined);
+    setComponentsOfBiginning(playsByDefault);
+};
+function setComponentsOfBiginning (choicedPlays) {
+    mainImage.innerHTML = "<h2>"+choicedPlays["onTheBiginning"]["header"]+"</h2>"+choicedPlays["onTheBiginning"]["images"][0];
+    littleImages.innerHTML=choicedPlays["onTheBiginning"]["images"][0];
+    document.getElementById("preview").getElementsByTagName("P")[0].innerText=choicedPlays["onTheBiginning"]["text"];
+    for (var addLittleImages=1; addLittleImages < choicedPlays["onTheBiginning"]["images"].length; addLittleImages++) {
+        littleImages.innerHTML+=choicedPlays["onTheBiginning"]["images"][addLittleImages];
+    }
+    changeMainImage();
+}
+function changeMainImage () {
+    var arrayOfLittleImages = littleImages.getElementsByTagName("Img");
+    for (var runLittleImages=0; runLittleImages < arrayOfLittleImages.length;  runLittleImages++) {
+        arrayOfLittleImages[runLittleImages].onmouseover = function () {
+            mainImage.getElementsByTagName("Img")[0].src = this.src;
+        }
+    }
+}
 document.getElementById("how_to_open_plays").onclick = function () {
     document.getElementById("instruction").innerHTML='<p>Нажать на одну из кнопок и подождать, пока откроются ворота:</p>'+
         '<img src="images/на%20заставку/закрытые%20ворота.jpg">';
     document.getElementById("buttonsToEnter").innerHTML='<button id="enterExD1">'+
         'Extra-decomposers</button><button id="enterBlackAgent1">Black agent</button>';
-    enterButtons = document.getElementById("preview_and_enter").getElementsByTagName("Button");
-    var thisElement, otherElement;
-    // Кнопки на заставке
-    document.getElementById("enterBlackAgent1").onclick = function () {
-        thisElement = this;
-        moveActive (thisElement, otherElement, enterButtons);
-    };
-    document.getElementById("enterExD1").onclick = function () {
-        thisElement = this;
-        moveActive (thisElement, otherElement, enterButtons);
-    };
+    buttonsToChoicePlays = document.getElementById("preview_and_enter").getElementsByTagName("Button");
+    var thisElement, otherElement, runbuts=0;
+    setOnClick (buttonsToChoicePlays);
 };
-contentlist.style.borderRight="3px solid #345693";
-contentlist.style.height="530px";
-/*
- for (var runItems = 0; runItems < groups_of_items.length; runItems++) { // пробег по groups_of_items
- groups_of_items[runItems].style.display = "none";
- itemsAboutCharacters[runItems] = groups_of_items[runItems].getElementsByTagName("P")[0];
- itemsAboutCharacters[runItems].onmouseover = function () {
- this.classList.add("mouseOnItem2");
- };
- itemsAboutCharacters[runItems].onmouseout = function () {
- this.classList.remove("mouseOnItem2");
- }
- } */
-function moveActive (thisElement, otherElement, enterButtons) {
+function setOnClick (buttonsToChoicePlays) {
+    for (var k=0; k < 2; k++) {
+        buttonsToChoicePlays[k].onclick=function() {
+            var thisElement=this, otherElement;
+            moveActive(thisElement, otherElement, buttonsToChoicePlays);
+        };
+    }
+
+}
+function moveActive (thisElement, otherElement, buttonsToChoiceOrChangePlays) {
     var choicedPlays;
     switch (thisElement) {
-        case enterButtons[0]:
-            otherElement = enterButtons[1];
+        case buttonsToChoiceOrChangePlays[0]:
+            otherElement = buttonsToChoiceOrChangePlays[1];
             choicedPlays = Extradecomposers;
             break;
-        case enterButtons[1]:
-            otherElement = enterButtons[0];
+        case buttonsToChoiceOrChangePlays[1]:
+            otherElement = buttonsToChoiceOrChangePlays[0];
             choicedPlays = black_agent;
             break;
     }
-    switch (choicedPlays) { // choicedPlays всегда равно Black agent
-        case Extradecomposers:
-            break;
-        case black_agent:
-            break;
-    }
-    mainImage.getElementsByTagName("H2")[0].innerText=changeComponentsOfBeginnig (choicedPlays)["header"];
     thisElement.setAttribute("disabled", "true");
     if (otherElement.hasAttribute("disabled")) {
         otherElement.removeAttribute("disabled");
     }
-    openGates();
-    addPartsToContent(choicedPlays);
-}
-function changeComponentsOfBeginnig (choicedPlays) {
-    var componentsOnTheBeginning = {};
-    switch (choicedPlays) { // В этой функции choicedPlays всегда равно Black agent.
-        case Extradecomposers:
-            componentsOnTheBeginning.header = "Extradecomposers";
-            break;
-        case black_agent:
-            componentsOnTheBeginning.header = "Black agent";
-            break;
+    if (beginning.style.display!=="none") { // когда была кликнута одна из кнопок на заставке
+        setComponentsOfBiginning(choicedPlays);
+        openGates();
+        addButtonsForRechoice(choicedPlays);
     }
-    return componentsOnTheBeginning;
+    addPartsToContentList(choicedPlays);
+    loadAboutCharacters(choicedPlays);
+    header.innerHTML = "<h2>"+fillHeader(choicedPlays)+"</h2>";
 }
 function openGates () {
     setTimeout( function() {
@@ -151,29 +152,32 @@ function openGates () {
             beginning.style.display="none";
             contentlist.style.display="block";
             forLoadingPart.style.display="block";
+            contentlist.style.borderRight="3px solid #345693";
         };
     }, 3200);
 }
-function addPartsToContent(choicedPlays) {
-    document.getElementById("buttonsToEnter2").innerHTML="<button class='enter_to_Extradecomposers'>Extra-decomposers</button>"+
-        "<button class='enter_to_black_agent'>Black agent</button>";
+function addButtonsForRechoice(choicedPlays) {
+    document.getElementById("buttonsToEnter2").innerHTML="<button id='enterExD2'>Extra-decomposers</button>"+
+        "<button id='enterBlackAgent2'>Black agent</button>";
+    var buttonsToChoicePlays2 = document.getElementById("buttonsToEnter2").getElementsByTagName("Button");
+    setOnClick(buttonsToChoicePlays2);
+}
+function addPartsToContentList(choicedPlays) {
     var listOfParts =  document.getElementById("listOfParts");
     if (listOfParts.innerHTML!="") {
         listOfParts.innerHTML="";
     }
     for (var part in choicedPlays) {
-        if (part.indexOf("Part")!==-1) {
+        if ((part.indexOf("Part")!==-1)) {
             listOfParts.innerHTML+="<p id='"+part+"'>"+part+"</p>";
         }
-        else {
-            if (part=="about_characters") {
-                listOfParts.innerHTML+="<p id='"+part+"'>About characters</p>";
-            }
+        if (part=="About characters") {
+            listOfParts.innerHTML+="<p id='about_characters'>"+part+"</p>";
         }
     }
-    loadAboutCharacters(choicedPlays);
+    //addButtonsForRechoice();
     //areaForPart.innerHTML="<h2>About characters</h2><p>"+choicedPlays["about_characters"]+"</p>";
-    showPart(part, choicedPlays)
+    showPart(part, choicedPlays);
 }
 function loadAboutCharacters(play) {
     toChooseRoles.innerHTML = "";
@@ -182,10 +186,21 @@ function loadAboutCharacters(play) {
         contentlist.style.borderRight="3px solid #345693";
         forLoadingPart.style.borderLeft="none";
     }
-    if(toChooseRoles.innerHTML!=="") {
-        toChooseRoles.innerHTML="";
+    /* if(toChooseRoles.innerHTML!=="") {
+     toChooseRoles.innerHTML="";
+     } */
+    areaForPart.innerHTML = "<h2>About Characters</h2>";
+    for (var addPartAboutCharacters=0; addPartAboutCharacters <  play['About characters'].length; addPartAboutCharacters++) {
+        areaForPart.innerHTML+="<p>" + play['About characters'][addPartAboutCharacters] + "</p>";
     }
-    areaForPart.innerHTML = "<h2>About Characters</h2>" + "<p>" + play['about_characters'] + "</p>";
+}
+function fillHeader(choicedPlays) {
+    switch (choicedPlays) {
+        case Extradecomposers:
+            return "Extra-decomposers";
+        case black_agent:
+            return "Black agent";
+    }
 }
 function showPart(part, choicedPlays) {
     parts_with_numbers = Object.keys(choicedPlays);
@@ -206,7 +221,7 @@ function showPart(part, choicedPlays) {
                 }
                 if (!(forLoadingPart.classList.contains("addStylesForContent"))) {
                     forLoadingPart.classList.add("addStylesForContent");
-                    contentlist.style.borderRight = "none";
+                    //  contentlist.style.borderRight = "none";
                 }
                 toChooseRoles.innerHTML = "<h4>There are the following characters in this part:</h4>"+
                     "<div id='listOfCheckboxes'></div>";
@@ -218,10 +233,11 @@ function showPart(part, choicedPlays) {
                 if (contentlist.style.borderRight != "") {
                     contentlist.style.borderRight = "";
                     forLoadingPart.style.borderLeft = "3px solid #345693";
+                    // Действует только при клике по part
                 }
                 var idOfPlay=this.id;
                 changePart(idOfPlay, choicedPlays, content_of_play);
-                toChooseRoles.innerHTML += '<div><input id="paintreplics" type="button" value="paint choicedPlays"></div>';
+                toChooseRoles.innerHTML += '<div><input id="paintccs" type="button" value="paint choicedPlays"></div>';
                 var PartNumber = this.id, // part m.n
                     countPlay = parts_with_numbers.indexOf(PartNumber); // числовой индекс этой part m.n
                 // при клике по кнопке назад PartNumber не изменяется countPlay - изменяются
@@ -324,9 +340,9 @@ function showPart(part, choicedPlays) {
             }; // закрывается if, сразу выше должен закрываться onclick по part
 
         }
-        else {
-            if (part=="about_characters") {
-                curPart=document.getElementById(part);
+        else { // если был сделан клик по "About characters"
+            if (part=="About characters") {
+                curPart=document.getElementById("about_characters");
                 curPart.onmouseover = function getStylesForItem2() {
                     this.classList.add("mouseOnItem2");
                 };
@@ -338,7 +354,6 @@ function showPart(part, choicedPlays) {
                 };
             }
         }
-
     }
 }
 function changePart (idOfPlay, choicedPlays, content_of_play) {

@@ -44,7 +44,7 @@ var header = document.getElementById("header"),
 // 1. Создаём новый объект XMLHttpRequest
 var xhr = new XMLHttpRequest();
 // 2. Конфигурируем его: GET-запрос на URL 'replicsobjects.json'
-xhr.open('GET', 'HTML/replicsobjects.json');
+xhr.open('GET', 'mainFiles/replicsobjects.json');
 // 3. Отсылаем запрос
 xhr.send();
 xhr.onload = function () {
@@ -68,21 +68,22 @@ xhr.onload = function () {
 xhr.onerror = function(event){
     console.log(event);
 };
-beginning.style.display="none";
-contentlist.style.display="none";
-forLoadingPart.style.display="none";
-setTimeout(function() {
-    beginning.style.display = "block";
-}, 1000);
-/*
-setComponentsOfBiginningByDefault();
-function setComponentsOfBiginningByDefault () {
-}*/
+//beginning.style.display="none";
 
+/*setTimeout(function() {
+    beginning.style.display = "block";
+}, 1000); */
 window.onload = function () {
+    document.getElementsByTagName("Body")[0].style.backgroundColor ="#754C4A";
+    $("#beginning").fadeOut(35);
+    contentlist.style.display="none";
+    forLoadingPart.style.display="none";
    var playsByDefault = Extradecomposers;
-    //alert(playsByDefault===undefined);
+    alert(playsByDefault===undefined);
     setComponentsOfBiginning(playsByDefault);
+    setTimeout(function () {
+        $("#beginning").fadeIn(1000);
+    }, 1800);
 };
 function setComponentsOfBiginning (choicedPlays) {
    mainImage.innerHTML = "<h2>"+choicedPlays["onTheBiginning"]["header"]+"</h2>"+choicedPlays["onTheBiginning"]["images"][0];
