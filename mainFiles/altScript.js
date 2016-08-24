@@ -1,6 +1,5 @@
 // Щелкнуть на вкладке > move to opposite group
-var Extradecomposers, black_agent /*playsByDefault */;
-//var playsByDefault = {name: "Kelly"};
+var Extradecomposers, black_agent, el /*playsByDefault */;
 var header = document.getElementById("header"),
     beginning = document.getElementById("beginning"),
     mainImage = document.getElementById("mainImage"),
@@ -44,7 +43,7 @@ addInnerHtml = function (html, innerContent) {
 // 1. Создаём новый объект XMLHttpRequest
 var xhr = new XMLHttpRequest();
 // 2. Конфигурируем его: GET-запрос на URL 'replicsobjects.json'
-xhr.open('GET', 'replicsobjects.json');
+xhr.open('GET', 'mainFiles/replicsobjects.json');
 // 3. Отсылаем запрос
 xhr.send();
 xhr.onload = function () {
@@ -56,11 +55,13 @@ xhr.onload = function () {
     if (xhr.status != 200) {
         // обработать ошибку
         console.log(xhr.status + ': ' + xhr.statusText); // пример вывода: 404: Not Found
-
+       // alert("if");
     } else {
         var data = JSON.parse(xhr.responseText);
-        Extradecomposers = data.ExtraDecomposers;
+        Extradecomposers = data.ExtraDecomposerss;
         black_agent = data.Black_agent;
+        el = data.new;
+        alert("else");
         // вывести результат
         // responseText -- текст ответа.
     }
@@ -81,7 +82,7 @@ setTimeout(function() {
 
 window.onload = function () {
     var playsByDefault = Extradecomposers;
-    alert(Extradecomposers===undefined);
+    alert(Extradecomposers === undefined);
     setComponentsOfBiginning(playsByDefault);
 };
 function setComponentsOfBiginning (choicedPlays) {

@@ -79,7 +79,7 @@ window.onload = function () {
     contentlist.style.display="none";
     forLoadingPart.style.display="none";
    var playsByDefault = Extradecomposers;
-    alert(playsByDefault===undefined);
+    alert(Extradecomposers===undefined);
     setComponentsOfBiginning(playsByDefault);
     setTimeout(function () {
         $("#beginning").fadeIn(1000);

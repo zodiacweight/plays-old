@@ -8,27 +8,19 @@
                margin-left: 5%;
                font-size: 19px;
            }
+        #appearing {
+            background-color: cadetblue;
+            font-size: 14px;
+            padding: 5px;
+        }
     </style>
 </head>
 <body>
 <button id="check">Проверить undefined</button>
         <script>
-            var newObject = {
-                name: "Banny",
-                clever: "false"
-            };
-            takeObjectOutOfEvent ();
             document.getElementById("check").onclick = function () {
-                takeObjectInEvent ();
+               // fadein("<div id='appearing'>html-element</div>", 2000);
             };
-            function takeObjectOutOfEvent () {
-                var OutOfEvent=newObject;
-                alert("Вне события: "+OutOfEvent===undefined);
-            }
-            function takeObjectInEvent () {
-                var InEvent = newObject;
-                alert("В событии: "+InEvent===undefined);
-            }
 
         </script>
 
