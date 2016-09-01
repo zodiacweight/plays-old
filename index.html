@@ -3,15 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link href="mainFiles/styletable.css" rel="stylesheet" type="text/css">
-    <script type="text/javascript" src="mainFiles/jquery-3.1.0.min.js"></script>
+    <link href="mainFiles/styles/styletable.css" rel="stylesheet" type="text/css">
+    <script type="text/javascript" src="mainFiles/scripts/jquery-3.1.0.min.js"></script>
 </head>
 <body>
-    <div id="beginning">
-        <div id="littleImages">
-        </div>
-        <div id="mainImage">
-        </div>
+    <div id="beginning" class="hidden">
+        <div id="littleImages"></div>
+        <div id="mainImage"></div>
         <div id="preview_and_enter">
             <div id="preview">
                 <p></p>
@@ -31,11 +29,11 @@
         исчезали не за счет регулирования display между block и none, а через свойство innerHTML при клике по тем
          элементам, в которые они вложены. -->
     </div>
-    <div id="forLoadingPart">
-        <h1 id="header"></h1>
-        <div id="toChooseRoles"></div>
-        <div id="areaForPart"></div>
+    <div id="rightHalf">
+        <div id="header"></div>
+        <div id="mainArea"></div>
     </div>
- <script src="mainFiles/altScript.js"></script>
+    <script src="mainFiles/scripts/functions.js"></script>
+    <script src="mainFiles/scripts/scripts.js"></script>
 </body>
 </html>
