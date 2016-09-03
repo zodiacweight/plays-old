@@ -255,7 +255,7 @@
          }
          #content_of_play {
              width: 100%;
-             border-top: 1px solid;
+             //: 1px solid;
          }
          #content_of_play img {
              width: 60%;

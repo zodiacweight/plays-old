@@ -1,6 +1,6 @@
 {
    "Extradecomposers": {
-      "onTheBiginning": {
+      "onTheBeginning": {
         "header": "Extra-decomposers",
         "images": ["<img src=\"images/на%20заставку/Judy,%20Helen%20and%20Cassandra.jpg\">",
           "<img src=\"images/на%20заставку/devil.jpg\">",
@@ -4883,7 +4883,17 @@
            },
            {
              "Snake": [
-               "I know people don't like my natural view. So I decided to talk with you looking like a snake. I decided that it will be more <span class=\"from_vocabulary\">opportune</span> to talk with them in this view than in my natural view of Woman-devil. And because of I have conversation with such intelligent man as you I think it is not a wrong decision to talk to you choicing snake view. So, now we have to get close to the our topic. I would like to tell you about Beatrix, this girl whom I want you to adopt. And I would like to begin from the storie of her early childhood. Unfortunately, it is not very pleasing."
+               "I know people don't like my natural view. So I decided to talk with you looking like a snake. I decided that it will be more <span class=\"from_vocabulary\">opportune</span> to talk with them in this view than in my natural view of Woman-devil. And because of I have conversation with such intelligent man as you I think it is not a wrong decision to talk to you choicing snake view. So, now we have to get close to the our topic. I would like to tell you about Beatrix, this girl whom I want you to adopt. And I would like to begin from the storie of her early childhood. Unfortunately, it is not very pleasing. I hope you will not object if I tell it right now."
+             ]
+           },
+           {
+             "Joe": [
+               "I am ready to hear."
+             ]
+           },
+           {
+             "Snake": [
+               "All right. Fine."
              ]
            },
            {
@@ -4898,22 +4908,12 @@
            },
            {
              "Joe": [
-               "..."
+               "I would like to concern why you choiced me as a candidate for adoption? And how do you know my name?"
              ]
            },
            {
              "Snake": [
-               "..."
-             ]
-           },
-           {
-             "Joe": [
-               "..."
-             ]
-           },
-           {
-             "Snake": [
-               "..."
+               "I remember I saw you once upon a time. I heard about you. It was when I <span class=\"from_vocabulary\">creeped</span> between bushes near your house. Then I heard your conversation with your <span class=\"from_vocabulary\">acquaintances</span>. I did not want to overhear it specifically, but it happened so. I just did not deep in my own thoughts and life and so it happened that I perceived about what you told with these people. I know you have an adult son who lives not with you and you would adopt an underage child."
              ]
            },
            {

@@ -25,26 +25,32 @@ addInnerHtml = function (html, innerContent) {
 };
 
 var handleJson = {
-    Extradecomposers : function(data){
-        //console.log('initUI: ', data);
-        contentlist.style.display="none";
-        rightHalf.style.display="none";
-        setComponentsOfBeginning('Extradecomposers');
-        setTimeout(function () {
-            $("#beginning").fadeIn(2400);
-        }, 1800);
+    Extradecomposers : {
+        path: 'mainFiles/jsons/special_scavengers.json',
+        handle: function(data){
+            //console.log('initUI: ', data);
+            contentlist.style.display="none";
+            rightHalf.style.display="none";
+            setComponentsOfBeginning('Extradecomposers');
+            setTimeout(function () {
+                $("#beginning").fadeIn(2400);
+            }, 1800);
+        }
     },
-    Black_agent : function(data){
-        console.log('Black agent works!');
+    Black_agent : {
+        path: 'mainFiles/jsons/black_agent.json',
+        handle: function(data){
+            console.log('Black agent works!');
+        }
     }
 };
 
-function handleData(path, key){ // путь к json-файлу и initUI.
+function handleData(key){ // Extradecomposers, Black_agent - то же в jsons;
 // Извлечь файл json и сохранить в эти переменные объекты, которые находятся в этом файле.
 // 1. Создаём новый объект XMLHttpRequest
     var xhr = new XMLHttpRequest();
 // 2. Конфигурируем его: GET-запрос на URL 'special_scavengers.json'
-    xhr.open('GET', path);
+    xhr.open('GET', handleJson[key].path);//path
 // 3. Отсылаем запрос
     xhr.send();
     xhr.onload = function () {
@@ -54,7 +60,7 @@ function handleData(path, key){ // путь к json-файлу и initUI.
             console.log(xhr.status + ': ' + xhr.statusText); // пример вывода: 404: Not Found
         } else {
             var data = JSON.parse(xhr.responseText);
-            window[key] = data[key];//.ExtraDecomposers;
+            window[key] = data[key];//Extradecomposers, Black_agent;
             /*if(key=='Extradecomposers'){
                 console.log({
                     Extradecomposers:Extradecomposers,
@@ -69,7 +75,11 @@ function handleData(path, key){ // путь к json-файлу и initUI.
                 });
             }*/
             //black_agent = data.Black_agent;
-            handleJson[key](data); //
+            handleJson[key].handle(data); //
+            /*
+            * handleJson[Extradecomposers](data);
+            * handleJson[Black_agent](data)
+            */
         }
     };
     xhr.onerror = function(event){
@@ -79,14 +89,18 @@ function handleData(path, key){ // путь к json-файлу и initUI.
 function fakeFunction(data){
     console.log('Fake: ', data);
 }
-function setComponentsOfBeginning (name) {
-    //console.log('selectedPlay:', name);
-    var globData = window[name]["onTheBiginning"];
-    mainImage.innerHTML = "<h2>"+globData["header"]+"</h2>"+globData["images"][0];
-    littleImages.innerHTML=globData["images"][0];
-    document.getElementById("preview").getElementsByTagName("P")[0].innerText=globData["text"];
-    for (var addLittleImages=1; addLittleImages < globData["images"].length; addLittleImages++) {
-        littleImages.innerHTML+=globData["images"][addLittleImages];
+function setComponentsOfBeginning (plays) {
+    console.trace('plays:', plays);
+    if (plays=="Extradecomposers") {
+        plays = Extradecomposers;
+    }
+    console.log('plays', plays);
+    var componentsOfBeginning = plays["onTheBeginning"];
+    mainImage.innerHTML = "<h2>"+componentsOfBeginning["header"]+"</h2>"+componentsOfBeginning["images"][0];
+    littleImages.innerHTML=componentsOfBeginning["images"][0];
+    document.getElementById("preview").getElementsByTagName("P")[0].innerText=componentsOfBeginning["text"];
+    for (var addLittleImages=1; addLittleImages < componentsOfBeginning["images"].length; addLittleImages++) {
+        littleImages.innerHTML+=componentsOfBeginning["images"][addLittleImages];
     }
     changeMainImage();
 }
@@ -134,9 +148,9 @@ function moveActive (thisElement, otherElement, buttonsToChoiceOrChangePlays) {
         // setColors(choicedPlays);
         addButtonsForRechoice(choicedPlays);
     }
-    /**/else { // когда была кликнута одна из кнопок в contentList
+    /*else { // когда была кликнута одна из кнопок в contentList
        // setColors(choicedPlays);
-    }
+    }*/
     addPartsToContentList(choicedPlays);
     loadAboutCharacters(choicedPlays);
     setColors(choicedPlays);

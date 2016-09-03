@@ -17,9 +17,9 @@ var body = document.getElementsByTagName("Body")[0],
     arrayElementObject, checkboxes = [], replics_of_choicedpart={},
     subjectName, className, itemsAboutCharacters = [], presrolesobject = {}, /* buttonsToChoicePlays, */
     presrolesarray = [];
-                                                                // data.Black_agents == undefined:
-handleData('mainFiles/jsons/special_scavengers.json', 'Extradecomposers'); // true
-handleData('mainFiles/jsons/black_agent.json', 'Black_agent'); // false
+
+handleData('Extradecomposers'); // true
+handleData('Black_agent'); // false
 
 document.getElementById("how_to_open_plays").onclick = function () {
     document.getElementById("instruction").innerHTML='<p>Нажать на одну из кнопок и подождать, пока откроются ворота:</p>'+
@@ -28,7 +28,7 @@ document.getElementById("how_to_open_plays").onclick = function () {
     'Extra-decomposers</button><button id="enterBlackAgent1">Black agent</button>';
   buttonsToChoicePlays = document.getElementById("preview_and_enter").getElementsByTagName("Button");
   var thisElement, otherElement, runbuts=0;
-    setOnClick (buttonsToChoicePlays);
+    setOnClick (buttonsToChoicePlays);  // функция вызывается для того, чтобы дать клик кнопкам на заставке
 };
 
 
