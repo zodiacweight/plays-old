@@ -28,6 +28,7 @@ var handleJson = {
     Extradecomposers: {
         path: 'mainFiles/jsons/special_scavengers.json',
         handle: function (data) {
+            this.data = data;
             //console.log('initUI: ', data);
             contentlist.style.display = "none";
             rightHalf.style.display = "none";
@@ -35,7 +36,7 @@ var handleJson = {
             setTimeout(function () {
                 $("#beginning").fadeIn(2400);
             }, 1800);
-            this.data = data;
+
         },
         setColor: function(){
             body.setAttribute('id', 'backgroundForSpecScavengers');
@@ -47,8 +48,8 @@ var handleJson = {
     Black_agent: {
         path: 'mainFiles/jsons/black_agent.json',
         handle: function (data) {
-            console.log('Black agent works!');
             this.data = data;
+            console.log('Black agent works!');
         },
         setColor: function(){
             if (body.hasAttribute('id')) {
@@ -104,13 +105,17 @@ function fakeFunction(data) {
     console.log('Fake: ', data);
 }
 function setComponentsOfBeginning(playName) {
-    console.trace('playName:', playName);
+
     /*if (playName == "Extradecomposers") {
         playName = Extradecomposers;
         console.log('Condition is applied, playName: ', playName);
     }*/
 
-    var componentsOfBeginning = handleJson[playName].data;
+    var componentsOfBeginning = handleJson[playName].data[playName]['onTheBeginning'];
+    console.trace('playName:', playName, {
+        handleJson:handleJson,
+        playName:playName
+    });
         // playName["onTheBeginning"];
     mainImage.innerHTML = "<h2>" + componentsOfBeginning["header"] + "</h2>" + componentsOfBeginning["images"][0];
     littleImages.innerHTML = componentsOfBeginning["images"][0];
@@ -135,6 +140,7 @@ function setButtons() {
         btn = document.createElement('button');
         btn.dataset['source']=field;
         btnText = document.createTextNode(handleJson[field].buttonText);
+        btn.appendChild(btnText);
         btn.onclick = function () {
             console.log('this bnt:', this);
             moveActive(this);
