@@ -11,10 +11,10 @@
         border: 2px solid indigo;
         border-radius: 8px;
     }
-    #mainImage {
+    #bigImageWithHeader {
         width: 57%;
     }
-    #mainImage > h2 {
+    #bigImageWithHeader > h2 {
         /*  margin-left: 26%;
           margin-right: 26%;
           margin-top: 2%;*/
@@ -23,9 +23,8 @@
         font-size: xx-large;
         color: darkblue;
     }
-    #mainImage > img {
+    #bigImage > img {
        margin-top: 0;
-        border: 1px solid;
         width: 100%;
     }
     #littleImages > img {
@@ -45,16 +44,23 @@
         border: 1px solid;
         margin-left: 2%;
         margin-right: 2%;
+        margin-top: 3%;
     }
     #preview {
         border-color: darkviolet;
+        padding: 4px;
     }
     #preview > p {
         font-size: 20px;
+    }
+    #main_in_preview {
         color: mediumvioletred;
     }
     #how_to_open_plays {
         text-decoration: underline;
+        font-weight: bold;
+        color: mediumblue;
+        margin-left: 6%;
     }
     #enter {
         font-size: 26px;
@@ -63,23 +69,22 @@
         margin-bottom: 2%;
         border: 1px solid;
     }
+     #instruction {
+         width: 85%;
+         margin: 1% 10% 5% 5%;
+         font-size: 20px;
+         color: forestgreen;
+     }
      #buttonsToEnter {
-         margin-left: 15%;
+         margin-left: 10%;
+         width: 80%;
      }
      #buttonsToEnter > button {
          font-size: 16px;
-         padding: 4px;
+         padding: 7px;
+         margin-left: 4px;
      }
-    #instruction {
-        width: 85%;
-        margin-left: 10%;
-    }
-    #instruction > p {
-        margin: 1%;
-        font-size: 20px;
-        color: forestgreen;
-    }
-    #instruction > img {
+    #enter > img {
         width: 58%;
         margin-top: 1%;
         margin-left: 15%;
@@ -104,13 +109,22 @@
          padding: 6px;
          width: 80%;
      }
+     #buttonsToRechoiceOnTheContentList {
+         width: 98%;
+         margin-left: 1%;
+     }
+     #buttonsToRechoiceOnTheContentList > button {
+         font-size: 18px;
+         padding: 4px;
+         margin-bottom: 4%
+     }
      #buttonsToEnter2 {
          width: 94%;
          margin-left: 2%;
          margin-top: 4%;
          border: 1px solid;
      }
-     #buttonsToEnter2 > button {
+     #DivForButtonsToRechoice > button {
          font-size: 18px;
          padding: 11px;
         /* background-color: darkslateblue;
@@ -142,13 +156,12 @@
          border: 2px solid khaki;
      }
      /*Стили для rightHalf:*/
-        #header {
-            border: 1px solid;
+        #headerLogotip {
             width: 55%;
             margin-left: 24%;
             margin-top: 2%;
         }
-        #header > img {
+        #headerLogotip > img {
             width: 100%;
         }
          .hidden{

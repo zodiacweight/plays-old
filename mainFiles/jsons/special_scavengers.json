@@ -8,7 +8,7 @@
           "<img src=\"images/на%20заставку/^033ACAC36ACF8BFF5C4B8930EA783B39FF8AD3ED5A7E253331^pimgpsh_fullsize_distr.jpg\">",
           "<img src=\"images/на%20заставку/владения.jpg\">"
         ],
-        "text": "These plays are about a scientist, possessed with his science who was reborn in his life to do what hehad not been successfull to do in his previous life, and his scientific deal is reseaching spec-scavengers. One of such creatures is somebody like a little cruise flying mermaid and lives in the aquarium of one of Christian'sacquaintances. Later Christian knows that they are created by Woman-devil with a defined purpose. He is enough successfull to know very much what he would like to know, but he finds out something not enough pleasant for himself."
+        "preview": "These plays are about a scientist, possessed with his science who was reborn in his life to do what hehad not been successfull to do in his previous life, and his scientific deal is reseaching spec-scavengers. One of such creatures is somebody like a little cruise flying mermaid and lives in the aquarium of one of Christian'sacquaintances. Later Christian knows that they are created by Woman-devil with a defined purpose. He is enough successfull to know very much what he would like to know, but he finds out something not enough pleasant for himself."
     },
       "headerLogotip": "<img src=\"images/with_characters/Заголовок.jpg\">",
       "About characters": [
@@ -19,91 +19,75 @@
         "<u>Extra-decomposers</u> is a new live specie of scavengers which did not exist some times ago.",
         "Also there is such character as Woman-devil. She is a devil, but not evil for most of people despite she is able to kill people. But it is related only to bad very people, murderers, criminals, maniacs and so on. She has a <span class=\"from_vocabulary\">grander</span> mission on human world: creating many perfect wonders including Extrapdecomposers using her magical forces. Anything she creates with defined purpose. So, Extra-decomposers were created to save nature from global poisoning by rotten flesh."
       ],
-      "headers": {
-        "Part 1.1": "Storie about a peculiar human",
-        "Part 1.2": "Acquaintance with new pet",
-        "Part 1.3": "Christian meets Judy and Cassandra the first time",
-        "Part 1.4": "In the acquarium",
-        "Part 1.5": "Pity",
-        "Part 1.6": "Beatrix is alive",
-        "Part 1.7": "Helen in a guest of Chrisian and mrs Jakins",
-        "Part 1.8": "Planning holidays",
-        "Part 1.9": "Discussion between Helen and Beatrix",
-        "Part 1.10": "Christian tells to the girls more",
-        "Part 1.11": "A special new",
-        "Part 1.12": "Meeting of Helen, Judy and Cassandra with Beatrix",
-        "Part 1.13": "Christian gets Beatrix's proposal",
-        "Part 1.14": "Judy and Woman-devil",
-        "Part 1.15": "Woman-devil's intention",
-        "Part 1.16": "Joe and Woman-devil",
-        "Part 1.17": "Christian is going to San Salvador to continue his engagement"
-      },
-      "Parts": {
-        "Part 1.1": [
-          {"Author's words": ["The scene of meeting between three personages, who talk about one unusual event. Helen meets her friends, Judy and Cassandra, and they expect her to share some sensational news."]},
-          {"Helen": ["Cassandra, Judy, I am happy to meet you! How do you do?"]},
-          {"Judy": ["We are bored. Frankly, we are already fed up with this study."]},
-          {"Cassandra": ["Do you know, girls, what makes me feel tired? I can tell you what poisons my life. Maybe you will be interested in this question, but I don’t think that this can change anything."]},
-          {"Helen": ["Oh, I'm so sorry, my dear friends!"]},
-          {"Judy": ["What I don’t understand, is why Helen looks at us with such a face as if she expects us to make a miracle."]},
-          {"Helen": ["No, girls, on the contrary. It is me who can surprise you with a miracle. And I would like you to forget about the curse of your life."]},
-          {"Judy": ["Do you really have something incredible for us? You look like there goes on something very different in your life."]},
-          {"Helen": ["Yes, girls, indeed, you got it right. I can tell you that sometimes I find life not so boring at all. And I am not ashamed of my opinion. So, whatever boring is my study at the institute, still, life is not so terrible, believe me! And it happened so that we met at the moment, when we were in a  completely different mood."]},
-          {"Cassandra": ["Do you know, Helen, I would like to find out what <span class=\"from_vocabulary\">favours</span> your optimism."]},
-          {"Judy": ["Yes, Helen, we all see that you want to share something quite interesting."]},
-          {"Cassandra": ["Yes, I also understood that you want to tell us something, and this is completely new. So, you think that we will be impressed by this."]},
-          {"Helen": ["Yes, but I think that Cassandra also wants to share something with us."]},
-          {"Cassandra": ["Yes, I have something to tell, but I can also tell, that I think this is not the right thing to do now."]},
-          {"Judy": ["I already guess what she wants to tell us. She wants to tell us how bored is she with the study at the institute, how many work is there, how she hates her teachers and the rest. I already heard it and I don’t want to hear your news, Helen."]},
-          {"Helen": ["Well, I have just put the same question, that I usually ask, as soon as we met each other. This is the most simple question, quite suitable, but it seems to me that the answer contains not very actual information."]},
-          {"Judy": ["Let’s everytime, when you ask us this usual question, we will tell “everything is as usual” and we shall never share such questions about why our life goes as it does?"]},
-          {"Helen": ["Well, you know, I have been just thinking about something else. I thought, what if we will <span class=\"from_vocabulary\">rigorously</span> think about all imperfections of our life, about everything we dislike? Maybe we can together make it all clear? "]},
-          {"Judy": ["Well, if Cassandra agrees, you will discuss this without me. Please, don’t <span class=\"from_vocabulary\">compel</span> me to participate in this conversations. Now I am <span class=\"from_vocabulary\">fully-baked</span> to hear what you want tell. I see that this has completely different character."]},
-          {"Helen": ["Well, take your seats! You are completely right. Now I am rather agitated emotionally. I understand, Judy does not want to talk about anything else. So, we shall start that which she waits so impatiently, just like you, Cassandra. I look forward to start - I am so happy that he is back! This story is called so “He has returned!”"]},
-          {"Judy": ["Who has returned?"]},
-          {"Helen": ["The man about whom I want to tell you!"]},
-          {"Judy": ["So..."]},
-          {"Helen": ["I will tell you something that is very hard to believe. Perhaps you will not believe me so fast."]},
-          {"Cassandra": ["What kind of event is this? In which sphere of life did it happen?"]},
-          {"Helen": ["My  friend got pregnant and she gave birth someone. I don’t know whether you believe me or not."]},
-          {"Judy": ["Who has been born?"]},
-          {"Helen": ["A very special child. It happened this way. She did not want to have children. It was unwanted pregnancy, which gave a feeling of a heavy problem for her family. Both Barbara and her family members found her not ready for <span class=\"from_vocabulary\">nurturing</span> a child. She was studying in college, <span class=\"from_vocabulary\">thoroughly</span> processing information from her lectures, and <span class=\"from_vocabulary\"> attended</span> all classes. This way Barbara acquired a very good reputation in this college. As you understand, you cannot combine college studies with <span class=\"from_vocabulary\"> nurturing</span> a child. However, whatever strange it was, she still retented the idea to make abortion and to continue her study. For three years she cared for her baby. However, it happened to be only three years, and not longer. At first this was something very unpleasant, but then it <span class=\"from_vocabulary\">turned out</span> to be not so problematic as it might have been."]},
-          {"Cassandra": ["What contributed to the <span class=\"from_vocabulary\">retention</span> from the abort idea?"]},
-          {"Helen": ["She has been <span class=\"from_vocabulary\">devout</span> and a church member, and she thought, just like priests, that abortion is dirty and unacceptable deed. Her family members thought just like this, so nobody <span class=\"from_vocabulary\">demanded</span> her to interrupt her pregnancy. She even married a man, who made her pregnant, against her own heart. She accepted the <span class=\"from_vocabulary\">commitments</span> of a  mother and a wife."]},
-          {"Cassandra": ["How peculiar is your friend!"]},
-          {"Judy": ["Yes, stange! But how did she <span class=\"from_vocabulary\">afford</span> herself to become pregnant?"]},
-          {"Helen": ["I don’t know, she hasn’t told me this. Some time after her child became three years old, his nearest relatives got to know an amazing thing about him. This child <span class=\"from_vocabulary\">turned out</span> to be an adult. Perhaps you don’t know what it means. I will explain this to you now. This boy has gradually learned to talk, according to his parents and this was so indeed. At the age of 3 he still did not talk clearly. When he started talking, everyone has been shocked. His speech apparatus hasn’t been trained, but he knew how to talk, he knew all necessary words, he could make sentences, and express his thoughts just like an adult. And then he told his relatives who he really was , told him about his past life and about his goals in this life. They have been amazed! (excited!). They have never experienced anything like this before. It looks like the life of this boy - is not a new life but a continuation of the previous one."]},
-          {"Judy": ["What has happened in his past life? Also it is interesting, why he decided to make this life a continuation of his past life."]},
-          {"Cassandra": ["Wait a moment.  I don’t quite understand. Are we talking about this unwanted child? "]},
-          {"Helen": ["Yes, we do. We talk about Christian, son of my old friend Barbara, who is almost my neighbor and I know her for a long time."]},
-          {"Cassandra": ["I did not understand the meaning of what you have told about him."]},
-          {"Helen": ["I say that he has been born an unusual child. He was born and immediately understood everything about his surroundings, just like an adult."]},
-          {"Author's words": ["Cassandra looks lost and seems to not understand  what is going on. Judy is also surprised, but she believes and understands this information."]},
-          {"Cassandra": ["What are you talking about, darling!?"]},
-          {"Helen": ["Well, as I told, you won’t believe me. So, he started his life not from a scratch,  as everybody, and this even has <span class=\"from_vocabulary\">grander</span> common <span class=\"from_vocabulary\">implications</span>. He came here in order to complete something, that he hasn’t completed in his past life."]},
-          {"Author's words": ["Cassandra is still in <span class=\"from_vocabulary\">obscurity</span>."]},
-          {"Judy": ["Yes, it is like this. Different people can  have different attitudes to such things. Some are complete <span class=\"from_vocabulary\">naysayers</span>, who cannot believe in this, while others evaluate these events as something surprising, but nevertheless real. What was it that he did not complete in his past life, that <span class=\"from_vocabulary\">demands</span> to be finished in this life? Can you tell us this story in all details?"]},
-          {"Helen": ["In his past life he has been a scientist, who <span class=\"from_vocabulary\">meticulously</span> conducted research. He had some unfavourable circumstances, which served as <span class=\"from_vocabulary\">hurdles</span> him from obtaining his goals. He hasn’t been successful in his past life because his work was too heavy, unbearable for his mind. In this life he is sure that nothing will be <span class=\"from_vocabulary\">hurdles</span> to his <span class=\"from_vocabulary\">devise</span> and achieving his goals. Christian’s relatives were in <span class=\"from_vocabulary\">obscurity</span>, but later they got accustomed."]},
-          {"Cassandra": ["Oh, Helen, I <span class=\"from_vocabulary\">diminish</span>, don’t <span class=\"from_vocabulary\">daunt</span> me!"]},
-          {"Helen": ["What do you worry about?"]},
-          {"Cassandra": ["Your story is so exciting! Such information, I must admit, is not so easy to be processed by my mind."]},
-          {"Helen": ["But is it not boring? So, this is cool."]},
-          {"Judy": ["I can imagine how boring is your life, Cassandra. This heavy, difficult study, this plain home, this tiring everyday life, which doesn’t bring any joy to you."]},
-          {"Cassandra": ["Yes, sometimes I think I will go mad. As if I am one of those people who cannot find joy in many things."]},
-          {"Judy": ["Ok, let’s not talk about you. I would like to know more about this extraordinary boy. Is his name Christian?"]},
-          {"Helen": ["Yes."]},
-          {"Judy": ["Yes, but still, how could Barbara <span class=\"from_vocabulary\">afford</span> herself to become pregnant?"]},
-          {"Helen": ["I cannot explain this. But I can say that the birth of such a man is amazing, it is a great joy and enormous sensation! Whatever strange this is for his family members, they were <span class=\"from_vocabulary\">compelled</span>to accept it. They caught to <span class=\"from_vocabulary\">enlist</span> him to a kindergarden group before they got to know what kind of child he was. Of course, as soon as they realized this, they had to unsubscribe Christian from kindergarten and let him lead an adult life. To add, I can say that for his parents it provides an advantage for their personal comfort. Christian leads an independent adult life and does his work. There were factors which <span class=\"from_vocabulary\">amplified</span>adults. Thus, Barbara has no more any <span class=\"from_vocabulary\">commitments</span> of wife and mother, because her relation with Christian’s father has lost any sense and they are separated. Therefore it is easier for her to continue her study at college. Additional burden for Barbara has already vanished and it vanished much earlier than she expected. To add, such a joy and such pleasant surprise came into her life. She worried about the life which as she thought faced her: to <span class=\"from_vocabulary\">tinker</span> with little child everytime, <span class=\"from_vocabulary\">nurtur</span> with him and be tormented. Of course, it was <span class=\"from_vocabulary\">overhelming</span> to realize what an unusual child was her son, but from other side, it <span class=\"from_vocabulary\">mollified</span>, because  it <span class=\"from_vocabulary\">turned out</span> Barbara was not right about additional difficulties regarding the little child in her life."]},
-          {"Judy": ["Wonderfull. Christian does not worry that his parents are divorced?"]},
-          {"Helen": ["No, not at all. He completely understands this divorce, as well as the relation between his parents and he is completely adult and morally wise man. From his perspective it is not adult to worry that his parents have split when their relations have lost any meaning."]},
-          {"Cassandra": ["..."]},
-          {"Judy": ["And what will he <span class=\"from_vocabulary\">devise</span> in this new life of him?"]},
-          {"Helen": ["This we will still find out. This is quite curious and attractive. We can find out about his research in this life. He does it with the same success as he <span class=\"from_vocabulary\">glided</span>. I am sure that his scientific research will still impress us."]},
-          {"Judy": ["Yes, but Cassandra shall carefully find this out. By the way, I am curious about the following question. Do you think that his worldview, his knowledge and perception in science are <span class=\"from_vocabulary\">nuff</span>? I think there is still something else necessary to do scientific research. One still has to finish school and graduate from university."]},
-          {"Helen": ["He already did it in this past life."]},
-          {"Judy": ["I already understood. But where is a proof that all his knowledge is from the past live? Who will allow him to do scientific research, without this?"]},
-          {"Helen": ["There is no need for paper documents. The truth that he can <span class=\"from_vocabulary\">afford</span> himself to work is already proved. Everybody who has heard him talking about science, cannot take  Christian for an ordinary child. He claims that he is an adult, and a true scientist, who merely looks like a child, and he claims this in a such way that you cannot but trust him. Well, you listen to this and you see how the general axiom on the impossibility of such events is being  slowly denied. When people listen to him, they understand that they are <span class=\"from_vocabulary\">propelled</span> to his words. As a result, nobody can prohibit Christian to live as an adult professor. In this way, Christian in this life has entered science in an unofficial way, without any documents. He managed to enter science, while having at his disposal merely what he had."]}],
-       "Part 1.2": [
+      "Parts": [
+       {"number": 1.1, "header": "Storie about a peculiar human",
+         "replics": [
+           {"Author's words": ["The scene of meeting between three personages, who talk about one unusual event. Helen meets her friends, Judy and Cassandra, and they expect her to share some sensational news."]},
+           {"Helen": ["Cassandra, Judy, I am happy to meet you! How do you do?"]},
+           {"Judy": ["We are bored. Frankly, we are already fed up with this study."]},
+           {"Cassandra": ["Do you know, girls, what makes me feel tired? I can tell you what poisons my life. Maybe you will be interested in this question, but I don’t think that this can change anything."]},
+           {"Helen": ["Oh, I'm so sorry, my dear friends!"]},
+           {"Judy": ["What I don’t understand, is why Helen looks at us with such a face as if she expects us to make a miracle."]},
+           {"Helen": ["No, girls, on the contrary. It is me who can surprise you with a miracle. And I would like you to forget about the curse of your life."]},
+           {"Judy": ["Do you really have something incredible for us? You look like there goes on something very different in your life."]},
+           {"Helen": ["Yes, girls, indeed, you got it right. I can tell you that sometimes I find life not so boring at all. And I am not ashamed of my opinion. So, whatever boring is my study at the institute, still, life is not so terrible, believe me! And it happened so that we met at the moment, when we were in a  completely different mood."]},
+           {"Cassandra": ["Do you know, Helen, I would like to find out what <span class=\"from_vocabulary\">favours</span> your optimism."]},
+           {"Judy": ["Yes, Helen, we all see that you want to share something quite interesting."]},
+           {"Cassandra": ["Yes, I also understood that you want to tell us something, and this is completely new. So, you think that we will be impressed by this."]},
+           {"Helen": ["Yes, but I think that Cassandra also wants to share something with us."]},
+           {"Cassandra": ["Yes, I have something to tell, but I can also tell, that I think this is not the right thing to do now."]},
+           {"Judy": ["I already guess what she wants to tell us. She wants to tell us how bored is she with the study at the institute, how many work is there, how she hates her teachers and the rest. I already heard it and I don’t want to hear your news, Helen."]},
+           {"Helen": ["Well, I have just put the same question, that I usually ask, as soon as we met each other. This is the most simple question, quite suitable, but it seems to me that the answer contains not very actual information."]},
+           {"Judy": ["Let’s everytime, when you ask us this usual question, we will tell “everything is as usual” and we shall never share such questions about why our life goes as it does?"]},
+           {"Helen": ["Well, you know, I have been just thinking about something else. I thought, what if we will <span class=\"from_vocabulary\">rigorously</span> think about all imperfections of our life, about everything we dislike? Maybe we can together make it all clear? "]},
+           {"Judy": ["Well, if Cassandra agrees, you will discuss this without me. Please, don’t <span class=\"from_vocabulary\">compel</span> me to participate in this conversations. Now I am <span class=\"from_vocabulary\">fully-baked</span> to hear what you want tell. I see that this has completely different character."]},
+           {"Helen": ["Well, take your seats! You are completely right. Now I am rather agitated emotionally. I understand, Judy does not want to talk about anything else. So, we shall start that which she waits so impatiently, just like you, Cassandra. I look forward to start - I am so happy that he is back! This story is called so “He has returned!”"]},
+           {"Judy": ["Who has returned?"]},
+           {"Helen": ["The man about whom I want to tell you!"]},
+           {"Judy": ["So..."]},
+           {"Helen": ["I will tell you something that is very hard to believe. Perhaps you will not believe me so fast."]},
+           {"Cassandra": ["What kind of event is this? In which sphere of life did it happen?"]},
+           {"Helen": ["My  friend got pregnant and she gave birth someone. I don’t know whether you believe me or not."]},
+           {"Judy": ["Who has been born?"]},
+           {"Helen": ["A very special child. It happened this way. She did not want to have children. It was unwanted pregnancy, which gave a feeling of a heavy problem for her family. Both Barbara and her family members found her not ready for <span class=\"from_vocabulary\">nurturing</span> a child. She was studying in college, <span class=\"from_vocabulary\">thoroughly</span> processing information from her lectures, and <span class=\"from_vocabulary\"> attended</span> all classes. This way Barbara acquired a very good reputation in this college. As you understand, you cannot combine college studies with <span class=\"from_vocabulary\"> nurturing</span> a child. However, whatever strange it was, she still retented the idea to make abortion and to continue her study. For three years she cared for her baby. However, it happened to be only three years, and not longer. At first this was something very unpleasant, but then it <span class=\"from_vocabulary\">turned out</span> to be not so problematic as it might have been."]},
+           {"Cassandra": ["What contributed to the <span class=\"from_vocabulary\">retention</span> from the abort idea?"]},
+           {"Helen": ["She has been <span class=\"from_vocabulary\">devout</span> and a church member, and she thought, just like priests, that abortion is dirty and unacceptable deed. Her family members thought just like this, so nobody <span class=\"from_vocabulary\">demanded</span> her to interrupt her pregnancy. She even married a man, who made her pregnant, against her own heart. She accepted the <span class=\"from_vocabulary\">commitments</span> of a  mother and a wife."]},
+           {"Cassandra": ["How peculiar is your friend!"]},
+           {"Judy": ["Yes, stange! But how did she <span class=\"from_vocabulary\">afford</span> herself to become pregnant?"]},
+           {"Helen": ["I don’t know, she hasn’t told me this. Some time after her child became three years old, his nearest relatives got to know an amazing thing about him. This child <span class=\"from_vocabulary\">turned out</span> to be an adult. Perhaps you don’t know what it means. I will explain this to you now. This boy has gradually learned to talk, according to his parents and this was so indeed. At the age of 3 he still did not talk clearly. When he started talking, everyone has been shocked. His speech apparatus hasn’t been trained, but he knew how to talk, he knew all necessary words, he could make sentences, and express his thoughts just like an adult. And then he told his relatives who he really was , told him about his past life and about his goals in this life. They have been amazed! (excited!). They have never experienced anything like this before. It looks like the life of this boy - is not a new life but a continuation of the previous one."]},
+           {"Judy": ["What has happened in his past life? Also it is interesting, why he decided to make this life a continuation of his past life."]},
+           {"Cassandra": ["Wait a moment.  I don’t quite understand. Are we talking about this unwanted child? "]},
+           {"Helen": ["Yes, we do. We talk about Christian, son of my old friend Barbara, who is almost my neighbor and I know her for a long time."]},
+           {"Cassandra": ["I did not understand the meaning of what you have told about him."]},
+           {"Helen": ["I say that he has been born an unusual child. He was born and immediately understood everything about his surroundings, just like an adult."]},
+           {"Author's words": ["Cassandra looks lost and seems to not understand  what is going on. Judy is also surprised, but she believes and understands this information."]},
+           {"Cassandra": ["What are you talking about, darling!?"]},
+           {"Helen": ["Well, as I told, you won’t believe me. So, he started his life not from a scratch,  as everybody, and this even has <span class=\"from_vocabulary\">grander</span> common <span class=\"from_vocabulary\">implications</span>. He came here in order to complete something, that he hasn’t completed in his past life."]},
+           {"Author's words": ["Cassandra is still in <span class=\"from_vocabulary\">obscurity</span>."]},
+           {"Judy": ["Yes, it is like this. Different people can  have different attitudes to such things. Some are complete <span class=\"from_vocabulary\">naysayers</span>, who cannot believe in this, while others evaluate these events as something surprising, but nevertheless real. What was it that he did not complete in his past life, that <span class=\"from_vocabulary\">demands</span> to be finished in this life? Can you tell us this story in all details?"]},
+           {"Helen": ["In his past life he has been a scientist, who <span class=\"from_vocabulary\">meticulously</span> conducted research. He had some unfavourable circumstances, which served as <span class=\"from_vocabulary\">hurdles</span> him from obtaining his goals. He hasn’t been successful in his past life because his work was too heavy, unbearable for his mind. In this life he is sure that nothing will be <span class=\"from_vocabulary\">hurdles</span> to his <span class=\"from_vocabulary\">devise</span> and achieving his goals. Christian’s relatives were in <span class=\"from_vocabulary\">obscurity</span>, but later they got accustomed."]},
+           {"Cassandra": ["Oh, Helen, I <span class=\"from_vocabulary\">diminish</span>, don’t <span class=\"from_vocabulary\">daunt</span> me!"]},
+           {"Helen": ["What do you worry about?"]},
+           {"Cassandra": ["Your story is so exciting! Such information, I must admit, is not so easy to be processed by my mind."]},
+           {"Helen": ["But is it not boring? So, this is cool."]},
+           {"Judy": ["I can imagine how boring is your life, Cassandra. This heavy, difficult study, this plain home, this tiring everyday life, which doesn’t bring any joy to you."]},
+           {"Cassandra": ["Yes, sometimes I think I will go mad. As if I am one of those people who cannot find joy in many things."]},
+           {"Judy": ["Ok, let’s not talk about you. I would like to know more about this extraordinary boy. Is his name Christian?"]},
+           {"Helen": ["Yes."]},
+           {"Judy": ["Yes, but still, how could Barbara <span class=\"from_vocabulary\">afford</span> herself to become pregnant?"]},
+           {"Helen": ["I cannot explain this. But I can say that the birth of such a man is amazing, it is a great joy and enormous sensation! Whatever strange this is for his family members, they were <span class=\"from_vocabulary\">compelled</span>to accept it. They caught to <span class=\"from_vocabulary\">enlist</span> him to a kindergarden group before they got to know what kind of child he was. Of course, as soon as they realized this, they had to unsubscribe Christian from kindergarten and let him lead an adult life. To add, I can say that for his parents it provides an advantage for their personal comfort. Christian leads an independent adult life and does his work. There were factors which <span class=\"from_vocabulary\">amplified</span>adults. Thus, Barbara has no more any <span class=\"from_vocabulary\">commitments</span> of wife and mother, because her relation with Christian’s father has lost any sense and they are separated. Therefore it is easier for her to continue her study at the college. Additional burden for Barbara has already vanished and it vanished much earlier than she expected. To add, such a joy and such pleasant surprise came into her life. She worried about the life which as she thought faced her: to <span class=\"from_vocabulary\">tinker</span> with little child everytime, <span class=\"from_vocabulary\">nurtur</span> with him and be tormented. Of course, it was <span class=\"from_vocabulary\">overhelming</span> to realize what an unusual child was her son, but from other side, it <span class=\"from_vocabulary\">mollified</span>, because  it <span class=\"from_vocabulary\">turned out</span> Barbara was not right about additional difficulties regarding the little child in her life."]},
+           {"Judy": ["Wonderfull. Christian does not worry that his parents are divorced?"]},
+           {"Helen": ["No, not at all. He completely understands this divorce, as well as the relation between his parents and he is completely adult and morally wise man. From his perspective it is not adult to worry that his parents have split when their relations have lost any meaning."]},
+           {"Cassandra": ["..."]},
+           {"Judy": ["And what will he <span class=\"from_vocabulary\">devise</span> in this new life of him?"]},
+           {"Helen": ["This we will still find out. This is quite curious and attractive. We can find out about his research in this life. He does it with the same success as he <span class=\"from_vocabulary\">glided</span>. I am sure that his scientific research will still impress us."]},
+           {"Judy": ["Yes, but Cassandra shall carefully find this out. By the way, I am curious about the following question. Do you think that his worldview, his knowledge and perception in science are <span class=\"from_vocabulary\">nuff</span>? I think there is still something else necessary to do scientific research. One still has to finish school and graduate from university."]},
+           {"Helen": ["He already did it in this past life."]},
+           {"Judy": ["I already understood. But where is a proof that all his knowledge is from the past live? Who will allow him to do scientific research, without this?"]},
+           {"Helen": ["There is no need for paper documents. The truth that he can <span class=\"from_vocabulary\">afford</span> himself to work is already proved. Everybody who has heard him talking about science, cannot take  Christian for an ordinary child. He claims that he is an adult, and a true scientist, who merely looks like a child, and he claims this in a such way that you cannot but trust him. Well, you listen to this and you see how the general axiom on the impossibility of such events is being  slowly denied. When people listen to him, they understand that they are <span class=\"from_vocabulary\">propelled</span> to his words. As a result, nobody can prohibit Christian to live as an adult professor. In this way, Christian in this life has entered science in an unofficial way, without any documents. He managed to enter science, while having at his disposal merely what he had."]}
+         ]},
+       {"number": 1.2, "header": "Acquaintance with new pet",
+         "replics":[
            {"Author’s words": ["The <span class=\"from_vocabulary\">venue</span> is at table at Helen’ courtyard. Helen,  Judy and Cassandra came together to talk."]},
            {"Judy": ["Well, I think we have already discussed our plans for the holidays, but if somebody has other ideas, I'm ready to listen."]},
            {"Cassandra": ["I feel that something is touching my back."]},
@@ -178,8 +162,9 @@
            {"Beatrix": ["And what is a house, what is a garden and a roof?"]},
            {"Cassandra": ["Well, Helen, do you see?"]},
            {"Helen": ["Well, let's go Beatriz, I will tell you in detail, show and explain which zones are permitted and which are prohibited."]}
-         ],
-         "Part 1.3": [
+         ]},
+       {"number": 1.3, "header": "Christian meets Judy and Cassandra the first time",
+         "replics":[
            {"Helen": ["Christian!"]},
            {"Christian": ["Hi, Helen. Nice to see you."]},
            {"Helen": ["I am glad to see you too. Please, come in and sit down with the girls in the <span class=\"from_vocabulary\">lounge</span>."]},
@@ -242,8 +227,9 @@
            {"Judy": ["I am delighted too! Happy trip, guys!"]},
            {"Christian": ["I am glad, girls."]},
            {"Christian & Helen": ["See you soon, girls."]}
-         ],
-         "Part 1.4": [
+         ]},
+       {"number": 1.4, "header": "In the acquarium",
+         "replics":[
            {"Tortoise female": ["Guys, are you <span class=\"from_vocabulary\">undismayed</span> by this alive object?"]},
            {"Marine star":["This? This is a very interesting new inhabitant. I agree."]},
            {"Catfish male": ["It is very <span class=\"from_vocabulary\">conspicuous</span>. I presume this is somebody who was brought here as a result of <span class=\"from_vocabulary\">fallacy</span>."]},
@@ -340,8 +326,9 @@
            {"Catfish female": ["I understand you. Here we are in the <span class=\"from_vocabulary\">confined</span> space, but it is so wonderful view! Pay your attention at them! What else I can hint at - you can discuss your decision about your inhabitant with our host. We can not. We were <span class=\"from_vocabulary\">mustered</span> into this aquarium independently from our own will."]},
            {"Tortoise female": ["Do you wish to return to the ocean or the swamp?"]},
            {"Beatrix":["I will think about it. <span class=\"from_vocabulary\">Somehow</span> I would like to meet Darma again and tell her anything what I have known about the ocean, the river and this aquarium."]}
-         ],
-         "Part 1.5": [
+         ]},
+       {"number": 1.5, "header": "Pity",
+         "replics":[
            {
              "Judy": [
                "Hi. How was your yestaerday in the job?"
@@ -517,8 +504,9 @@
                "So I and Judy will discuss our holidays without you for now. You main join us if you have quite <span class=/”from_vocabulary/”>fitting</span> mood soon."
              ]
            }
-         ],
-         "Part 1.6": [
+         ]},
+       {"number": 1.6, "header": "Happy! Beatrix is alive",
+         "replics":[
            {
              "Author's words": [
                "Helen has woken up in the middle of the night. She is laying on her bed and suddenly she is noticing that Beatrix is flying in the room with her glowing wigs. The wigs are lighting Beatrix’s body."
@@ -704,8 +692,9 @@
                "Lets go."
              ]
            }
-         ],
-         "Part 1.7": [
+         ]},
+       {"number": 1.7, "header": "Helen is a guest of Chrisian and mrs Jakins",
+         "replics":[
            {
              "Christian": [
                "Hi, Helen!"
@@ -1031,8 +1020,9 @@
                "I think you all will know about it soon anyway."
              ]
            }
-         ],
-         "Part 1.8": [
+         ]},
+       {"number": 1.8, "header": "Planning holidays",
+         "replics":[
            {
              "Author's words": [
                "Helen is meeting Judy and Cassandra as her guests. They are discussing their holidays"
@@ -2028,8 +2018,9 @@
                "Thank you."
              ]
            }
-         ],
-         "Part 1.9": [
+         ]},
+       {"number": 1.9, "header": "Discussion between Helen and Beatrix",
+         "replics":[
            {
              "Helen": [
                "Beatrix, get up, please! I have cooked a feast for you."
@@ -2320,8 +2311,9 @@
                "Good bye."
              ]
            }
-         ],
-         "Part 1.10": [
+         ]},
+       {"number": "1.10", "header": "Christian tells to the girls more",
+         "replics":[
            {
              "Helen": [
                "Hi, Judy, Cassandra. Go ahead and take your seats, please."
@@ -2867,8 +2859,9 @@
                "Thank you! I also wish good luck to all of you."
              ]
            }
-         ],
-         "Part 1.11": [
+         ]},
+       {"number": 1.11, "header": "A special new",
+         "replics":[
            {
              "Author's words": [
                "Helen got a letter. She had come home from a market and when she had come in the second floor she saw a big envelope on the floor with a label \"Helen, read it.\""
@@ -3019,8 +3012,9 @@
                "I am <span class=\"from_vocabulary\">longing for</span> this meeting, too."
              ]
            }
-         ],
-         "Part 1.12": [
+         ]},
+       {"number": 1.12, "header": "Meeting of Helen, Judy and Cassandra with Beatrix",
+         "replics":[
            {
              "Author's words": [
                "Helen, Judy and Cassandra come to the Helen's home from their walking. Helen decides to take the shower Judy at the first turn as one of her guests. Judy has gone to the shower. Helen and Cassandra is noticing that Beatrix is <span class=\"from_vocabulary\">attending </span> in the aquarium. They are glad to see her. Beatrix is <span class=\"from_vocabulary\">soaring </span>in water. Helen and Cassandra are climbing up to a <span class=\"from_vocabulary\">ladder. </span> They are reaching the second floor and come to the room where the hole to the water space is. Helen and Cassandra see that Beatrix is hanging over the hole <span class=\"from_vocabulary\">jarring </span> her wigs."
@@ -3351,8 +3345,9 @@
                "We must thoroughly think do we have to go or we do not. It is about Christian, too."
              ]
            }
-         ],
-         "Part 1.13": [
+         ]},
+       {"number": 1.13, "header": "Christian gets Beatrix's proposal",
+         "replics":[
            {
              "Helen": [
                "Hi, Christian."
@@ -3613,8 +3608,9 @@
                "I will have to negotiate with her about it. Do you see, there is necessaty to hide from eyes of the hosts. So you will have to talk somewhere in the court where the hosts will not see you. Somewhere near the lake behind the trees."
              ]
            }
-         ],
-         "Part 1.14": [
+         ]},
+       {"number": 1.14, "header": "Judy meets Woman-devil",
+         "replics":[
            {
              "Author's words": [
                "Judy, Beatrix and Woman-devil take part in this part. Judy is visiting Woman-devil's living place and meet her together with Beatrix. Beatrix and Judy negotiated that Beatrix would wrote to Woman-devil a letter where she would discuss date, time and place of meeting. Before Judy came her friends were not <span class=\"from_vocabulary\"> squared off </span> by the question about Judy's walking to Woman-devil."
@@ -4225,8 +4221,9 @@
                "Judy is going in direction to home. Woman-devil and Beatrix are flying off on the horse."
              ]
            }
-         ],
-         "Part 1.15": [
+         ]},
+       {"number": 1.15, "header": "Woman-devil's intention",
+         "replics":[
            {
              "Author's words": [
                "There Woman-devil, Beatrix and Lilian are sitting in the bottom of the ocean."
@@ -4424,7 +4421,7 @@
            },
            {
              "Woman-devil": [
-               "There is an interesting question: what our host Ramon has to look for here? I will arrange him a wonderful swimming!"
+               "There is an interesting question: what our host 444 has to look for here? I will arrange him a wonderful swimming!"
              ]
            },
            {
@@ -4469,7 +4466,7 @@
            },
            {
              "Lilian": [
-               "You, must be, went to the human world to stop such people as Ramon?"
+               "You, must be, went to the human world to stop such people as 444?"
              ]
            },
            {
@@ -4479,7 +4476,7 @@
            },
            {
              "Lilian": [
-               "What should we do with Ramon?"
+               "What should we do with 444?"
              ]
            },
            {
@@ -4519,12 +4516,12 @@
            },
            {
              "Woman-devil": [
-               "You will not have to do this. I will not let Ramon to <span class=\"from_vocabulary\">imbue</span> there."
+               "You will not have to do this. I will not let 444 to <span class=\"from_vocabulary\">imbue</span> there."
              ]
            },
            {
              "Lilian": [
-               "Did Ramon told you why he has became a scoundrel?"
+               "Did 444 told you why he has became a scoundrel?"
              ]
            },
            {
@@ -4791,13 +4788,13 @@
                "After our today work. Now it's time to toil. I think you and also Lilian remember that a lot depends of us."
              ]
            }
-         ],
-         "Part 1.16": [
-           {
-             "Author's words": [
-               "This morning Ramon went to the train station. There will be something unexpectable for him in the station, but he has not know about it yet."
-             ]
-           },
+         ]},
+       {"number": 1.16, "header": "Conversation about Beatrix's adoption",
+         "replics":[ {
+           "Author's words": [
+             "This morning Timothy came to the train station. There will be something unexpectable for him in the station, but he has not know about it yet."
+           ]
+         },
            {
              "Voice on the terminal": [
                "Do not be daunted by the snake. It is not a <span class=\"from_vocabulary\">hazard</span> for you."
@@ -4805,16 +4802,16 @@
            },
            {
              "Author's words": [
-               "Joe turned and saw that there is a big black snake <span class=\"from_vocabulary\">creeping</span> straight to him. He began silently watch in it. Joe remembered that he had already seen this snake recently. He saw how this snake was creeping in bushes. When the snake had <span class=\"from_vocabulary\">precipitated</span> to him it began talk with him."
+               "Timothy turned and saw that there is a big black snake <span class=\"from_vocabulary\">creeping</span> straight to him. He began silently watch in it. Timothy remembered that he had already seen this snake recently. He saw how this snake was creeping in bushes. When the snake had <span class=\"from_vocabulary\">precipitated</span> to him it began talk with him."
              ]
            },
            {
              "Snake": [
-               "Hi, Ramon. Don't worry, please, I am not so scary."
+               "Hi, Timothy. Don't worry, please, I am not so scary."
              ]
            },
            {
-             "Joe": [
+             "Timothy": [
                "What do you want from me?"
              ]
            },
@@ -4824,7 +4821,7 @@
              ]
            },
            {
-             "Joe": [
+             "Timothy": [
                "I can understand nothing."
              ]
            },
@@ -4840,24 +4837,24 @@
              ]
            },
            {
-             "Joe": [
+             "Timothy": [
                "How it may be related to me?"
              ]
            },
            {
-           "Snake": [
-           "Listen to me and you will understand everything. I know something about you and your family. Also I know one little girl who will need good parents soon. She does not have her native parents, but this girl is very nice and good. Now she is a little mermaid and lives in the Pacific ocean. It is close to your living place in San Salvador. She is not just a mermaid. Also she is an extra-decomposer. She was born a human, but there were tragic <span class=\"from_vocabulary\">lamentable</span> events in her life in result of which she died. After that I found her and turned into an extra-decomposer in mermaid likeness. Now we live in the Pacific ocean together close to the part of the <span class=\"from_vocabulary\">brink</span> where your living place is located. There will be no necessarity in extra-decomposers soon and I am going to turn the girl into a human. So she will need parents. We want you to take over the care of her.",
-           "Agreed?"
-           ]
-         },
+             "Snake": [
+               "Listen to me and you will understand everything. I know something about you and your family. Also I know one little girl who will need good parents soon. She does not have her native parents, but this girl is very nice and good. Now she is a little mermaid and lives in the Pacific ocean. It is close to your living place in San Salvador. She is not just a mermaid. Also she is an extra-decomposer. She was born a human, but there were tragic <span class=\"from_vocabulary\">lamentable</span> events in her life in result of which she died. After that I found her and turned into an extra-decomposer in mermaid likeness. Now we live in the Pacific ocean together close to the part of the <span class=\"from_vocabulary\">bank</span> where your living place is located. There will be no necessarity in extra-decomposers soon and I am going to turn the girl into a human. So she will need parents. We want you to take over the care of her.",
+               "Agreed?"
+             ]
+           },
            {
              "Author's words": [
-               "Of course, Ramon felt hard <span class=\"from_vocabulary\">tumult</span> after this meeting."
+               "Of course, Timothy felt hard <span class=\"from_vocabulary\">tumult</span> after this meeting."
              ]
            },
 
            {
-             "Joe": [
+             "Timothy": [
                "Snake, may I be interested how can you speak like a human?"
              ]
            },
@@ -4867,7 +4864,7 @@
              ]
            },
            {
-             "Joe": [
+             "Timothy": [
                "Are you sure? I am not."
              ]
            },
@@ -4877,7 +4874,7 @@
              ]
            },
            {
-             "Joe": [
+             "Timothy": [
                "I'm really sorry, snake, but frankly I don't like it very much, because it is a little scary. Please, don't <span class=\"from_vocabulary\">opportune</span> at me and don't bite me! You are very beautiful snake with brilliant things on your body! I like them! Moreover I beleive that you are very smart snake. I don't have objections to this likeness, you may be in it if you like it. But I have not gotten used to communicate with snakes and be close to them. So they are associated with <span class=\"from_vocabulary\">hazard</span> in my awareness. Sorry me, dear magic snake! What else - I know usually people don't like snakes and afraid them. So I am not sure that it is<span class=\"from_vocabulary\">opportune</span> view for you to communicate with people. But I will get used soon."
              ]
            },
@@ -4887,62 +4884,176 @@
              ]
            },
            {
-             "Joe": [
+             "Timothy": [
                "I am ready to hear."
              ]
            },
            {
              "Snake": [
-               "All right. Fine."
+               "All right. Fine. This girl was born a human. Her parents were not able to take carry of her and <span class=\"from_vocabulary\">nurtur</span> her fully because they were drunkards. So they did not care of Beatrix. They did not care about such questions as what she ate, did she wash or not and how she lived at all. She died from heavy illness. When she was ill, nobody noticed this and could help her with something. I found her dead in the street, turned her into a little cruise mermaid and revived her. Now we live in the ocean with different marine inhabitants. Beatrix is not a simple mermaid. She is an extra-scavenger. Did you hear about extra-scavengers?"
              ]
            },
            {
-             "Joe": [
-               "..."
-             ]
-           },
-           {
-             "Snake": [
-               "..."
-             ]
-           },
-           {
-             "Joe": [
-               "I would like to concern why you choiced me as a candidate for adoption? And how do you know my name?"
+             "Timothy": [
+               "Yes, I read about them in magazines. It was very intresting. I wondered who they are and how they were created because as I know they have never been existed earlier in previous epoches. Can you tell exactly what was the reason of her <span class=\"from_vocabulary\">demise</span>? I mean what illness did Beatrix have and what was the reason for this illness."
              ]
            },
            {
              "Snake": [
-               "I remember I saw you once upon a time. I heard about you. It was when I <span class=\"from_vocabulary\">creeped</span> between bushes near your house. Then I heard your conversation with your <span class=\"from_vocabulary\">acquaintances</span>. I did not want to overhear it specifically, but it happened so. I just did not deep in my own thoughts and life and so it happened that I perceived about what you told with these people. I know you have an adult son who lives not with you and you would adopt an underage child."
+               "Her kidney failured. It was <span class=\"from_vocabulary\">summoned</span> by wrong nutrition. There will be no <span class=\"from_vocabulary\">demand</span> in special scavengers soon. I am going to turn Beatrix into a human and I want you to adopt her."
              ]
            },
            {
-             "Joe": [
-               "..."
-             ]
-           },
-           {
-             "Snake": [
-               "..."
-             ]
-           },
-           {
-             "Joe": [
-               "..."
-             ]
-           },
-           {
-             "Joe": [
-               "..."
+             "Timothy": [
+               "Yes, I can say, this is a <span class=\"from_vocabulary\">harsh</span> storie about Beatrix life. But I would like to concern why you choiced me as a candidate for adoption? And how do you know my name?"
              ]
            },
            {
              "Snake": [
+               "I remember I saw you once upon a time. I heard about you. It was when I <span class=\"from_vocabulary\">creeped</span> between bushes near your house. Then I heard your conversation with your <span class=\"from_vocabulary\">acquaintances</span>. I did not want to overhear it specifically, but it happened so. I just did not deep in my own thoughts and life and so it happened that I perceived about what you told with these people. I was concerned in this, because I wanted Beatrix to have adoptive parents after she will be turned into a human. I know you have an adult son who lives not with you and you would adopt an underage child. I heard about it. But it is not anything. I own feelings which tell me that you are very <span class=\"from_vocabulary\">devout</span> and <span class=\"from_vocabulary\">noble</span> person and I can apply to you for the help. It is your <span class=\"from_vocabulary\">grander denomination</span> to use to do good deals for people. It is beautiful that I and Beatrix have somebody to heip us so much. It is very well not only for us, but also for you."
+             ]
+           },
+           {
+             "Timothy": [
+               "All right. I'll do it. I <span class=\"from_vocabulary\">revere</span> doing good deals."
+             ]
+           },
+           {
+             "Snake": [
+               "Beatrix will be very thankfull to you."
+             ]
+           },
+           {
+             "Timothy": [
+               "Tell me,  please, how do you think, will Beatrix be a good biddable child? I would like her to be so and unlike many of little mischievous naughty little kids."
+             ]
+           },
+           {
+             "Snake": [
+               "I think, yes. As far as I know her, she is such kind of children. I like her as she is very much. I am sure she will not change negatively when she will be turned into a human being."
+             ]
+           },
+           {
+             "Timothy": [
+               "Can you tell me about yourself? I am interested in this, too."
+             ]
+           },
+           {
+             "Snake": [
+               "What exactly interests you? Me as a devil, or how I met Beatrix or what?"
+             ]
+           },
+           {
+             "Timothy": [
+               "I am interested in many things. But unfortunately now I have not very much time to listen everything. There must be a train very soon. Maybe this is not the most <span class=\"from_vocabulary\">germane</span> moment for me to talk with you on interesting themes, but it will be better for me to talk with you so much as I will have time to do this. It is better than just to wait the train keeping silence. Please, tell me about yourself as about a devil. Where are you from? Are you really from the hell?"
+             ]
+           },
+           {
+             "Snake": [
+               "All right. Yes, I am, but I assure you, not all the people find themselves in the hell after their <span class=\"from_vocabulary\">demise</span>. So you may be calm. Now I live in my Earth <span class=\"from_vocabulary\">personalization</span> in the Pacific ocean. I live in the side which is close to your living place."
+             ]
+           },
+           {
+             "Timothy": [
+               "Oh! How cool!"
+             ]
+           },
+           {
+             "Snake": [
+               "Some people find <span class=\"from_vocabulary\">disparity</span> in me. They think that a devil means evil and it cannot be otherwise."
+             ]
+           },
+           {
+             "Author's words": [
+               "Snake and Timothy heard that the train was <span class=\"from_vocabulary\">expediting</span>. Timothy turned back, looked at this train and after that he turned to the snake again."
+             ]
+           },
+           {
+             "Timothy": [
+               "I am going. It is time to go to the train."
+             ]
+           },
+           {
+             "Snake": [
+               "Good bye, Timothy. I wish you lucky trip!"
+             ]
+           },
+           {
+             "Timothy": [
+               "Thank you very much, Devil!"
+             ]
+           },
+           {
+             "Snake": [
+               "I am thankful to you also for your wonderful <span class=\"from_vocabulary\">piousness</span>! Good bye, Timothy!"
+             ]
+           },
+           {
+             "Timothy": [
+               "Good bye, Devil!"
+             ]
+           },
+           {
+             "Author's words": [
+               "Timothy turned and went. He came in the train and the door was closed after him."
+             ]
+           }]},
+       {"number": 1.17, "header": "Christian is going to San Salvador to continue his engagement",
+         "replics":[
+           {
+             "Author's words": [
+               "..."
+             ]
+           },
+           {
+             "Christian's grandpa": [
+               "..."
+             ]
+           },
+           {
+             "Christian": [
                "..."
              ]
            }
-         ]
-      }
-   }
+         ]},
+       {"number": 1.18, "header": "Final of the science",
+         "replics":[
 
+           {
+             "Author's words": [
+               "..."
+             ]
+           },
+           {
+             "Christian": [
+               "..."
+             ]
+           },
+           {
+             "Beatrix": [
+               "..."
+             ]
+           }
+         ]},
+       {"number": 1.19, "header": "Parting of Beatrix and Woman-devil",
+         "replics":[
+           {
+             "Author's words": [
+               "..."
+             ]
+           },
+           {
+             "Woman-devil": [
+               "..."
+             ]
+           },
+           {
+             "Beatrix": [
+               "..."
+             ]
+           }
+         ]}
+     ]
+
+  }
 }

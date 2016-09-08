@@ -5,7 +5,7 @@
       "images": ["<img src=\"images/на%20заставку/изображение_1.jpg\">",
         "<img src=\"images/на%20заставку/изображение_2.jpg\">",
         "<img src=\"images/на%20заставку/изображение_3.jpg\">"],
-      "text": "It is a storie about eery accidents. There is one dangerous mad psychopath among the characters. Some of theepisodes are parody to \"Big Lebovsky\". They are similar to some of the episodes of this movie, but, in the same time they are much more serious and have completely other aftermath from the characters."
+      "preview": "It is a storie about eery accidents. There is one dangerous mad psychopath among the characters. Some of theepisodes are parody to \"Big Lebovsky\". They are similar to some of the episodes of this movie, but, in the same time they are much more serious and have completely other aftermath from the characters."
     },
     "headerLogotip": "<img src=\"images/with_characters/header_black_agent.jpg\">",
     "About characters": [
@@ -18,16 +18,14 @@
       "<b>!</b> is a producer of banal and low-minded movies with sexual tone and in one of them Sophie takes part as an actrice.",
       "There will be written about the characters more particularly. Sophie is in debt in front of !, but she doesn't cares about it. She is too frivolous."
     ],
-    "headers": {
-      "Part 1": "Computer games",
-      "Part 2": "Parody"
-    },
-    "Parts": {
-      "Part 1": [
-        {"Author's words": ["My words"]},
-        {"Q": ["... "]}
-      ],
-      "Part 2": [
+    "Parts":  [
+      {"number": 1, "header": "Computer games", "replics":[
+        {"Quentin": ["Hi, guys! I am here."]},
+        {"William & Sam": ["Hi, Quentin."]},
+        {"William": ["It is cool that you are here at least."]},
+        {"Quentin": ["May I know what news do you have?"]}
+      ]},
+      {"number": 2, "header": "Parody", "replics":[
         {"Author's words": ["Ramon, Randi and W are spies. They live in the basement of the Ramon's house. Ramon know about it nothing."]},
         {"Author's words": ["The characters are sitting in Ramon's living place and talk between each-other."]},
         {"Ramon": ["It was so impressive!"]},
@@ -42,7 +40,7 @@
         {"Author's words": ["But if we have some thoughts related with our common deals I will wish all of us to discuss them  aloud including you."]},
         {"Quentin": ["Of course. I know you can not read thoughts like me."]},
         {"W": ["Frankly, I like sso cruel stories not very mych."]}
-      ]
-    }
+      ]}
+    ]
   }
 }

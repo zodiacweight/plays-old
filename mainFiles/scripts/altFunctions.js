@@ -1,10 +1,7 @@
 /**
- * Created by User on 06.09.2016.
- */
-/**
  * Created by User on 26.08.2016.
  */
-function handleData(key) { // Extradecomposers, Black_agent - то же в jsons;
+function handleData(key) { // key == 'Extradecomposers' или 'Black_agent'
 // Извлечь файл json и сохранить в эти переменные объекты, которые находятся в этом файле.
 // 1. Создаём новый объект XMLHttpRequest
     var xhr = new XMLHttpRequest();
@@ -19,7 +16,7 @@ function handleData(key) { // Extradecomposers, Black_agent - то же в jsons
             console.log(xhr.status + ': ' + xhr.statusText); // пример вывода: 404: Not Found
         } else {
             var data = JSON.parse(xhr.responseText);
-            window[key] = data[key];//Объект Extradecomposers или Black_agent;
+            window[key] = data[key];//Объект window['Extradecomposers'] или window['Black_agent'];
             /*if(key=='Extradecomposers'){
              console.log({
              Extradecomposers:Extradecomposers,
@@ -48,7 +45,6 @@ var handleJson = {
             //console.log('initUI: ', data);
             contentlist.style.display = "none";
             rightHalf.style.display = "none";
-
             setComponentsOfBeginning(Extradecomposers);
             setTimeout(function () {
                 $("#beginning").fadeIn(2400);
@@ -88,7 +84,8 @@ function setComponentsOfBeginning (chosenPlay) {
      playName = Extradecomposers;
      console.log('Condition is applied, playName: ', playName);
      }*/
-    var componentsOfBeginning = chosenPlay['onTheBeginning'];
+    //alert(chosenPlay==undefined); // Extradecomposers: false, Black_agetn: true
+    var componentsOfBeginning = chosenPlay['onTheBeginning']; //Black_agen: chosenPlay == undefined
     /*console.trace('playName:', playName, {
      handleJson:handleJson,
      playName:playName
@@ -132,8 +129,8 @@ function setButtonsToEnter(DivForButtonsToEnter) {
 
 
 function moveActive(clickedButton, arrayOfButtons) {
-    var chosenPlay = clickedButton.getAttribute('data-source'); // строка - атрибут data-source из кнопки
-    chosenPlay = window[chosenPlay];
+    var nameOfPlay = clickedButton.getAttribute('data-source'); // строка - атрибут data-source из кнопки
+    var chosenPlay = window[nameOfPlay];
     clickedButton.setAttribute("disabled", "true");
     clickedButton.classList.add("disabledButton");
     switch (clickedButton) {
@@ -154,9 +151,6 @@ function moveActive(clickedButton, arrayOfButtons) {
         var DivForButtonsTOEnter2 = document.getElementById("buttonsToRechoiceOnTheContentList");
         setButtonsToEnter(DivForButtonsTOEnter2);
     }
-    /*else { // когда была кликнута одна из кнопок в contentList
-     // setColors(chosenPlay);
-     }*/
     addPartsToContentList(chosenPlay);
     loadAboutCharacters(chosenPlay);
     setColors(chosenPlay);
@@ -190,21 +184,22 @@ function setColors(chosenPlay) {
             if (body.hasAttribute('id')) {
                 body.removeAttribute('id');
             }
-            //body.style.backgroundColor="#0B2161";
+            body.style.backgroundColor="#0B2161";
             contentlist.style.backgroundColor = "rgba(0.1, 0.1, 0.2, 0.25)";
             break;
     }
 }
 
 function addPartsToContentList(chosenPlay) {
-    //var chosenPlay = handleJson[playName].data,
     listOfParts = document.getElementById("listOfParts");
-    /* alert(chosenPlay == Black_agent); */
+    //alert(chosenPlay == Black_agent);  /**/
     if (listOfParts.innerHTML != "") {
         listOfParts.innerHTML = "";
     }
     for (var part in chosenPlay["Parts"]) {
-        listOfParts.innerHTML += "<p id='" + part + "'>" + part + "</p>";
+        var numberOfPart = chosenPlay["Parts"][part]["number"];
+        //  alert(chosenPlay["Parts"][part]["number"]);
+        listOfParts.innerHTML += "<p id='Part" + numberOfPart + "'>Part " + numberOfPart  + "</p>";
     }
     listOfParts.innerHTML += "<p id='about_characters'>About characters</p>";
     setClickToLoadPart(chosenPlay);
@@ -226,12 +221,19 @@ function loadAboutCharacters(chosenPlay) {
  * @param playName
  */
 function setClickToLoadPart(chosenPlay) { // PlayName и ChosenPlays должно быть равно объекту Extradecomposers или Black_agent
-    var parts_with_numbers = Object.keys(chosenPlay["Parts"]);
+    var paragraphsInContentList = contentlist.getElementsByTagName("P"), parts_with_numbers = [];
+    for (var runPars=0; runPars < paragraphsInContentList.length; runPars++) {
+        if (paragraphsInContentList[runPars].innerText.indexOf("Part")==0) {
+            if (parts_with_numbers.indexOf(paragraphsInContentList[runPars].innerText)==-1) {
+                parts_with_numbers.push(paragraphsInContentList[runPars].innerText);
+            }
+        }
+    }
     var curPart, countClicks = 0;
-    for (var part in chosenPlay["Parts"]) {
+    for (var index_of_part in chosenPlay["Parts"]) {
         // Part 1, Part 2
         // Избавиться от id id содержащих пробелов
-        curPart = document.getElementById(part);
+        curPart = paragraphsInContentList[index_of_part];
         curPart.onmouseover = function() {
             this.classList.add("mouseOnItem2");
         };
@@ -241,7 +243,7 @@ function setClickToLoadPart(chosenPlay) { // PlayName и ChosenPlays должн�
         curPart.onclick = function () // назначается обработчик события -- ВНУТРИ ЦИКЛА!
         {
             countClicks++;
-            var PartNumber = this.id, countPlay = parts_with_numbers.indexOf(PartNumber);
+            var PartNumber = this.innerText; index_of_part = parts_with_numbers.indexOf(PartNumber);
             if (contentlist.style.borderRight != "") {
                 contentlist.style.borderRight = "";
                 rightHalf.style.borderLeft = "3px solid #345693";
@@ -267,33 +269,27 @@ function setClickToLoadPart(chosenPlay) { // PlayName и ChosenPlays должн�
             addedHTMLToContainPart.top_of_play = document.getElementById("top_of_play");
             addedHTMLToContainPart.top_of_play.titleOfPart = document.getElementById("headerForPart");
             addedHTMLToContainPart.content_of_play = document.getElementById("content_of_play");
-            changePart(PartNumber, chosenPlay, addedHTMLToContainPart); // добавка реплик какой-то части в content_of_play
-            // var countPlay = parts_with_numbers.indexOf(PartNumber); // числовой индекс этой part m.n
-            // при клике по кнопке назад PartNumber не изменяется countPlay - изменяются
+            changePart(PartNumber, index_of_part, chosenPlay, addedHTMLToContainPart); // добавка реплик какой-то части в content_of_play
+            // при клике по кнопке назад PartNumber не изменяется index_of_part - изменяются
             document.getElementById("scrollBack").onclick = function () {
-                if (countPlay == 1) {
-                    countPlay = parts_with_numbers.length - 1;
+                if (index_of_part == 0) {
+                    index_of_part = parts_with_numbers.length - 1;
                 }
                 else {
-                    countPlay--;
+                    index_of_part--;
                 }
-                PartNumber = parts_with_numbers[countPlay];
-                //   alert("Перед вызовом: PartNumber = "+PartNumber+" countPlay = "+countPlay);
-                // commonCodeFor2arrows(PartNumber, countPlay, chosenPlay, content_of_play);
-                changePart(PartNumber, chosenPlay, addedHTMLToContainPart);
+                PartNumber = parts_with_numbers[index_of_part];
+                changePart(PartNumber, index_of_part, chosenPlay, addedHTMLToContainPart);
             };
             document.getElementById("scrollFront").onclick = function () {
-                if (countPlay == parts_with_numbers.length - 1) {
-                    countPlay = 1;
+                if (index_of_part == parts_with_numbers.length - 1) {
+                    index_of_part = 0;
                 }
                 else {
-                    countPlay++;
+                    index_of_part++;
                 }
-                PartNumber = parts_with_numbers[countPlay];
-                changePart(PartNumber, chosenPlay, addedHTMLToContainPart);
-                //alert("Перед вызовом: PartNumber = "+PartNumber+" countPlay = "+countPlay);
-                // commonCodeFor2arrows(PartNumber, countPlay, chosenPlay, content_of_play);
-
+                PartNumber = parts_with_numbers[index_of_part];
+                changePart(PartNumber, index_of_part, chosenPlay, addedHTMLToContainPart);
             };
             var wordsfromVocabulary = document.getElementsByClassName("from_vocabulary");
             document.getElementById("paintWordsFromVocab").onclick = function () {
@@ -389,18 +385,19 @@ function setClickToLoadPart(chosenPlay) { // PlayName и ChosenPlays должн�
         loadAboutCharacters(chosenPlay);
     };
 }
-function changePart(idOfPlay, chosenPlay, addedHTMLToContainPart) { // idOfPlay = "Part номер"
+function changePart(PartNumber, index_of_part, chosenPlay, addedHTMLToContainPart) { // PartNumber = "Part номер"
     presrolesobject = {};
     presrolesarray = [];
     replics_of_choicedpart.authorwords = [];
     replics_of_choicedpart.wordsofchar = [];
     addedHTMLToContainPart.toChooseRoles.listOfCheckboxes.innerHTML = "";
-    addedHTMLToContainPart.top_of_play.titleOfPart.innerText = idOfPlay + " " + chosenPlay.headers[idOfPlay];
+    addedHTMLToContainPart.top_of_play.titleOfPart.innerText = PartNumber + " " + chosenPlay["Parts"][index_of_part]["header"];
     addedHTMLToContainPart.content_of_play.innerHTML = "";
-    if(chosenPlay==Extradecomposers) {alert("Равенство")}
-    for (var index in chosenPlay["Parts"][idOfPlay]) { // chosenPlay["Parts"][idOfPlay] - part,
-        // chosenPlay["Parts"][idOfPlay][index] - объект-реплика
-        arrayElementObject =chosenPlay["Parts"][idOfPlay][index]; // реплика героя: {}
+    //alert("В теле функции: PartNumber = "+PartNumber+" index_of_part = "+index_of_part);
+    for (var index in chosenPlay["Parts"][index_of_part]["replics"]) { // пробег по репликам какой-то части
+        // chosenPlay["Parts"][PartNumber] - part,
+        // chosenPlay["Parts"][PartNumber][index] - объект-реплика
+        arrayElementObject =chosenPlay["Parts"][index_of_part]["replics"][index]; // реплика героя: {}
         subjectName = Object.keys(arrayElementObject)[0]; // ключ (единственный) из объекта arrayElementObject:
         if (subjectName == "image") {
             addedHTMLToContainPart.content_of_play.innerHTML += arrayElementObject[subjectName];
@@ -420,7 +417,7 @@ function changePart(idOfPlay, chosenPlay, addedHTMLToContainPart) { // idOfPlay 
                             "<p><input type='checkbox' class='checkcharacter'>" + subjectName + " (Christian's grandma)</p>";
                         break;
                     default:
-                        if ((idOfPlay == "Part 1.2") && (subjectName == "Beatrix")) {
+                        if ((PartNumber == "Part 1.2") && (subjectName == "Beatrix")) {
                             addedHTMLToContainPart.toChooseRoles.listOfCheckboxes.innerHTML +=
                                 "<p><input type='checkbox' class='checkcharacter'>" + subjectName +
                                 " (a new unfamiliar creature)</p>";
@@ -464,8 +461,8 @@ addInnerHtml = function (html, innerContent) {
         "</h4><p>" + innerContent.contents[0] + "</p></div>";
 
 };
-/*function commonCodeFor2arrows (PartNumber, countPlay, choicedPlays, content_of_play) {
- PartNumber = parts_with_numbers[countPlay];
+/*function commonCodeFor2arrows (PartNumber, index_of_part, choicedPlays, content_of_play) {
+ PartNumber = parts_with_numbers[index_of_part];
  document.getElementById("headerForPart").innerText = PartNumber + " " + choicedPlays.headers[PartNumber];
  content_of_play.innerHTML = "";
  document.getElementById("listOfCheckboxes").innerHTML = "";
