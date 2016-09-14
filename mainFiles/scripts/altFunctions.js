@@ -1,12 +1,58 @@
 /**
  * Created by User on 26.08.2016.
  */
-function handleData(key) { // key == 'Extradecomposers' или 'Black_agent'
+setContents = function (replics_of_choicedpart, contents, subjectName, className) {
+    var innerContent = {
+        class: className,
+        h4: subjectName,
+        contents: contents // слова героя
+    };
+    switch (className) {
+        case "authorwords":
+            //console.log('case: authorwords', 'subjectName = '+subjectName);
+            replics_of_choicedpart.authorwords.push(innerContent);
+            break;
+        case "words_of_char":
+            replics_of_choicedpart.wordsofchar.push(innerContent);
+            break;
+    }
+    return innerContent;
+};
+addInnerHtml = function (html, innerContent) {
+    html.innerHTML += "<div class='" + innerContent.class + "'> <h4>" + innerContent.h4 +
+        "</h4><p>" + innerContent.contents[0] + "</p></div>";
+
+};
+
+var handleJson = {
+    Extradecomposers: {
+        path: 'mainFiles/jsons/special_scavengers.json',
+        handle: function (data) {
+            //console.log('initUI: ', data);
+            contentlist.style.display = "none";
+            rightHalf.style.display = "none";
+            setComponentsOfBeginning('Extradecomposers');
+            setTimeout(function () {
+                $("#beginning").fadeIn(2400);
+            }, 1800);
+        },
+        buttonText: 'Extra-decomposers'
+    },
+    Black_agent: {
+        path: 'mainFiles/jsons/black_agent.json',
+        handle: function (data) {
+            console.log('Black agent works!');
+        },
+        buttonText: 'Black_agent'
+    }
+};
+
+function handleData(key) { // Extradecomposers, Black_agent - то же в jsons;
 // Извлечь файл json и сохранить в эти переменные объекты, которые находятся в этом файле.
 // 1. Создаём новый объект XMLHttpRequest
     var xhr = new XMLHttpRequest();
 // 2. Конфигурируем его: GET-запрос на URL 'special_scavengers.json'
-    xhr.open('GET', handleJson[key].path);// путь к тому или иному json
+    xhr.open('GET', handleJson[key].path);//path
 // 3. Отсылаем запрос
     xhr.send();
     xhr.onload = function () {
@@ -16,7 +62,7 @@ function handleData(key) { // key == 'Extradecomposers' или 'Black_agent'
             console.log(xhr.status + ': ' + xhr.statusText); // пример вывода: 404: Not Found
         } else {
             var data = JSON.parse(xhr.responseText);
-            window[key] = data[key];//Объект window['Extradecomposers'] или window['Black_agent'];
+            window[key] = data[key];//Extradecomposers, Black_agent;
             /*if(key=='Extradecomposers'){
              console.log({
              Extradecomposers:Extradecomposers,
@@ -30,137 +76,95 @@ function handleData(key) { // key == 'Extradecomposers' или 'Black_agent'
              windowBlack_agent:window['Black_agent']
              });
              }*/
-            handleJson[key].handle(data); // вызов функции handle, находящейся в объекте handleJson.
+            //black_agent = data.Black_agent;
+            handleJson[key].handle(data); //
         }
     };
     xhr.onerror = function (event) {
         console.log(event);
     };
 }
-var handleJson = {
-    Extradecomposers: {
-        path: 'mainFiles/jsons/special_scavengers.json',
-        handle: function (data) {
-            this.data = data;
-            //console.log('initUI: ', data);
-            contentlist.style.display = "none";
-            rightHalf.style.display = "none";
-            setComponentsOfBeginning(Extradecomposers);
-            setTimeout(function () {
-                $("#beginning").fadeIn(2400);
-            }, 1800);
-        },
-        setColor: function(){
-            body.setAttribute('id', 'backgroundForSpecScavengers');
-            contentlist.style.backgroundColor = "rgba(0, 087, 990, 0.30)";
-        },
-        data:null,
-        buttonText: 'Extra-decomposers'
-    },
-    Black_agent: {
-        path: 'mainFiles/jsons/black_agent.json',
-        handle: function (data) {
-            this.data = data;
-            console.log('Black agent works!');
-        },
-        setColor: function(){
-            if (body.hasAttribute('id')) {
-                body.removeAttribute('id');
-            }
-            //body.style.backgroundColor="#0B2161";
-            contentlist.style.backgroundColor = "rgba(0.1, 0.1, 0.2, 0.25)";
-        },
-        data:null,
-        buttonText: 'Black_agent'
-
-    }
-};
-
 function fakeFunction(data) {
     console.log('Fake: ', data);
 }
-function setComponentsOfBeginning (chosenPlay) {
-    /*if (playName == "Extradecomposers") {
-     playName = Extradecomposers;
-     console.log('Condition is applied, playName: ', playName);
+function setComponentsOfBeginning(plays) {
+    console.trace('plays:', plays);
+    /*if (plays == "Extradecomposers") {
+     plays = Extradecomposers;
+     console.log('Condition is applied, plays: ', plays);
      }*/
-    //alert(chosenPlay==undefined); // Extradecomposers: false, Black_agetn: true
-    var componentsOfBeginning = chosenPlay['onTheBeginning']; //Black_agen: chosenPlay == undefined
-    /*console.trace('playName:', playName, {
-     handleJson:handleJson,
-     playName:playName
-     }); */
-    header.InnerText = componentsOfBeginning["header"];
-    //alert(componentsOfBeginning["header"]);
-    bigImage.innerHTML = componentsOfBeginning["images"][0];
+    console.log('plays', plays);
+    var componentsOfBeginning = plays["onTheBeginning"];
+    mainImage.innerHTML = "<h2>" + componentsOfBeginning["header"] + "</h2>" + componentsOfBeginning["images"][0];
     littleImages.innerHTML = componentsOfBeginning["images"][0];
-    document.getElementById("main_in_preview").innerText = componentsOfBeginning["preview"];
+    document.getElementById("preview").getElementsByTagName("P")[0].innerText = componentsOfBeginning["text"];
     for (var addLittleImages = 1; addLittleImages < componentsOfBeginning["images"].length; addLittleImages++) {
         littleImages.innerHTML += componentsOfBeginning["images"][addLittleImages];
     }
-    changeBigImageWithHeader();
-    //alert(header.InnerText);
+    changeMainImage();
 }
-function changeBigImageWithHeader() {
+function changeMainImage() {
     var arrayOfLittleImages = littleImages.getElementsByTagName("Img");
     for (var runLittleImages = 0; runLittleImages < arrayOfLittleImages.length; runLittleImages++) {
         arrayOfLittleImages[runLittleImages].onmouseover = function () {
-            bigImage.getElementsByTagName("Img")[0].src = this.src;
+            mainImage.getElementsByTagName("Img")[0].src = this.src;
         }
     }
-    // alert(header.InnerText);
 }
-// Устанавливаются кнопки для открытия ворот и входа
-function setButtonsToEnter(DivForButtonsToEnter) {
-    var btn, btnText, arrayOfButtons=[];
+function setButtons() {
+    var btn, btnText, buttonsPace = document.getElementById("preview_and_enter");
     for (var field in handleJson) {
-        btn = document.createElement('button'); // заносит в переменную btn значение: тег <button></button>
-        btn.dataset['source']=field; // устанавливает атрибут data-source со значением field для btn. Текстовая строка.
+        btn = document.createElement('button');
+        btn.dataset['source']=field;
         btnText = document.createTextNode(handleJson[field].buttonText);
-        btn.appendChild(btnText);
-        arrayOfButtons.push(btn);
         btn.onclick = function () {
-            console.log('this bnt:', this);
-            moveActive(this, arrayOfButtons);
+            moveActive(this);
         };
-        DivForButtonsToEnter.appendChild(btn);
+        buttonsPace.appendChild(btn);
     }
 }
 
+function enableButtons(){
 
-function moveActive(clickedButton, arrayOfButtons) {
-    var nameOfPlay = clickedButton.getAttribute('data-source'); // строка - атрибут data-source из кнопки
-    var chosenPlay = window[nameOfPlay];
-    clickedButton.setAttribute("disabled", "true");
-    clickedButton.classList.add("disabledButton");
-    switch (clickedButton) {
-        case arrayOfButtons[0]:
-            otherElement = arrayOfButtons[1];
-            break;
-        case arrayOfButtons[1]:
-            otherElement = arrayOfButtons[0];
-            break;
-    }
-    if ((otherElement.hasAttribute("disabled"))&&(otherElement.classList.contains("disabledButton"))) {
-        otherElement.removeAttribute("disabled");
-        otherElement.classList.remove("disabledButton");
-    }
+}
+
+function moveActive(button) {
+    var chosenPlays = button.getAttribute('data-source');
+    /*switch (button) {
+     case buttonsToChoiceOrChangePlays[0]:
+     otherElement = buttonsToChoiceOrChangePlays[1];
+     chosenPlays = Extradecomposers;
+     break;
+     case buttonsToChoiceOrChangePlays[1]:
+     otherElement = buttonsToChoiceOrChangePlays[0];
+     chosenPlays = black_agent;
+     break;
+     }
+
+     */
+    /*button.setAttribute("disabled", "true");
+     button.classList.add("disabledButton");
+     if (otherElement.hasAttribute("disabled")) {
+     otherElement.removeAttribute("disabled");
+     }
+     if (otherElement.classList.contains("disabledButton")) {
+     otherElement.classList.remove("disabledButton");
+     }*/
     if (beginning.style.display !== "none") { // когда была кликнута одна из кнопок на заставке
-        setComponentsOfBeginning(chosenPlay);
+        setComponentsOfBeginning(chosenPlays);
         openGates();
-        var DivForButtonsTOEnter2 = document.getElementById("buttonsToRechoiceOnTheContentList");
-        setButtonsToEnter(DivForButtonsTOEnter2);
+        addButtonsForRechoice(chosenPlays);
     }
-    addPartsToContentList(chosenPlay);
-    loadAboutCharacters(chosenPlay);
-    setColors(chosenPlay);
-    headerLogotip.innerHTML = chosenPlay["headerLogotip"];
+    addPartsToContentList(chosenPlays);
+    loadAboutCharacters(chosenPlays);
+    setColors(chosenPlays);
+    header.innerHTML = chosenPlays["headerLogotip"];
 }
 function openGates() {
     setTimeout(function () {
-        document.getElementById("instruction").innerText = 'Открыто!';
-        document.getElementById('gate').src="images/на%20заставку/открытые%20ворота.jpg";
-        document.getElementById("gate").onmouseover = function () {
+        document.getElementById("instruction").innerHTML = '<p>Открыто!</p>' +
+            '<img id="gates" src="images/на%20заставку/открытые%20ворота.jpg">';
+        document.getElementById("gates").onmouseover = function () {
             beginning.style.display = "none";
             contentlist.style.display = "block";
             rightHalf.style.display = "block";
@@ -168,14 +172,14 @@ function openGates() {
         };
     }, 3200);
 }
-/*function addButtonsForRechoice(choicedPlays) {
- document.getElementById("buttonsToEnter2").innerHTML = "<button id='enterExD2'>Extra-decomposers</button>" +
- "<button id='enterBlackAgent2'>Black agent</button>";
- var buttonsToChoicePlays2 = document.getElementById("buttonsToEnter2").getElementsByTagName("Button");
- setButtons(buttonsToChoicePlays2);
- }*/
-function setColors(chosenPlay) {
-    switch (chosenPlay) {
+function addButtonsForRechoice(choicedPlays) {
+    document.getElementById("buttonsToEnter2").innerHTML = "<button id='enterExD2'>Extra-decomposers</button>" +
+        "<button id='enterBlackAgent2'>Black agent</button>";
+    var buttonsToChoicePlays2 = document.getElementById("buttonsToEnter2").getElementsByTagName("Button");
+    setButtons(buttonsToChoicePlays2);
+}
+function setColors(choicedPlays) {
+    switch (choicedPlays) {
         case Extradecomposers:
             body.setAttribute('id', 'backgroundForSpecScavengers');
             contentlist.style.backgroundColor = "rgba(0, 087, 990, 0.30)";
@@ -184,66 +188,47 @@ function setColors(chosenPlay) {
             if (body.hasAttribute('id')) {
                 body.removeAttribute('id');
             }
-            body.style.backgroundColor="#0B2161";
+            //body.style.backgroundColor="#0B2161";
             contentlist.style.backgroundColor = "rgba(0.1, 0.1, 0.2, 0.25)";
             break;
     }
 }
-
-function addPartsToContentList(chosenPlay) {
-    listOfParts = document.getElementById("listOfParts");
-    //alert(chosenPlay == Black_agent);  /**/
+function addPartsToContentList(choicedPlays) {
+    var listOfParts = document.getElementById("listOfParts");
     if (listOfParts.innerHTML != "") {
         listOfParts.innerHTML = "";
     }
-    for (var part in chosenPlay["Parts"]) {
-        var numberOfPart = chosenPlay["Parts"][part]["number"];
-        //  alert(chosenPlay["Parts"][part]["number"]);
-        listOfParts.innerHTML += "<p id='Part" + numberOfPart + "'>Part " + numberOfPart  + "</p>";
+    for (var part in choicedPlays["Parts"]) {
+        listOfParts.innerHTML += "<p id='" + part + "'>" + part + "</p>";
     }
     listOfParts.innerHTML += "<p id='about_characters'>About characters</p>";
-    setClickToLoadPart(chosenPlay);
+    setClickToLoadPart(part, choicedPlays);
 }
-
-function loadAboutCharacters(chosenPlay) {
+function loadAboutCharacters(play) {
     if (contentlist.style.borderRight == "") {
         contentlist.style.borderRight = "3px solid #345693";
         rightHalf.style.borderLeft = "none";
     }
     mainArea.innerHTML = "<h2>About Characters</h2>";
-    for (var addPartAboutCharacters = 0; addPartAboutCharacters < chosenPlay['About characters'].length; addPartAboutCharacters++) {
-        mainArea.innerHTML += "<p>" + chosenPlay['About characters'][addPartAboutCharacters] + "</p>";
+    for (var addPartAboutCharacters = 0; addPartAboutCharacters < play['About characters'].length; addPartAboutCharacters++) {
+        mainArea.innerHTML += "<p>" + play['About characters'][addPartAboutCharacters] + "</p>";
     }
 }
-/**
- *
- * @param part
- * @param playName
- */
-function setClickToLoadPart(chosenPlay) { // PlayName и ChosenPlays должно быть равно объекту Extradecomposers или Black_agent
-    var paragraphsInContentList = contentlist.getElementsByTagName("P"), parts_with_numbers = [];
-    for (var runPars=0; runPars < paragraphsInContentList.length; runPars++) {
-        if (paragraphsInContentList[runPars].innerText.indexOf("Part")==0) {
-            if (parts_with_numbers.indexOf(paragraphsInContentList[runPars].innerText)==-1) {
-                parts_with_numbers.push(paragraphsInContentList[runPars].innerText);
-            }
-        }
-    }
+function setClickToLoadPart(part, choicedPlays) {
+    var parts_with_numbers = Object.keys(choicedPlays["Parts"]);
     var curPart, countClicks = 0;
-    for (var index_of_part in chosenPlay["Parts"]) {
-        // Part 1, Part 2
-        // Избавиться от id id содержащих пробелов
-        curPart = paragraphsInContentList[index_of_part];
-        curPart.onmouseover = function() {
+    for (part in choicedPlays["Parts"]) {
+        curPart = document.getElementById(part);
+        curPart.onmouseover = function getStylesForItem2() {
             this.classList.add("mouseOnItem2");
         };
-        curPart.onmouseout = function() {
+        curPart.onmouseout = function looseStylesForItem2() {
             this.classList.remove("mouseOnItem2");
         };
         curPart.onclick = function () // назначается обработчик события -- ВНУТРИ ЦИКЛА!
         {
             countClicks++;
-            var PartNumber = this.innerText; index_of_part = parts_with_numbers.indexOf(PartNumber);
+            var PartNumber = this.id, countPlay = parts_with_numbers.indexOf(PartNumber);
             if (contentlist.style.borderRight != "") {
                 contentlist.style.borderRight = "";
                 rightHalf.style.borderLeft = "3px solid #345693";
@@ -269,27 +254,33 @@ function setClickToLoadPart(chosenPlay) { // PlayName и ChosenPlays должн�
             addedHTMLToContainPart.top_of_play = document.getElementById("top_of_play");
             addedHTMLToContainPart.top_of_play.titleOfPart = document.getElementById("headerForPart");
             addedHTMLToContainPart.content_of_play = document.getElementById("content_of_play");
-            changePart(PartNumber, index_of_part, chosenPlay, addedHTMLToContainPart); // добавка реплик какой-то части в content_of_play
-            // при клике по кнопке назад PartNumber не изменяется index_of_part - изменяются
+            changePart(PartNumber, choicedPlays, addedHTMLToContainPart); // добавка реплик какой-то части в content_of_play
+            // var countPlay = parts_with_numbers.indexOf(PartNumber); // числовой индекс этой part m.n
+            // при клике по кнопке назад PartNumber не изменяется countPlay - изменяются
             document.getElementById("scrollBack").onclick = function () {
-                if (index_of_part == 0) {
-                    index_of_part = parts_with_numbers.length - 1;
+                if (countPlay == 1) {
+                    countPlay = parts_with_numbers.length - 1;
                 }
                 else {
-                    index_of_part--;
+                    countPlay--;
                 }
-                PartNumber = parts_with_numbers[index_of_part];
-                changePart(PartNumber, index_of_part, chosenPlay, addedHTMLToContainPart);
+                PartNumber = parts_with_numbers[countPlay];
+                //   alert("Перед вызовом: PartNumber = "+PartNumber+" countPlay = "+countPlay);
+                // commonCodeFor2arrows(PartNumber, countPlay, choicedPlays, content_of_play);
+                changePart(PartNumber, choicedPlays, addedHTMLToContainPart);
             };
             document.getElementById("scrollFront").onclick = function () {
-                if (index_of_part == parts_with_numbers.length - 1) {
-                    index_of_part = 0;
+                if (countPlay == parts_with_numbers.length - 1) {
+                    countPlay = 1;
                 }
                 else {
-                    index_of_part++;
+                    countPlay++;
                 }
-                PartNumber = parts_with_numbers[index_of_part];
-                changePart(PartNumber, index_of_part, chosenPlay, addedHTMLToContainPart);
+                PartNumber = parts_with_numbers[countPlay];
+                changePart(PartNumber, choicedPlays, addedHTMLToContainPart);
+                //alert("Перед вызовом: PartNumber = "+PartNumber+" countPlay = "+countPlay);
+                // commonCodeFor2arrows(PartNumber, countPlay, choicedPlays, content_of_play);
+
             };
             var wordsfromVocabulary = document.getElementsByClassName("from_vocabulary");
             document.getElementById("paintWordsFromVocab").onclick = function () {
@@ -382,22 +373,20 @@ function setClickToLoadPart(chosenPlay) { // PlayName и ChosenPlays должн�
     };
     curPart.onclick = function () {
         countClicks = 0;
-        loadAboutCharacters(chosenPlay);
+        loadAboutCharacters(choicedPlays);
     };
 }
-function changePart(PartNumber, index_of_part, chosenPlay, addedHTMLToContainPart) { // PartNumber = "Part номер"
+function changePart(idOfPlay, choicedPlays, addedHTMLToContainPart) { // idOfPlay = "Part номер"
     presrolesobject = {};
     presrolesarray = [];
     replics_of_choicedpart.authorwords = [];
     replics_of_choicedpart.wordsofchar = [];
     addedHTMLToContainPart.toChooseRoles.listOfCheckboxes.innerHTML = "";
-    addedHTMLToContainPart.top_of_play.titleOfPart.innerText = PartNumber + " " + chosenPlay["Parts"][index_of_part]["header"];
+    addedHTMLToContainPart.top_of_play.titleOfPart.innerText = idOfPlay + " " + choicedPlays.headers[idOfPlay];
     addedHTMLToContainPart.content_of_play.innerHTML = "";
-    //alert("В теле функции: PartNumber = "+PartNumber+" index_of_part = "+index_of_part);
-    for (var index in chosenPlay["Parts"][index_of_part]["replics"]) { // пробег по репликам какой-то части
-        // chosenPlay["Parts"][PartNumber] - part,
-        // chosenPlay["Parts"][PartNumber][index] - объект-реплика
-        arrayElementObject =chosenPlay["Parts"][index_of_part]["replics"][index]; // реплика героя: {}
+    for (var index in choicedPlays["Parts"][idOfPlay]) { // choicedPlays["Parts"][idOfPlay] - part,
+        // choicedPlays["Parts"][idOfPlay][index] - объект-реплика
+        arrayElementObject = choicedPlays["Parts"][idOfPlay][index]; // реплика героя: {}
         subjectName = Object.keys(arrayElementObject)[0]; // ключ (единственный) из объекта arrayElementObject:
         if (subjectName == "image") {
             addedHTMLToContainPart.content_of_play.innerHTML += arrayElementObject[subjectName];
@@ -417,7 +406,7 @@ function changePart(PartNumber, index_of_part, chosenPlay, addedHTMLToContainPar
                             "<p><input type='checkbox' class='checkcharacter'>" + subjectName + " (Christian's grandma)</p>";
                         break;
                     default:
-                        if ((PartNumber == "Part 1.2") && (subjectName == "Beatrix")) {
+                        if ((idOfPlay == "Part 1.2") && (subjectName == "Beatrix")) {
                             addedHTMLToContainPart.toChooseRoles.listOfCheckboxes.innerHTML +=
                                 "<p><input type='checkbox' class='checkcharacter'>" + subjectName +
                                 " (a new unfamiliar creature)</p>";
@@ -435,34 +424,13 @@ function changePart(PartNumber, index_of_part, chosenPlay, addedHTMLToContainPar
             }
             innerContent = setContents(replics_of_choicedpart, [arrayElementObject[subjectName]], subjectName, className);
             /*При первом клике по part content_of_play существует, при последующих - нет*/
+            // alert(content_of_play === undefined);
             addInnerHtml(addedHTMLToContainPart.content_of_play, innerContent); // В содержимое элемента text добавляется innerContent, судя по содержанию.
         }
     }
 }
-setContents = function (replics_of_choicedpart, contents, subjectName, className) {
-    var innerContent = {
-        class: className,
-        h4: subjectName,
-        contents: contents // слова героя
-    };
-    switch (className) {
-        case "authorwords":
-            //console.log('case: authorwords', 'subjectName = '+subjectName);
-            replics_of_choicedpart.authorwords.push(innerContent);
-            break;
-        case "words_of_char":
-            replics_of_choicedpart.wordsofchar.push(innerContent);
-            break;
-    }
-    return innerContent;
-};
-addInnerHtml = function (html, innerContent) {
-    html.innerHTML += "<div class='" + innerContent.class + "'> <h4>" + innerContent.h4 +
-        "</h4><p>" + innerContent.contents[0] + "</p></div>";
-
-};
-/*function commonCodeFor2arrows (PartNumber, index_of_part, choicedPlays, content_of_play) {
- PartNumber = parts_with_numbers[index_of_part];
+/*function commonCodeFor2arrows (PartNumber, countPlay, choicedPlays, content_of_play) {
+ PartNumber = parts_with_numbers[countPlay];
  document.getElementById("headerForPart").innerText = PartNumber + " " + choicedPlays.headers[PartNumber];
  content_of_play.innerHTML = "";
  document.getElementById("listOfCheckboxes").innerHTML = "";

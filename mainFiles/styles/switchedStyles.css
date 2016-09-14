@@ -1,0 +1,34 @@
+#backgroundForExtradecomposers {
+    background-image: url("../../images/textures/waterdrops.jpg");
+}
+#backgroundForBlack_agent {
+    background-image: url("../../images/textures/поздний_закат2.jpg");
+}
+.unclickedButtonForExtradecomposers {
+    background-image: url("../../images/textures/granite.png");
+    color: darkslateblue;
+}
+.unclickedButtonForBlack_agent {
+    background-color: midnightblue;
+    color: lightcyan;
+}
+.paintedReplicsOfChar_Extradecomposers {
+    background-image: url("../../images/textures/туман.jpg");
+    border-width: 3px; !important;
+    color: darkblue;
+}
+.paintedReplicsOfChar_Black_agent {
+    background-image: url("../../images/textures/рассвет.jpg");
+    border-width: 3px; !important;
+    color: darkviolet;
+}
+.paintedWordsFromVocabulary_Extradecomposers {
+    background-color: indigo;
+    color: aliceblue;
+    padding: 4px;
+}
+.paintedWordsFromVocabulary_Black_agent {
+    background-color: lightgray;
+    color: darkslategray;
+    padding: 4px;
+}

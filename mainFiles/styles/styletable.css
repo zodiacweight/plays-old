@@ -37,9 +37,6 @@
         color: linen;
         font-family: "Yu Gothic UI";
     }
-  /*  #preview {
-        padding: 2px 18px 1px 18px;
-    } */
     #preview_and_enter > * {
         border: 1px solid;
         margin-left: 2%;
@@ -53,13 +50,9 @@
     #preview > p {
         font-size: 20px;
     }
-    #main_in_preview {
-        color: mediumvioletred;
-    }
     #how_to_open_plays {
         text-decoration: underline;
         font-weight: bold;
-        color: mediumblue;
         margin-left: 6%;
     }
     #enter {
@@ -73,9 +66,9 @@
          width: 85%;
          margin: 1% 10% 5% 5%;
          font-size: 20px;
-         color: forestgreen;
+         font-weight: bold;
      }
-     #buttonsToEnter {
+     #buttonsToEnter { /**/
          margin-left: 10%;
          width: 80%;
      }
@@ -83,6 +76,7 @@
          font-size: 16px;
          padding: 7px;
          margin-left: 4px;
+         border-radius: 6px;
      }
     #enter > img {
         width: 58%;
@@ -95,9 +89,6 @@
     }
     #littleImages > img {
         width: 100%;
-    }
-    #backgroundForSpecScavengers {
-        background-image: url("../../images/textures/waterdrops.jpg");
     }
     /*Стили contentList -левой части после исчезновения заставки: */
      #contentlist {
@@ -116,21 +107,17 @@
      #buttonsToRechoiceOnTheContentList > button {
          font-size: 18px;
          padding: 4px;
-         margin-bottom: 4%
-     }
-     #buttonsToEnter2 {
-         width: 94%;
-         margin-left: 2%;
          margin-top: 4%;
-         border: 1px solid;
+         border-radius: 6px;
+         font-weight: bold;
      }
-     #DivForButtonsToRechoice > button {
+     #DivForButtonsToRechoice > button { /**/
          font-size: 18px;
          padding: 11px;
-        /* background-color: darkslateblue;
-         color: gainsboro; */
          margin-left: 7%;
          margin-top: 5%;
+         border-radius: 7px;
+         font-weight: bold;
      }
      .disabledButton {
          background-color: beige;
@@ -149,9 +136,9 @@
          /*background-color: rgba(0, 120, 201, 0.25); */
          border-radius: 5px;
      }
-     .mouseOnItem2 {
-         background-color: maroon;
-         opacity: 0.99;
+     .mouseOnItem {
+        background-color: darkcyan;
+         opacity: 0.87;
          color: cornsilk;
          border: 2px solid khaki;
      }
@@ -284,8 +271,7 @@
              font-size: 20px;
              margin-right: 4%;
              margin-left: 3%;
-             margin-bottom: 1%;
-            /* margin-top: 2%; */
+             margin-bottom: 1%
         }
         .authorwords > h4 {
             margin-bottom: 6px;
@@ -323,16 +309,31 @@
         #fortypes {
             font-size: 18px;
         }
-        .paintedreplicsofchar {
-            background-image: url("../../images/textures/papyrus.jpg");
-        }
-        .paintedauthorreplics {
+
+        .paintedAuthorReplics {
             border: 3px dashed darkviolet;
             border-radius: 4px;
             background-image: url("../../images/textures/buket.jpg");
         }
-     .paintedWordsFromVocabulary {
-         background-color: indigo;
-         color: aliceblue;
-         padding: 4px;
-     }
+        .paintedAuthorReplics > h4 {
+            color: black;
+        }
+        .paintedAuthorReplics > p {
+            color: #0B0B61;
+        }
+ /*.paintedReplicsOfChar_Extradecomposers {
+     background-image: url("../../images/textures/туман.jpg");
+ }
+ .paintedReplicsOfChar_Black_agent {
+     background-image: url("../../images/textures/papyrus.jpg");
+ }
+ .paintedWordsFromVocabulary_Extradecomposers {
+     background-color: indigo;
+     color: aliceblue;
+     padding: 4px;
+ }
+ .paintedWordsFromVocabulary_Black_agent {
+     background-color: lightgray;
+     color: darkslategray;
+     padding: 4px;
+ } */

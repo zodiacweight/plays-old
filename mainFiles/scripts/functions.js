@@ -46,16 +46,19 @@ var handleJson = {
             contentlist.style.display = "none";
             rightHalf.style.display = "none";
             setComponentsOfBeginning(Extradecomposers);
+            //preview_and_enter.style.color = "mediumvioletred";
+            main_in_preview.style.color = "mediumvioletred";
+            how_to_open_plays.style.color = "mediumblue";
             setTimeout(function () {
                 $("#beginning").fadeIn(2400);
             }, 1800);
         },
-        setColor: function(){
+       /* setColor: function(){
             body.setAttribute('id', 'backgroundForSpecScavengers');
-            contentlist.style.backgroundColor = "rgba(0, 087, 990, 0.30)";
-        },
+            //contentlist.style.backgroundColor = "rgba(0, 087, 990, 0.30)";
+        }, */
         data:null,
-        buttonText: 'Extra-decomposers'
+        buttonText: 'Extradecomposers'
     },
     Black_agent: {
         path: 'mainFiles/jsons/black_agent.json',
@@ -63,15 +66,15 @@ var handleJson = {
             this.data = data;
             console.log('Black agent works!');
         },
-        setColor: function(){
+        /*setColor: function(){
             if (body.hasAttribute('id')) {
                 body.removeAttribute('id');
             }
             //body.style.backgroundColor="#0B2161";
-            contentlist.style.backgroundColor = "rgba(0.1, 0.1, 0.2, 0.25)";
-        },
+            //contentlist.style.backgroundColor = "rgba(0.1, 0.1, 0.2, 0.25)";
+        }, */
         data:null,
-        buttonText: 'Black_agent'
+        buttonText: 'Black agent'
 
     }
 };
@@ -81,12 +84,9 @@ function fakeFunction(data) {
 }
 function setComponentsOfBeginning (chosenPlay) {
     var componentsOfBeginning = chosenPlay['onTheBeginning']; //Black_agen: chosenPlay == undefined
-    /*console.trace('playName:', playName, {
-        handleJson:handleJson,
-        playName:playName
-    }); */
-    header.InnerText = componentsOfBeginning["header"];
-    //alert(componentsOfBeginning["header"]);
+    //header = document.getElementById("header"),
+    document.getElementById("header").InnerText = chosenPlay['onTheBeginning'].header;
+    //alert(header.InnerText);
     bigImage.innerHTML = componentsOfBeginning["images"][0];
     littleImages.innerHTML = componentsOfBeginning["images"][0];
     document.getElementById("main_in_preview").innerText = componentsOfBeginning["preview"];
@@ -103,30 +103,45 @@ function changeBigImageWithHeader() {
             bigImage.getElementsByTagName("Img")[0].src = this.src;
         }
     }
-   // alert(header.InnerText);
 }
 // Устанавливаются кнопки для открытия ворот и входа
-function setButtonsToEnter(DivForButtons/*, arrayOfButtons */) {
+function setButtonsToEnter(DivForButtons, instruction) {
     var btn, btnText, arrayOfButtons=[];
         for (var field in handleJson) {
             btn = document.createElement('button'); // заносит в переменную btn значение: тег <button></button>
             btn.dataset['source']=field; // устанавливает атрибут data-source со значением field для btn. Текстовая строка.
             btnText = document.createTextNode(handleJson[field].buttonText);
+            switch (btn.innerText) {
+                case "Extradecomposers":
+                btn.classList.add("unclickedButtonForExtradecomposers");
+                    break;
+                case "Black agent":
+                btn.classList.add("unclickedButtonForBlack_agent");
+                    break;
+            }
             btn.appendChild(btnText);
             btn.onclick = function () {
                 console.log('this bnt:', this);
-                moveActive(this, arrayOfButtons);
+                moveActive(this, arrayOfButtons, instruction);
             };
             arrayOfButtons.push(btn);
             DivForButtons.appendChild(btn);
         }
 }
 
-function moveActive(clickedButton, arrayOfButtons) {
+function moveActive(clickedButton, arrayOfButtons, instruction) {
     var nameOfPlay = clickedButton.getAttribute('data-source'); // строка - атрибут data-source из кнопки
+   // alert(nameOfPlay===undefined);
+   // alert(chosenPlay===undefined);
     var chosenPlay = window[nameOfPlay];
     clickedButton.setAttribute("disabled", "true");
     clickedButton.classList.add("disabledButton");
+    if (clickedButton.innerText == "Etradecomposers") {
+        clickedButton.classList.remove("unclickedButtonForExtradecomposers");
+    }
+    else {
+        clickedButton.classList.remove("unclickedButtonForBlack_agent");
+    }
     switch (clickedButton) {
         case arrayOfButtons[0]:
             otherElement = arrayOfButtons[1];
@@ -138,8 +153,15 @@ function moveActive(clickedButton, arrayOfButtons) {
     if ((otherElement.hasAttribute("disabled"))&&(otherElement.classList.contains("disabledButton"))) {
         otherElement.removeAttribute("disabled");
         otherElement.classList.remove("disabledButton");
+        if (otherElement.innerText=="Extradecomposers") {
+            otherElement.classList.add("unclickedButtonForExtradecomposers");
+        }
+        else {
+            otherElement.classList.add("unclickedButtonForBlack_agent");
+        }
     }
     if (beginning.style.display !== "none") { // когда была кликнута одна из кнопок на заставке
+        alert(chosenPlay);
         setComponentsOfBeginning(chosenPlay);
         openGates();
         var DivForButtonsToRechoice = document.getElementById("DivForButtonsToRechoice");
@@ -149,9 +171,9 @@ function moveActive(clickedButton, arrayOfButtons) {
             // ContentList
         }
     }
-    addPartsToContentList(chosenPlay);
+    addPartsToContentList(chosenPlay, nameOfPlay);
     loadAboutCharacters(chosenPlay);
-    setColors(chosenPlay);
+    setColors(chosenPlay,  nameOfPlay, instruction);
     headerLogotip.innerHTML = chosenPlay["headerLogotip"];
 }
 function openGates() {
@@ -162,38 +184,48 @@ function openGates() {
             beginning.style.display = "none";
             contentlist.style.display = "block";
             rightHalf.style.display = "block";
-            contentlist.style.borderRight = "3px solid #345693";
+            contentlist.style.borderRight = "3px solid";
         };
     }, 3200);
 }
-/*function addButtonsForRechoice(choicedPlays) {
-    document.getElementById("buttonsToEnter2").innerHTML = "<button id='enterExD2'>Extra-decomposers</button>" +
-        "<button id='enterBlackAgent2'>Black agent</button>";
-    var buttonsToChoicePlays2 = document.getElementById("buttonsToEnter2").getElementsByTagName("Button");
-    setButtons(buttonsToChoicePlays2);
-}*/
-function setColors(chosenPlay) {
+
+function setColors(chosenPlay,  nameOfPlay,  instruction) {
     switch (chosenPlay) {
         case Extradecomposers:
-            body.setAttribute('id', 'backgroundForSpecScavengers');
-            contentlist.style.backgroundColor = "rgba(0, 087, 990, 0.30)";
-            if (rightHalf.style.color=="lightgoldenrodyellow") {
-                rightHalf.style.color="black"
+            if (beginning.style.display!=="none") {
+                //preview_and_enter.style.color = "mediumvioletred";
+                how_to_open_plays.style.color = "mediumblue";
+                main_in_preview.style.color = "mediumvioletred";
+                instruction.style.color = "#08088A";
             }
+            rightHalf.style.color="black";
+            contentlist.style.borderColor = "#345693";
+            contentlist.style.backgroundColor="rgba(0, 087, 990, 0.30)";
+            //alert("setColors вызвана!");
             break;
         case Black_agent:
-            if (body.hasAttribute('id')) {
-                body.removeAttribute('id');
+            if (beginning.style.display!=="none") {
+                //preview_and_enter.style.color = "#F5BCA9";
+                how_to_open_plays.style.color = "#2ECCFA";
+                main_in_preview.style.color = "#BCA9F5";
+                //alert("setColors вызвана!");
+                instruction.style.color = "#4B088A";
             }
-            body.style.backgroundColor="#0B2161";
             rightHalf.style.color="lightgoldenrodyellow";
+            contentlist.style.borderColor = "lightblue";
+            contentlist.style.backgroundColor="rgba(80, 00, FF, 0.25)";  /* #8000FF */
             break;
     }
+    body.setAttribute("id", "backgroundFor"+nameOfPlay);
+    if (body.hasAttribute("id")) {
+        body.removeAttribute("id");
+        body.setAttribute("id", "backgroundFor"+nameOfPlay);
+    }
+
 }
 
-function addPartsToContentList(chosenPlay) {
-        listOfParts = document.getElementById("listOfParts");
-   //alert(chosenPlay == Black_agent);  /**/
+function addPartsToContentList(chosenPlay, nameOfPlay) {
+    listOfParts = document.getElementById("listOfParts");
     if (listOfParts.innerHTML != "") {
         listOfParts.innerHTML = "";
     }
@@ -203,12 +235,13 @@ function addPartsToContentList(chosenPlay) {
         listOfParts.innerHTML += "<p id='Part" + numberOfPart + "'>Part " + numberOfPart  + "</p>";
     }
     listOfParts.innerHTML += "<p id='about_characters'>About characters</p>";
-    setClickToLoadPart(chosenPlay);
+    //listOfParts.getElementsByTagName("P")[part].style.color = "#0B0B61";
+    setClickToLoadPart(chosenPlay, nameOfPlay);
 }
 
 function loadAboutCharacters(chosenPlay) {
     if (contentlist.style.borderRight == "") {
-        contentlist.style.borderRight = "3px solid #345693";
+        contentlist.style.borderRight = "3px solid";
         rightHalf.style.borderLeft = "none";
     }
     mainArea.innerHTML = "<h2>About Characters</h2>";
@@ -221,7 +254,7 @@ function loadAboutCharacters(chosenPlay) {
  * @param part
  * @param playName
  */
-function setClickToLoadPart(chosenPlay) { // PlayName и ChosenPlays должно быть равно объекту Extradecomposers или Black_agent
+function setClickToLoadPart(chosenPlay,  nameOfPlay) { // PlayName и ChosenPlays должно быть равно объекту Extradecomposers или Black_agent
     var paragraphsInContentList = contentlist.getElementsByTagName("P"), parts_with_numbers = [];
     for (var runPars=0; runPars < paragraphsInContentList.length; runPars++) {
         if (paragraphsInContentList[runPars].innerText.indexOf("Part")==0) {
@@ -236,10 +269,10 @@ function setClickToLoadPart(chosenPlay) { // PlayName и ChosenPlays должн�
         // Избавиться от id id содержащих пробелов
         curPart = paragraphsInContentList[index_of_part];
         curPart.onmouseover = function() {
-            this.classList.add("mouseOnItem2");
+            this.classList.add("mouseOnItem");
         };
         curPart.onmouseout = function() {
-            this.classList.remove("mouseOnItem2");
+            this.classList.remove("mouseOnItem");
         };
         curPart.onclick = function () // назначается обработчик события -- ВНУТРИ ЦИКЛА!
         {
@@ -247,7 +280,7 @@ function setClickToLoadPart(chosenPlay) { // PlayName и ChosenPlays должн�
             var PartNumber = this.innerText; index_of_part = parts_with_numbers.indexOf(PartNumber);
             if (contentlist.style.borderRight != "") {
                 contentlist.style.borderRight = "";
-                rightHalf.style.borderLeft = "3px solid #345693";
+                rightHalf.style.borderLeft = "3px solid";
             }
             if (countClicks == 1) { //  Если клик первый, то элементы добавляются в html. Независимо от if
                 // все эти элементы сохраняются в объект, и вызывается функция changePart, в которую передаются изменяемые
@@ -258,7 +291,8 @@ function setClickToLoadPart(chosenPlay) { // PlayName и ChosenPlays должн�
                 document.getElementById("mainArea").innerHTML = "<div id='toChooseRoles'></div>" +
                     "<div id='top_of_play'></div><div id='content_of_play'></div>";
                 document.getElementById("toChooseRoles").innerHTML = "<h4>There are the following characters in this part:</h4>" +
-                    "<div id='listOfCheckboxes'></div><div><input id='paintreplics' type='button' value='paint roles'></div>";
+                    "<div id='listOfCheckboxes'></div><div><input id='paintreplics' type='button' " +
+                    "value='<p>paint roles</p>and / or<p></p><p>clear them</p>'></div>";
                 document.getElementById("top_of_play").innerHTML = "<div><h2 id='headerForPart'></h2></div>"
                     + "<div id='buttons'><input type='button' value='<' id='scrollBack'>" +
                     "<input type='button' value='>' id='scrollFront'>" +
@@ -295,7 +329,7 @@ function setClickToLoadPart(chosenPlay) { // PlayName и ChosenPlays должн�
             var wordsfromVocabulary = document.getElementsByClassName("from_vocabulary");
             document.getElementById("paintWordsFromVocab").onclick = function () {
                 for (var runWords = 0; runWords < wordsfromVocabulary.length; runWords++) {
-                    wordsfromVocabulary[runWords].classList.toggle("paintedWordsFromVocabulary");
+                    wordsfromVocabulary[runWords].classList.toggle("paintedWordsFromVocabulary_"+nameOfPlay);
                 }
             };
             checkboxes = document.getElementsByClassName("checkcharacter");
@@ -308,13 +342,14 @@ function setClickToLoadPart(chosenPlay) { // PlayName и ChosenPlays должн�
                     length_charwords = replics_of_choicedpart['wordsofchar'].length;
                 // Пробег по списку чекбоксов
                 for (var runchecks = 0; runchecks < length_of_checks; runchecks++) {
+                   // alert(runchecks);
                     nameInCheckbox = presRolesArray[runchecks];
                     if (checkboxes[runchecks].checked) {
                         checkedRoles[nameInCheckbox] = true;
                         if (presRolesArray[runchecks] == "Author's words") {
                             for (var rundivs = 0; rundivs < length_authorwords; rundivs++) {
-                                if (!(replics_of_choicedpart.authorreplics_divs[rundivs].classList.contains("paintedauthorreplics"))) {
-                                    replics_of_choicedpart.authorreplics_divs[rundivs].classList.add("paintedauthorreplics");
+                                if (!(replics_of_choicedpart.authorreplics_divs[rundivs].classList.contains("paintedAuthorReplics"))) {
+                                    replics_of_choicedpart.authorreplics_divs[rundivs].classList.add("paintedAuthorReplics");
                                 }
                             }
                         }
@@ -322,20 +357,21 @@ function setClickToLoadPart(chosenPlay) { // PlayName и ChosenPlays должн�
                             for (var rundivs = 0; rundivs < length_charwords; rundivs++) {
                                 name_in_h4 = replics_of_choicedpart.replicsofchar_divs[rundivs].getElementsByTagName('H4')[0].innerText;
                                 console.log(' name_in_h4 = ' + name_in_h4);
-                                if (name_in_h4.indexOf(nameInCheckbox) > -1) {
-                                    replics_of_choicedpart.replicsofchar_divs[rundivs].classList.add("paintedreplicsofchar");
+                                if((PartNumber=="Part 1.17"&&name_in_h4==nameInCheckbox)||
+                                (PartNumber!=="Part 1.17"&&name_in_h4.indexOf(nameInCheckbox) >= 0)) {
+                                    replics_of_choicedpart.replicsofchar_divs[rundivs].classList.add("paintedReplicsOfChar_"+nameOfPlay);
                                 }
                                 if ((nameInCheckbox == "Beatrix") && (name_in_h4 == "Being")) {
-                                    replics_of_choicedpart.replicsofchar_divs[rundivs].classList.add("paintedreplicsofchar");
+                                    replics_of_choicedpart.replicsofchar_divs[rundivs].classList.add("paintedReplicsOfChar_"+nameOfPlay); //
                                 }
                             }
                         }
                     }
-                    else { // Если элемент не чекнут в этом клике
+                    else { // Если элемент не чекнут в этом клике \ \\\ |
                         if (nameInCheckbox == "Author's words") {
                             for (rundivs = 0; rundivs < length_authorwords; rundivs++) {
-                                if (replics_of_choicedpart.authorreplics_divs[rundivs].classList.contains("paintedauthorreplics")) {
-                                    replics_of_choicedpart.authorreplics_divs[rundivs].classList.remove("paintedauthorreplics");
+                                if (replics_of_choicedpart.authorreplics_divs[rundivs].classList.contains("paintedAuthorReplics")) {
+                                    replics_of_choicedpart.authorreplics_divs[rundivs].classList.remove("paintedAuthorReplics");
                                 }
                             }
                         }
@@ -343,14 +379,15 @@ function setClickToLoadPart(chosenPlay) { // PlayName и ChosenPlays должн�
                             for (rundivs = 0; rundivs < length_charwords; rundivs++) {
                                 name_in_h4 = replics_of_choicedpart.replicsofchar_divs[rundivs].getElementsByTagName('H4')[0].innerText;
                                 if (name_in_h4.indexOf(" &") == -1) {
-                                    if (name_in_h4.indexOf(nameInCheckbox) >= 0) {
-                                        if (replics_of_choicedpart.replicsofchar_divs[rundivs].classList.contains("paintedreplicsofchar")) {
-                                            replics_of_choicedpart.replicsofchar_divs[rundivs].classList.remove("paintedreplicsofchar");
+                                    if ((PartNumber=="Part 1.17"&&name_in_h4==nameInCheckbox)||
+                                        (PartNumber!=="Part 1.17"&&name_in_h4.indexOf(nameInCheckbox) >= 0)) {
+                                        if (replics_of_choicedpart.replicsofchar_divs[rundivs].classList.contains("paintedReplicsOfChar_"+nameOfPlay)) {
+                                            replics_of_choicedpart.replicsofchar_divs[rundivs].classList.remove("paintedReplicsOfChar_"+nameOfPlay);
                                         }
                                     }
                                     if ((nameInCheckbox == "Beatrix") && (name_in_h4 == "Being")) {
-                                        if (replics_of_choicedpart.replicsofchar_divs[rundivs].classList.contains("paintedreplicsofchar")) {
-                                            replics_of_choicedpart.replicsofchar_divs[rundivs].classList.remove("paintedreplicsofchar");
+                                        if (replics_of_choicedpart.replicsofchar_divs[rundivs].classList.contains("paintedReplicsOfChar_"+nameOfPlay)) {
+                                            replics_of_choicedpart.replicsofchar_divs[rundivs].classList.remove("paintedReplicsOfChar_"+nameOfPlay);
                                         }
                                     }
                                 }
@@ -362,8 +399,8 @@ function setClickToLoadPart(chosenPlay) { // PlayName и ChosenPlays должн�
                                         }
                                     }
                                     if (runNamesInConjuction == namesInConjuction.length) {
-                                        if (replics_of_choicedpart.replicsofchar_divs[rundivs].classList.contains("paintedreplicsofchar")) {
-                                            replics_of_choicedpart.replicsofchar_divs[rundivs].classList.remove("paintedreplicsofchar");
+                                        if (replics_of_choicedpart.replicsofchar_divs[rundivs].classList.contains("paintedReplicsOfChar_"+nameOfPlay)) {
+                                            replics_of_choicedpart.replicsofchar_divs[rundivs].classList.remove("paintedReplicsOfChar_"+nameOfPlay);
                                         }
                                     }
                                 }
@@ -376,10 +413,10 @@ function setClickToLoadPart(chosenPlay) { // PlayName и ChosenPlays должн�
     }
     curPart = document.getElementById("about_characters");
     curPart.onmouseover = function getStylesForItem2() {
-        this.classList.add("mouseOnItem2");
+        this.classList.add("mouseOnItem");
     };
     curPart.onmouseout = function looseStylesForItem2() {
-        this.classList.remove("mouseOnItem2");
+        this.classList.remove("mouseOnItem");
     };
     curPart.onclick = function () {
         countClicks = 0;
