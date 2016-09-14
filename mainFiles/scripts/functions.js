@@ -74,7 +74,7 @@ var handleJson = {
             //contentlist.style.backgroundColor = "rgba(0.1, 0.1, 0.2, 0.25)";
         }, */
         data:null,
-        buttonText: 'Black agent'
+        buttonText: 'Black_agent'
 
     }
 };
@@ -115,7 +115,7 @@ function setButtonsToEnter(DivForButtons, instruction) {
                 case "Extradecomposers":
                 btn.classList.add("unclickedButtonForExtradecomposers");
                     break;
-                case "Black agent":
+                case "Black_agent":
                 btn.classList.add("unclickedButtonForBlack_agent");
                     break;
             }
