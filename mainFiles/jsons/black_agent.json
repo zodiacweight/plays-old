@@ -2,8 +2,8 @@
   "Black_agent": {
     "onTheBeginning": {
       "header": "Black agent",
-      "images": ["<img src=\"images/на%20заставку/изображение_1.jpg\">",
-        "<img src=\"images/на%20заставку/изображение_2.jpg\">"],
+      "images": ["<img src=\"images/on_the_beginning/img1.jpg\">",
+        "<img src=\"images/on_the_beginning/img2.jpg\">"],
       "preview": "It is a storie about eery accidents. There is one dangerous mad psychopath among the characters. Some of theepisodes are parody to \"Big Lebovsky\". They are similar to some of the episodes of this movie, but, in the same time they are much more serious and have completely other aftermath from the characters."
     },
     "headerLogotip": "<img src=\"images/with_characters/header_black_agent.jpg\">",

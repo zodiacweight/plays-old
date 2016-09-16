@@ -2,7 +2,7 @@
     background-image: url("../../images/textures/waterdrops.jpg");
 }
 #backgroundForBlack_agent {
-    background-image: url("../../images/textures/поздний_закат2.jpg");
+    background-image: url("../../images/textures/late_sunset2.jpg");
 }
 .unclickedButtonForExtradecomposers {
     background-image: url("../../images/textures/granite.png");
@@ -12,15 +12,131 @@
     background-color: midnightblue;
     color: lightcyan;
 }
-.paintedReplicsOfChar_Extradecomposers {
-    background-image: url("../../images/textures/туман.jpg");
-    border-width: 3px; !important;
+.paintedReplicsOfAuthor {
+    border: 3px dashed darkviolet;
+    border-radius: 4px;
+    background-image: url("../../images/textures/buket.jpg");
+}
+.paintedReplicsOfAuthor > h4 {
+    color: black;
+}
+.paintedReplicsOfAuthor > p {
+    color: #0B0B61;
+}
+.paintedReplicsOfHelen {
+    background-image: url("../../images/textures/dawn.jpg");
+    border: 3px solid mediumblue; !important;
     color: darkblue;
 }
-.paintedReplicsOfChar_Black_agent {
-    background-image: url("../../images/textures/рассвет.jpg");
-    border-width: 3px; !important;
+.paintedReplicsOfJudy {
+    background-image: url("../../images/textures/mist.jpg");
+    border: 3px solid mediumblue; !important;
+    color: darkblue;
+}
+.paintedReplicsOfCassandra {
+    background-image: url("../../images/textures/ocean.jpg");
+    border: 3px solid mediumblue; !important;
+    color: darkblue;
+}
+.paintedReplicsOfChristian {
+    background-image: url("../../images/textures/gold.jpg");
+    border: 3px solid mediumblue; !important;
+    color: brown;
+}
+.paintedReplicsOfBeatrix {
+    background-image: url("../../images/textures/calm_water2.jpg");
+    border: 3px solid darkblue; !important;
     color: darkviolet;
+}
+.paintedReplicsOfMrsJakins {
+    background-image: url("../../images/textures/pink_paper.jpg");
+    border: 3px solid darkblue; !important;
+    color: darkviolet;
+}
+.paintedReplicsOfMr {
+    background-color: blue ;
+    border: 3px solid darkblue; !important;
+    color: lightsteelblue;
+}
+.paintedReplicsOfJamesMcHein {
+    background-color: lightblue;
+    border: 3px solid darkblue; !important;
+    color: darkslateblue;
+}
+.paintedReplicsOfWomanDevil {
+    background-image: url("../../images/textures/darkBlue.jpg");
+    border: 3px solid darkblue; !important;
+    color: darkblue;
+}
+.paintedReplicsOfTortoiseMail {
+    background-color: lightsteelblue;
+    border: 3px solid darkblue; !important;
+    color: darkblue;
+}
+.paintedReplicsOfTortoiseFemail {
+        background-color: lightpink;
+        border: 3px solid darkblue; !important;
+        color: firebrick;
+    }
+.paintedReplicsOfCatfishMail {
+    background-color: gray;
+    border: 3px solid darkblue; !important;
+    color: darkblue;
+}
+.paintedReplicsOfCatfishFemail {
+    background-color: lightgrey;
+    border: 3px solid darkblue; !important;
+    color: black;
+}
+.paintedReplicsOfMarineStar {
+    background-color: lightblue;
+    border: 3px solid darkblue; !important;
+    color: blue;
+}
+.paintedReplicsOfCrab {
+    background-color: lightgreen;
+    border: 3px solid darkgreen; !important;
+    color: green;
+}
+.paintedReplicsOfLilian {
+    background-color: lightblue;
+    border: 3px solid darkblue; !important;
+    color: darkcyan;
+}
+.paintedReplicsOfMedusa {
+    background-color: lightgrey;
+    border: 3px solid darkslategray; !important;
+    color: darkslategrey;
+}
+.paintedReplicsOfTimothy {
+    background-color: lime;
+    border: 3px solid seagreen; !important;
+    color: darkgreen;
+}
+.paintedReplicsOfQuentin {
+    background-image: url("../../images/textures/silver.jpg");
+    border: 3px solid darkslategray; !important;
+    color: darkslategrey;
+}
+.paintedReplicsOfSophie {
+    background-image: url("../../images/textures/images.jpg");
+    border: 3px solid deeppink; !important;
+    color: mediumvioletred;
+}
+.paintedReplicsOf1 {
+    background-color: lightgreen;
+    border: 3px solid seagreen; !important;
+    color: darkslategrey;
+}
+.paintedReplicsOf2 {
+    background-color: lightgray;
+    border: 3px solid darkslategrey; !important;
+    color: darkslategrey;
+}
+.paintedReplicsOf3 {
+    background-color: lightcyan;
+    border: 3px solid seagreen; !important;
+    color: darkslateblue;
 }
 .paintedWordsFromVocabulary_Extradecomposers {
     background-color: indigo;
@@ -31,4 +147,9 @@
     background-color: lightgray;
     color: darkslategray;
     padding: 4px;
+}
+.commonPaint {
+    background-image: url("../../images/textures/commonPaint.jpg");
+    color: deeppink;
+    border: 3px solid darkslateblue;
 }

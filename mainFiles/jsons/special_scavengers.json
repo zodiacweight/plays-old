@@ -2,14 +2,14 @@
    "Extradecomposers": {
       "onTheBeginning": {
         "header": "Extra-decomposers",
-        "images": ["<img src=\"images/на%20заставку/владения.jpg\">",
-          "<img src=\"images/на%20заставку/devil.jpg\">",
-          "<img src=\"images/на%20заставку/^27E8DA6FF979455E9D94984FEDAC2E2981B88ACBE2EE11BFCE^pimgpsh_fullsize_distr.jpg\">",
-          "<img src=\"images/на%20заставку/^033ACAC36ACF8BFF5C4B8930EA783B39FF8AD3ED5A7E253331^pimgpsh_fullsize_distr.jpg\">"
+        "images": ["<img src=\"images/on_the_beginning/possessions.jpg\">",
+          "<img src=\"images/on_the_beginning/devil.jpg\">",
+          "<img src=\"images/on_the_beginning/^27E8DA6FF979455E9D94984FEDAC2E2981B88ACBE2EE11BFCE^pimgpsh_fullsize_distr.jpg\">",
+          "<img src=\"images/on_the_beginning/^033ACAC36ACF8BFF5C4B8930EA783B39FF8AD3ED5A7E253331^pimgpsh_fullsize_distr.jpg\">"
         ],
         "preview": "These plays are about a scientist, possessed with his science who was reborn in his life to do what hehad not been successfull to do in his previous life, and his scientific deal is reseaching spec-scavengers. One of such creatures is somebody like a little cruise flying mermaid and lives in the aquarium of one of Christian'sacquaintances. Later Christian knows that they are created by Woman-devil with a defined purpose. He is enough successfull to know very much what he would like to know, but he finds out something not enough pleasant for himself."
     },
-      "headerLogotip": "<img src=\"images/with_characters/Заголовок.jpg\">",
+      "headerLogotip": "<img src=\"images/with_characters/headerLogotipExd.jpg\">",
       "About characters": [
         "There are the following characters in this play:",
         "3 friends: <b>Helen, Judy and Cassandra</b>;",

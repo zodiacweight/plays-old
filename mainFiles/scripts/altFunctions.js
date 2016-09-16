@@ -58,7 +58,7 @@ var handleJson = {
          //contentlist.style.backgroundColor = "rgba(0, 087, 990, 0.30)";
          }, */
         data:null,
-        buttonText: 'Extra-decomposers'
+        buttonText: 'Extradecomposers'
     },
     Black_agent: {
         path: 'mainFiles/jsons/black_agent.json',
@@ -111,6 +111,14 @@ function setButtonsToEnter(DivForButtons, instruction) {
         btn = document.createElement('button'); // заносит в переменную btn значение: тег <button></button>
         btn.dataset['source']=field; // устанавливает атрибут data-source со значением field для btn. Текстовая строка.
         btnText = document.createTextNode(handleJson[field].buttonText);
+        switch (btn.innerText) {
+            case "Extradecomposers":
+                btn.classList.add("unclickedButtonForExtradecomposers");
+                break;
+            case "Black_agent":
+                btn.classList.add("unclickedButtonForBlack_agent");
+                break;
+        }
         btn.appendChild(btnText);
         btn.onclick = function () {
             console.log('this bnt:', this);
@@ -126,6 +134,12 @@ function moveActive(clickedButton, arrayOfButtons, instruction) {
     var chosenPlay = window[nameOfPlay];
     clickedButton.setAttribute("disabled", "true");
     clickedButton.classList.add("disabledButton");
+    if (clickedButton.innerText == "Etradecomposers") {
+        clickedButton.classList.remove("unclickedButtonForExtradecomposers");
+    }
+    else {
+        clickedButton.classList.remove("unclickedButtonForBlack_agent");
+    }
     switch (clickedButton) {
         case arrayOfButtons[0]:
             otherElement = arrayOfButtons[1];
@@ -137,8 +151,15 @@ function moveActive(clickedButton, arrayOfButtons, instruction) {
     if ((otherElement.hasAttribute("disabled"))&&(otherElement.classList.contains("disabledButton"))) {
         otherElement.removeAttribute("disabled");
         otherElement.classList.remove("disabledButton");
+        if (otherElement.innerText=="Extradecomposers") {
+            otherElement.classList.add("unclickedButtonForExtradecomposers");
+        }
+        else {
+            otherElement.classList.add("unclickedButtonForBlack_agent");
+        }
     }
     if (beginning.style.display !== "none") { // когда была кликнута одна из кнопок на заставке
+        //alert(chosenPlay);
         setComponentsOfBeginning(chosenPlay);
         openGates();
         var DivForButtonsToRechoice = document.getElementById("DivForButtonsToRechoice");
@@ -156,7 +177,7 @@ function moveActive(clickedButton, arrayOfButtons, instruction) {
 function openGates() {
     setTimeout(function () {
         document.getElementById("instruction").innerText = 'Открыто!';
-        document.getElementById('gate').src="images/на%20заставку/открытые%20ворота.jpg";
+        document.getElementById('gate').src="images/on_the_beginning/opened_gate.jpg";
         document.getElementById("gate").onmouseover = function () {
             beginning.style.display = "none";
             contentlist.style.display = "block";
@@ -268,7 +289,8 @@ function setClickToLoadPart(chosenPlay,  nameOfPlay) { // PlayName и ChosenPlay
                 document.getElementById("mainArea").innerHTML = "<div id='toChooseRoles'></div>" +
                     "<div id='top_of_play'></div><div id='content_of_play'></div>";
                 document.getElementById("toChooseRoles").innerHTML = "<h4>There are the following characters in this part:</h4>" +
-                    "<div id='listOfCheckboxes'></div><div><input id='paintreplics' type='button' value='paint roles'></div>";
+                    "<div id='listOfCheckboxes'></div><div><input id='paintreplics' type='button' " +
+                    "value='paint roles and / or clear them '></div>";
                 document.getElementById("top_of_play").innerHTML = "<div><h2 id='headerForPart'></h2></div>"
                     + "<div id='buttons'><input type='button' value='<' id='scrollBack'>" +
                     "<input type='button' value='>' id='scrollFront'>" +
@@ -309,93 +331,102 @@ function setClickToLoadPart(chosenPlay,  nameOfPlay) { // PlayName и ChosenPlay
                 }
             };
             checkboxes = document.getElementsByClassName("checkcharacter");
-            replics_of_choicedpart.authorreplics_divs = document.getElementsByClassName("authorwords");
-            replics_of_choicedpart.replicsofchar_divs = document.getElementsByClassName("words_of_char");
             document.getElementById("paintreplics").onclick = function () {
-                var name_in_h4, nameInCheckbox, checkedRoles = {},
-                    length_of_checks = checkboxes.length,
-                    length_authorwords = replics_of_choicedpart['authorwords'].length,
-                    length_charwords = replics_of_choicedpart['wordsofchar'].length;
-                // Пробег по списку чекбоксов
-                for (var runchecks = 0; runchecks < length_of_checks; runchecks++) {
-                    // alert(runchecks);
-                    nameInCheckbox = presRolesArray[runchecks];
+                /* 1. Пробег по чекбоксам. Чекнутые роли собираются в checkedRoles
+                 * 2. Пробег по репликам.
+                 * Если нет конъюнкции:
+                 *     Новая переменная получает значение name_in_h4.
+                 *    Если есть "'s", но нет "Christian" и "Author", то новая переменная получает новое значение из
+                 *    name_in_h4: подстрока от нулевого индекса до "'" не включительно.
+                 *    В любом случае: новая переменная ищется в объекте checkedRoles.
+                 *    Если обнаруживается, а у реплики нет раскраски (2-го класса), то реплика получает раскраску.
+                 *    Иначе: если не обнаруживается, а у реплики есть раскраска, то реплика теряет раскраску.
+                 * Если есть конъюнкция: готовый фрагмент кода.
+                 * */
+                var divsWithReplics = document.getElementById("content_of_play").getElementsByTagName("Div"),
+                    name_in_h4, checkedRoles = {}, searchedRole;
+                for (var runchecks = 0; runchecks < checkboxes.length; runchecks++) {
                     if (checkboxes[runchecks].checked) {
-                        checkedRoles[nameInCheckbox] = true;
-                        if (presRolesArray[runchecks] == "Author's words") {
-                            for (var rundivs = 0; rundivs < length_authorwords; rundivs++) {
-                                if (!(replics_of_choicedpart.authorreplics_divs[rundivs].classList.contains("paintedAuthorReplics"))) {
-                                    replics_of_choicedpart.authorreplics_divs[rundivs].classList.add("paintedAuthorReplics");
-                                }
+                        checkedRoles[presRolesArray[runchecks]] = true;
+                    }
+                }
+                for (var runDivs = 0; runDivs < divsWithReplics.length; runDivs++) {
+                    name_in_h4=divsWithReplics[runDivs].getElementsByTagName("H4")[0].innerText;
+                    if (name_in_h4.indexOf(" & ")==-1) {
+                        if((name_in_h4.indexOf("'s")!==-1)&&(name_in_h4.indexOf("Christian")==-1)
+                            &&(name_in_h4.indexOf("Author")==-1)) { // когда name_in_h4 и searcedRole не соответствуют
+                            var posOfAmp = name_in_h4.indexOf("'");
+                            searchedRole = name_in_h4.substring(0, posOfAmp)
+                        }
+                        else { // когда name_in_h4 и searcedRole соответствуют
+                            if(name_in_h4=="Being") {
+                                searchedRole="Beatrix";
+                            }
+                            else {
+                                searchedRole=name_in_h4;
                             }
                         }
+                        if((searchedRole in checkedRoles)&&(divsWithReplics[runDivs].classList.length==1)) {
+                            //alert("Роль в checkedRoles: "+searchedRole); // роль с пробелом есть в checkedRoles
+                            defineNameInClass(searchedRole, divsWithReplics[runDivs], "paint");
+                        }
                         else {
-                            for (var rundivs = 0; rundivs < length_charwords; rundivs++) {
-                                name_in_h4 = replics_of_choicedpart.replicsofchar_divs[rundivs].getElementsByTagName('H4')[0].innerText;
-                                console.log(' name_in_h4 = ' + name_in_h4);
-                                if((PartNumber=="Part 1.17"&&name_in_h4==nameInCheckbox)||
-                                    (PartNumber!=="Part 1.17"&&name_in_h4.indexOf(nameInCheckbox) >= 0)) {
-                                    replics_of_choicedpart.replicsofchar_divs[rundivs].classList.add("paintedReplicsOfChar_"+nameOfPlay);
-                                }
-                                /*  if (PartNumber=="Part 1.17") {
-                                 if (name_in_h4==nameInCheckbox) {
-                                 replics_of_choicedpart.replicsofchar_divs[rundivs].classList.add("paintedReplicsOfChar_"+nameOfPlay); //
-                                 }
-                                 }
-                                 else {
-                                 if (name_in_h4.indexOf(nameInCheckbox) > -1) {
-                                 replics_of_choicedpart.replicsofchar_divs[rundivs].classList.add("paintedReplicsOfChar_"+nameOfPlay); //
-                                 }
-                                 } */
-                                if ((nameInCheckbox == "Beatrix") && (name_in_h4 == "Being")) {
-                                    replics_of_choicedpart.replicsofchar_divs[rundivs].classList.add("paintedReplicsOfChar_"+nameOfPlay); //
-                                }
+                            // реплики нечекнутой роли имеют раскраску и должны ее потерять:
+                            if((!(searchedRole in checkedRoles))&&(divsWithReplics[runDivs].classList.length==2)) {
+                                defineNameInClass(searchedRole,  divsWithReplics[runDivs], "deletePaint");
                             }
                         }
                     }
-                    else { // Если элемент не чекнут в этом клике \ \\\ |
-                        if (nameInCheckbox == "Author's words") {
-                            for (rundivs = 0; rundivs < length_authorwords; rundivs++) {
-                                if (replics_of_choicedpart.authorreplics_divs[rundivs].classList.contains("paintedAuthorReplics")) {
-                                    replics_of_choicedpart.authorreplics_divs[rundivs].classList.remove("paintedAuthorReplics");
-                                }
+                    else { // если есть конъюнкция:
+                        var namesInConjuction = name_in_h4.split(" & "),
+                            numberOfCheckedRolesInConjuction = 0;
+                        for (var runNamesInConjuction in namesInConjuction) { // пробег по именам в конъюнкции
+                            if (namesInConjuction[runNamesInConjuction] in checkedRoles) {
+                                numberOfCheckedRolesInConjuction++;
+                                searchedRole = namesInConjuction[runNamesInConjuction];
+                                /*if (numberOfCheckedRolesInConjuction>1) {
+                                    break;
+                                } */
                             }
                         }
-                        else {
-                            for (rundivs = 0; rundivs < length_charwords; rundivs++) {
-                                name_in_h4 = replics_of_choicedpart.replicsofchar_divs[rundivs].getElementsByTagName('H4')[0].innerText;
-                                if (name_in_h4.indexOf(" &") == -1) {
-                                    if ((PartNumber=="Part 1.17"&&name_in_h4==nameInCheckbox)||
-                                        (PartNumber!=="Part 1.17"&&name_in_h4.indexOf(nameInCheckbox) >= 0)) {
-                                        if (replics_of_choicedpart.replicsofchar_divs[rundivs].classList.contains("paintedReplicsOfChar_"+nameOfPlay)) {
-                                            replics_of_choicedpart.replicsofchar_divs[rundivs].classList.remove("paintedReplicsOfChar_"+nameOfPlay);
-                                        }
-                                    }
-                                    if ((nameInCheckbox == "Beatrix") && (name_in_h4 == "Being")) {
-                                        if (replics_of_choicedpart.replicsofchar_divs[rundivs].classList.contains("paintedReplicsOfChar_"+nameOfPlay)) {
-                                            replics_of_choicedpart.replicsofchar_divs[rundivs].classList.remove("paintedReplicsOfChar_"+nameOfPlay);
-                                        }
-                                    }
+                        var delClass;
+                        switch (numberOfCheckedRolesInConjuction) { // определение того, что должно быть с раскраской реплики.
+                            case 0:// Не должно быть никакой раскраски. Если имеется раскраска (2-й класс реплики), то эта
+                                // раскраска удаляется.
+                                if (divsWithReplics[runDivs].classList.length==2) {
+                                    delClass =  divsWithReplics[runDivs].classList[1];
+                                    divsWithReplics[runDivs].classList.remove(delClass);
                                 }
-                                else {
-                                    var namesInConjuction = name_in_h4.split(" & ");
-                                    for (var runNamesInConjuction = 0; runNamesInConjuction < namesInConjuction.length; runNamesInConjuction++) {
-                                        if (namesInConjuction[runNamesInConjuction] in checkedRoles) {
-                                            break;
-                                        }
-                                    }
-                                    if (runNamesInConjuction == namesInConjuction.length) {
-                                        if (replics_of_choicedpart.replicsofchar_divs[rundivs].classList.contains("paintedReplicsOfChar_"+nameOfPlay)) {
-                                            replics_of_choicedpart.replicsofchar_divs[rundivs].classList.remove("paintedReplicsOfChar_"+nameOfPlay);
-                                        }
-                                    }
+                                break;
+                            case 1: // 2-й класс должен соответствовать чекнутой роли
+                                if (divsWithReplics[runDivs].classList.contains("commonPaint")) {
+                                    divsWithReplics[runDivs].classList.remove("commonPaint");
                                 }
-                            }
+                                defineNameInClass(searchedRole,  divsWithReplics[runDivs], "paint");
+                                if (divsWithReplics[runDivs].classList.length>2) {
+                                    var delClass2 = divsWithReplics[runDivs].classList[1];
+                                    divsWithReplics[runDivs].classList.remove(delClass2);
+                                    //alert(divsWithReplics[runDivs].classList);
+                                }
+                                break;
+                            default: // релпика с конъюнкцией должна получить раскраску commonPaint
+                                if (divsWithReplics[runDivs].classList.length>1) {
+                                    if(divsWithReplics[runDivs].classList[1].indexOf("paintedReplicsOf")==0) {
+                                        delClass = divsWithReplics[runDivs].classList[1];
+                                        divsWithReplics[runDivs].classList.remove(delClass);
+                                    }
+                                   // alert(divsWithReplics[runDivs].classList);
+                                }
+                                if (!(divsWithReplics[runDivs].classList.contains("commonPaint"))) {
+                                    divsWithReplics[runDivs].classList.add("commonPaint");
+                                }
+                            // общая раскраска
                         }
+
                     }
                 }
             };
-        };
+        };  /*конец */
     }
     curPart = document.getElementById("about_characters");
     curPart.onmouseover = function getStylesForItem2() {
@@ -408,6 +439,69 @@ function setClickToLoadPart(chosenPlay,  nameOfPlay) { // PlayName и ChosenPlay
         countClicks = 0;
         loadAboutCharacters(chosenPlay);
     };
+}
+function defineNameInClass (searchedRole,  currentReplic, PoC) {
+    var nameInClass;
+    if (searchedRole=="Author's words") {
+        nameInClass = "Author";
+        paintOrClearReplic(currentReplic, nameInClass, PoC);
+    }
+    else {
+        switch (searchedRole) {
+            case "Woman-devil":
+                nameInClass="WomanDevil";
+                break;
+            case "Christian's grandpa"||"Mr Stevenson":
+                nameInClass="Mr";
+                break;
+            case "Christian's grandma":
+                nameInClass="MrsJakins";
+                break;
+            default:
+                //alert("Роль в функции defineNameInClass: "+searchedRole);
+                if (searchedRole.indexOf(" ")==-1) {
+                    nameInClass=searchedRole;
+                    //alert("if");
+                }
+                else {
+                    //alert("else");
+                    nameInClass = searchedRole[0].toUpperCase();
+                    for (var c=1; c < searchedRole.length; c++) {
+                        if (searchedRole[c]!==" ") {
+                            if (searchedRole[c-1] == " ") {
+                                nameInClass+=searchedRole[c].toUpperCase();
+                            }
+                            else {
+                                nameInClass+=searchedRole[c];
+                            }
+                        }
+                    }
+                }
+               // alert(searchedRole.indexOf(" "));
+        }
+        paintOrClearReplic(currentReplic, nameInClass, PoC);
+    }
+}
+function paintOrClearReplic (currentReplic, nameInClass, PoC) {
+    switch (PoC) {
+        case "paint":
+            if (!(currentReplic.classList.contains("paintedReplicsOf"+nameInClass))) {
+                currentReplic.classList.add("paintedReplicsOf"+nameInClass);
+            }
+            break;
+        case "deletePaint":
+            if ((currentReplic.classList.contains("paintedReplicsOf"+nameInClass))) {
+                currentReplic.classList.remove("paintedReplicsOf"+nameInClass);
+            }
+            //var j=currentReplic.getElementsByTagName("H4")[0].innerText;
+            break;
+    }
+
+    /* передать:
+     * 1. replics_of_choicedpart.replicsofchar_divs[rundivs]
+     * или replics_of_choicedpart.authorreplics_divs[rundivs]
+     * 2. Строку
+     * */
 }
 function changePart(PartNumber, index_of_part, chosenPlay, addedHTMLToContainPart) { // PartNumber = "Part номер"
     presRolesObject = {};
@@ -485,10 +579,3 @@ addInnerHtml = function (html, innerContent) {
         "</h4><p>" + innerContent.contents[0] + "</p></div>";
 
 };
-/*function commonCodeFor2arrows (PartNumber, index_of_part, choicedPlays, content_of_play) {
- PartNumber = parts_with_numbers[index_of_part];
- document.getElementById("headerForPart").innerText = PartNumber + " " + choicedPlays.headers[PartNumber];
- content_of_play.innerHTML = "";
- document.getElementById("listOfCheckboxes").innerHTML = "";
- changePart(PartNumber, choicedPlays, content_of_play);
- }*/

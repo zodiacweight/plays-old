@@ -23,7 +23,7 @@ var body = document.getElementsByTagName("Body")[0],
 document.getElementById("how_to_open_plays").onclick = function () {
     if (enter.innerHTML == "") {
         enter.innerHTML = "<p id='instruction'>Нажать на одну из кнопок и подождать, пока откроются ворота:</p>"+
-            "<div id='buttonsToEnter'></div><img id='gate' src='images/на%20заставку/закрытые%20ворота.jpg'>";
+            "<div id='buttonsToEnter'></div><img id='gate' src='images/on_the_beginning/closed_gate.jpg'>";
         var DivForButtonsToEnter = document.getElementById("buttonsToEnter"),
             instruction = document.getElementById("instruction");
         instruction.style.color = "#08088A";

@@ -309,18 +309,6 @@
         #fortypes {
             font-size: 18px;
         }
-
-        .paintedAuthorReplics {
-            border: 3px dashed darkviolet;
-            border-radius: 4px;
-            background-image: url("../../images/textures/buket.jpg");
-        }
-        .paintedAuthorReplics > h4 {
-            color: black;
-        }
-        .paintedAuthorReplics > p {
-            color: #0B0B61;
-        }
  /*.paintedReplicsOfChar_Extradecomposers {
      background-image: url("../../images/textures/туман.jpg");
  }
