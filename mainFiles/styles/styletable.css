@@ -1,5 +1,5 @@
  body {
-      background-color: lightcyan;
+     background-image: url("../../images/textures/waterdrops.jpg");
     }
     /* Стили beginning: */
     #beginning {
@@ -34,7 +34,6 @@
     #preview_and_enter {
         width:30%;
         background-color: rgba(0.1, 0.4, 0.5, 0.75);
-        color: linen;
         font-family: "Yu Gothic UI";
     }
     #preview_and_enter > * {
@@ -73,8 +72,8 @@
          width: 80%;
      }
      #buttonsToEnter > button {
-         font-size: 16px;
-         padding: 7px;
+         font-size: 20px;
+         padding: 14px;
          margin-left: 4px;
          border-radius: 6px;
      }
@@ -241,7 +240,7 @@
              margin-left: 4%;
          }
          #mainArea > p {
-             font-size: 18px;
+             font-size: 22px;
              margin: 2%;
          }
          .addStylesForContent {

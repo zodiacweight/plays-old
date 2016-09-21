@@ -105,41 +105,28 @@ function changeBigImageWithHeader() {
     }
 }
 // Устанавливаются кнопки для открытия ворот и входа
-function setButtonsToEnter(DivForButtons, instruction) {
+function setButtonsToEnter(DivForButtons) {
     var btn, btnText, arrayOfButtons=[];
     for (var field in handleJson) {
         btn = document.createElement('button'); // заносит в переменную btn значение: тег <button></button>
         btn.dataset['source']=field; // устанавливает атрибут data-source со значением field для btn. Текстовая строка.
         btnText = document.createTextNode(handleJson[field].buttonText);
-        switch (btn.innerText) {
-            case "Extradecomposers":
-                btn.classList.add("unclickedButtonForExtradecomposers");
-                break;
-            case "Black_agent":
-                btn.classList.add("unclickedButtonForBlack_agent");
-                break;
-        }
+        btn.classList.add("unclickedButton");
         btn.appendChild(btnText);
         btn.onclick = function () {
             console.log('this bnt:', this);
-            moveActive(this, arrayOfButtons, instruction);
+            moveActive(this, arrayOfButtons);
         };
         arrayOfButtons.push(btn);
         DivForButtons.appendChild(btn);
     }
 }
 
-function moveActive(clickedButton, arrayOfButtons, instruction) {
+function moveActive(clickedButton, arrayOfButtons) {
     var nameOfPlay = clickedButton.getAttribute('data-source'); // строка - атрибут data-source из кнопки
     var chosenPlay = window[nameOfPlay];
     clickedButton.setAttribute("disabled", "true");
     clickedButton.classList.add("disabledButton");
-    if (clickedButton.innerText == "Etradecomposers") {
-        clickedButton.classList.remove("unclickedButtonForExtradecomposers");
-    }
-    else {
-        clickedButton.classList.remove("unclickedButtonForBlack_agent");
-    }
     switch (clickedButton) {
         case arrayOfButtons[0]:
             otherElement = arrayOfButtons[1];
@@ -151,12 +138,7 @@ function moveActive(clickedButton, arrayOfButtons, instruction) {
     if ((otherElement.hasAttribute("disabled"))&&(otherElement.classList.contains("disabledButton"))) {
         otherElement.removeAttribute("disabled");
         otherElement.classList.remove("disabledButton");
-        if (otherElement.innerText=="Extradecomposers") {
-            otherElement.classList.add("unclickedButtonForExtradecomposers");
-        }
-        else {
-            otherElement.classList.add("unclickedButtonForBlack_agent");
-        }
+        otherElement.classList.add("unclickedButton");
     }
     if (beginning.style.display !== "none") { // когда была кликнута одна из кнопок на заставке
         //alert(chosenPlay);
@@ -165,13 +147,13 @@ function moveActive(clickedButton, arrayOfButtons, instruction) {
         var DivForButtonsToRechoice = document.getElementById("DivForButtonsToRechoice");
         //var arrayOfButtonsToRechoice = DivForButtonsToRechoice.getElementsByTagName("Button");
         if (DivForButtonsToRechoice.innerHTML=="") {
-            setButtonsToEnter(DivForButtonsToRechoice/* , arrayOfButtonsToRechoice*/); // функция устанавливает кнопки в
+            setButtonsToEnter(DivForButtonsToRechoice); // функция устанавливает кнопки в
             // ContentList
         }
     }
     addPartsToContentList(chosenPlay, nameOfPlay);
     loadAboutCharacters(chosenPlay);
-    setColors(chosenPlay,  nameOfPlay, instruction);
+    setColors(chosenPlay,  nameOfPlay);
     headerLogotip.innerHTML = chosenPlay["headerLogotip"];
 }
 function openGates() {
@@ -187,7 +169,8 @@ function openGates() {
     }, 3200);
 }
 
-function setColors(chosenPlay,  nameOfPlay,  instruction) {
+function setColors(chosenPlay,  nameOfPlay) {
+    var instruction = document.getElementById("instruction");
     switch (chosenPlay) {
         case Extradecomposers:
             if (beginning.style.display!=="none") {
@@ -385,8 +368,8 @@ function setClickToLoadPart(chosenPlay,  nameOfPlay) { // PlayName и ChosenPlay
                                 numberOfCheckedRolesInConjuction++;
                                 searchedRole = namesInConjuction[runNamesInConjuction];
                                 /*if (numberOfCheckedRolesInConjuction>1) {
-                                    break;
-                                } */
+                                 break;
+                                 } */
                             }
                         }
                         var delClass;
@@ -415,7 +398,7 @@ function setClickToLoadPart(chosenPlay,  nameOfPlay) { // PlayName и ChosenPlay
                                         delClass = divsWithReplics[runDivs].classList[1];
                                         divsWithReplics[runDivs].classList.remove(delClass);
                                     }
-                                   // alert(divsWithReplics[runDivs].classList);
+                                    // alert(divsWithReplics[runDivs].classList);
                                 }
                                 if (!(divsWithReplics[runDivs].classList.contains("commonPaint"))) {
                                     divsWithReplics[runDivs].classList.add("commonPaint");
@@ -477,7 +460,7 @@ function defineNameInClass (searchedRole,  currentReplic, PoC) {
                         }
                     }
                 }
-               // alert(searchedRole.indexOf(" "));
+            // alert(searchedRole.indexOf(" "));
         }
         paintOrClearReplic(currentReplic, nameInClass, PoC);
     }

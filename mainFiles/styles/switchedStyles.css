@@ -2,15 +2,25 @@
     background-image: url("../../images/textures/waterdrops.jpg");
 }
 #backgroundForBlack_agent {
-    background-image: url("../../images/textures/late_sunset2.jpg");
+    background-image: url("../../images/textures/texture.jpg");
 }
-.unclickedButtonForExtradecomposers {
-    background-image: url("../../images/textures/granite.png");
-    color: darkslateblue;
+.contentListForExtradecomposers {
+    border-color: #345693;
+    background-color: rgba(0, 087, 990, 0.30);
+    color: darkblue;
 }
-.unclickedButtonForBlack_agent {
-    background-color: midnightblue;
-    color: lightcyan;
+.contentListForBlack_agent {
+    border-color: lightblue;
+    background-color: rgba(25, 12, 90, 0.25);
+    color: lightsteelblue;
+}
+.unclickedButton_Extradecomposers_choiced {
+    background-color: darkviolet;
+    color: lightblue;
+}
+.unclickedButton_Black_agent_choiced {
+    background-color: lightblue;
+    color: darkviolet;
 }
 .paintedReplicsOfAuthor {
     border: 3px dashed darkviolet;
@@ -41,7 +51,7 @@
 .paintedReplicsOfChristian {
     background-image: url("../../images/textures/gold.jpg");
     border: 3px solid mediumblue; !important;
-    color: brown;
+    color: #61210B;
 }
 .paintedReplicsOfBeatrix {
     background-image: url("../../images/textures/calm_water2.jpg");
@@ -114,14 +124,14 @@
     color: darkgreen;
 }
 .paintedReplicsOfQuentin {
-    background-image: url("../../images/textures/silver.jpg");
+    background-image: url("../../images/textures/fioletovyj-fon33.jpg");
     border: 3px solid darkslategray; !important;
-    color: darkslategrey;
+    color: lightpink;
 }
 .paintedReplicsOfSophie {
     background-image: url("../../images/textures/images.jpg");
     border: 3px solid deeppink; !important;
-    color: mediumvioletred;
+    color: #610B38;
 }
 .paintedReplicsOf1 {
     background-color: lightgreen;

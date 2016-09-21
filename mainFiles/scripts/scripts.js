@@ -24,10 +24,10 @@ document.getElementById("how_to_open_plays").onclick = function () {
     if (enter.innerHTML == "") {
         enter.innerHTML = "<p id='instruction'>Нажать на одну из кнопок и подождать, пока откроются ворота:</p>"+
             "<div id='buttonsToEnter'></div><img id='gate' src='images/on_the_beginning/closed_gate.jpg'>";
-        var DivForButtonsToEnter = document.getElementById("buttonsToEnter"),
-            instruction = document.getElementById("instruction");
-        instruction.style.color = "#08088A";
-        setButtonsToEnter(DivForButtonsToEnter, instruction); // функция делает кнопки на заставке
+        document.getElementById("instruction").style.color = "#0101DF";
+        var DivForButtonsToEnter = document.getElementById("buttonsToEnter");
+        var objectOfButtons = {};
+        setButtonsToChoicePlay(DivForButtonsToEnter, "Extradecomposers"); // функция делает кнопки на заставке
     }
 };
 

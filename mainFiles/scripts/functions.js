@@ -105,41 +105,35 @@ function changeBigImageWithHeader() {
     }
 }
 // Устанавливаются кнопки для открытия ворот и входа
-function setButtonsToEnter(DivForButtons, instruction) {
+function setButtonsToChoicePlay(DivForButtons, nameOfPlay) {
     var btn, btnText, arrayOfButtons=[];
     for (var field in handleJson) {
         btn = document.createElement('button'); // заносит в переменную btn значение: тег <button></button>
         btn.dataset['source']=field; // устанавливает атрибут data-source со значением field для btn. Текстовая строка.
         btnText = document.createTextNode(handleJson[field].buttonText);
-        switch (btn.innerText) {
-            case "Extradecomposers":
-                btn.classList.add("unclickedButtonForExtradecomposers");
-                break;
-            case "Black_agent":
-                btn.classList.add("unclickedButtonForBlack_agent");
-                break;
-        }
         btn.appendChild(btnText);
+        if (DivForButtons.id=="buttonsToEnter") { // сделать кнопку пассивной
+            btn.classList.add("unclickedButton_"+nameOfPlay+"_choiced");
+            /*btn.setAttribute("disabled", "true");
+            btn.classList.add("disabledButton"); */
+        }
+        //alert(DivForButtons.id);
         btn.onclick = function () {
             console.log('this bnt:', this);
-            moveActive(this, arrayOfButtons, instruction);
+            moveActive(this, arrayOfButtons);
         };
-        arrayOfButtons.push(btn);
-        DivForButtons.appendChild(btn);
+       arrayOfButtons.push(btn);
+       // arrayOfButtons = DivForButtons.getElementsByTagName("Button");
+       DivForButtons.appendChild(btn);
     }
 }
-
-function moveActive(clickedButton, arrayOfButtons, instruction) {
-    var nameOfPlay = clickedButton.getAttribute('data-source'); // строка - атрибут data-source из кнопки
-    var chosenPlay = window[nameOfPlay];
+function moveActive(clickedButton, arrayOfButtons) {
+    var nameOfPlay = clickedButton.getAttribute('data-source'); // nameOfPlay == "Extradecomposers" или "Black_agent"
+    // в зависимости от того, какая кнопка была кликнута
+    var chosenPlay = window[nameOfPlay], otherElement;
     clickedButton.setAttribute("disabled", "true");
+    clickedButton.classList.remove("unclickedButton_"+nameOfPlay+"_choiced");
     clickedButton.classList.add("disabledButton");
-    if (clickedButton.innerText == "Etradecomposers") {
-        clickedButton.classList.remove("unclickedButtonForExtradecomposers");
-    }
-    else {
-        clickedButton.classList.remove("unclickedButtonForBlack_agent");
-    }
     switch (clickedButton) {
         case arrayOfButtons[0]:
             otherElement = arrayOfButtons[1];
@@ -148,30 +142,37 @@ function moveActive(clickedButton, arrayOfButtons, instruction) {
             otherElement = arrayOfButtons[0];
             break;
     }
-    if ((otherElement.hasAttribute("disabled"))&&(otherElement.classList.contains("disabledButton"))) {
+   if ((otherElement.hasAttribute("disabled"))&&(otherElement.classList.contains("disabledButton"))) {
         otherElement.removeAttribute("disabled");
         otherElement.classList.remove("disabledButton");
-        if (otherElement.innerText=="Extradecomposers") {
-            otherElement.classList.add("unclickedButtonForExtradecomposers");
-        }
-        else {
-            otherElement.classList.add("unclickedButtonForBlack_agent");
+        otherElement.classList.add("unclickedButton_"+nameOfPlay+"_choiced");
+    }
+    if (beginning.style.display !== "none") { // когда была кликнута одна из кнок на заставке
+        setComponentsOfBeginning(chosenPlay);
+        openGates(); // В этой функции beginning получает значение "none".
+        var DivForButtonsToRechoice = document.getElementById("DivForButtonsToRechoice");
+        if (DivForButtonsToRechoice.innerHTML=="") {
+            setButtonsToChoicePlay(DivForButtonsToRechoice, nameOfPlay); // nameOfPlay == data-souce кликнутой кнопки
         }
     }
-    if (beginning.style.display !== "none") { // когда была кликнута одна из кнопок на заставке
-        //alert(chosenPlay);
-        setComponentsOfBeginning(chosenPlay);
-        openGates();
-        var DivForButtonsToRechoice = document.getElementById("DivForButtonsToRechoice");
-        //var arrayOfButtonsToRechoice = DivForButtonsToRechoice.getElementsByTagName("Button");
-        if (DivForButtonsToRechoice.innerHTML=="") {
-            setButtonsToEnter(DivForButtonsToRechoice/* , arrayOfButtonsToRechoice*/); // функция устанавливает кнопки в
-            // ContentList
+    else {
+        alert("Условие else выполняется"); // условие выполняется, когда по одной из кнопок клацают
+        if ((!(arrayOfButtons[0].hasAttribute("disabled")))&&(!(arrayOfButtons.hasAttribute("disabled")))) {
+            for (var runBtns=0; runBtns<2; runBtns++) {
+                if(arrayOfButtons[runBtns].getAttribute("data-source")==nameOfPlay) {
+                    arrayOfButtons[runBtns].setAttribute("disabled");
+                    arrayOfButtons[runBtns].classList.add("disabledButton");
+                }
+                else {
+                    arrayOfButtons[runBtns].classList.add("unclickedButton_"+nameOfPlay+"_choiced");
+                }
+            }
+
         }
     }
     addPartsToContentList(chosenPlay, nameOfPlay);
     loadAboutCharacters(chosenPlay);
-    setColors(chosenPlay,  nameOfPlay, instruction);
+    setColors(chosenPlay, nameOfPlay);
     headerLogotip.innerHTML = chosenPlay["headerLogotip"];
 }
 function openGates() {
@@ -187,39 +188,50 @@ function openGates() {
     }, 3200);
 }
 
-function setColors(chosenPlay,  nameOfPlay,  instruction) {
+function setColors(chosenPlay, nameOfPlay) {
+    var addedClassForContentList = "contentListFor"+nameOfPlay,
+    instruction = document.getElementById("instruction");
     switch (chosenPlay) {
         case Extradecomposers:
             if (beginning.style.display!=="none") {
-                //preview_and_enter.style.color = "mediumvioletred";
                 how_to_open_plays.style.color = "mediumblue";
                 main_in_preview.style.color = "mediumvioletred";
                 instruction.style.color = "#08088A";
             }
             rightHalf.style.color="black";
-            contentlist.style.borderColor = "#345693";
-            contentlist.style.backgroundColor="rgba(0, 087, 990, 0.30)";
             //alert("setColors вызвана!");
             break;
         case Black_agent:
             if (beginning.style.display!=="none") {
                 //preview_and_enter.style.color = "#F5BCA9";
                 how_to_open_plays.style.color = "#2ECCFA";
-                main_in_preview.style.color = "#BCA9F5";
+                main_in_preview.style.color = "#A9BCF5";
                 //alert("setColors вызвана!");
-                instruction.style.color = "#4B088A";
+                instruction.style.color = "lightskyblue";
             }
             rightHalf.style.color="lightgoldenrodyellow";
-            contentlist.style.borderColor = "lightblue";
-            contentlist.style.backgroundColor="rgba(80, 00, FF, 0.25)";  /* #8000FF */
             break;
     }
+    body.backgroundColor="";
     body.setAttribute("id", "backgroundFor"+nameOfPlay);
-    if (body.hasAttribute("id")) {
-        body.removeAttribute("id");
-        body.setAttribute("id", "backgroundFor"+nameOfPlay);
+    if(contentlist.classList.length>0) {
+        if(contentlist.classList[0].indexOf(nameOfPlay)==-1) {
+            contentlist.classList.remove(contentlist.classList[0]);
+        }
     }
-
+    contentlist.classList.add(addedClassForContentList);
+    /*otherElement.classList.add("unclickedButtonFor"+nameOfPlay);
+    otherElement.classList.remove("disabledButton");
+    if (clickedButton.classList[0].indexOf("unclicked")==0) {
+        clickedButton.classList.remove((clickedButton.classList[0]));
+    }
+    clickedButton.classList.add("disabledButton"); */
+    /*for (var runBtns=0; runBtns<2; runBtns++) {
+        if (arrayOfButtons[runBtns].classList[0].indexOf(nameOfPlay)==-1) {
+            arrayOfButtons[runBtns].classList.remove(arrayOfButtons[runBtns].classList[1]);
+        }
+        arrayOfButtons[runBtns].classList.add("unclickedButtonFor"+nameOfPlay);
+    } */
 }
 
 function addPartsToContentList(chosenPlay, nameOfPlay) {
@@ -461,10 +473,8 @@ function defineNameInClass (searchedRole,  currentReplic, PoC) {
                 //alert("Роль в функции defineNameInClass: "+searchedRole);
                 if (searchedRole.indexOf(" ")==-1) {
                     nameInClass=searchedRole;
-                    //alert("if");
                 }
                 else {
-                    //alert("else");
                     nameInClass = searchedRole[0].toUpperCase();
                     for (var c=1; c < searchedRole.length; c++) {
                         if (searchedRole[c]!==" ") {
@@ -477,7 +487,6 @@ function defineNameInClass (searchedRole,  currentReplic, PoC) {
                         }
                     }
                 }
-            // alert(searchedRole.indexOf(" "));
         }
         paintOrClearReplic(currentReplic, nameInClass, PoC);
     }
