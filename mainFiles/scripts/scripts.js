@@ -18,14 +18,16 @@ var body = document.getElementsByTagName("Body")[0],
     arrayElementObject, checkboxes = [], replics_of_choicedpart = {},
     subjectName, className, itemsAboutCharacters = [], presRolesObject = {}, /* buttonsToChoicePlays, */
     presRolesArray = [];
-    handleData('Extradecomposers'); // true
-    handleData('Black_agent'); // false
-document.getElementById("how_to_open_plays").onclick = function () {
+
+handleData('Extradecomposers'); // true
+handleData('Black_agent'); // false
+how_to_open_plays.onclick = function () {
     if (enter.innerHTML == "") {
         enter.innerHTML = "<p id='instruction'>Нажать на одну из кнопок и подождать, пока откроются ворота:</p>"+
             "<div id='DivForButtonsToEnter'></div><img id='gate' src='images/on_the_beginning/closed_gate.jpg'>";
         document.getElementById("instruction").style.color = "#0101DF";
         var DivForButtonsToEnter = document.getElementById("DivForButtonsToEnter");
+        console.log('Goto setButtonsToChoicePlay');
         setButtonsToChoicePlay("ButtonsToEnter", "Extradecomposers"); // функция делает кнопки на заставке
     }
 };
