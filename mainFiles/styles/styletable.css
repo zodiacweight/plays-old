@@ -99,13 +99,16 @@
          padding: 6px;
          width: 80%;
      }
-     #buttonsToRechoiceOnTheContentList {
-         width: 98%;
-         margin-left: 1%;
+     #DivForButtonsToEnter {
+         margin-left: 11%;
      }
      #DivForButtonsToEnter > button {
          font-size: 22px;
          padding: 5px;
+     }
+     #DivForButtonsToRechoice {
+         width: 98%;
+         margin-left: 1%;
      }
      #DivForButtonsToRechoice > button { /**/
          font-size: 18px;

@@ -48,15 +48,18 @@
     border: 3px solid mediumblue; !important;
     color: darkblue;
 }
+.paintedReplicsOfCassandra > p {
+    color: whitesmoke;
+}
 .paintedReplicsOfChristian {
     background-image: url("../../images/textures/gold.jpg");
-    border: 3px solid mediumblue; !important;
+    border: 3px solid saddlebrown; !important;
     color: #61210B;
 }
 .paintedReplicsOfBeatrix {
-    background-image: url("../../images/textures/calm_water2.jpg");
-    border: 3px solid darkblue; !important;
-    color: darkviolet;
+    background-image: url("../../images/textures/fony_117.jpg");
+    border: 3px solid #0B0B61; !important;
+    color: lightcyan;
 }
 .paintedReplicsOfMrsJakins {
     background-image: url("../../images/textures/pink_paper.jpg");
@@ -74,26 +77,26 @@
     color: darkslateblue;
 }
 .paintedReplicsOfWomanDevil {
-    background-image: url("../../images/textures/darkBlue.jpg");
-    border: 3px solid darkblue; !important;
-    color: darkblue;
+    background-image: url("../../images/textures/bumaga_texture_101.jpg");
+    border: 3px solid firebrick; !important;
+    color: black;
 }
-.paintedReplicsOfTortoiseMail {
+.paintedReplicsOfTortoiseMale {
     background-color: lightsteelblue;
     border: 3px solid darkblue; !important;
     color: darkblue;
 }
-.paintedReplicsOfTortoiseFemail {
+.paintedReplicsOfTortoiseFemale {
         background-color: lightpink;
         border: 3px solid darkblue; !important;
         color: firebrick;
     }
-.paintedReplicsOfCatfishMail {
+.paintedReplicsOfCatfishMale {
     background-color: gray;
     border: 3px solid darkblue; !important;
     color: darkblue;
 }
-.paintedReplicsOfCatfishFemail {
+.paintedReplicsOfCatfishFemale {
     background-color: lightgrey;
     border: 3px solid darkblue; !important;
     color: black;
@@ -129,9 +132,9 @@
     color: lightpink;
 }
 .paintedReplicsOfSophie {
-    background-image: url("../../images/textures/images.jpg");
+    background-image: url("../../images/textures/images4.jpg");
     border: 3px solid deeppink; !important;
-    color: #610B38;
+    color: lightyellow;
 }
 .paintedReplicsOf1 {
     background-color: lightgreen;

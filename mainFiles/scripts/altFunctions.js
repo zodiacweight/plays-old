@@ -64,15 +64,8 @@ var handleJson = {
         path: 'mainFiles/jsons/black_agent.json',
         handle: function (data) {
             this.data = data;
-            console.log('Black agent works!');
+            //console.log('Black agent works!');
         },
-        /*setColor: function(){
-         if (body.hasAttribute('id')) {
-         body.removeAttribute('id');
-         }
-         //body.style.backgroundColor="#0B2161";
-         //contentlist.style.backgroundColor = "rgba(0.1, 0.1, 0.2, 0.25)";
-         }, */
         data:null,
         buttonText: 'Black_agent'
 
@@ -104,9 +97,9 @@ function changeBigImageWithHeader() {
 }
 // Устанавливаются кнопки для открытия ворот и входа
 function setButtonsToChoicePlay(PartOfIdOfDivForButtons, nameOfPlay) {
-    console.trace('setButtonsToChoicePlay, arguments: ', arguments);
+    //console.trace('setButtonsToChoicePlay, arguments: ', arguments);
     var btn, btnText, objectOfButtons = {}, divForButtons=document.getElementById("DivFor"+PartOfIdOfDivForButtons);
-    objectOfButtons[PartOfIdOfDivForButtons] = [];
+    objectOfButtons[PartOfIdOfDivForButtons] = []; // objectOfButtons[ButtonsToRechoice]
     /*
      *
      objectOfButtons = {
@@ -126,23 +119,18 @@ function setButtonsToChoicePlay(PartOfIdOfDivForButtons, nameOfPlay) {
             console.log('this bnt:', this);
             moveActive(this, PartOfIdOfDivForButtons, objectOfButtons);
         };
-        objectOfButtons[PartOfIdOfDivForButtons].push(btn);
-        /*
-         objectOfButtons = {
-            PartOfIdOfDivForButtons: btn
-         }
-        */
+        objectOfButtons[PartOfIdOfDivForButtons].push(btn); // objectOfButtons[ButtonsToRechoice].push(btn)
         divForButtons.appendChild(btn);
     }
-    console.log('objectOfButtons', objectOfButtons);
+    //console.log('objectOfButtons', objectOfButtons);
     //alert("В теле функции setButtons PartOfIdOfDivForButtons = "+PartOfIdOfDivForButtons);
 }
 function moveActive(clickedButton, PartOfIdOfDivForButtons, objectOfButtons) { // вызывается при клике на каждую из кнопок
-    console.trace('arguments', {
+   /* console.trace('arguments', {
         '1 clickedButton' : clickedButton,
         '2 PartOfIdOfDivForButtons' : PartOfIdOfDivForButtons,
         '3 objectOfButtons': objectOfButtons
-    });
+    }); */
     //alert("В теле функции moveActive PartOfIdOfDivForButtons = "+PartOfIdOfDivForButtons);
     var nameOfPlay = clickedButton.getAttribute('data-source'); // nameOfPlay == "Extradecomposers" или "Black_agent"
     // в зависимости от того, какая кнопка была кликнута
@@ -155,9 +143,13 @@ function moveActive(clickedButton, PartOfIdOfDivForButtons, objectOfButtons) { /
             otherButton = objectOfButtons[PartOfIdOfDivForButtons][0];
             break;
     }
+    console.log(otherButton);
     //для функции
+    var delClass = clickedButton.classList[0];
+    //alert(delClass);
     clickedButton.setAttribute("disabled", "true");
-    clickedButton.classList.remove("unclickedButton_"+nameOfPlay+"_choiced");
+    clickedButton.classList.remove(delClass); //  Если это Black_agent, то должен
+    // удалиться класс, которого нет: "unclickedButton_Black_agent_choiced"
     clickedButton.classList.add("disabledButton");
     if ((otherButton.hasAttribute("disabled"))&&(otherButton.classList.contains("disabledButton"))) {
         otherButton.removeAttribute("disabled");
@@ -172,8 +164,6 @@ function moveActive(clickedButton, PartOfIdOfDivForButtons, objectOfButtons) { /
         var DivForButtonsToRechoice = document.getElementById("DivForButtonsToRechoice");
         if (DivForButtonsToRechoice.innerHTML=="") {
             setButtonsToChoicePlay("ButtonsToRechoice", nameOfPlay); // 2-й вызов. При нем создаются кнопки в contentList
-            //alert("После 2-го вызова setButtons PartOfIdOfDivForButtons = "+PartOfIdOfDivForButtons);
-            //alert(objectOfButtons["ButtonsToRechoice"]!==undefined);
             console.log({ 'objectOfButtons': objectOfButtons, arguments:arguments  });
         }
         if ((objectOfButtons["ButtonsToRechoice"]!==undefined)&&
@@ -306,12 +296,7 @@ function setClickToLoadPart(chosenPlay,  nameOfPlay) { // PlayName и ChosenPlay
         // Part 1, Part 2
         // Избавиться от id id содержащих пробелов
         curPart = paragraphsInContentList[index_of_part];
-        curPart.onmouseover = function() {
-            this.classList.add("mouseOnItem");
-        };
-        curPart.onmouseout = function() {
-            this.classList.remove("mouseOnItem");
-        };
+        setEventsWithMouse (curPart);
         curPart.onclick = function () // назначается обработчик события -- ВНУТРИ ЦИКЛА!
         {
             countClicks++;
@@ -396,7 +381,7 @@ function setClickToLoadPart(chosenPlay,  nameOfPlay) { // PlayName и ChosenPlay
                         if((name_in_h4.indexOf("'s")!==-1)&&(name_in_h4.indexOf("Christian")==-1)
                             &&(name_in_h4.indexOf("Author")==-1)) { // когда name_in_h4 и searcedRole не соответствуют
                             var posOfAmp = name_in_h4.indexOf("'");
-                            searchedRole = name_in_h4.substring(0, posOfAmp)
+                            searchedRole = name_in_h4.substring(0, posOfAmp);
                         }
                         else { // когда name_in_h4 и searcedRole соответствуют
                             if(name_in_h4=="Being") {
@@ -469,15 +454,18 @@ function setClickToLoadPart(chosenPlay,  nameOfPlay) { // PlayName и ChosenPlay
         };  /*конец */
     }
     curPart = document.getElementById("about_characters");
+    setEventsWithMouse (curPart);
+    curPart.onclick = function () {
+        countClicks = 0;
+        loadAboutCharacters(chosenPlay);
+    };
+}
+function setEventsWithMouse (curPart) {
     curPart.onmouseover = function getStylesForItem2() {
         this.classList.add("mouseOnItem");
     };
     curPart.onmouseout = function looseStylesForItem2() {
         this.classList.remove("mouseOnItem");
-    };
-    curPart.onclick = function () {
-        countClicks = 0;
-        loadAboutCharacters(chosenPlay);
     };
 }
 function defineNameInClass (searchedRole,  currentReplic, PoC) {
@@ -491,7 +479,10 @@ function defineNameInClass (searchedRole,  currentReplic, PoC) {
             case "Woman-devil":
                 nameInClass="WomanDevil";
                 break;
-            case "Christian's grandpa"||"Mr Stevenson":
+            case "Mr Stevenson":
+                nameInClass="Mr";
+                break;
+            case "Christian's grandpa":
                 nameInClass="Mr";
                 break;
             case "Christian's grandma":
@@ -514,6 +505,7 @@ function defineNameInClass (searchedRole,  currentReplic, PoC) {
                         }
                     }
                 }
+                break;
         }
         paintOrClearReplic(currentReplic, nameInClass, PoC);
     }
