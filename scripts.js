@@ -1,6 +1,6 @@
 // var sum = 2 * 4;
 // console.log("Hello, sum = " + sum);
-function handler(){
+function handlerInterface(){
     var data = {
         x : 'X',
         y : 'Y'
@@ -16,8 +16,13 @@ function handler(){
     }
 }
 
-var getter = handler()["get"]; // эквивалентно function(name){
-                                                /*  return data[name];
-                                                 }, */
+//var getter = handler()["get"];
 // должно вернуть свойство объекта data.
-console.log(getter("x"));
+//console.log(getter("x"));
+
+var handler = handlerInterface();
+console.log(handler.get("x"));
+handler.set("x", "new value of x");
+handler.set("y", "new value of y");
+
+console.log(handler.get("x")+"; "+handler.get("y"));
