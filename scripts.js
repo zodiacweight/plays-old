@@ -1,5 +1,4 @@
-// var sum = 2 * 4;
-// console.log("Hello, sum = " + sum);
+//
 function handlerInterface(){
     var data = {
         x : 'X',
