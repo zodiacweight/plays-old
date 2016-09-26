@@ -1,7 +1,6 @@
  body {
      background-image: url("../../images/textures/waterdrops.jpg");
     }
-    /* Стили beginning: */
     #beginning {
         overflow: auto;
     }
@@ -15,9 +14,6 @@
         width: 57%;
     }
     #bigImageWithHeader > h2 {
-        /*  margin-left: 26%;
-          margin-right: 26%;
-          margin-top: 2%;*/
         border: 1px solid;
         margin: 1% 26% 1% 29%;
         font-size: xx-large;
@@ -67,7 +63,7 @@
          font-size: 20px;
          font-weight: bold;
      }
-     #buttonsToEnter { /**/
+     #buttonsToEnter {
          margin-left: 10%;
          width: 80%;
      }
@@ -89,7 +85,6 @@
     #littleImages > img {
         width: 100%;
     }
-    /*Стили contentList -левой части после исчезновения заставки: */
      #contentlist {
          float: left;
          width: 15%;
@@ -132,7 +127,6 @@
          padding-left: 30px;
          padding-bottom: 8px;
          border: 2px solid darkslategray;
-         /*background-color: rgba(0, 120, 201, 0.25); */
          border-radius: 5px;
      }
      .mouseOnItem {
@@ -141,7 +135,6 @@
          color: cornsilk;
          border: 2px solid khaki;
      }
-     /*Стили для rightHalf:*/
         #headerLogotip {
             width: 55%;
             margin-left: 24%;
@@ -260,12 +253,6 @@
              width: 60%;
              margin-left: 18%;
          }
-        /* #areaForPart > p {
-             font-size: 22px;
-             font-family: Gadugi;
-             margin-left: 4%;
-             margin-right: 5%;
-         } */
          .authorwords {
              font-size: 20px;
              margin-right: 4%;
@@ -308,19 +295,3 @@
         #fortypes {
             font-size: 18px;
         }
- /*.paintedReplicsOfChar_Extradecomposers {
-     background-image: url("../../images/textures/туман.jpg");
- }
- .paintedReplicsOfChar_Black_agent {
-     background-image: url("../../images/textures/papyrus.jpg");
- }
- .paintedWordsFromVocabulary_Extradecomposers {
-     background-color: indigo;
-     color: aliceblue;
-     padding: 4px;
- }
- .paintedWordsFromVocabulary_Black_agent {
-     background-color: lightgray;
-     color: darkslategray;
-     padding: 4px;
- } */
