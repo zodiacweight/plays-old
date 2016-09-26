@@ -100,13 +100,6 @@ function setButtonsToChoicePlay(PartOfIdOfDivForButtons, nameOfPlay) {
     //console.trace('setButtonsToChoicePlay, arguments: ', arguments);
     var btn, btnText, objectOfButtons = {}, divForButtons=document.getElementById("DivFor"+PartOfIdOfDivForButtons);
     objectOfButtons[PartOfIdOfDivForButtons] = []; // objectOfButtons[ButtonsToRechoice]
-    /*
-     *
-     objectOfButtons = {
-     PartOfIdOfDivForButtons: []
-     }
-     */
-    //alert(objectOfButtons[PartOfIdOfDivForButtons]==undefined);
     for (var field in handleJson) {
         btn = document.createElement('button'); // заносит в переменную btn значение: тег <button></button>
         btn.dataset['source']=field; // устанавливает атрибут data-source со значением field для btn. Текстовая строка.
@@ -122,18 +115,10 @@ function setButtonsToChoicePlay(PartOfIdOfDivForButtons, nameOfPlay) {
         objectOfButtons[PartOfIdOfDivForButtons].push(btn); // objectOfButtons[ButtonsToRechoice].push(btn)
         divForButtons.appendChild(btn);
     }
-    //console.log('objectOfButtons', objectOfButtons);
-    //alert("В теле функции setButtons PartOfIdOfDivForButtons = "+PartOfIdOfDivForButtons);
 }
-function moveActive(clickedButton, PartOfIdOfDivForButtons, objectOfButtons) { // вызывается при клике на каждую из кнопок
-    /* console.trace('arguments', {
-     '1 clickedButton' : clickedButton,
-     '2 PartOfIdOfDivForButtons' : PartOfIdOfDivForButtons,
-     '3 objectOfButtons': objectOfButtons
-     }); */
-    //alert("В теле функции moveActive PartOfIdOfDivForButtons = "+PartOfIdOfDivForButtons);
-    var nameOfPlay = clickedButton.getAttribute('data-source'); // nameOfPlay == "Extradecomposers" или "Black_agent"
-    // в зависимости от того, какая кнопка была кликнута
+function moveActive(clickedButton, PartOfIdOfDivForButtons, objectOfButtons) {
+    var nameOfPlay = clickedButton.getAttribute('data-source');
+
     var chosenPlay = window[nameOfPlay], otherButton;
     switch (clickedButton) {
         case objectOfButtons[PartOfIdOfDivForButtons][0]:
@@ -146,7 +131,6 @@ function moveActive(clickedButton, PartOfIdOfDivForButtons, objectOfButtons) { /
     console.log(otherButton);
     //для функции
     var delClass = clickedButton.classList[0];
-    //alert(delClass);
     clickedButton.setAttribute("disabled", "true");
     clickedButton.classList.remove(delClass); //  Если это Black_agent, то должен
     // удалиться класс, которого нет: "unclickedButton_Black_agent_choiced"
@@ -155,7 +139,8 @@ function moveActive(clickedButton, PartOfIdOfDivForButtons, objectOfButtons) { /
         otherButton.removeAttribute("disabled");
         otherButton.classList.remove("disabledButton");
         otherButton.classList.add("unclickedButton_"+nameOfPlay+"_choiced");
-    } //////////////////////
+    }
+    ///
     if (beginning.style.display == "none") {// if - была кликнута одна из кнопок в contentList
 
     } else { // когда была кликнута одна из кнок на заставке
@@ -169,7 +154,6 @@ function moveActive(clickedButton, PartOfIdOfDivForButtons, objectOfButtons) { /
         if ((objectOfButtons["ButtonsToRechoice"]!==undefined)&&
             (objectOfButtons["ButtonsToRechoice"].length==2)) {
             for (var runBtns=0; runBtns<2; runBtns++) {
-                // кнопка в contentList, имеющая data-source соответствующий nameOfButtons.
                 if(objectOfButtons["ButtonsToRechoice"][runBtns].getAttribute("data-source")==nameOfPlay) {
                     clickedButton=objectOfButtons["ButtonsToRechoice"][runBtns];
                 }
@@ -185,7 +169,8 @@ function moveActive(clickedButton, PartOfIdOfDivForButtons, objectOfButtons) { /
                 otherButton.removeAttribute("disabled");
                 otherButton.classList.remove("disabledButton");
                 otherButton.classList.add("unclickedButton_"+nameOfPlay+"_choiced");
-            } //////////////////////
+            }
+            ///
         }
     }
     addPartsToContentList(chosenPlay, nameOfPlay);
@@ -217,14 +202,11 @@ function setColors(chosenPlay, nameOfPlay) {
                 instruction.style.color = "#08088A";
             }
             rightHalf.style.color="black";
-            //alert("setColors вызвана!");
             break;
         case Black_agent:
             if (beginning.style.display!=="none") {
-                //preview_and_enter.style.color = "#F5BCA9";
                 how_to_open_plays.style.color = "#2ECCFA";
                 main_in_preview.style.color = "#A9BCF5";
-                //alert("setColors вызвана!");
                 instruction.style.color = "lightskyblue";
             }
             rightHalf.style.color="lightgoldenrodyellow";
@@ -238,18 +220,6 @@ function setColors(chosenPlay, nameOfPlay) {
         }
     }
     contentlist.classList.add(addedClassForContentList);
-    /*otherButton.classList.add("unclickedButtonFor"+nameOfPlay);
-     otherButton.classList.remove("disabledButton");
-     if (clickedButton.classList[0].indexOf("unclicked")==0) {
-     clickedButton.classList.remove((clickedButton.classList[0]));
-     }
-     clickedButton.classList.add("disabledButton"); */
-    /*for (var runBtns=0; runBtns<2; runBtns++) {
-     if (objectOfButtons[runBtns].classList[0].indexOf(nameOfPlay)==-1) {
-     objectOfButtons[runBtns].classList.remove(objectOfButtons[runBtns].classList[1]);
-     }
-     objectOfButtons[runBtns].classList.add("unclickedButtonFor"+nameOfPlay);
-     } */
 }
 
 function addPartsToContentList(chosenPlay, nameOfPlay) {
@@ -259,11 +229,9 @@ function addPartsToContentList(chosenPlay, nameOfPlay) {
     }
     for (var part in chosenPlay["Parts"]) {
         var numberOfPart = chosenPlay["Parts"][part]["number"];
-        //  alert(chosenPlay["Parts"][part]["number"]);
         listOfParts.innerHTML += "<p id='Part" + numberOfPart + "'>Part " + numberOfPart  + "</p>";
     }
     listOfParts.innerHTML += "<p id='about_characters'>About characters</p>";
-    //listOfParts.getElementsByTagName("P")[part].style.color = "#0B0B61";
     setClickToLoadPart(chosenPlay, nameOfPlay);
 }
 
@@ -293,8 +261,6 @@ function setClickToLoadPart(chosenPlay,  nameOfPlay) { // PlayName и ChosenPlay
     }
     var curPart, countClicks = 0;
     for (var index_of_part in chosenPlay["Parts"]) {
-        // Part 1, Part 2
-        // Избавиться от id id содержащих пробелов
         curPart = paragraphsInContentList[index_of_part];
         setEventsWithMouse (curPart);
         curPart.onclick = function () // назначается обработчик события -- ВНУТРИ ЦИКЛА!
@@ -327,8 +293,7 @@ function setClickToLoadPart(chosenPlay,  nameOfPlay) { // PlayName и ChosenPlay
             addedHTMLToContainPart.top_of_play = document.getElementById("top_of_play");
             addedHTMLToContainPart.top_of_play.titleOfPart = document.getElementById("headerForPart");
             addedHTMLToContainPart.content_of_play = document.getElementById("content_of_play");
-            changePart(PartNumber, index_of_part, chosenPlay, addedHTMLToContainPart); // добавка реплик какой-то части в content_of_play
-            // при клике по кнопке назад PartNumber не изменяется index_of_part - изменяются
+            changePart(PartNumber, index_of_part, chosenPlay, addedHTMLToContainPart);
             document.getElementById("scrollBack").onclick = function () {
                 if (index_of_part == 0) {
                     index_of_part = parts_with_numbers.length - 1;
@@ -357,17 +322,6 @@ function setClickToLoadPart(chosenPlay,  nameOfPlay) { // PlayName и ChosenPlay
             };
             checkboxes = document.getElementsByClassName("checkcharacter");
             document.getElementById("paintreplics").onclick = function () {
-                /* 1. Пробег по чекбоксам. Чекнутые роли собираются в checkedRoles
-                 * 2. Пробег по репликам.
-                 * Если нет конъюнкции:
-                 *     Новая переменная получает значение name_in_h4.
-                 *    Если есть "'s", но нет "Christian" и "Author", то новая переменная получает новое значение из
-                 *    name_in_h4: подстрока от нулевого индекса до "'" не включительно.
-                 *    В любом случае: новая переменная ищется в объекте checkedRoles.
-                 *    Если обнаруживается, а у реплики нет раскраски (2-го класса), то реплика получает раскраску.
-                 *    Иначе: если не обнаруживается, а у реплики есть раскраска, то реплика теряет раскраску.
-                 * Если есть конъюнкция: готовый фрагмент кода.
-                 * */
                 var divsWithReplics = document.getElementById("content_of_play").getElementsByTagName("Div"),
                     name_in_h4, checkedRoles = {}, searchedRole;
                 for (var runchecks = 0; runchecks < checkboxes.length; runchecks++) {
@@ -392,38 +346,32 @@ function setClickToLoadPart(chosenPlay,  nameOfPlay) { // PlayName и ChosenPlay
                             }
                         }
                         if((searchedRole in checkedRoles)&&(divsWithReplics[runDivs].classList.length==1)) {
-                            //alert("Роль в checkedRoles: "+searchedRole); // роль с пробелом есть в checkedRoles
                             defineNameInClass(searchedRole, divsWithReplics[runDivs], "paint");
                         }
                         else {
-                            // реплики нечекнутой роли имеют раскраску и должны ее потерять:
                             if((!(searchedRole in checkedRoles))&&(divsWithReplics[runDivs].classList.length==2)) {
                                 defineNameInClass(searchedRole,  divsWithReplics[runDivs], "deletePaint");
                             }
                         }
                     }
-                    else { // если есть конъюнкция:
+                    else {
                         var namesInConjuction = name_in_h4.split(" & "),
                             numberOfCheckedRolesInConjuction = 0;
                         for (var runNamesInConjuction in namesInConjuction) { // пробег по именам в конъюнкции
                             if (namesInConjuction[runNamesInConjuction] in checkedRoles) {
                                 numberOfCheckedRolesInConjuction++;
                                 searchedRole = namesInConjuction[runNamesInConjuction];
-                                /*if (numberOfCheckedRolesInConjuction>1) {
-                                 break;
-                                 } */
                             }
                         }
                         var delClass;
                         switch (numberOfCheckedRolesInConjuction) { // определение того, что должно быть с раскраской реплики.
-                            case 0:// Не должно быть никакой раскраски. Если имеется раскраска (2-й класс реплики), то эта
-                                // раскраска удаляется.
+                            case 0:
                                 if (divsWithReplics[runDivs].classList.length==2) {
                                     delClass =  divsWithReplics[runDivs].classList[1];
                                     divsWithReplics[runDivs].classList.remove(delClass);
                                 }
                                 break;
-                            case 1: // 2-й класс должен соответствовать чекнутой роли
+                            case 1:
                                 if (divsWithReplics[runDivs].classList.contains("commonPaint")) {
                                     divsWithReplics[runDivs].classList.remove("commonPaint");
                                 }
@@ -431,27 +379,24 @@ function setClickToLoadPart(chosenPlay,  nameOfPlay) { // PlayName и ChosenPlay
                                 if (divsWithReplics[runDivs].classList.length>2) {
                                     var delClass2 = divsWithReplics[runDivs].classList[1];
                                     divsWithReplics[runDivs].classList.remove(delClass2);
-                                    //alert(divsWithReplics[runDivs].classList);
                                 }
                                 break;
-                            default: // релпика с конъюнкцией должна получить раскраску commonPaint
+                            default:
                                 if (divsWithReplics[runDivs].classList.length>1) {
                                     if(divsWithReplics[runDivs].classList[1].indexOf("paintedReplicsOf")==0) {
                                         delClass = divsWithReplics[runDivs].classList[1];
                                         divsWithReplics[runDivs].classList.remove(delClass);
                                     }
-                                    // alert(divsWithReplics[runDivs].classList);
                                 }
                                 if (!(divsWithReplics[runDivs].classList.contains("commonPaint"))) {
                                     divsWithReplics[runDivs].classList.add("commonPaint");
                                 }
-                            // общая раскраска
                         }
 
                     }
                 }
             };
-        };  /*конец */
+        };
     }
     curPart = document.getElementById("about_characters");
     setEventsWithMouse (curPart);
@@ -524,12 +469,6 @@ function paintOrClearReplic (currentReplic, nameInClass, PoC) {
             //var j=currentReplic.getElementsByTagName("H4")[0].innerText;
             break;
     }
-
-    /* передать:
-     * 1. replics_of_choicedpart.replicsofchar_divs[rundivs]
-     * или replics_of_choicedpart.authorreplics_divs[rundivs]
-     * 2. Строку
-     * */
 }
 function changePart(PartNumber, index_of_part, chosenPlay, addedHTMLToContainPart) { // PartNumber = "Part номер"
     presRolesObject = {};
@@ -539,19 +478,17 @@ function changePart(PartNumber, index_of_part, chosenPlay, addedHTMLToContainPar
     addedHTMLToContainPart.toChooseRoles.listOfCheckboxes.innerHTML = "";
     addedHTMLToContainPart.top_of_play.titleOfPart.innerText = PartNumber + " " + chosenPlay["Parts"][index_of_part]["header"];
     addedHTMLToContainPart.content_of_play.innerHTML = "";
-    for (var index in chosenPlay["Parts"][index_of_part]["replics"]) { // пробег по репликам какой-то части
-        // chosenPlay["Parts"][PartNumber] - part,
-        // chosenPlay["Parts"][PartNumber][index] - объект-реплика
-        arrayElementObject =chosenPlay["Parts"][index_of_part]["replics"][index]; // реплика героя: {}
-        subjectName = Object.keys(arrayElementObject)[0]; // ключ (единственный) из объекта arrayElementObject:
+    for (var index in chosenPlay["Parts"][index_of_part]["replics"]) {
+        arrayElementObject =chosenPlay["Parts"][index_of_part]["replics"][index];
+        subjectName = Object.keys(arrayElementObject)[0];
         if (subjectName == "image") {
             addedHTMLToContainPart.content_of_play.innerHTML += arrayElementObject[subjectName];
         }
         else {
             if (!(subjectName in presRolesObject) && subjectName !== "Being" && subjectName.indexOf(' &') < 0 &&
                 subjectName.indexOf("as answer") < 0) {
-                presRolesObject[subjectName] = true; // роль, добавленная в список чек-боксов, добавляется в объект
-                presRolesArray.push(subjectName);  // роль, добавленная в список чек-боксов, добавляется в массив
+                presRolesObject[subjectName] = true;
+                presRolesArray.push(subjectName);
                 switch (subjectName) {
                     case "Snake":
                         addedHTMLToContainPart.toChooseRoles.listOfCheckboxes.innerHTML +=
@@ -579,8 +516,7 @@ function changePart(PartNumber, index_of_part, chosenPlay, addedHTMLToContainPar
                 className = 'words_of_char';
             }
             innerContent = setContents(replics_of_choicedpart, [arrayElementObject[subjectName]], subjectName, className);
-            /*При первом клике по part content_of_play существует, при последующих - нет*/
-            addInnerHtml(addedHTMLToContainPart.content_of_play, innerContent); // В содержимое элемента text добавляется innerContent, судя по содержанию.
+            addInnerHtml(addedHTMLToContainPart.content_of_play, innerContent);
         }
     }
 }
@@ -588,11 +524,10 @@ setContents = function (replics_of_choicedpart, contents, subjectName, className
     var innerContent = {
         class: className,
         h4: subjectName,
-        contents: contents // слова героя
+        contents: contents
     };
     switch (className) {
         case "authorwords":
-            //console.log('case: authorwords', 'subjectName = '+subjectName);
             replics_of_choicedpart.authorwords.push(innerContent);
             break;
         case "words_of_char":
