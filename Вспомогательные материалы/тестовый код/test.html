@@ -4,22 +4,26 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
-         .class1 {
-            margin-left: 5%;
-             margin-top: 2%;
-         }
-        .class2 {
-            border: 1px solid;
-            font-size: 22px;
-            padding: 6px;
-        }
+       #htmlElement {
+           margin-left: 4%;
+           border: 2px solid;
+           padding: 4px;
+           font-size: 20px;
+       }
     </style>
 </head>
 <body>
-<div id="htmlElement" class="class1 class2">Div с классами</div>
+<div id="htmlElement">Добавить массив в объект</div>
         <script>
-            htmlElement=document.getElementById("htmlElement");
-            alert(htmlElement.classList.length);
+            var newArr = [9, 17], newObj = {};
+            document.getElementById("htmlElement").onclick = function () {
+                newArr[0]=newArr[0]+1;
+                newArr[1]=newArr[1]+1;
+                newObj.newArr = newArr;
+                console.log(newObj);
+            };
+
+
         </script>
 
 </body>

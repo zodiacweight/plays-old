@@ -34,9 +34,9 @@
     color: #0B0B61;
 }
 .paintedReplicsOfHelen {
-    background-image: url("../../images/textures/dawn.jpg");
+    background-image: url("../../images/textures/crepuscle.jpg");
     border: 3px solid mediumblue; !important;
-    color: darkblue;
+    color: lightgrey;
 }
 .paintedReplicsOfJudy {
     background-image: url("../../images/textures/mist.jpg");
@@ -122,9 +122,14 @@
     color: darkslategrey;
 }
 .paintedReplicsOfTimothy {
-    background-color: lime;
+    background-color: lightblue;
     border: 3px solid seagreen; !important;
     color: darkgreen;
+}
+.paintedReplicsOfGloria {
+    background-image: url("../../images/textures/gold.jpg");
+    color: #61210B;
+    border: 3px solid saddlebrown;
 }
 .paintedReplicsOfQuentin {
     background-image: url("../../images/textures/fioletovyj-fon33.jpg");

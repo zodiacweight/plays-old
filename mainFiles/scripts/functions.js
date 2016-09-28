@@ -1,8 +1,7 @@
 /**
  * Created by User on 26.08.2016.
  */
-function handleData(key) { // key == 'Extradecomposers' или 'Black_agent'
-// Извлечь файл json и сохранить в эти переменные объекты, которые находятся в этом файле.
+function handleData(key) {
 // 1. Создаём новый объект XMLHttpRequest
     var xhr = new XMLHttpRequest();
 // 2. Конфигурируем его: GET-запрос на URL 'special_scavengers.json'
@@ -13,24 +12,13 @@ function handleData(key) { // key == 'Extradecomposers' или 'Black_agent'
         // 4. Если код ответа сервера не 200, то это ошибка
         if (xhr.status != 200) {
             // обработать ошибку
-            console.log(xhr.status + ': ' + xhr.statusText); // пример вывода: 404: Not Found
+            console.log(xhr.status + ': ' + xhr.statusText);
         } else {
             var data = JSON.parse(xhr.responseText);
-            window[key] = data[key];//Объект window['Extradecomposers'] или window['Black_agent'];
-            /*if(key=='Extradecomposers'){
-             console.log({
-             Extradecomposers:Extradecomposers,
-             windowExtradecomposers:window['Extradecomposers'],
-             key: key,
-             dataKey: data[key]
-             });
-             }else{
-             console.log({
-             Black_agent:Black_agent,
-             windowBlack_agent:window['Black_agent']
-             });
-             }*/
-            handleJson[key].handle(data); // вызов функции handle, находящейся в объекте handleJson.
+            window[key] = data[key];
+            // window[objectWithVariables.variables["Extradecomposers"]] и
+            // window[objectWithVariables.variables["Black_agent"]]
+            handleJson[key].handle(data);
         }
     };
     xhr.onerror = function (event) {
@@ -42,21 +30,16 @@ var handleJson = {
         path: 'mainFiles/jsons/special_scavengers.json',
         handle: function (data) {
             this.data = data;
-            //console.log('initUI: ', data);
-            contentlist.style.display = "none";
-            rightHalf.style.display = "none";
-            setComponentsOfBeginning(Extradecomposers);
-            //preview_and_enter.style.color = "mediumvioletred";
-            main_in_preview.style.color = "mediumvioletred";
-            how_to_open_plays.style.color = "mediumblue";
+            objectWithVariables().getElement("contentlist").style.display = "none";
+            objectWithVariables().getElement("rightHalf").style.display = "none";
+            setComponentsOfBeginning(data.Extradecomposers);
+            setColors("Extradecomposers");
+           /* objectWithVariables.variables.main_in_preview.style.color = "mediumvioletred";
+            objectWithVariables.variables.how_to_open_play.style.color = "mediumblue"; */
             setTimeout(function () {
                 $("#beginning").fadeIn(2400);
             }, 1800);
         },
-        /* setColor: function(){
-         body.setAttribute('id', 'backgroundForSpecScavengers');
-         //contentlist.style.backgroundColor = "rgba(0, 087, 990, 0.30)";
-         }, */
         data:null,
         buttonText: 'Extradecomposers'
     },
@@ -64,7 +47,6 @@ var handleJson = {
         path: 'mainFiles/jsons/black_agent.json',
         handle: function (data) {
             this.data = data;
-            //console.log('Black agent works!');
         },
         data:null,
         buttonText: 'Black_agent'
@@ -79,23 +61,25 @@ function setComponentsOfBeginning (chosenPlay) {
     var componentsOfBeginning = chosenPlay['onTheBeginning']; //Black_agen: chosenPlay == undefined
     //header = document.getElementById("header"),
     document.getElementById("header").InnerText = chosenPlay['onTheBeginning'].header;
-    bigImage.innerHTML = componentsOfBeginning["images"][0];
-    littleImages.innerHTML = componentsOfBeginning["images"][0];
+    objectWithVariables().setHtml('bigImage', componentsOfBeginning["images"][0]);
+    var divForLittleImages = document.getElementById("littleImages");
+    divForLittleImages=objectWithVariables().setHtml("divWithLittleImages", componentsOfBeginning["images"][0]);
     document.getElementById("main_in_preview").innerText = componentsOfBeginning["preview"];
     for (var addLittleImages = 1; addLittleImages < componentsOfBeginning["images"].length; addLittleImages++) {
-        littleImages.innerHTML += componentsOfBeginning["images"][addLittleImages];
+        objectWithVariables().addHTML("littleImages", componentsOfBeginning["images"][addLittleImages]);
     }
     changeBigImageWithHeader();
 }
 function changeBigImageWithHeader() {
-    var arrayOfLittleImages = littleImages.getElementsByTagName("Img");
+    //var arrayOfLittleImages = objectWithVariables.variables.littleImages.getElementsByTagName("Img");
+    var arrayOfLittleImages = objectWithVariables().getElement("littleImages"),
+        bigImage = objectWithVariables().getElement("bigImage");
     for (var runLittleImages = 0; runLittleImages < arrayOfLittleImages.length; runLittleImages++) {
         arrayOfLittleImages[runLittleImages].onmouseover = function () {
-            bigImage.getElementsByTagName("Img")[0].src = this.src;
+            bigImage.src = this.src;
         }
     }
 }
-// Устанавливаются кнопки для открытия ворот и входа
 function setButtonsToChoicePlay(PartOfIdOfDivForButtons, nameOfPlay) {
     //console.trace('setButtonsToChoicePlay, arguments: ', arguments);
     var btn, btnText, objectOfButtons = {}, divForButtons=document.getElementById("DivFor"+PartOfIdOfDivForButtons);
@@ -118,7 +102,6 @@ function setButtonsToChoicePlay(PartOfIdOfDivForButtons, nameOfPlay) {
 }
 function moveActive(clickedButton, PartOfIdOfDivForButtons, objectOfButtons) {
     var nameOfPlay = clickedButton.getAttribute('data-source');
-
     var chosenPlay = window[nameOfPlay], otherButton;
     switch (clickedButton) {
         case objectOfButtons[PartOfIdOfDivForButtons][0]:
@@ -128,12 +111,11 @@ function moveActive(clickedButton, PartOfIdOfDivForButtons, objectOfButtons) {
             otherButton = objectOfButtons[PartOfIdOfDivForButtons][0];
             break;
     }
-    console.log(otherButton);
+ //   console.log(otherButton);
     //для функции
     var delClass = clickedButton.classList[0];
     clickedButton.setAttribute("disabled", "true");
-    clickedButton.classList.remove(delClass); //  Если это Black_agent, то должен
-    // удалиться класс, которого нет: "unclickedButton_Black_agent_choiced"
+    clickedButton.classList.remove(delClass);
     clickedButton.classList.add("disabledButton");
     if ((otherButton.hasAttribute("disabled"))&&(otherButton.classList.contains("disabledButton"))) {
         otherButton.removeAttribute("disabled");
@@ -141,15 +123,14 @@ function moveActive(clickedButton, PartOfIdOfDivForButtons, objectOfButtons) {
         otherButton.classList.add("unclickedButton_"+nameOfPlay+"_choiced");
     }
     ///
-    if (beginning.style.display == "none") {// if - была кликнута одна из кнопок в contentList
-
-    } else { // когда была кликнута одна из кнок на заставке
+    var beginning = objectWithVariables().getElement("beginning");
+    if (beginning.style.display !== "none") { // когда была кликнута одна из кнок на заставке
         setComponentsOfBeginning(chosenPlay);
-        openGates(); // В этой функции beginning получает значение "none".
-        var DivForButtonsToRechoice = document.getElementById("DivForButtonsToRechoice");
+        openGates();
+        var DivForButtonsToRechoice =objectWithVariables().getElement("DivForButtonsToRechoice");
         if (DivForButtonsToRechoice.innerHTML=="") {
-            setButtonsToChoicePlay("ButtonsToRechoice", nameOfPlay); // 2-й вызов. При нем создаются кнопки в contentList
-            console.log({ 'objectOfButtons': objectOfButtons, arguments:arguments  });
+            setButtonsToChoicePlay("ButtonsToRechoice", nameOfPlay);
+            //console.log({ 'objectOfButtons': objectOfButtons, arguments:arguments  });
         }
         if ((objectOfButtons["ButtonsToRechoice"]!==undefined)&&
             (objectOfButtons["ButtonsToRechoice"].length==2)) {
@@ -175,55 +156,68 @@ function moveActive(clickedButton, PartOfIdOfDivForButtons, objectOfButtons) {
     }
     addPartsToContentList(chosenPlay, nameOfPlay);
     loadAboutCharacters(chosenPlay);
-    setColors(chosenPlay, nameOfPlay);
-    headerLogotip.innerHTML = chosenPlay["headerLogotip"];
+    setColors(nameOfPlay);
+   // var headerLogotip = objectWithVariables().getElement("headerLogotip");
+    //objectWithVariables.variables.headerLogotip.innerHTML = chosenPlay["headerLogotip"];
+    objectWithVariables().setHtml("headerLogotip", chosenPlay["headerLogotip"]);
 }
 function openGates() {
     setTimeout(function () {
         document.getElementById("instruction").innerText = 'Открыто!';
         document.getElementById('gate').src="images/on_the_beginning/opened_gate.jpg";
         document.getElementById("gate").onmouseover = function () {
-            beginning.style.display = "none";
-            contentlist.style.display = "block";
-            rightHalf.style.display = "block";
-            contentlist.style.borderRight = "3px solid";
+            /*objectWithVariables().setDisplay("beginning", "none");
+            objectWithVariables().setDisplay("contentlist", "block");
+            objectWithVariables().setDisplay("rightHalf", "block");
+            objectWithVariables().setStyle("contentlist", "borderRight", "3px solid");*/
+            objectWithVariables().getElement("beginning").style.display="none";
+            objectWithVariables().getElement("contentlist").style.display="block";
+            objectWithVariables().getElement("rightHalf").style.display="block";
+            objectWithVariables().getElement("contentlist").style.borderRight="3px solid";
         };
     }, 3200);
 }
 
 function setColors(chosenPlay, nameOfPlay) {
     var addedClassForContentList = "contentListFor"+nameOfPlay,
-        instruction = document.getElementById("instruction");
-    switch (chosenPlay) {
-        case Extradecomposers:
-            if (beginning.style.display!=="none") {
-                how_to_open_plays.style.color = "mediumblue";
-                main_in_preview.style.color = "mediumvioletred";
-                instruction.style.color = "#08088A";
+    instruction = document.getElementById("instruction");
+    switch (nameOfPlay) {
+        case "Extradecomposers":
+            if (objectWithVariables().getElement("beginning").style.display!=="none") {
+                /*
+                objectWithVariables().setStyle("how_to_open_play", "color", "mediumblue");
+                objectWithVariables().setStyle("main_in_preview", "color", "mediumvioletred");*/
+                objectWithVariables().getElement("how_to_open_play").style.color ="mediumblue";
+                objectWithVariables().getElement("main_in_preview").style.color ="mediumvioletred";
+                if (instruction!==null) {
+                    instruction.style.color = "#08088A";
+                }
             }
-            rightHalf.style.color="black";
+            objectWithVariables().getElement("rightHalf").style.color="black";
             break;
-        case Black_agent:
-            if (beginning.style.display!=="none") {
-                how_to_open_plays.style.color = "#2ECCFA";
-                main_in_preview.style.color = "#A9BCF5";
-                instruction.style.color = "lightskyblue";
+        case "Black_agent":
+            if (objectWithVariables().getElement("beginning").style.display!=="none") {
+                objectWithVariables().getElement("how_to_open_play").style.color = "#2ECCFA";
+                objectWithVariables().getElement("main_in_preview").style.color = "#A9BCF5";
+                if (instruction!==null) {
+                    instruction.style.color = "#08088A";
+                }
             }
-            rightHalf.style.color="lightgoldenrodyellow";
+            objectWithVariables().getElement("rightHalf").style.color="lightgoldenrodyellow";
             break;
     }
-    body.backgroundColor="";
-    body.setAttribute("id", "backgroundFor"+nameOfPlay);
-    if(contentlist.classList.length>0) {
-        if(contentlist.classList[0].indexOf(nameOfPlay)==-1) {
-            contentlist.classList.remove(contentlist.classList[0]);
+    objectWithVariables().getElement("body").backgroundColor="";
+    objectWithVariables().getElement("body").setAttribute("id", "backgroundFor"+nameOfPlay);
+    if(objectWithVariables().getElement("contentlist").classList.length>0) {
+        if(objectWithVariables().getElement("contentlist").classList[0].indexOf(nameOfPlay)==-1) {
+            objectWithVariables().getElement("contentlist").classList.remove(objectWithVariables().getElement("contentlist").classList[0]);
         }
     }
-    contentlist.classList.add(addedClassForContentList);
+    objectWithVariables().getElement("contentlist").classList.add(addedClassForContentList);
 }
 
 function addPartsToContentList(chosenPlay, nameOfPlay) {
-    listOfParts = document.getElementById("listOfParts");
+    var listOfParts =  objectWithVariables().getElement("listOfParts");
     if (listOfParts.innerHTML != "") {
         listOfParts.innerHTML = "";
     }
@@ -236,22 +230,17 @@ function addPartsToContentList(chosenPlay, nameOfPlay) {
 }
 
 function loadAboutCharacters(chosenPlay) {
-    if (contentlist.style.borderRight == "") {
-        contentlist.style.borderRight = "3px solid";
-        rightHalf.style.borderLeft = "none";
+    if (objectWithVariables().getElement("contentlist").style.borderRight == "") {
+        objectWithVariables().getElement("contentlist").style.borderRight = "3px solid";
+        objectWithVariables().getElement("rightHalf").style.borderLeft = "none";
     }
-    mainArea.innerHTML = "<h2>About Characters</h2>";
+    objectWithVariables().getElement("mainArea").innerHTML = "<h2>About Characters</h2>";
     for (var addPartAboutCharacters = 0; addPartAboutCharacters < chosenPlay['About characters'].length; addPartAboutCharacters++) {
-        mainArea.innerHTML += "<p>" + chosenPlay['About characters'][addPartAboutCharacters] + "</p>";
+        objectWithVariables().getElement("mainArea").innerHTML += "<p>" + chosenPlay['About characters'][addPartAboutCharacters] + "</p>";
     }
 }
-/**
- *
- * @param part
- * @param playName
- */
-function setClickToLoadPart(chosenPlay,  nameOfPlay) { // PlayName и ChosenPlays должно быть равно объекту Extradecomposers или Black_agent
-    var paragraphsInContentList = contentlist.getElementsByTagName("P"), parts_with_numbers = [];
+function setClickToLoadPart(chosenPlay,  nameOfPlay) {
+    var paragraphsInContentList = objectWithVariables().getElement("contentlist").getElementsByTagName("P"), parts_with_numbers = [];
     for (var runPars=0; runPars < paragraphsInContentList.length; runPars++) {
         if (paragraphsInContentList[runPars].innerText.indexOf("Part")==0) {
             if (parts_with_numbers.indexOf(paragraphsInContentList[runPars].innerText)==-1) {
@@ -267,17 +256,17 @@ function setClickToLoadPart(chosenPlay,  nameOfPlay) { // PlayName и ChosenPlay
         {
             countClicks++;
             var PartNumber = this.innerText; index_of_part = parts_with_numbers.indexOf(PartNumber);
-            if (contentlist.style.borderRight != "") {
-                contentlist.style.borderRight = "";
-                rightHalf.style.borderLeft = "3px solid";
+            if (objectWithVariables().getElement("contentlist").style.borderRight != "") {
+                objectWithVariables().getElement("contentlist").style.borderRight = "";
+                objectWithVariables().getElement("rightHalf").style.borderLeft = "3px solid";
             }
             if (countClicks == 1) { //  Если клик первый, то элементы добавляются в html. Независимо от if
                 // все эти элементы сохраняются в объект, и вызывается функция changePart, в которую передаются изменяемые
                 // элементы этого объекта
-                if (!(rightHalf.classList.contains("addStylesForContent"))) {
-                    rightHalf.classList.add("addStylesForContent");
+                if (!(objectWithVariables().getElement("rightHalf").classList.contains("addStylesForContent"))) {
+                    objectWithVariables().getElement("rightHalf").classList.add("addStylesForContent");
                 }
-                document.getElementById("mainArea").innerHTML = "<div id='toChooseRoles'></div>" +
+                objectWithVariables().getElement("mainArea").innerHTML = "<div id='toChooseRoles'></div>" +
                     "<div id='top_of_play'></div><div id='content_of_play'></div>";
                 document.getElementById("toChooseRoles").innerHTML = "<h4>There are the following characters in this part:</h4>" +
                     "<div id='listOfCheckboxes'></div><div><input id='paintreplics' type='button' " +
@@ -320,10 +309,11 @@ function setClickToLoadPart(chosenPlay,  nameOfPlay) { // PlayName и ChosenPlay
                     wordsfromVocabulary[runWords].classList.toggle("paintedWordsFromVocabulary_"+nameOfPlay);
                 }
             };
-            checkboxes = document.getElementsByClassName("checkcharacter");
+            var checkboxes = document.getElementsByClassName("checkcharacter");
             document.getElementById("paintreplics").onclick = function () {
                 var divsWithReplics = document.getElementById("content_of_play").getElementsByTagName("Div"),
                     name_in_h4, checkedRoles = {}, searchedRole;
+                presRolesArray=objectWithVariables().getElement("presRolesArray");
                 for (var runchecks = 0; runchecks < checkboxes.length; runchecks++) {
                     if (checkboxes[runchecks].checked) {
                         checkedRoles[presRolesArray[runchecks]] = true;
@@ -471,16 +461,17 @@ function paintOrClearReplic (currentReplic, nameInClass, PoC) {
     }
 }
 function changePart(PartNumber, index_of_part, chosenPlay, addedHTMLToContainPart) { // PartNumber = "Part номер"
-    presRolesObject = {};
-    presRolesArray = [];
+    var presRolesArray = objectWithVariables().getElement("presRolesArray");
+    var presRolesObject = objectWithVariables().getElement("presRolesObject");
+    var replics_of_choicedpart = {};
     replics_of_choicedpart.authorwords = [];
     replics_of_choicedpart.wordsofchar = [];
     addedHTMLToContainPart.toChooseRoles.listOfCheckboxes.innerHTML = "";
     addedHTMLToContainPart.top_of_play.titleOfPart.innerText = PartNumber + " " + chosenPlay["Parts"][index_of_part]["header"];
     addedHTMLToContainPart.content_of_play.innerHTML = "";
     for (var index in chosenPlay["Parts"][index_of_part]["replics"]) {
-        arrayElementObject =chosenPlay["Parts"][index_of_part]["replics"][index];
-        subjectName = Object.keys(arrayElementObject)[0];
+        var arrayElementObject = chosenPlay["Parts"][index_of_part]["replics"][index];
+        var subjectName = Object.keys(arrayElementObject)[0], className;
         if (subjectName == "image") {
             addedHTMLToContainPart.content_of_play.innerHTML += arrayElementObject[subjectName];
         }
@@ -515,10 +506,11 @@ function changePart(PartNumber, index_of_part, chosenPlay, addedHTMLToContainPar
             } else {
                 className = 'words_of_char';
             }
-            innerContent = setContents(replics_of_choicedpart, [arrayElementObject[subjectName]], subjectName, className);
+            innerContent = setContents(replics_of_choicedpart, arrayElementObject[subjectName], subjectName, className);
             addInnerHtml(addedHTMLToContainPart.content_of_play, innerContent);
         }
     }
+   //objectWithVariables().elements.presRolesArray = presRolesArray;
 }
 setContents = function (replics_of_choicedpart, contents, subjectName, className) {
     var innerContent = {

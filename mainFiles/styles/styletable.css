@@ -1,5 +1,5 @@
- body {
-     background-image: url("../../images/textures/waterdrops.jpg");
+    body {
+         background-image: url("../../images/textures/waterdrops.jpg");
     }
     #beginning {
         overflow: auto;
