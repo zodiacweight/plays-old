@@ -16,8 +16,6 @@ var objectWithVariables = (function () {
         mainArea: document.getElementById("mainArea"),
         checkboxes: [],
         replics_of_choicedpart: {},
-        presRolesArray: [],
-        presRolesObject: {},
         itemsAboutCharacters: []
     };
     return {
@@ -40,7 +38,10 @@ var objectWithVariables = (function () {
          } */
     };
 })(); // IIFE Immediately Invoked Function Expression
-
+var presRoles = {
+    Array: [],
+    Obj: {}
+};
 var handleJson = {
     Extradecomposers: {
         path: 'mainFiles/jsons/special_scavengers.json',

@@ -19,9 +19,9 @@
         font-size: xx-large;
         color: darkblue;
     }
-    #bigImage > img {
+    #bigImage {
        margin-top: 0;
-        width: 100%;
+       width: 100%;
     }
     #littleImages > img {
         width: 98%;

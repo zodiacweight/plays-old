@@ -16,8 +16,6 @@ function handleData(key) {
         } else {
             var data = JSON.parse(xhr.responseText);
             window[key] = data[key];
-            // window[objectWithVariables.variables["Extradecomposers"]] и
-            // window[objectWithVariables.variables["Black_agent"]]
             handleJson[key].handle(data);
         }
     };
@@ -33,16 +31,15 @@ function setComponentsOfBeginning (chosenPlay) {
     //header = document.getElementById("header"),
     document.getElementById("header").InnerText = chosenPlay['onTheBeginning'].header;
     objectWithVariables.setHtml('bigImage', componentsOfBeginning["images"][0]);
-    var divForLittleImages = document.getElementById("littleImages");
+    /* */ var divForLittleImages = document.getElementById("littleImages");
     divForLittleImages=objectWithVariables.setHtml("divWithLittleImages", componentsOfBeginning["images"][0]);
     document.getElementById("main_in_preview").innerText = componentsOfBeginning["preview"];
     for (var addLittleImages = 1; addLittleImages < componentsOfBeginning["images"].length; addLittleImages++) {
-        objectWithVariables.addHTML("littleImages", componentsOfBeginning["images"][addLittleImages]);
+        objectWithVariables.addHTML("divWithLittleImages", componentsOfBeginning["images"][addLittleImages]);
     }
     changeBigImageWithHeader();
 }
 function changeBigImageWithHeader() {
-    //var arrayOfLittleImages = objectWithVariables.variables.littleImages.getElementsByTagName("Img");
     var arrayOfLittleImages = objectWithVariables.getElement("littleImages"),
         bigImage = objectWithVariables.getElement("bigImage");
     for (var runLittleImages = 0; runLittleImages < arrayOfLittleImages.length; runLittleImages++) {
@@ -52,7 +49,6 @@ function changeBigImageWithHeader() {
     }
 }
 function setButtonsToChoicePlay(PartOfIdOfDivForButtons, nameOfPlay) {
-    //console.trace('setButtonsToChoicePlay, arguments: ', arguments);
     var btn, btnText, objectOfButtons = {}, divForButtons=document.getElementById("DivFor"+PartOfIdOfDivForButtons);
     objectOfButtons[PartOfIdOfDivForButtons] = []; // objectOfButtons[ButtonsToRechoice]
     for (var field in handleJson) {
@@ -82,17 +78,17 @@ function moveActive(clickedButton, PartOfIdOfDivForButtons, objectOfButtons) {
             otherButton = objectOfButtons[PartOfIdOfDivForButtons][0];
             break;
     }
- //   console.log(otherButton);
     //для функции
     var delClass = clickedButton.classList[0];
-    clickedButton.setAttribute("disabled", "true");
+    realizeExchangeBetweenButtons (clickedButton, otherButton, nameOfPlay, delClass);
+    /*clickedButton.setAttribute("disabled", "true");
     clickedButton.classList.remove(delClass);
     clickedButton.classList.add("disabledButton");
     if ((otherButton.hasAttribute("disabled"))&&(otherButton.classList.contains("disabledButton"))) {
         otherButton.removeAttribute("disabled");
         otherButton.classList.remove("disabledButton");
         otherButton.classList.add("unclickedButton_"+nameOfPlay+"_choiced");
-    }
+    } */
     ///
     var beginning = objectWithVariables.getElement("beginning");
     if (beginning.style.display !== "none") { // когда была кликнута одна из кнок на заставке
@@ -101,7 +97,6 @@ function moveActive(clickedButton, PartOfIdOfDivForButtons, objectOfButtons) {
         var DivForButtonsToRechoice =objectWithVariables.getElement("DivForButtonsToRechoice");
         if (DivForButtonsToRechoice.innerHTML=="") {
             setButtonsToChoicePlay("ButtonsToRechoice", nameOfPlay);
-            //console.log({ 'objectOfButtons': objectOfButtons, arguments:arguments  });
         }
         if ((objectOfButtons["ButtonsToRechoice"]!==undefined)&&
             (objectOfButtons["ButtonsToRechoice"].length==2)) {
@@ -114,14 +109,15 @@ function moveActive(clickedButton, PartOfIdOfDivForButtons, objectOfButtons) {
                 }
             }
             //для функции
-            clickedButton.setAttribute("disabled", "true");
+            realizeExchangeBetweenButtons (clickedButton, otherButton, nameOfPlay, "unclickedButton_"+nameOfPlay+"_choiced");
+          /*  clickedButton.setAttribute("disabled", "true");
             clickedButton.classList.remove("unclickedButton_"+nameOfPlay+"_choiced");
             clickedButton.classList.add("disabledButton");
             if ((otherButton.hasAttribute("disabled"))&&(otherButton.classList.contains("disabledButton"))) {
                 otherButton.removeAttribute("disabled");
                 otherButton.classList.remove("disabledButton");
                 otherButton.classList.add("unclickedButton_"+nameOfPlay+"_choiced");
-            }
+            } */
             ///
         }
     }
@@ -137,10 +133,6 @@ function openGates() {
         document.getElementById("instruction").innerText = 'Открыто!';
         document.getElementById('gate').src="images/on_the_beginning/opened_gate.jpg";
         document.getElementById("gate").onmouseover = function () {
-            /*objectWithVariables.setDisplay("beginning", "none");
-            objectWithVariables.setDisplay("contentlist", "block");
-            objectWithVariables.setDisplay("rightHalf", "block");
-            objectWithVariables.setStyle("contentlist", "borderRight", "3px solid");*/
             objectWithVariables.getElement("beginning").style.display="none";
             objectWithVariables.getElement("contentlist").style.display="block";
             objectWithVariables.getElement("rightHalf").style.display="block";
@@ -149,7 +141,8 @@ function openGates() {
     }, 3200);
 }
 
-function setColors(chosenPlay, nameOfPlay) {
+function setColors(nameOfPlay) {
+   // alert("setColors вызывана!");
     var addedClassForContentList = "contentListFor"+nameOfPlay,
     instruction = document.getElementById("instruction");
     switch (nameOfPlay) {
@@ -179,6 +172,7 @@ function setColors(chosenPlay, nameOfPlay) {
     }
     objectWithVariables.getElement("body").backgroundColor="";
     objectWithVariables.getElement("body").setAttribute("id", "backgroundFor"+nameOfPlay);
+    //alert(objectWithVariables.getElement("body").id);
     if(objectWithVariables.getElement("contentlist").classList.length>0) {
         if(objectWithVariables.getElement("contentlist").classList[0].indexOf(nameOfPlay)==-1) {
             objectWithVariables.getElement("contentlist").classList.remove(objectWithVariables.getElement("contentlist").classList[0]);
@@ -223,7 +217,7 @@ function setClickToLoadPart(chosenPlay,  nameOfPlay) {
     for (var index_of_part in chosenPlay["Parts"]) {
         curPart = paragraphsInContentList[index_of_part];
         setEventsWithMouse (curPart);
-        curPart.onclick = function () // назначается обработчик события -- ВНУТРИ ЦИКЛА!
+        curPart.onclick = function ()
         {
             countClicks++;
             var PartNumber = this.innerText; index_of_part = parts_with_numbers.indexOf(PartNumber);
@@ -231,9 +225,7 @@ function setClickToLoadPart(chosenPlay,  nameOfPlay) {
                 objectWithVariables.getElement("contentlist").style.borderRight = "";
                 objectWithVariables.getElement("rightHalf").style.borderLeft = "3px solid";
             }
-            if (countClicks == 1) { //  Если клик первый, то элементы добавляются в html. Независимо от if
-                // все эти элементы сохраняются в объект, и вызывается функция changePart, в которую передаются изменяемые
-                // элементы этого объекта
+            if (countClicks == 1) {
                 if (!(objectWithVariables.getElement("rightHalf").classList.contains("addStylesForContent"))) {
                     objectWithVariables.getElement("rightHalf").classList.add("addStylesForContent");
                 }
@@ -284,10 +276,10 @@ function setClickToLoadPart(chosenPlay,  nameOfPlay) {
             document.getElementById("paintreplics").onclick = function () {
                 var divsWithReplics = document.getElementById("content_of_play").getElementsByTagName("Div"),
                     name_in_h4, checkedRoles = {}, searchedRole;
-                presRolesArray=objectWithVariables.getElement("presRolesArray");
                 for (var runchecks = 0; runchecks < checkboxes.length; runchecks++) {
                     if (checkboxes[runchecks].checked) {
-                        checkedRoles[presRolesArray[runchecks]] = true;
+                        checkedRoles[presRoles.Array[runchecks]] = true; // presRoles.Array должен содержать все роли,
+                        // присутствующие в списке чекбоксов
                     }
                 }
                 for (var runDivs = 0; runDivs < divsWithReplics.length; runDivs++) {
@@ -366,6 +358,16 @@ function setClickToLoadPart(chosenPlay,  nameOfPlay) {
         loadAboutCharacters(chosenPlay);
     };
 }
+function realizeExchangeBetweenButtons (clickedButton, otherButton, nameOfPlay, delClass) {
+    clickedButton.setAttribute("disabled", "true");
+    clickedButton.classList.remove(delClass);
+    clickedButton.classList.add("disabledButton");
+    if ((otherButton.hasAttribute("disabled"))&&(otherButton.classList.contains("disabledButton"))) {
+        otherButton.removeAttribute("disabled");
+        otherButton.classList.remove("disabledButton");
+        otherButton.classList.add("unclickedButton_"+nameOfPlay+"_choiced");
+    }
+}
 function setEventsWithMouse (curPart) {
     curPart.onmouseover = function getStylesForItem2() {
         this.classList.add("mouseOnItem");
@@ -432,11 +434,17 @@ function paintOrClearReplic (currentReplic, nameInClass, PoC) {
     }
 }
 function changePart(PartNumber, index_of_part, chosenPlay, addedHTMLToContainPart) { // PartNumber = "Part номер"
-    var presRolesArray = objectWithVariables.getElement("presRolesArray");
-    var presRolesObject = objectWithVariables.getElement("presRolesObject");
-    var replics_of_choicedpart = {};
+    if (presRoles.Array!==[]&&presRoles.Obj!=={}) {
+        presRoles.Array = [];
+        presRoles.Obj = {};
+    }
+    replics_of_choicedpart = {};
     replics_of_choicedpart.authorwords = [];
     replics_of_choicedpart.wordsofchar = [];
+    if ((presRoles.Array !== [])&&(presRoles.Obj !== {})) {
+        presRoles.Array = [];
+        presRoles.Obj = {};
+    }
     addedHTMLToContainPart.toChooseRoles.listOfCheckboxes.innerHTML = "";
     addedHTMLToContainPart.top_of_play.titleOfPart.innerText = PartNumber + " " + chosenPlay["Parts"][index_of_part]["header"];
     addedHTMLToContainPart.content_of_play.innerHTML = "";
@@ -447,10 +455,10 @@ function changePart(PartNumber, index_of_part, chosenPlay, addedHTMLToContainPar
             addedHTMLToContainPart.content_of_play.innerHTML += arrayElementObject[subjectName];
         }
         else {
-            if (!(subjectName in presRolesObject) && subjectName !== "Being" && subjectName.indexOf(' &') < 0 &&
+            if (!(subjectName in presRoles.Obj) && subjectName !== "Being" && subjectName.indexOf(' &') < 0 &&
                 subjectName.indexOf("as answer") < 0) {
-                presRolesObject[subjectName] = true;
-                presRolesArray.push(subjectName);
+                presRoles.Obj[subjectName] = true;
+                presRoles.Array.push(subjectName);
                 switch (subjectName) {
                     case "Snake":
                         addedHTMLToContainPart.toChooseRoles.listOfCheckboxes.innerHTML +=
@@ -481,7 +489,6 @@ function changePart(PartNumber, index_of_part, chosenPlay, addedHTMLToContainPar
             addInnerHtml(addedHTMLToContainPart.content_of_play, innerContent);
         }
     }
-   //objectWithVariables.elements.presRolesArray = presRolesArray;
 }
 setContents = function (replics_of_choicedpart, contents, subjectName, className) {
     var innerContent = {
