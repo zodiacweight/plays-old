@@ -10,6 +10,14 @@
         border: 2px solid indigo;
         border-radius: 8px;
     }
+    #divWithLittleImages {
+        width: 10%;
+        padding: 3px;
+    }
+    #divWithLittleImages > img {
+        width: 98%;
+        margin: 1%;
+    }
     #bigImageWithHeader {
         width: 57%;
     }
@@ -23,9 +31,8 @@
        margin-top: 0;
        width: 100%;
     }
-    #littleImages > img {
-        width: 98%;
-        margin: 1%;
+    #bigImage > img {
+        width: 99%;
     }
     #preview_and_enter {
         width:30%;
@@ -77,13 +84,6 @@
         width: 58%;
         margin-top: 1%;
         margin-left: 15%;
-    }
-    #littleImages {
-        width: 10%;
-        padding: 3px;
-    }
-    #littleImages > img {
-        width: 100%;
     }
      #contentlist {
          float: left;

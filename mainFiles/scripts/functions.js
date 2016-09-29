@@ -2,6 +2,7 @@
  * Created by User on 26.08.2016.
  */
 function handleData(key) {
+    console.log(key);
 // 1. Создаём новый объект XMLHttpRequest
     var xhr = new XMLHttpRequest();
 // 2. Конфигурируем его: GET-запрос на URL 'special_scavengers.json'
@@ -27,12 +28,11 @@ function fakeFunction(data) {
     console.log('Fake: ', data);
 }
 function setComponentsOfBeginning (chosenPlay) {
-    var componentsOfBeginning = chosenPlay['onTheBeginning']; //Black_agen: chosenPlay == undefined
+    var componentsOfBeginning = chosenPlay['onTheBeginning'];
     //header = document.getElementById("header"),
     document.getElementById("header").InnerText = chosenPlay['onTheBeginning'].header;
     objectWithVariables.setHtml('bigImage', componentsOfBeginning["images"][0]);
-    /* */ var divForLittleImages = document.getElementById("littleImages");
-    divForLittleImages=objectWithVariables.setHtml("divWithLittleImages", componentsOfBeginning["images"][0]);
+    objectWithVariables.setHtml("divWithLittleImages", componentsOfBeginning["images"][0]);
     document.getElementById("main_in_preview").innerText = componentsOfBeginning["preview"];
     for (var addLittleImages = 1; addLittleImages < componentsOfBeginning["images"].length; addLittleImages++) {
         objectWithVariables.addHTML("divWithLittleImages", componentsOfBeginning["images"][addLittleImages]);
@@ -40,8 +40,8 @@ function setComponentsOfBeginning (chosenPlay) {
     changeBigImageWithHeader();
 }
 function changeBigImageWithHeader() {
-    var arrayOfLittleImages = objectWithVariables.getElement("littleImages"),
-        bigImage = objectWithVariables.getElement("bigImage");
+    bigImage =  objectWithVariables.getElement("bigImage").getElementsByTagName("Img")[0];
+    var arrayOfLittleImages = objectWithVariables.getElement("littleImages");
     for (var runLittleImages = 0; runLittleImages < arrayOfLittleImages.length; runLittleImages++) {
         arrayOfLittleImages[runLittleImages].onmouseover = function () {
             bigImage.src = this.src;
@@ -78,18 +78,17 @@ function moveActive(clickedButton, PartOfIdOfDivForButtons, objectOfButtons) {
             otherButton = objectOfButtons[PartOfIdOfDivForButtons][0];
             break;
     }
-    //для функции
+
     var delClass = clickedButton.classList[0];
-    realizeExchangeBetweenButtons (clickedButton, otherButton, nameOfPlay, delClass);
-    /*clickedButton.setAttribute("disabled", "true");
+    //realizeExchangeBetweenButtons (clickedButton, otherButton, nameOfPlay, delClass);
+    /**/clickedButton.setAttribute("disabled", "true");
     clickedButton.classList.remove(delClass);
     clickedButton.classList.add("disabledButton");
     if ((otherButton.hasAttribute("disabled"))&&(otherButton.classList.contains("disabledButton"))) {
         otherButton.removeAttribute("disabled");
         otherButton.classList.remove("disabledButton");
         otherButton.classList.add("unclickedButton_"+nameOfPlay+"_choiced");
-    } */
-    ///
+    }
     var beginning = objectWithVariables.getElement("beginning");
     if (beginning.style.display !== "none") { // когда была кликнута одна из кнок на заставке
         setComponentsOfBeginning(chosenPlay);
@@ -108,17 +107,16 @@ function moveActive(clickedButton, PartOfIdOfDivForButtons, objectOfButtons) {
                     otherButton=objectOfButtons["ButtonsToRechoice"][runBtns];
                 }
             }
-            //для функции
-            realizeExchangeBetweenButtons (clickedButton, otherButton, nameOfPlay, "unclickedButton_"+nameOfPlay+"_choiced");
-          /*  clickedButton.setAttribute("disabled", "true");
+           // realizeExchangeBetweenButtons (clickedButton, otherButton, nameOfPlay, "unclickedButton_"+nameOfPlay+"_choiced");
+          /**/  clickedButton.setAttribute("disabled", "true");
             clickedButton.classList.remove("unclickedButton_"+nameOfPlay+"_choiced");
             clickedButton.classList.add("disabledButton");
             if ((otherButton.hasAttribute("disabled"))&&(otherButton.classList.contains("disabledButton"))) {
                 otherButton.removeAttribute("disabled");
                 otherButton.classList.remove("disabledButton");
                 otherButton.classList.add("unclickedButton_"+nameOfPlay+"_choiced");
-            } */
-            ///
+            }
+
         }
     }
     addPartsToContentList(chosenPlay, nameOfPlay);
