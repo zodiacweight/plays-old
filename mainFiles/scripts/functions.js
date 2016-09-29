@@ -80,15 +80,15 @@ function moveActive(clickedButton, PartOfIdOfDivForButtons, objectOfButtons) {
     }
 
     var delClass = clickedButton.classList[0];
-    //realizeExchangeBetweenButtons (clickedButton, otherButton, nameOfPlay, delClass);
-    /**/clickedButton.setAttribute("disabled", "true");
+    realizeExchangeBetweenButtons (clickedButton, otherButton, nameOfPlay, delClass);
+    /*clickedButton.setAttribute("disabled", "true");
     clickedButton.classList.remove(delClass);
     clickedButton.classList.add("disabledButton");
     if ((otherButton.hasAttribute("disabled"))&&(otherButton.classList.contains("disabledButton"))) {
         otherButton.removeAttribute("disabled");
         otherButton.classList.remove("disabledButton");
         otherButton.classList.add("unclickedButton_"+nameOfPlay+"_choiced");
-    }
+    }*/
     var beginning = objectWithVariables.getElement("beginning");
     if (beginning.style.display !== "none") { // когда была кликнута одна из кнок на заставке
         setComponentsOfBeginning(chosenPlay);
@@ -107,15 +107,15 @@ function moveActive(clickedButton, PartOfIdOfDivForButtons, objectOfButtons) {
                     otherButton=objectOfButtons["ButtonsToRechoice"][runBtns];
                 }
             }
-           // realizeExchangeBetweenButtons (clickedButton, otherButton, nameOfPlay, "unclickedButton_"+nameOfPlay+"_choiced");
-          /**/  clickedButton.setAttribute("disabled", "true");
+           realizeExchangeBetweenButtons (clickedButton, otherButton, nameOfPlay, "unclickedButton_"+nameOfPlay+"_choiced");
+          /*  clickedButton.setAttribute("disabled", "true");
             clickedButton.classList.remove("unclickedButton_"+nameOfPlay+"_choiced");
             clickedButton.classList.add("disabledButton");
             if ((otherButton.hasAttribute("disabled"))&&(otherButton.classList.contains("disabledButton"))) {
                 otherButton.removeAttribute("disabled");
                 otherButton.classList.remove("disabledButton");
                 otherButton.classList.add("unclickedButton_"+nameOfPlay+"_choiced");
-            }
+            }*/
 
         }
     }
