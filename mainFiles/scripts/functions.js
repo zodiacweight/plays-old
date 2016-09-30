@@ -81,14 +81,6 @@ function moveActive(clickedButton, PartOfIdOfDivForButtons, objectOfButtons) {
 
     var delClass = clickedButton.classList[0];
     realizeExchangeBetweenButtons (clickedButton, otherButton, nameOfPlay, delClass);
-    /*clickedButton.setAttribute("disabled", "true");
-    clickedButton.classList.remove(delClass);
-    clickedButton.classList.add("disabledButton");
-    if ((otherButton.hasAttribute("disabled"))&&(otherButton.classList.contains("disabledButton"))) {
-        otherButton.removeAttribute("disabled");
-        otherButton.classList.remove("disabledButton");
-        otherButton.classList.add("unclickedButton_"+nameOfPlay+"_choiced");
-    }*/
     var beginning = objectWithVariables.getElement("beginning");
     if (beginning.style.display !== "none") { // когда была кликнута одна из кнок на заставке
         setComponentsOfBeginning(chosenPlay);
@@ -131,6 +123,11 @@ function openGates() {
         document.getElementById("instruction").innerText = 'Открыто!';
         document.getElementById('gate').src="images/on_the_beginning/opened_gate.jpg";
         document.getElementById("gate").onmouseover = function () {
+            /*objectWithVariables.show('contentlist','rightHalf');
+            arguments[0], arguments[1]
+            for(var index in arguments){
+                this.getElement(arguments[index]).style.display="none"
+            }*/
             objectWithVariables.getElement("beginning").style.display="none";
             objectWithVariables.getElement("contentlist").style.display="block";
             objectWithVariables.getElement("rightHalf").style.display="block";
