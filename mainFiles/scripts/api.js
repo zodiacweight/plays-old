@@ -56,7 +56,7 @@ var objectWithVariablesAndFunctions = (function () {
         }
 
     };
-})(); // IIFE Immediately Invoked Function Expression
+})();
 var presRoles = {
     Array: [],
     Obj: {}
@@ -70,8 +70,6 @@ var handleJson = {
             objectWithVariablesAndFunctions.getElement("rightHalf").style.display = "none";
             setComponentsOfBeginning(data.Extradecomposers);
             setColors("Extradecomposers");
-            /* objectWithVariablesAndFunctions.variables.main_in_preview.style.color = "mediumvioletred";
-             objectWithVariablesAndFunctions.variables.how_to_open_play.style.color = "mediumblue"; */
             setTimeout(function () {
                 $("#beginning").fadeIn(2400);
             }, 1800);

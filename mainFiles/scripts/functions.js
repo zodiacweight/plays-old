@@ -20,7 +20,7 @@ function handleData(key) {
         }
     };
     xhr.onerror = function (event) {
-       // console.log(event);
+       console.log(event);
     };
 }
 function fakeFunction(data) {
@@ -53,13 +53,13 @@ function setButtonsToChoicePlay(PartOfIdOfDivForButtons, nameOfPlay) {
         btn.dataset['source']=field;
         btnText = document.createTextNode(handleJson[field].buttonText);
         btn.appendChild(btnText);
-        if (divForButtons.id=="DivForButtonsToEnter") { // сделать кнопку пассивной
+        if (divForButtons.id=="DivForButtonsToEnter") {
             btn.classList.add("unclickedButton_"+nameOfPlay+"_choiced");
         }
         btn.onclick = function () {
             moveActive(this, PartOfIdOfDivForButtons, objectOfButtons);
         };
-        objectOfButtons[PartOfIdOfDivForButtons].push(btn); // objectOfButtons[ButtonsToRechoice].push(btn)
+        objectOfButtons[PartOfIdOfDivForButtons].push(btn);
         divForButtons.appendChild(btn);
     }
 }
@@ -299,7 +299,7 @@ function setClickToLoadPart(chosenPlay,  nameOfPlay) {
                     else {
                         var namesInConjuction = name_in_h4.split(" & "),
                             numberOfCheckedRolesInConjuction = 0;
-                        for (var runNamesInConjuction in namesInConjuction) { // пробег по именам в конъюнкции
+                        for (var runNamesInConjuction in namesInConjuction) {
                             if (namesInConjuction[runNamesInConjuction] in checkedRoles) {
                                 numberOfCheckedRolesInConjuction++;
                                 searchedRole = namesInConjuction[runNamesInConjuction];
