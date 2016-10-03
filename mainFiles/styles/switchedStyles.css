@@ -1,7 +1,7 @@
 #backgroundForExtradecomposers {
     background-image: url("../../images/textures/waterdrops.jpg");
 }
-#backgroundForBlack_agent {
+#backgroundForBlack_parody {
     background-image: url("../../images/textures/texture.jpg");
 }
 .contentListForExtradecomposers {
@@ -9,7 +9,7 @@
     background-color: rgba(0, 087, 990, 0.30);
     color: darkblue;
 }
-.contentListForBlack_agent {
+.contentListForBlack_parody {
     border-color: lightblue;
     background-color: rgba(25, 12, 90, 0.25);
     color: lightsteelblue;
@@ -18,7 +18,7 @@
     background-color: darkviolet;
     color: lightblue;
 }
-.unclickedButton_Black_agent_choiced {
+.unclickedButton_Black_parody_choiced {
     background-color: lightblue;
     color: darkviolet;
 }
@@ -34,9 +34,9 @@
     color: #0B0B61;
 }
 .paintedReplicsOfHelen {
-    background-image: url("../../images/textures/crepuscle.jpg");
+    background-image: url("../../images/textures/calm_water3.jpg");
     border: 3px solid mediumblue; !important;
-    color: lightgrey;
+    color: darkmagenta;
 }
 .paintedReplicsOfJudy {
     background-image: url("../../images/textures/mist.jpg");
@@ -122,9 +122,9 @@
     color: darkslategrey;
 }
 .paintedReplicsOfTimothy {
-    background-color: lightblue;
+    background-image: url("../../images/textures/buket2.jpg");
     border: 3px solid seagreen; !important;
-    color: darkgreen;
+    color: lightyellow;
 }
 .paintedReplicsOfGloria {
     background-image: url("../../images/textures/gold.jpg");
@@ -161,7 +161,7 @@
     color: aliceblue;
     padding: 4px;
 }
-.paintedWordsFromVocabulary_Black_agent {
+.paintedWordsFromVocabulary_Black_parody {
     background-color: lightgray;
     color: darkslategray;
     padding: 4px;

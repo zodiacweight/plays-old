@@ -15,15 +15,8 @@
 <body>
 <div id="htmlElement">Добавить массив в объект</div>
         <script>
-            var newArr = [9, 17], newObj = {};
-            document.getElementById("htmlElement").onclick = function () {
-                newArr[0]=newArr[0]+1;
-                newArr[1]=newArr[1]+1;
-                newObj.newArr = newArr;
-                console.log(newObj);
-            };
-
-
+            var divs = document.getElementsByTagName("Div");
+            console.log(divs[0]);
         </script>
 
 </body>
