@@ -1,14 +1,51 @@
-    body {
-         background-image: url("../../images/textures/waterdrops.jpg");
-    }
-    #beginning {
+   #primary {
+       width: 70%;
+       border: 1px solid;
+       margin-left: 15%;
+       margin-top: 4%;
+   }
+   #primary > img {
+       width: 92%;
+       margin-left: 4%;
+       margin-top: 4%;
+   }
+   #primary_instruction {
+       width: 92%;
+       margin-left: 4%;
+       margin-top: 2%;
+   }
+   #primary_instruction > div {
+       margin-left: 6%;
+       margin-top: 4%;
+       border: 1px solid palevioletred;
+       border-radius: 3px;
+       padding: 6px;
+       font-size: 20px;
+   }
+    #secondary {
         overflow: auto;
     }
-    #beginning > * {
+    #secondary > * {
         float: left;
         margin-left: 4px;
         border: 2px solid indigo;
         border-radius: 8px;
+    }
+    #divForButtonsToChoicePlay > button {
+        margin-top: 6%;
+        margin-left: 4%;
+        font-size: 20px;
+        padding: 7px;
+    }
+    #enter > input {
+        font-size: 20px;
+        padding: 6px;
+        border-radius: 4px;
+        margin-left: 15%;
+        margin-top: 4%;
+    }
+    #enter > img {
+        margin-top: 5%;
     }
     #divWithLittleImages {
         width: 10%;
@@ -51,11 +88,6 @@
     }
     #preview > p {
         font-size: 20px;
-    }
-    #how_to_open_plays {
-        text-decoration: underline;
-        font-weight: bold;
-        margin-left: 6%;
     }
     #enter {
         font-size: 26px;

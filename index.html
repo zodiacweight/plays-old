@@ -8,19 +8,33 @@
         <script type="text/javascript" src="mainFiles/scripts/jquery-3.1.0.min.js"></script>
     </head>
     <body>
-        <div id="beginning" class="hidden">
-         <div id="divWithLittleImages"></div>
-         <div id="bigImageWithHeader">
-             <h2 id="header">Текст по умолчанию</h2>
-             <div id="bigImage"></div>
-         </div>
-         <div id="preview_and_enter">
-                <div id="preview">
-                    <p id="main_in_preview"></p>
-                    <p id="how_to_open_plays">Как открыть пьесы?</p>
+        <div id="beginning">
+            <div id="primary" class="hidden">
+                <img src="images/textures/green_marble.jpg">
+                <div id="primary_instruction">
+                    <p>Для того, чтобы открыть пьесы, следует нажать на одну из кнопок:</p>
+                    <div>Special scavengers</div>
+                    <div>Black parody</div>
                 </div>
-                <div id="enter"></div>
-         </div>
+            </div>
+            <div id="secondary" class="hidden">
+                 <div id="divWithLittleImages"></div>
+                 <div id="bigImageWithHeader">
+                     <h2 id="header">Текст по умолчанию</h2>
+                     <div id="bigImage"></div>
+                 </div>
+                 <div id="preview_and_enter">
+                        <div id="preview">
+                            <p id="main_in_preview"></p>
+                        </div>
+                        <div id="enter">
+                            <div id="divForButtonsToChoicePlay"></div>
+                            <input type="button" value="open gates and enter" id="buttonToEnter">
+                            <div id="instruction"></div>
+                            <img src="images/on_the_beginning/closed_gate.jpg" id="gate">
+                        </div>
+                 </div>
+            </div>
         </div>
         <div id="contentlist">
             <div id="DivForButtonsToRechoice"></div>

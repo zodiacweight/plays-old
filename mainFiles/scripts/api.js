@@ -3,12 +3,17 @@ var objectWithVariablesAndFunctions = (function () {
         body: document.getElementsByTagName("Body")[0],
         headerLogotip: document.getElementById("headerLogotip"),
         beginning: document.getElementById("beginning"),
+        primary: document.getElementById("primary"),
+        secondary: document.getElementById("secondary"),
+        primary_instruction: document.getElementById("primary_instruction"),
         bigImage: document.getElementById("bigImage"),
         divWithLittleImages: document.getElementById("divWithLittleImages"),
         littleImages: document.getElementById("divWithLittleImages").getElementsByTagName("Img"),
         main_in_preview: document.getElementById("main_in_preview"),
         how_to_open_play: document.getElementById("how_to_open_plays"),
         enter: document.getElementById("enter"),
+        buttonToEnter:  document.getElementById("buttonToEnter"),
+        gate: document.getElementById("gate"),
         contentlist: document.getElementById("contentlist"),
         DivForButtonsToRechoice: document.getElementById("DivForButtonsToRechoice"),
         listOfParts: document.getElementById("listOfParts"),
@@ -29,7 +34,6 @@ var objectWithVariablesAndFunctions = (function () {
             else {
                 elements[element_name].innerHTML = html;
             }
-
         },
         getElement: function (element_name) {
             return elements[element_name];
@@ -53,6 +57,18 @@ var objectWithVariablesAndFunctions = (function () {
         },
         removeClassForStaticElement: function (element_name, removedClass) {
             elements[element_name].classList.remove(removedClass);
+        },
+        setClickOnBeginningDivs: function () {
+            var beginningDivs = elements["primary_instruction"].getElementsByTagName("Div");
+            for (var count=0; count<2; count++) {
+                console.log(beginningDivs[count]);
+                beginningDivs[count].onclick = function () {
+                    setColors("Extradecomposers");
+                    $("#primary").fadeOut(670);
+                    elements["secondary"].classList.remove("hidden");
+                    setButtonsToChoicePlay("ButtonsToChoicePlay", "Extradecomposers");
+                }
+            }
         }
 
     };
@@ -69,9 +85,8 @@ var handleJson = {
             objectWithVariablesAndFunctions.getElement("contentlist").style.display = "none";
             objectWithVariablesAndFunctions.getElement("rightHalf").style.display = "none";
             setComponentsOfBeginning(data.Extradecomposers);
-            setColors("Extradecomposers");
             setTimeout(function () {
-                $("#beginning").fadeIn(2400);
+                $("#primary").fadeIn(2400);
             }, 1800);
         },
         data:null,

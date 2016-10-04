@@ -41,21 +41,21 @@ function changeBigImageWithHeader() {
     var arrayOfLittleImages = objectWithVariablesAndFunctions.getElement("littleImages");
     for (var runLittleImages = 0; runLittleImages < arrayOfLittleImages.length; runLittleImages++) {
         arrayOfLittleImages[runLittleImages].onmouseover = function () {
+            var bigImage=objectWithVariablesAndFunctions.getElement("bigImage").innerHTML;
             bigImage.src = this.src;
         }
     }
 }
 function setButtonsToChoicePlay(PartOfIdOfDivForButtons, nameOfPlay) {
-    var btn, btnText, objectOfButtons = {}, divForButtons=document.getElementById("DivFor"+PartOfIdOfDivForButtons);
+    var btn, btnText, objectOfButtons = {}, divForButtons=document.getElementById("divFor"+PartOfIdOfDivForButtons);
     objectOfButtons[PartOfIdOfDivForButtons] = [];
     for (var field in handleJson) {
         btn = document.createElement('button');
         btn.dataset['source']=field;
         btnText = document.createTextNode(handleJson[field].buttonText);
         btn.appendChild(btnText);
-        if (divForButtons.id=="DivForButtonsToEnter") {
-            btn.classList.add("unclickedButton_"+nameOfPlay+"_choiced");
-        }
+      //  if (divForButtons.id=="DivForButtonsToEnter") {  }
+        btn.classList.add("unclickedButton_"+nameOfPlay+"_choiced");
         btn.onclick = function () {
             moveActive(this, PartOfIdOfDivForButtons, objectOfButtons);
         };
@@ -80,11 +80,10 @@ function moveActive(clickedButton, PartOfIdOfDivForButtons, objectOfButtons) {
     var beginning = objectWithVariablesAndFunctions.getElement("beginning");
     if (beginning.style.display !== "none") {
         setComponentsOfBeginning(chosenPlay);
-        openGates();
-        var DivForButtonsToRechoice =objectWithVariablesAndFunctions.getElement("DivForButtonsToRechoice");
-        if (DivForButtonsToRechoice.innerHTML=="") {
+        //openGates();
+        /*if (DivForButtonsToRechoice.innerHTML=="") {
             setButtonsToChoicePlay("ButtonsToRechoice", nameOfPlay);
-        }
+        } */
         if ((objectOfButtons["ButtonsToRechoice"]!==undefined)&&
             (objectOfButtons["ButtonsToRechoice"].length==2)) {
             for (var runBtns=0; runBtns<2; runBtns++) {
@@ -106,8 +105,8 @@ function moveActive(clickedButton, PartOfIdOfDivForButtons, objectOfButtons) {
 function openGates() {
     setTimeout(function () {
         document.getElementById("instruction").innerText = 'Открыто!';
-        document.getElementById('gate').src="images/on_the_beginning/opened_gate.jpg";
-        document.getElementById("gate").onmouseover = function () {
+        objectWithVariablesAndFunctions.getElement("gate").src="images/on_the_beginning/opened_gate.jpg";
+        objectWithVariablesAndFunctions.getElement("gate").onmouseover = function () {
             objectWithVariablesAndFunctions.regularVisibility([["beginning", "none"],["contentlist","block"],["rightHalf","block"]]);
             objectWithVariablesAndFunctions.setCssProperty([["contentlist", "borderRight", "3px solid"]]);
         };
@@ -121,7 +120,6 @@ function setColors(nameOfPlay) {
         case "Extradecomposers":
             if (objectWithVariablesAndFunctions.getElement("beginning").style.display!=="none") {
                 objectWithVariablesAndFunctions.setCssProperty([
-                                                    ["how_to_open_play","color","mediumblue"],
                                                     ["main_in_preview","color","mediumvioletred"]
                                                    ]);
                 if (instruction!==null) {
@@ -133,7 +131,6 @@ function setColors(nameOfPlay) {
         case "Black_parody":
             if (objectWithVariablesAndFunctions.getElement("beginning").style.display!=="none") {
                 objectWithVariablesAndFunctions.setCssProperty([
-                        ["how_to_open_play","color","#2ECCFA"],
                         ["main_in_preview","color","#A9BCF5"]
                     ]);
                 if (instruction!==null) {
