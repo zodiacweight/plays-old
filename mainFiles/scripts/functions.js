@@ -47,8 +47,8 @@ function changeBigImageWithHeader() {
     }
 }
 function setButtonsToChoicePlay(PartOfIdOfDivForButtons, nameOfPlay) {
-    var btn, btnText, objectOfButtons = {}, divForButtons=document.getElementById("divFor"+PartOfIdOfDivForButtons),
-    chosenPlay = window[nameOfPlay];
+    var btn, btnText, objectOfButtons = {}, divForButtons=document.getElementById("divFor"+PartOfIdOfDivForButtons);
+    /*chosenPlay = window[nameOfPlay]*/;
     objectOfButtons[PartOfIdOfDivForButtons] = [];
     for (var field in handleJson) {
         btn = document.createElement('button');
@@ -59,16 +59,15 @@ function setButtonsToChoicePlay(PartOfIdOfDivForButtons, nameOfPlay) {
         btn.classList.add("unclickedButton_"+nameOfPlay+"_choiced");
         btn.onclick = function () {
             nameOfPlay=this.getAttribute("data-source");
-            moveActive(this, PartOfIdOfDivForButtons, objectOfButtons, nameOfPlay, chosenPlay);
+            moveActive(this, PartOfIdOfDivForButtons, objectOfButtons, nameOfPlay);
             // Здесь nameOfPlay и chosenPlay не соответствуют
-            main.setClickOnKey (nameOfPlay, chosenPlay);
+            main.setClickOnKey (nameOfPlay);
         };
         objectOfButtons[PartOfIdOfDivForButtons].push(btn);
         divForButtons.appendChild(btn);
     }
 }
-function moveActive(clickedButton, PartOfIdOfDivForButtons, objectOfButtons, nameOfPlay, chosenPlay) {
-    chosenPlay=window[nameOfPlay];
+function moveActive(clickedButton, PartOfIdOfDivForButtons, objectOfButtons, nameOfPlay) {
     var otherButton;
     switch (clickedButton) {
         case objectOfButtons[PartOfIdOfDivForButtons][0]:
@@ -97,9 +96,9 @@ function moveActive(clickedButton, PartOfIdOfDivForButtons, objectOfButtons, nam
         }
     }
     setColors(nameOfPlay);
-    main.setHtmlIntoStaticElement("headerLogotip", chosenPlay["headerLogotip"]);
+    main.setHtmlIntoStaticElement("headerLogotip", window[nameOfPlay]["headerLogotip"]);
     console.log(nameOfPlay);
-    console.log(chosenPlay);
+    //console.log(chosenPlay);
     // здесь nameOfPlay и chosenPlay соответствуют. Чего они не соответствуют сразу после вызова этой функции перед
     // вызовом  main.setClickOnKey - не понятно.
 }
@@ -151,20 +150,20 @@ function setColors(nameOfPlay) {
     main.addClassForStaticElement("contentlist", addedClassForContentList);
 
 }
-function addPartsToContentList(chosenPlay, nameOfPlay) {
+function addPartsToContentList(nameOfPlay) {
     var listOfParts =  main.getElement("listOfParts");
     if (listOfParts.innerHTML != "") {
         main.setHtmlIntoStaticElement("listOfParts", "");
     }
-    for (var part in chosenPlay["Parts"]) {
-        var numberOfPart = chosenPlay["Parts"][part]["number"];
+    for (var part in window[nameOfPlay]["Parts"]) {
+        var numberOfPart = window[nameOfPlay]["Parts"][part]["number"];
         main.addHTML("listOfParts", "<p id='Part" + numberOfPart + "'>Part " + numberOfPart  + "</p>");
     }
     main.addHTML("listOfParts", "<p id='about_characters'>About characters</p>");
-    setClickToLoadPart(chosenPlay, nameOfPlay);
+    setClickToLoadPart(nameOfPlay);
 }
 
-function loadAboutCharacters(chosenPlay) {
+function loadAboutCharacters(nameOfPlay) {
     if (main.getElement("contentlist").style.borderRight == "") {
         main.setCssProperty(
             [
@@ -174,11 +173,11 @@ function loadAboutCharacters(chosenPlay) {
         );
     }
     main.setHtmlIntoStaticElement("mainArea", "<h2>About Characters</h2>");
-    for (var addPartAboutCharacters = 0; addPartAboutCharacters < chosenPlay['About characters'].length; addPartAboutCharacters++) {
-        main.addHTML("mainArea", "<p>" + chosenPlay['About characters'][addPartAboutCharacters] + "</p>");
+    for (var addPartAboutCharacters = 0; addPartAboutCharacters < window[nameOfPlay]['About characters'].length; addPartAboutCharacters++) {
+        main.addHTML("mainArea", "<p>" + window[nameOfPlay]['About characters'][addPartAboutCharacters] + "</p>");
     }
 }
-function setClickToLoadPart(chosenPlay,  nameOfPlay) {
+function setClickToLoadPart(nameOfPlay) {
     var paragraphsInContentList = main.getElement("contentlist").getElementsByTagName("P"), parts_with_numbers = [];
     for (var runPars=0; runPars < paragraphsInContentList.length; runPars++) {
         if (paragraphsInContentList[runPars].innerText.indexOf("Part")==0) {
@@ -188,7 +187,7 @@ function setClickToLoadPart(chosenPlay,  nameOfPlay) {
         }
     }
     var curPart, countClicks = 0;
-    for (var index_of_part in chosenPlay["Parts"]) {
+    for (var index_of_part in window[nameOfPlay]["Parts"]) {
         curPart = paragraphsInContentList[index_of_part];
         setEventsWithMouse (curPart);
         curPart.onclick = function ()
@@ -223,7 +222,7 @@ function setClickToLoadPart(chosenPlay,  nameOfPlay) {
             addedHTMLToContainPart.top_of_play = document.getElementById("top_of_play");
             addedHTMLToContainPart.top_of_play.titleOfPart = document.getElementById("headerForPart");
             addedHTMLToContainPart.content_of_play = document.getElementById("content_of_play");
-            changePart(PartNumber, index_of_part, chosenPlay, addedHTMLToContainPart);
+            changePart(PartNumber, index_of_part, window[nameOfPlay], addedHTMLToContainPart);
             document.getElementById("scrollBack").onclick = function () {
                 if (index_of_part == 0) {
                     index_of_part = parts_with_numbers.length - 1;
@@ -232,7 +231,7 @@ function setClickToLoadPart(chosenPlay,  nameOfPlay) {
                     index_of_part--;
                 }
                 PartNumber = parts_with_numbers[index_of_part];
-                changePart(PartNumber, index_of_part, chosenPlay, addedHTMLToContainPart);
+                changePart(PartNumber, index_of_part, window[nameOfPlay], addedHTMLToContainPart);
             };
             document.getElementById("scrollFront").onclick = function () {
                 if (index_of_part == parts_with_numbers.length - 1) {
@@ -242,7 +241,7 @@ function setClickToLoadPart(chosenPlay,  nameOfPlay) {
                     index_of_part++;
                 }
                 PartNumber = parts_with_numbers[index_of_part];
-                changePart(PartNumber, index_of_part, chosenPlay, addedHTMLToContainPart);
+                changePart(PartNumber, index_of_part, window[nameOfPlay], addedHTMLToContainPart);
             };
             var wordsfromVocabulary = document.getElementsByClassName("from_vocabulary");
             document.getElementById("paintWordsFromVocab").onclick = function () {
@@ -341,7 +340,7 @@ function setClickToLoadPart(chosenPlay,  nameOfPlay) {
     setEventsWithMouse (curPart);
     curPart.onclick = function () {
         countClicks = 0;
-        loadAboutCharacters(chosenPlay);
+        loadAboutCharacters(nameOfPlay);
     };
 }
 function realizeExchangeBetweenButtons (clickedButton, otherButton, nameOfPlay, delClass) {

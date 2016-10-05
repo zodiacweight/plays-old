@@ -83,12 +83,11 @@ var main = (function () {
                 }
             }
         },
-        setClickOnKey: function (nameOfPlay, chosenPlay) {
+        setClickOnKey: function (nameOfPlay) {
             elements["buttonToEnter"].onclick = function () {
                  // chosenPlay и nameOfPlay не соответствуют до равенства
-                chosenPlay=window[nameOfPlay];
-                addPartsToContentList(chosenPlay, nameOfPlay); // chosenPlay, nameOfPlay
-                loadAboutCharacters(chosenPlay); // chosenPlay
+                addPartsToContentList(nameOfPlay); // chosenPlay, nameOfPlay
+                loadAboutCharacters(nameOfPlay); // chosenPlay
                 openGates();
             }
         }
