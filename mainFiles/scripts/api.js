@@ -1,11 +1,11 @@
-var objectWithVariablesAndFunctions = (function () {
+var main = (function () {
     var elements = {
         body: document.getElementsByTagName("Body")[0],
         headerLogotip: document.getElementById("headerLogotip"),
         beginning: document.getElementById("beginning"),
+        beginningDivs: this.primary.getElementsByTagName("Div"),
         primary: document.getElementById("primary"),
         secondary: document.getElementById("secondary"),
-        primary_instruction: document.getElementById("primary_instruction"),
         bigImage: document.getElementById("bigImage"),
         divWithLittleImages: document.getElementById("divWithLittleImages"),
         littleImages: document.getElementById("divWithLittleImages").getElementsByTagName("Img"),
@@ -27,11 +27,15 @@ var objectWithVariablesAndFunctions = (function () {
         setHtmlIntoStaticElement: function (element_name, html) {
             if (typeof(html)== "object") {
                 elements[element_name].innerHTML="";
-                for (var clue in html) {
-                    elements[element_name].innerHTML+=html[clue];
+                if(Array.isArray()){
+
+                }else{
+
                 }
-            }
-            else {
+                for (var clue in html) {
+                    this.addHTML(element_name, html[clue]);
+                }
+            } else {
                 elements[element_name].innerHTML = html;
             }
         },
@@ -58,19 +62,36 @@ var objectWithVariablesAndFunctions = (function () {
         removeClassForStaticElement: function (element_name, removedClass) {
             elements[element_name].classList.remove(removedClass);
         },
-        setClickOnBeginningDivs: function () {
-            var beginningDivs = elements["primary_instruction"].getElementsByTagName("Div");
+        setClickOnBeginningDivs: function (beginningDivs) {
             for (var count=0; count<2; count++) {
                 console.log(beginningDivs[count]);
                 beginningDivs[count].onclick = function () {
-                    setColors("Extradecomposers");
+                    var nameOfPlay;
+                    switch (this.innerText) {
+                        case "Special scavengers":
+                        nameOfPlay="Extradecomposers";
+                        break;
+                        case "Black parody":
+                        nameOfPlay="Black_parody";
+                        break;
+                    }
+                    setColors(nameOfPlay);
+                    setComponentsOfBeginning(nameOfPlay);
                     $("#primary").fadeOut(670);
                     elements["secondary"].classList.remove("hidden");
-                    setButtonsToChoicePlay("ButtonsToChoicePlay", "Extradecomposers");
+                    setButtonsToChoicePlay("ButtonsToChoicePlay", nameOfPlay);
                 }
             }
+        },
+        setClickOnKey: function (nameOfPlay, chosenPlay) {
+            elements["buttonToEnter"].onclick = function () {
+                 // chosenPlay и nameOfPlay не соответствуют до равенства
+                chosenPlay=window[nameOfPlay];
+                addPartsToContentList(chosenPlay, nameOfPlay); // chosenPlay, nameOfPlay
+                loadAboutCharacters(chosenPlay); // chosenPlay
+                openGates();
+            }
         }
-
     };
 })();
 var presRoles = {
@@ -82,9 +103,8 @@ var handleJson = {
         path: 'mainFiles/jsons/special_scavengers.json',
         handle: function (data) {
             this.data = data;
-            objectWithVariablesAndFunctions.getElement("contentlist").style.display = "none";
-            objectWithVariablesAndFunctions.getElement("rightHalf").style.display = "none";
-            setComponentsOfBeginning(data.Extradecomposers);
+            main.getElement("contentlist").style.display = "none";
+            main.getElement("rightHalf").style.display = "none";
             setTimeout(function () {
                 $("#primary").fadeIn(2400);
             }, 1800);
@@ -99,6 +119,5 @@ var handleJson = {
         },
         data:null,
         buttonText: 'Black_parody'
-
     }
 };

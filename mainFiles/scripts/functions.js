@@ -26,28 +26,29 @@ function handleData(key) {
 function fakeFunction(data) {
     console.log('Fake: ', data);
 }
-function setComponentsOfBeginning (chosenPlay) {
-    var componentsOfBeginning = chosenPlay['onTheBeginning'];
-    document.getElementById("header").InnerText = chosenPlay['onTheBeginning'].header;
-    objectWithVariablesAndFunctions.setHtmlIntoStaticElement('bigImage', componentsOfBeginning["images"][0]);
-    objectWithVariablesAndFunctions.setHtmlIntoStaticElement("divWithLittleImages", componentsOfBeginning["images"][0]);
+function setComponentsOfBeginning (nameOfPlay) {
+    var componentsOfBeginning = window[nameOfPlay]['onTheBeginning'];
+    document.getElementById("header").InnerText = window[nameOfPlay]['onTheBeginning'].header;
+    main.setHtmlIntoStaticElement('bigImage', componentsOfBeginning["images"][0]);
+    main.setHtmlIntoStaticElement("divWithLittleImages", componentsOfBeginning["images"][0]);
     document.getElementById("main_in_preview").innerText = componentsOfBeginning["preview"];
     for (var addLittleImages = 1; addLittleImages < componentsOfBeginning["images"].length; addLittleImages++) {
-        objectWithVariablesAndFunctions.addHTML("divWithLittleImages", componentsOfBeginning["images"][addLittleImages]);
+        main.addHTML("divWithLittleImages", componentsOfBeginning["images"][addLittleImages]);
     }
     changeBigImageWithHeader();
 }
 function changeBigImageWithHeader() {
-    var arrayOfLittleImages = objectWithVariablesAndFunctions.getElement("littleImages");
+    var arrayOfLittleImages = main.getElement("littleImages");
     for (var runLittleImages = 0; runLittleImages < arrayOfLittleImages.length; runLittleImages++) {
         arrayOfLittleImages[runLittleImages].onmouseover = function () {
-            var bigImage=objectWithVariablesAndFunctions.getElement("bigImage").innerHTML;
+            var bigImage=main.getElement("bigImage").innerHTML;
             bigImage.src = this.src;
         }
     }
 }
 function setButtonsToChoicePlay(PartOfIdOfDivForButtons, nameOfPlay) {
-    var btn, btnText, objectOfButtons = {}, divForButtons=document.getElementById("divFor"+PartOfIdOfDivForButtons);
+    var btn, btnText, objectOfButtons = {}, divForButtons=document.getElementById("divFor"+PartOfIdOfDivForButtons),
+    chosenPlay = window[nameOfPlay];
     objectOfButtons[PartOfIdOfDivForButtons] = [];
     for (var field in handleJson) {
         btn = document.createElement('button');
@@ -57,15 +58,18 @@ function setButtonsToChoicePlay(PartOfIdOfDivForButtons, nameOfPlay) {
       //  if (divForButtons.id=="DivForButtonsToEnter") {  }
         btn.classList.add("unclickedButton_"+nameOfPlay+"_choiced");
         btn.onclick = function () {
-            moveActive(this, PartOfIdOfDivForButtons, objectOfButtons);
+            nameOfPlay=this.getAttribute("data-source");
+            moveActive(this, PartOfIdOfDivForButtons, objectOfButtons, nameOfPlay, chosenPlay);
+            // Здесь nameOfPlay и chosenPlay не соответствуют
+            main.setClickOnKey (nameOfPlay, chosenPlay);
         };
         objectOfButtons[PartOfIdOfDivForButtons].push(btn);
         divForButtons.appendChild(btn);
     }
 }
-function moveActive(clickedButton, PartOfIdOfDivForButtons, objectOfButtons) {
-    var nameOfPlay = clickedButton.getAttribute('data-source');
-    var chosenPlay = window[nameOfPlay], otherButton;
+function moveActive(clickedButton, PartOfIdOfDivForButtons, objectOfButtons, nameOfPlay, chosenPlay) {
+    chosenPlay=window[nameOfPlay];
+    var otherButton;
     switch (clickedButton) {
         case objectOfButtons[PartOfIdOfDivForButtons][0]:
             otherButton = objectOfButtons[PartOfIdOfDivForButtons][1];
@@ -74,16 +78,11 @@ function moveActive(clickedButton, PartOfIdOfDivForButtons, objectOfButtons) {
             otherButton = objectOfButtons[PartOfIdOfDivForButtons][0];
             break;
     }
-
     var delClass = clickedButton.classList[0];
     realizeExchangeBetweenButtons (clickedButton, otherButton, nameOfPlay, delClass);
-    var beginning = objectWithVariablesAndFunctions.getElement("beginning");
+    var beginning = main.getElement("beginning");
     if (beginning.style.display !== "none") {
-        setComponentsOfBeginning(chosenPlay);
-        //openGates();
-        /*if (DivForButtonsToRechoice.innerHTML=="") {
-            setButtonsToChoicePlay("ButtonsToRechoice", nameOfPlay);
-        } */
+        setComponentsOfBeginning(nameOfPlay);
         if ((objectOfButtons["ButtonsToRechoice"]!==undefined)&&
             (objectOfButtons["ButtonsToRechoice"].length==2)) {
             for (var runBtns=0; runBtns<2; runBtns++) {
@@ -97,89 +96,90 @@ function moveActive(clickedButton, PartOfIdOfDivForButtons, objectOfButtons) {
            realizeExchangeBetweenButtons (clickedButton, otherButton, nameOfPlay, "unclickedButton_"+nameOfPlay+"_choiced");
         }
     }
-    addPartsToContentList(chosenPlay, nameOfPlay);
-    loadAboutCharacters(chosenPlay);
     setColors(nameOfPlay);
-    objectWithVariablesAndFunctions.setHtmlIntoStaticElement("headerLogotip", chosenPlay["headerLogotip"]);
+    main.setHtmlIntoStaticElement("headerLogotip", chosenPlay["headerLogotip"]);
+    console.log(nameOfPlay);
+    console.log(chosenPlay);
+    // здесь nameOfPlay и chosenPlay соответствуют. Чего они не соответствуют сразу после вызова этой функции перед
+    // вызовом  main.setClickOnKey - не понятно.
 }
 function openGates() {
     setTimeout(function () {
         document.getElementById("instruction").innerText = 'Открыто!';
-        objectWithVariablesAndFunctions.getElement("gate").src="images/on_the_beginning/opened_gate.jpg";
-        objectWithVariablesAndFunctions.getElement("gate").onmouseover = function () {
-            objectWithVariablesAndFunctions.regularVisibility([["beginning", "none"],["contentlist","block"],["rightHalf","block"]]);
-            objectWithVariablesAndFunctions.setCssProperty([["contentlist", "borderRight", "3px solid"]]);
+        main.getElement("gate").src="images/on_the_beginning/opened_gate.jpg";
+        main.getElement("gate").onmouseover = function () {
+            main.regularVisibility([["beginning", "none"],["contentlist","block"],["rightHalf","block"]]);
+            main.setCssProperty([["contentlist", "borderRight", "3px solid"]]);
         };
     }, 3200);
 }
-
 function setColors(nameOfPlay) {
     var addedClassForContentList = "contentListFor"+nameOfPlay,
     instruction = document.getElementById("instruction");
     switch (nameOfPlay) {
         case "Extradecomposers":
-            if (objectWithVariablesAndFunctions.getElement("beginning").style.display!=="none") {
-                objectWithVariablesAndFunctions.setCssProperty([
-                                                    ["main_in_preview","color","mediumvioletred"]
-                                                   ]);
+            if (main.getElement("beginning").style.display!=="none") {
+                main.setCssProperty([
+                                        ["main_in_preview","color","mediumvioletred"]
+                                    ]);
                 if (instruction!==null) {
                     instruction.style.color = "#08088A";
                 }
             }
-            objectWithVariablesAndFunctions.setCssProperty([["rightHalf", "color", "black"]]);
+            main.setCssProperty([["rightHalf", "color", "black"]]);
             break;
         case "Black_parody":
-            if (objectWithVariablesAndFunctions.getElement("beginning").style.display!=="none") {
-                objectWithVariablesAndFunctions.setCssProperty([
+            if (main.getElement("beginning").style.display!=="none") {
+                main.setCssProperty([
                         ["main_in_preview","color","#A9BCF5"]
                     ]);
                 if (instruction!==null) {
                     instruction.style.color = "#08088A";
                 }
             }
-             objectWithVariablesAndFunctions.setCssProperty([["rightHalf", "color", "lightgoldenrodyellow"]]);
+             main.setCssProperty([["rightHalf", "color", "lightgoldenrodyellow"]]);
             break;
     }
-    objectWithVariablesAndFunctions.getElement("body").backgroundColor="";
-    objectWithVariablesAndFunctions.getElement("body").setAttribute("id", "backgroundFor"+nameOfPlay);
-    if(objectWithVariablesAndFunctions.getElement("contentlist").classList.length>0) {
-        if(objectWithVariablesAndFunctions.getElement("contentlist").classList[0].indexOf(nameOfPlay)==-1) {
-            var removedClass=objectWithVariablesAndFunctions.getElement("contentlist").classList[0];
-            objectWithVariablesAndFunctions.removeClassForStaticElement("contentList", removedClass);
+    main.getElement("body").backgroundColor="";
+    main.getElement("body").setAttribute("id", "backgroundFor"+nameOfPlay);
+    if(main.getElement("contentlist").classList.length>0) {
+        if(main.getElement("contentlist").classList[0].indexOf(nameOfPlay)==-1) {
+            var removedClass=main.getElement("contentlist").classList[0];
+            main.removeClassForStaticElement("contentlist", removedClass);
         }
     }
-    objectWithVariablesAndFunctions.addClassForStaticElement("contentlist", addedClassForContentList);
+    main.addClassForStaticElement("contentlist", addedClassForContentList);
 
 }
 function addPartsToContentList(chosenPlay, nameOfPlay) {
-    var listOfParts =  objectWithVariablesAndFunctions.getElement("listOfParts");
+    var listOfParts =  main.getElement("listOfParts");
     if (listOfParts.innerHTML != "") {
-        objectWithVariablesAndFunctions.setHtmlIntoStaticElement("listOfParts", "");
+        main.setHtmlIntoStaticElement("listOfParts", "");
     }
     for (var part in chosenPlay["Parts"]) {
         var numberOfPart = chosenPlay["Parts"][part]["number"];
-        objectWithVariablesAndFunctions.addHTML("listOfParts", "<p id='Part" + numberOfPart + "'>Part " + numberOfPart  + "</p>");
+        main.addHTML("listOfParts", "<p id='Part" + numberOfPart + "'>Part " + numberOfPart  + "</p>");
     }
-    objectWithVariablesAndFunctions.addHTML("listOfParts", "<p id='about_characters'>About characters</p>");
+    main.addHTML("listOfParts", "<p id='about_characters'>About characters</p>");
     setClickToLoadPart(chosenPlay, nameOfPlay);
 }
 
 function loadAboutCharacters(chosenPlay) {
-    if (objectWithVariablesAndFunctions.getElement("contentlist").style.borderRight == "") {
-        objectWithVariablesAndFunctions.setCssProperty(
+    if (main.getElement("contentlist").style.borderRight == "") {
+        main.setCssProperty(
             [
                 ["contentlist", "borderRight", "3px solid"],
                 ["rightHalf", "borderLeft", "none"]
             ]
         );
     }
-    objectWithVariablesAndFunctions.setHtmlIntoStaticElement("mainArea", "<h2>About Characters</h2>");
+    main.setHtmlIntoStaticElement("mainArea", "<h2>About Characters</h2>");
     for (var addPartAboutCharacters = 0; addPartAboutCharacters < chosenPlay['About characters'].length; addPartAboutCharacters++) {
-        objectWithVariablesAndFunctions.addHTML("mainArea", "<p>" + chosenPlay['About characters'][addPartAboutCharacters] + "</p>");
+        main.addHTML("mainArea", "<p>" + chosenPlay['About characters'][addPartAboutCharacters] + "</p>");
     }
 }
 function setClickToLoadPart(chosenPlay,  nameOfPlay) {
-    var paragraphsInContentList = objectWithVariablesAndFunctions.getElement("contentlist").getElementsByTagName("P"), parts_with_numbers = [];
+    var paragraphsInContentList = main.getElement("contentlist").getElementsByTagName("P"), parts_with_numbers = [];
     for (var runPars=0; runPars < paragraphsInContentList.length; runPars++) {
         if (paragraphsInContentList[runPars].innerText.indexOf("Part")==0) {
             if (parts_with_numbers.indexOf(paragraphsInContentList[runPars].innerText)==-1) {
@@ -195,20 +195,20 @@ function setClickToLoadPart(chosenPlay,  nameOfPlay) {
         {
             countClicks++;
             var PartNumber = this.innerText; index_of_part = parts_with_numbers.indexOf(PartNumber);
-            if (objectWithVariablesAndFunctions.getElement("contentlist").style.borderRight != "") {
-                objectWithVariablesAndFunctions.setCssProperty([
+            if (main.getElement("contentlist").style.borderRight != "") {
+                main.setCssProperty([
                       ["contentlist", "borderRight", ""],
                       ["rightHalf", "borderLeft", "3px solid"]
                     ]);
             }
             if (countClicks == 1) {
-                if (!(objectWithVariablesAndFunctions.getElement("rightHalf").classList.contains("addStylesForContent"))) {
-                    objectWithVariablesAndFunctions.addClassForStaticElement("rightHalf", "addedClass");
+                if (!(main.getElement("rightHalf").classList.contains("addStylesForContent"))) {
+                    main.addClassForStaticElement("rightHalf", "addedClass");
                 }
                     inMainArea= ["<div id='toChooseRoles'></div>",
                     "<div id='top_of_play'></div>",
                     "<div id='content_of_play'></div>"];
-                objectWithVariablesAndFunctions.setHtmlIntoStaticElement("mainArea", inMainArea);
+                main.setHtmlIntoStaticElement("mainArea", inMainArea);
                document.getElementById("toChooseRoles").innerHTML = "<h4>There are the following characters in this part:</h4>" +
                     "<div id='listOfCheckboxes'></div><div><input id='paintreplics' type='button' " +
                     "value='paint roles and / or clear them '></div>";
@@ -501,9 +501,6 @@ addDivsWithReplics = function (html, innerContent, counterAddReplics) {
         counterAddParagraphsOfReplic=1;
         var replics = html.getElementsByTagName("Div");
         var replicToAddParagraphs = replics[counterAddReplics-1];
-        console.log(counterAddReplics);
-        console.log(replics.length);
-        console.log(replicToAddParagraphs);
         while (counterAddParagraphsOfReplic<innerContent.contents.length) {
             replicToAddParagraphs.innerHTML +="<p>"+innerContent.contents[counterAddParagraphsOfReplic]+"</p>";
             counterAddParagraphsOfReplic++;

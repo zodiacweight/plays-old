@@ -9,14 +9,18 @@
        margin-left: 4%;
        margin-top: 4%;
    }
-   #primary_instruction {
+   #primary > p {
+       border: 1px solid;
+       padding: 5px;
+       margin: 3%;
+   }
+  /* #primary_instruction {
        width: 92%;
        margin-left: 4%;
        margin-top: 2%;
-   }
-   #primary_instruction > div {
-       margin-left: 6%;
-       margin-top: 4%;
+   }*/
+   #primary > div {
+       margin: 3%;
        border: 1px solid palevioletred;
        border-radius: 3px;
        padding: 6px;
