@@ -85,9 +85,9 @@ var main = (function () {
         },
         setClickOnKey: function (nameOfPlay) {
             elements["buttonToEnter"].onclick = function () {
-                 // chosenPlay и nameOfPlay не соответствуют до равенства
-                addPartsToContentList(nameOfPlay); // chosenPlay, nameOfPlay
-                loadAboutCharacters(nameOfPlay); // chosenPlay
+                main.setHtmlIntoStaticElement("headerLogotip", window[nameOfPlay]["headerLogotip"]);
+                addPartsToContentList(nameOfPlay);
+                loadAboutCharacters(nameOfPlay);
                 openGates();
             }
         }

@@ -48,24 +48,27 @@ function changeBigImageWithHeader() {
 }
 function setButtonsToChoicePlay(PartOfIdOfDivForButtons, nameOfPlay) {
     var btn, btnText, objectOfButtons = {}, divForButtons=document.getElementById("divFor"+PartOfIdOfDivForButtons);
-    /*chosenPlay = window[nameOfPlay]*/;
     objectOfButtons[PartOfIdOfDivForButtons] = [];
     for (var field in handleJson) {
         btn = document.createElement('button');
         btn.dataset['source']=field;
         btnText = document.createTextNode(handleJson[field].buttonText);
         btn.appendChild(btnText);
-      //  if (divForButtons.id=="DivForButtonsToEnter") {  }
-        btn.classList.add("unclickedButton_"+nameOfPlay+"_choiced");
+        if (btn.getAttribute("data-source")==nameOfPlay) {
+            btn.setAttribute("disabled", "true");
+            btn.classList.add("disabledButton");
+        }
+        else {
+            btn.classList.add("unclickedButton_"+nameOfPlay+"_choiced");
+        }
         btn.onclick = function () {
             nameOfPlay=this.getAttribute("data-source");
             moveActive(this, PartOfIdOfDivForButtons, objectOfButtons, nameOfPlay);
-            // Здесь nameOfPlay и chosenPlay не соответствуют
-            main.setClickOnKey (nameOfPlay);
         };
         objectOfButtons[PartOfIdOfDivForButtons].push(btn);
         divForButtons.appendChild(btn);
     }
+    main.setClickOnKey (nameOfPlay);
 }
 function moveActive(clickedButton, PartOfIdOfDivForButtons, objectOfButtons, nameOfPlay) {
     var otherButton;
@@ -96,11 +99,8 @@ function moveActive(clickedButton, PartOfIdOfDivForButtons, objectOfButtons, nam
         }
     }
     setColors(nameOfPlay);
-    main.setHtmlIntoStaticElement("headerLogotip", window[nameOfPlay]["headerLogotip"]);
+    main.setClickOnKey (nameOfPlay);
     console.log(nameOfPlay);
-    //console.log(chosenPlay);
-    // здесь nameOfPlay и chosenPlay соответствуют. Чего они не соответствуют сразу после вызова этой функции перед
-    // вызовом  main.setClickOnKey - не понятно.
 }
 function openGates() {
     setTimeout(function () {
@@ -110,7 +110,7 @@ function openGates() {
             main.regularVisibility([["beginning", "none"],["contentlist","block"],["rightHalf","block"]]);
             main.setCssProperty([["contentlist", "borderRight", "3px solid"]]);
         };
-    }, 3200);
+    }, 400);
 }
 function setColors(nameOfPlay) {
     var addedClassForContentList = "contentListFor"+nameOfPlay,
@@ -505,5 +505,4 @@ addDivsWithReplics = function (html, innerContent, counterAddReplics) {
             counterAddParagraphsOfReplic++;
         }
     }
-
 };
