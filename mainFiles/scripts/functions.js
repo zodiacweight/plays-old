@@ -61,11 +61,11 @@ function setButtonsToChoicePlay(PartOfIdOfDivForButtons, nameOfPlay) {
         else {
             btn.classList.add("unclickedButton_"+nameOfPlay+"_choiced");
         }
+        objectOfButtons[PartOfIdOfDivForButtons].push(btn);
         btn.onclick = function () {
             nameOfPlay=this.getAttribute("data-source");
             moveActive(this, PartOfIdOfDivForButtons, objectOfButtons, nameOfPlay);
         };
-        objectOfButtons[PartOfIdOfDivForButtons].push(btn);
         divForButtons.appendChild(btn);
     }
     main.setClickOnKey (nameOfPlay);
