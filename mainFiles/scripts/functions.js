@@ -64,13 +64,13 @@ function setButtonsToChoicePlay(PartOfIdOfDivForButtons, nameOfPlay) {
         objectOfButtons[PartOfIdOfDivForButtons].push(btn);
         btn.onclick = function () {
             nameOfPlay=this.getAttribute("data-source");
-            moveActive(this, PartOfIdOfDivForButtons, objectOfButtons, nameOfPlay);
+            moveActive(this, PartOfIdOfDivForButtons, objectOfButtons, nameOfPlay, objectOfButtons[PartOfIdOfDivForButtons]);
         };
         divForButtons.appendChild(btn);
     }
-    main.setClickOnKey (nameOfPlay);
+    main.setClickOnKey (nameOfPlay, objectOfButtons[PartOfIdOfDivForButtons]);
 }
-function moveActive(clickedButton, PartOfIdOfDivForButtons, objectOfButtons, nameOfPlay) {
+function moveActive(clickedButton, PartOfIdOfDivForButtons, objectOfButtons, nameOfPlay, arrayOfButtons) {
     var otherButton;
     switch (clickedButton) {
         case objectOfButtons[PartOfIdOfDivForButtons][0]:
@@ -99,7 +99,7 @@ function moveActive(clickedButton, PartOfIdOfDivForButtons, objectOfButtons, nam
         }
     }
     setColors(nameOfPlay);
-    main.setClickOnKey (nameOfPlay);
+    main.setClickOnKey (nameOfPlay, arrayOfButtons);
     console.log(nameOfPlay);
 }
 function openGates() {
