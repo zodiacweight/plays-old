@@ -63,14 +63,29 @@ function setButtonsToChoicePlay(PartOfIdOfDivForButtons, nameOfPlay) {
         }
         objectOfButtons[PartOfIdOfDivForButtons].push(btn);
         btn.onclick = function () {
+            var StatusOfGate = main.getElement("gate").src;
+            if(StatusOfGate.indexOf("opened")!==-1) {
+                main.getElement("gate").src="images/on_the_beginning/closed_gate.jpg";
+            }
             nameOfPlay=this.getAttribute("data-source");
-            moveActive(this, PartOfIdOfDivForButtons, objectOfButtons, nameOfPlay, objectOfButtons[PartOfIdOfDivForButtons]);
+            moveActive(this, PartOfIdOfDivForButtons, objectOfButtons, nameOfPlay);
+            main.getElement("buttonToEnter").onclick = function () {
+                main.setHtmlIntoStaticElement("headerLogotip", window[nameOfPlay]["headerLogotip"]);
+                addPartsToContentList(nameOfPlay);
+                loadAboutCharacters(nameOfPlay);
+                openGates();
+            };
         };
         divForButtons.appendChild(btn);
     }
-    main.setClickOnKey (nameOfPlay, objectOfButtons[PartOfIdOfDivForButtons]);
+    main.getElement("buttonToEnter").onclick = function () {
+        main.setHtmlIntoStaticElement("headerLogotip", window[nameOfPlay]["headerLogotip"]);
+        addPartsToContentList(nameOfPlay);
+        loadAboutCharacters(nameOfPlay);
+        openGates();
+    };
 }
-function moveActive(clickedButton, PartOfIdOfDivForButtons, objectOfButtons, nameOfPlay, arrayOfButtons) {
+function moveActive(clickedButton, PartOfIdOfDivForButtons, objectOfButtons, nameOfPlay) {
     var otherButton;
     switch (clickedButton) {
         case objectOfButtons[PartOfIdOfDivForButtons][0]:
@@ -99,16 +114,15 @@ function moveActive(clickedButton, PartOfIdOfDivForButtons, objectOfButtons, nam
         }
     }
     setColors(nameOfPlay);
-    main.setClickOnKey (nameOfPlay, arrayOfButtons);
-    console.log(nameOfPlay);
 }
 function openGates() {
     setTimeout(function () {
-        document.getElementById("instruction").innerText = 'Открыто!';
         main.getElement("gate").src="images/on_the_beginning/opened_gate.jpg";
         main.getElement("gate").onmouseover = function () {
-            main.regularVisibility([["beginning", "none"],["contentlist","block"],["rightHalf","block"]]);
-            main.setCssProperty([["contentlist", "borderRight", "3px solid"]]);
+            if (this.src.indexOf("closed")==-1) {
+                main.regularVisibility([["beginning", "none"],["contentlist","block"],["rightHalf","block"]]);
+                main.setCssProperty([["contentlist", "borderRight", "3px solid"]]);
+            }
         };
     }, 400);
 }

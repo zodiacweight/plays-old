@@ -84,18 +84,14 @@ var main = (function () {
             }
         },
         setClickOnKey: function (nameOfPlay, arrayOfButtons) {
+            var statusOfGates="images/on_the_beginning/opened_gate.jpg";
             elements["buttonToEnter"].onclick = function () {
-                console.log(arrayOfButtons);
                 main.setHtmlIntoStaticElement("headerLogotip", window[nameOfPlay]["headerLogotip"]);
                 addPartsToContentList(nameOfPlay);
                 loadAboutCharacters(nameOfPlay);
                 openGates();
-                for (var c=0; c<2; c++) {
-                    arrayOfButtons[c].onclick = function () {
-                        main.getElement("gate").src="images/on_the_beginning/closed_gate.jpg";
-                    }
-                }
-            }
+            };
+            return statusOfGates;
         }
     };
 })();
