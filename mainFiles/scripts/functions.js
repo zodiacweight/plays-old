@@ -61,7 +61,10 @@ function setButtonsToChoicePlay(PartOfIdOfDivForButtons, nameOfPlay) {
         else {
             btn.classList.add("unclickedButton_"+nameOfPlay+"_choiced");
         }
+        objectOfButtons[PartOfIdOfDivForButtons].push(btn);
         btn.onclick = function () {
+            console.log(objectOfButtons[PartOfIdOfDivForButtons].length);
+            console.log(objectOfButtons[PartOfIdOfDivForButtons]);
             nameOfPlay=this.getAttribute("data-source");
             moveActive(this, PartOfIdOfDivForButtons, objectOfButtons, nameOfPlay);
         };
@@ -72,6 +75,7 @@ function setButtonsToChoicePlay(PartOfIdOfDivForButtons, nameOfPlay) {
 }
 function moveActive(clickedButton, PartOfIdOfDivForButtons, objectOfButtons, nameOfPlay) {
     var otherButton;
+    console.log(objectOfButtons[PartOfIdOfDivForButtons].length);
     switch (clickedButton) {
         case objectOfButtons[PartOfIdOfDivForButtons][0]:
             otherButton = objectOfButtons[PartOfIdOfDivForButtons][1];
@@ -81,6 +85,7 @@ function moveActive(clickedButton, PartOfIdOfDivForButtons, objectOfButtons, nam
             break;
     }
     var delClass = clickedButton.classList[0];
+    console.log(clickedButton);
     realizeExchangeBetweenButtons (clickedButton, otherButton, nameOfPlay, delClass);
     var beginning = main.getElement("beginning");
     if (beginning.style.display !== "none") {
