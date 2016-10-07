@@ -3,8 +3,9 @@ var main = (function () {
         body: document.getElementsByTagName("Body")[0],
         headerLogotip: document.getElementById("headerLogotip"),
         beginning: document.getElementById("beginning"),
-        beginningDivs: this.primary.getElementsByTagName("Div"),
+        //beginningDivs: this.primary.getElementsByTagName("Div"),
         primary: document.getElementById("primary"),
+        entrancesToSecondary: document.getElementsByClassName("enterToSecondary"),
         secondary: document.getElementById("secondary"),
         bigImage: document.getElementById("bigImage"),
         divWithLittleImages: document.getElementById("divWithLittleImages"),
@@ -62,10 +63,11 @@ var main = (function () {
         removeClassForStaticElement: function (element_name, removedClass) {
             elements[element_name].classList.remove(removedClass);
         },
-        setClickOnBeginningDivs: function (beginningDivs) {
+        setClickOnBeginningDivs: function () {
+            var entrancesToSecondary = elements["entrancesToSecondary"];
             for (var count=0; count<2; count++) {
-                console.log(beginningDivs[count]);
-                beginningDivs[count].onclick = function () {
+                console.log(entrancesToSecondary[count]);
+                entrancesToSecondary[count].onclick = function () {
                     var nameOfPlay;
                     switch (this.innerText) {
                         case "Special scavengers":
@@ -83,15 +85,13 @@ var main = (function () {
                 }
             }
         },
-        setClickOnKey: function (nameOfPlay, arrayOfButtons) {
-            var statusOfGates="images/on_the_beginning/opened_gate.jpg";
-            elements["buttonToEnter"].onclick = function () {
+        setClickOnKey: function (nameOfPlay) {
+            this.getElement("buttonToEnter").onclick = function () {
                 main.setHtmlIntoStaticElement("headerLogotip", window[nameOfPlay]["headerLogotip"]);
                 addPartsToContentList(nameOfPlay);
                 loadAboutCharacters(nameOfPlay);
                 openGates();
-            };
-            return statusOfGates;
+            }
         }
     };
 })();

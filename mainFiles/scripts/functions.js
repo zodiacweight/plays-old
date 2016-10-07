@@ -28,7 +28,7 @@ function fakeFunction(data) {
 }
 function setComponentsOfBeginning (nameOfPlay) {
     var componentsOfBeginning = window[nameOfPlay]['onTheBeginning'];
-    document.getElementById("header").InnerText = window[nameOfPlay]['onTheBeginning'].header;
+    //document.getElementById("header").InnerText = window[nameOfPlay]['onTheBeginning'].header;
     main.setHtmlIntoStaticElement('bigImage', componentsOfBeginning["images"][0]);
     main.setHtmlIntoStaticElement("divWithLittleImages", componentsOfBeginning["images"][0]);
     document.getElementById("main_in_preview").innerText = componentsOfBeginning["preview"];
@@ -39,9 +39,10 @@ function setComponentsOfBeginning (nameOfPlay) {
 }
 function changeBigImageWithHeader() {
     var arrayOfLittleImages = main.getElement("littleImages");
+    var bigImage=main.getElement("bigImage").getElementsByTagName("Img")[0];
+    console.log(bigImage);
     for (var runLittleImages = 0; runLittleImages < arrayOfLittleImages.length; runLittleImages++) {
         arrayOfLittleImages[runLittleImages].onmouseover = function () {
-            var bigImage=main.getElement("bigImage").innerHTML;
             bigImage.src = this.src;
         }
     }
@@ -69,21 +70,11 @@ function setButtonsToChoicePlay(PartOfIdOfDivForButtons, nameOfPlay) {
             }
             nameOfPlay=this.getAttribute("data-source");
             moveActive(this, PartOfIdOfDivForButtons, objectOfButtons, nameOfPlay);
-            main.getElement("buttonToEnter").onclick = function () {
-                main.setHtmlIntoStaticElement("headerLogotip", window[nameOfPlay]["headerLogotip"]);
-                addPartsToContentList(nameOfPlay);
-                loadAboutCharacters(nameOfPlay);
-                openGates();
-            };
+            main.setClickOnKey(nameOfPlay);
         };
         divForButtons.appendChild(btn);
     }
-    main.getElement("buttonToEnter").onclick = function () {
-        main.setHtmlIntoStaticElement("headerLogotip", window[nameOfPlay]["headerLogotip"]);
-        addPartsToContentList(nameOfPlay);
-        loadAboutCharacters(nameOfPlay);
-        openGates();
-    };
+    main.setClickOnKey(nameOfPlay);
 }
 function moveActive(clickedButton, PartOfIdOfDivForButtons, objectOfButtons, nameOfPlay) {
     var otherButton;

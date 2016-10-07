@@ -1,7 +1,7 @@
 handleData('Extradecomposers');
 handleData('Black_parody');
-var beginningDivs = main.getElement("beginningDivs");
-main.setClickOnBeginningDivs(beginningDivs);
+//var beginningDivs = main.getElement("primary").getElementsByClassName("enterToSecondary");
+main.setClickOnBeginningDivs();
 
 
 
