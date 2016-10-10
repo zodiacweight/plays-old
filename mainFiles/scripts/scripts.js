@@ -1,9 +1,10 @@
 handleData('Extradecomposers');
 handleData('Black_parody');
-//var beginningDivs = main.getElement("primary").getElementsByClassName("enterToSecondary");
-main.setClickOnBeginningDivs();
+//console.log(window["Extradecomposers"]); // Здесь объект не определен
+/*for (var keyOfPlay in handleJson) {
+   // console.log(keyOfPlay);
 
-
+}*/
 
 
 

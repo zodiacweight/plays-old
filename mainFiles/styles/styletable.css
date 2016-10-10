@@ -5,7 +5,7 @@
        margin-top: 4%;
    }
    #primary > p {
-       font-size: 18px;
+       font-size: 20px;
        padding: 6px;
        width: 86%;
        margin-left: 5%;
@@ -13,28 +13,44 @@
    #primary > div {
        border: 2px solid hotpink;
        border-radius: 7px;
+       overflow: auto;
        width: 80%;
        margin-left: 10%;
        margin-bottom: 4%;
+   }
+   #primary > div > h3 {
+       margin-left: 6%;
+       margin-top: 2%;
+       border: 1px solid mediumvioletred;
        font-size: 20px;
    }
-   #primary img {
-       width: 92%;
+   .mainPart {
+
+       /*
+ overflow: auto;
+  border: 1px solid;
+       width: 80%;
+        */
+   }
+   #primary .image {
+       float: left;
+       width: 30%;
        margin-left: 4%;
        margin-top: 4%;
+       border: 1px solid mediumvioletred;
    }
-   #primary > div > p {
+   .image > img {
+       width: 100%;
+   }
+   .TextAndEnter {
+       float: left;
        border: 1px solid;
        padding: 5px;
-       margin: 3%;
+       margin-top: 4%;
+       margin-left: 4%;
    }
 
-  /* #primary_instruction {
-       width: 92%;
-       margin-left: 4%;
-       margin-top: 2%;
-   }*/
-   .enterToSecondary {
+   .divEntrance {
        margin: 3%;
        border: 1px solid palevioletred;
        border-radius: 3px;

@@ -1,7 +1,7 @@
 /**
  * Created by User on 26.08.2016.
  */
-function handleData(key) {
+function handleData(key, countAddedDivs) {
 // 1. Создаём новый объект XMLHttpRequest
     var xhr = new XMLHttpRequest();
 // 2. Конфигурируем его: GET-запрос на URL 'special_scavengers.json'
@@ -17,16 +17,55 @@ function handleData(key) {
             var data = JSON.parse(xhr.responseText);
             window[key] = data[key];
             handleJson[key].handle(data);
+
         }
+        var countAddedDivs;
+        switch (key) {
+            case "Extradecomposers":
+                countAddedDivs=0;
+                break;
+            case "Black_parody":
+                countAddedDivs=1;
+                break;
+        }
+        setComponentsOfPrimary(key, countAddedDivs);// Здесь объект определен
     };
     xhr.onerror = function (event) {
        console.log(event);
     };
 }
+function setComponentsOfPrimary (key, countAddedDivs) {
+    alert(countAddedDivs);
+    var elemsOfPrimary = window[key]["onTheBeginning"], primary = main.getElement("primary"),
+    addedComponents=main.getElement("elementsOfPrimary");
+    primary.innerHTML+="<div class='componentOfPrimary'><h3>"+elemsOfPrimary["header"]+"</h3></div>";
+    primary.getElementsByClassName("componentOfPrimary")[countAddedDivs].innerHTML+="<div class='mainPart'>main</div>";
+    /*console.log(countAddedDivs);
+    console.log(key); */
+    primary.getElementsByClassName("mainPart")[countAddedDivs].innerHTML="<div class='image'></div>";
+    primary.getElementsByClassName("mainPart")[countAddedDivs].innerHTML+="<div class='TextAndEnter'></div>";
+    primary.getElementsByClassName("image")[countAddedDivs].innerHTML+=elemsOfPrimary["imgOnThePrimary"];
+    primary.getElementsByClassName("TextAndEnter")[countAddedDivs].innerHTML="<p class='preview'></p>";
+    primary.getElementsByClassName("TextAndEnter")[countAddedDivs].innerHTML+="<div class='divEntrance'></div>";
+    primary.getElementsByClassName("preview")[countAddedDivs].innerText=elemsOfPrimary["preview"];
+    var labelOnEnter;
+    switch (key) {
+           case "Extradecomposers":
+           labelOnEnter="Extradecomposers";
+           break;
+           case "Black_parody":
+           labelOnEnter="Black parody";
+           break;
+    }
+    primary.getElementsByClassName("divEntrance").innerText=labelOnEnter;
+   // console.log(elemsOfPrimary["preview"]);
+    /*console.log(primary.getElementsByClassName("componentOfPrimary")[countAddedDivs]);
+    main.setClickOnBeginningDivs();*/
+}
 function fakeFunction(data) {
     console.log('Fake: ', data);
 }
-function setComponentsOfBeginning (nameOfPlay) {
+function setComponentsOfSecondary (nameOfPlay) {
     var componentsOfBeginning = window[nameOfPlay]['onTheBeginning'];
     //document.getElementById("header").InnerText = window[nameOfPlay]['onTheBeginning'].header;
     main.setHtmlIntoStaticElement('bigImage', componentsOfBeginning["images"][0]);
@@ -90,7 +129,7 @@ function moveActive(clickedButton, PartOfIdOfDivForButtons, objectOfButtons, nam
     realizeExchangeBetweenButtons (clickedButton, otherButton, nameOfPlay, delClass);
     var beginning = main.getElement("beginning");
     if (beginning.style.display !== "none") {
-        setComponentsOfBeginning(nameOfPlay);
+        setComponentsOfSecondary(nameOfPlay);
         if ((objectOfButtons["ButtonsToRechoice"]!==undefined)&&
             (objectOfButtons["ButtonsToRechoice"].length==2)) {
             for (var runBtns=0; runBtns<2; runBtns++) {

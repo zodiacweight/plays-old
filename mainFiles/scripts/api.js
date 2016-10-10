@@ -3,7 +3,8 @@ var main = (function () {
         body: document.getElementsByTagName("Body")[0],
         headerLogotip: document.getElementById("headerLogotip"),
         beginning: document.getElementById("beginning"),
-        //beginningDivs: this.primary.getElementsByTagName("Div"),
+        nameOfPlay: "",
+        elementsOfPrimary: {},
         primary: document.getElementById("primary"),
         entrancesToSecondary: document.getElementsByClassName("enterToSecondary"),
         secondary: document.getElementById("secondary"),
@@ -64,8 +65,10 @@ var main = (function () {
             elements[element_name].classList.remove(removedClass);
         },
         setClickOnBeginningDivs: function () {
-            var entrancesToSecondary = elements["entrancesToSecondary"];
+            var entrancesToSecondary = elements["primary"].getElementsByClassName("divEntrance");
             for (var count=0; count<2; count++) {
+               console.log(count);
+                console.log(entrancesToSecondary);
                 console.log(entrancesToSecondary[count]);
                 entrancesToSecondary[count].onclick = function () {
                     var nameOfPlay;
@@ -78,7 +81,7 @@ var main = (function () {
                         break;
                     }
                     setColors(nameOfPlay);
-                    setComponentsOfBeginning(nameOfPlay);
+                    setComponentsOfSecondary(nameOfPlay);
                     $("#primary").fadeOut(670);
                     elements["secondary"].classList.remove("hidden");
                     setButtonsToChoicePlay("ButtonsToChoicePlay", nameOfPlay);

@@ -1,7 +1,8 @@
 {
   "Black_parody": {
     "onTheBeginning": {
-      "header": "Black agent",
+      "header": "Black parody",
+      "imgOnThePrimary": "<img src=\"images/on_the_beginning/evil_eyes.jpg\">",
       "images": ["<img src=\"images/on_the_beginning/img1.jpg\">",
         "<img src=\"images/on_the_beginning/img2.jpg\">"],
       "preview": "It is a storie about eery accidents. There is one dangerous mad psychopath among the characters. Some of theepisodes are parody to \"Big Lebovsky\". They are similar to some of the episodes of this movie, but, in the same time they are much more serious and have completely other aftermath from the characters."
@@ -13,7 +14,7 @@
       "<b>Quentin</b> is not like some characters of this movie, but he gets into a situation like the main character - Jeff Lebovsky, who was molesred by a few rabble cretins as if he had a financial debt and was obliged to pay it and so they had to climb to him until he would pay his debt.",
       "<b>Sophie</b> is a dirty tart who cares only about financial wealth. She is a very dirty and shameless harlot. In reality she has a debt in front of one human. This debt is not related to Quentin.",
       "<b>Mr Stephenson</b> is a tormented old oligarch who is married with Sophie. He and Sophie are Quentin's namesakes and it is related with the mistake that the company of cretins invaded into Quentin's life as if he was a debtor.",
-      "<b>!</b> is a producer of banal and low-minded movies with sexual tone and in one of them Sophie takes part as an actrice.",
+      "<b>Vincent Kidney</b> is a producer of banal and low-minded movies with sexual tone and in one of them Sophie takes part as an actrice.",
       "There will be written about the characters more particularly. Sophie is in debt in front of !, but she doesn't cares about it. She is too frivolous."
     ],
     "Parts":  [
@@ -25,7 +26,37 @@
         {"Sophie": ["And what's than?"]},
         {"Nick": ["I am <span class=\"from_vocabulary\">anxious</span> about something. It is about your debt in front of the producer of the movies in which you take part."]},
         {"Sophie": ["What can you know and understand what may be connected with my debts at least?"]},
-        {"Nick": ["It is not necessarity to be <span class=\"from_vocabulary\">specifically</span> clever to understand what can be <span class=\"from_vocabulary\">thereafter</span> if you have a debt as an actress in front of a producer and if you don't want to give out this debt. If you are obstinate you can make me <span class=\"from_vocabulary\">incense</span>."]}
+        {"Nick": ["It is not necessarity to be <span class=\"from_vocabulary\">specifically</span> clever to understand what can be <span class=\"from_vocabulary\">thereafter</span> if you have a debt as an actress in front of a producer and if you don't want to give out this debt. If you are obstinate you can make me <span class=\"from_vocabulary\">incense</span> through your idiotism! Don't you understand through your <span class=\"from_vocabulary\">frigging dogged</span> brain what <span class=\"from_vocabulary\">consequences</span> may be after your frivolity regarding your financial <span class=\"from_vocabulary\">liability</span> to pay to your producer?"]},
+        {"Sohie": "The situation is not so serious as you think, dear. You may calm down and listen to me if you like to be in calm mental mood more than in the mood almost histerical. My producer is not so clever as you presume. He is not clever to such extent to <span class=\"from_vocabulary\">cope with</span> a situation when somebody has a debt in front of him successfully."},
+        {"Nick": "How!? What does it mean he is not very clever!? He is so rich and successfull man that my thoughts about his life make me to be tormented by my <span class=\"from_vocabulary\">envy</span> to him! It is scary to imagine how much money he gets after every his movie."},
+        {"Sophie": "Don't you understand that many people like such idiotic movies like those ones which he produces. They are very popular and so he is enough rich. Do you I understand many people like such idiotic movies like those ones which he produces. They are very popular and so he is enough rich. Do you <span class=\"from_vocabulary\">envy</span> him because of his wealth or because he is a yong healthy man in perfect form unlike you?"},
+        {"Nick": "Seems to me you are a <span class=\"from_vocabulary\">conpleted</span> idiot. You have told something <span class=\"from_vocabulary\">completely ludicrous</span>! Our current conversation is not related with the fact about Vincent Kidney's financial status. I want you to listen me carefully. I want it from you very much. Moreover I want you to grasp my idea. It is enough important! Now I have to tell not about my <span class=\"from_vocabulary\">frigging envy</span> to Vincent Kidney! I have to tell about my <span class=\"from_vocabulary\">dissaray</span> regarding probable <span class=\"from_vocabulary\">sequel</span> of your debt in front of Vincent Kidney! Seems to me you don't understand what exactly doesn't keep me calm. You don't understand that it can be so disadvantaged <span class=\"from_vocabulary\">consequence</span> such as we can meet very bad people in our own living place. There will be people trying to beat Vincent Kidney's money out of us! It won't be funny, I assure you! These people will not joke or play with us!"},
+        {"Sophie": "You may shut up right now! Now it is my turn to speak! I don't intend to listen you too long! Anyway I understand what you would like to say, but I don't need this infromation from you right now. "},
+        {"Nick": "What good thing can tell me a fool like you?"},
+        {"Sophie": "What you wanted to tell me is not new for me. So I said you to shut up. It will be much more better if you listen me now instead of I would listen you so long. And don't call me a fool or a tart like you like to call me. If you continue doing this rather you will have many troubles than I will. So now I hope you are ready to listen. I am going to explain what I meant when I said that Vincent Kidney is not so clever as you think. I meant that he would not do everything not to be wrong regarding his debtors who take part in his movies. "},
+        {"Nick": "Really? And what expresses this?"},
+        {"Sophie": "I gave him wrong living address. He will not know know where we live in reality. So the bad people about whom you told will not be in our house."},
+        {"": ""},
+        {"": ""},
+        {"": ""},
+        {"": ""},
+        {"": ""},
+        {"": ""},
+        {"": ""},
+        {"": ""},
+        {"": ""},
+        {"": ""},
+        {"": ""},
+        {"": ""},
+        {"": ""},
+        {"": ""},
+        {"": ""},
+        {"": ""},
+        {"": ""},
+        {"": ""},
+        {"": ""},
+        {"": ""},
+        {"": ""}
       ]},
       {"number": 2, "header": "Black parody", "replics":[
         {"Author's words": ["When Quentin was not at home there was something unusual in his living place. A company of 3 people invaded in his territory. These people thought that they would catch the human whom they needed and who was a 9999's debtor. But it was <span class=\"from_vocabulary\">fallacy</span>. These people were very wrong and this mistake was literally femme. They saw that there were nobody there and decided to wait. There was such situation when Quentin had returned at home, entered and <span class=\"from_vocabulary\">absolutely</span> unexpectably seen 3 unfamiliar to him people. When Quentin had saw this he goggled."]},
