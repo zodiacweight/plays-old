@@ -28,41 +28,43 @@ function handleData(key, countAddedDivs) {
                 countAddedDivs=1;
                 break;
         }
-        setComponentsOfPrimary(key, countAddedDivs);// Здесь объект определен
+        buildHtmlInPrimary(key, countAddedDivs);// Здесь объект определен
     };
     xhr.onerror = function (event) {
        console.log(event);
     };
 }
-function setComponentsOfPrimary (key, countAddedDivs) {
-    var elemsOfPrimary = window[key]["onTheBeginning"], primary = main.getElement("primary"),
+function buildHtmlInPrimary (key, countAddedDivs) {
+    var primary = main.getElement("primary"),
     addedComponents=main.getElement("elementsOfPrimary");
-    primary.innerHTML+="<div class='componentOfPrimary'><h3>"+elemsOfPrimary["header"]+"</h3></div>";
-    alert("key = "+key);
-    alert("countAddedDivs = "+countAddedDivs);
-    primary.getElementsByClassName("componentOfPrimary")[countAddedDivs].innerHTML+="<div class='mainPart'>main</div>";
-    /*console.log(countAddedDivs);
-    console.log(key); */
-    primary.getElementsByClassName("mainPart")[countAddedDivs].innerHTML="<div class='image'></div>";
-    primary.getElementsByClassName("mainPart")[countAddedDivs].innerHTML+="<div class='TextAndEnter'></div>";
-    primary.getElementsByClassName("image")[countAddedDivs].innerHTML+=elemsOfPrimary["imgOnThePrimary"];
-    primary.getElementsByClassName("TextAndEnter")[countAddedDivs].innerHTML="<p class='preview'></p>";
-    primary.getElementsByClassName("TextAndEnter")[countAddedDivs].innerHTML+="<div class='divEntrance'></div>";
-    primary.getElementsByClassName("preview")[countAddedDivs].innerText=elemsOfPrimary["preview"];
-    var labelOnEnter;
-    switch (key) {
-           case "Extradecomposers":
-           labelOnEnter="Extradecomposers";
-           break;
-           case "Black_parody":
-           labelOnEnter="Black parody";
-           break;
-    }
-    primary.getElementsByClassName("divEntrance")[countAddedDivs].innerText=labelOnEnter;
+    primary.innerHTML+="<div class='componentOfPrimary'>"+
+                            "<h3></h3>"+
+                            "<div class='mainPart'>"+
+                                "<div class='image'></div>"+
+                                 "<div class='TextAndEnter'>"+
+                                    "<p class='preview'></p><div class='divEntrance'></div>"+
+                                "</div>"+
+                            "</div>" +
+                        "</div>";
+    /*alert("key = "+key);
+    alert("countAddedDivs = "+countAddedDivs); */
+    /*
+     */
     //alert("labelOnEnter ="+labelOnEnter);
    // console.log(elemsOfPrimary["preview"]);
     /*console.log(primary.getElementsByClassName("componentOfPrimary")[countAddedDivs]);*/
-    main.setClickOnBeginningDivs();
+    fillComponentsOfPrimary(key, countAddedDivs, primary);
+}
+function fillComponentsOfPrimary (key, countAddedDivs, primary) {
+    alert(key);
+    alert(countAddedDivs);
+    /*console.log(countAddedDivs);
+    console.log(key); */
+    var elemsOfPrimary = window[key]["onTheBeginning"];
+    primary.getElementsByClassName("componentsOfPrimary")[countAddedDivs].innerText=elemsOfPrimary.header;
+    primary.getElementsByClassName("image")[countAddedDivs].innerHTML=elemsOfPrimary["imgOnPrimary"];
+    primary.getElementsByClassName("preview")[countAddedDivs].innerText=elemsOfPrimary["preview"];
+    primary.getElementsByClassName("divEntrance")[countAddedDivs].innerText="Enter";
 }
 function fakeFunction(data) {
     console.log('Fake: ', data);
@@ -81,7 +83,6 @@ function setComponentsOfSecondary (nameOfPlay) {
 function changeBigImageWithHeader() {
     var arrayOfLittleImages = main.getElement("littleImages");
     var bigImage=main.getElement("bigImage").getElementsByTagName("Img")[0];
-    console.log(bigImage);
     for (var runLittleImages = 0; runLittleImages < arrayOfLittleImages.length; runLittleImages++) {
         arrayOfLittleImages[runLittleImages].onmouseover = function () {
             bigImage.src = this.src;

@@ -5,7 +5,7 @@ handleData('Black_parody');
    // console.log(keyOfPlay);
 
 }*/
-
+main.setClickOnBeginningDivs();
 
 
 
