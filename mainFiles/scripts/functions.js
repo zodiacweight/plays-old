@@ -35,10 +35,11 @@ function handleData(key, countAddedDivs) {
     };
 }
 function setComponentsOfPrimary (key, countAddedDivs) {
-    alert(countAddedDivs);
     var elemsOfPrimary = window[key]["onTheBeginning"], primary = main.getElement("primary"),
     addedComponents=main.getElement("elementsOfPrimary");
     primary.innerHTML+="<div class='componentOfPrimary'><h3>"+elemsOfPrimary["header"]+"</h3></div>";
+    alert("key = "+key);
+    alert("countAddedDivs = "+countAddedDivs);
     primary.getElementsByClassName("componentOfPrimary")[countAddedDivs].innerHTML+="<div class='mainPart'>main</div>";
     /*console.log(countAddedDivs);
     console.log(key); */
@@ -57,10 +58,11 @@ function setComponentsOfPrimary (key, countAddedDivs) {
            labelOnEnter="Black parody";
            break;
     }
-    primary.getElementsByClassName("divEntrance").innerText=labelOnEnter;
+    primary.getElementsByClassName("divEntrance")[countAddedDivs].innerText=labelOnEnter;
+    //alert("labelOnEnter ="+labelOnEnter);
    // console.log(elemsOfPrimary["preview"]);
-    /*console.log(primary.getElementsByClassName("componentOfPrimary")[countAddedDivs]);
-    main.setClickOnBeginningDivs();*/
+    /*console.log(primary.getElementsByClassName("componentOfPrimary")[countAddedDivs]);*/
+    main.setClickOnBeginningDivs();
 }
 function fakeFunction(data) {
     console.log('Fake: ', data);

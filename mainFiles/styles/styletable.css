@@ -34,9 +34,10 @@
    }
    #primary .image {
        float: left;
-       width: 30%;
-       margin-left: 4%;
+       width: 20%;
+       margin-left: 3%;
        margin-top: 4%;
+       margin-bottom: 4%;
        border: 1px solid mediumvioletred;
    }
    .image > img {
@@ -47,9 +48,14 @@
        border: 1px solid;
        padding: 5px;
        margin-top: 4%;
-       margin-left: 4%;
+       margin-left: 1%;
+       width: 70%;
    }
-
+    .preview {
+        font-size: 22px;
+        padding-left: 6px;
+        padding-right: 8px;
+    }
    .divEntrance {
        margin: 3%;
        border: 1px solid palevioletred;

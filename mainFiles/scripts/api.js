@@ -66,10 +66,9 @@ var main = (function () {
         },
         setClickOnBeginningDivs: function () {
             var entrancesToSecondary = elements["primary"].getElementsByClassName("divEntrance");
+            console.log(entrancesToSecondary);
             for (var count=0; count<2; count++) {
-               console.log(count);
-                console.log(entrancesToSecondary);
-                console.log(entrancesToSecondary[count]);
+               // alert("count = "+count);
                 entrancesToSecondary[count].onclick = function () {
                     var nameOfPlay;
                     switch (this.innerText) {
