@@ -17,6 +17,16 @@ function handleData(key) {
             var data = JSON.parse(xhr.responseText);
             window[key] = data[key];
             handleJson[key].handle(data);
+            var countAddedDivs;
+            switch (key) {
+                case "Extradecomposers":
+                    countAddedDivs=0;
+                    break;
+                case "Black_parody":
+                    countAddedDivs=1;
+                    break;
+            }
+            buildHtmlInPrimary(key, countAddedDivs);
         }
     };
     xhr.onerror = function (event) {
@@ -26,6 +36,28 @@ function handleData(key) {
 function fakeFunction(data) {
     console.log('Fake: ', data);
 }
+
+function buildHtmlInPrimary (key, countAddedDivs) {
+    //alert(key);
+    var primary = main.getElement("primary");
+    primary.innerHTML+="<div class='componentOfPrimary'>"+
+                            "<h3>Заголовок</h3>"+
+                            "<div class='mainPart'>"+
+                                "<div class='image'>image</div>"+
+                                "<div class='TextAndEnter'>"+
+                                    "<p class='preview'>text</p><div class='entersToSecondary'>Enter</div>"+
+                                "</div>"+
+                            "</div>" +
+                       "</div>";
+    var entrancesToSecondary = primary.getElementsByClassName("entersToSecondary");
+    console.log(countAddedDivs);
+    console.log(entrancesToSecondary);
+    if (entrancesToSecondary.length==2) {
+       // main.setClickOnBeginningDivs(entrancesToSecondary);
+    }
+    //fillComponentsOfPrimary(key, countAddedDivs, primary);
+}
+
 function setComponentsOfBeginning (nameOfPlay) {
     var componentsOfBeginning = window[nameOfPlay]['onTheBeginning'];
     //document.getElementById("header").InnerText = window[nameOfPlay]['onTheBeginning'].header;
