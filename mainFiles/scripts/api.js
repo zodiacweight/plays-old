@@ -62,10 +62,14 @@ var main = (function () {
         removeClassForStaticElement: function (element_name, removedClass) {
             elements[element_name].classList.remove(removedClass);
         },
-        setClickOnBeginningDivs: function (entrancesToSecondary) {
+        setClickOnBeginningDivs: function (nameOfPlay, entrancesToSecondary) {
             for (var c=0; c<2; c++) {
                 entrancesToSecondary[c].onclick = function () {
-                    this.classList.toggle("clicked");
+                    setColors(nameOfPlay);
+                    setComponentsOfBeginning(nameOfPlay);
+                    $("#primary").fadeOut(670);
+                    elements["secondary"].classList.remove("hidden");
+                    setButtonsToChoicePlay("ButtonsToChoicePlay", nameOfPlay);
                 };
             }
             /*entrancesToSecondary[0].onclick = function () {

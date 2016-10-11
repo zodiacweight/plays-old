@@ -54,7 +54,7 @@ function buildHtmlInPrimary (key, countAddedDivs) {
     console.log(entrancesToSecondary);
     if (entrancesToSecondary.length==2) {
        // console.log(entrancesToSecondary[0]);
-       main.setClickOnBeginningDivs(entrancesToSecondary);
+       main.setClickOnBeginningDivs(key, entrancesToSecondary);
     }
     //fillComponentsOfPrimary(key, countAddedDivs, primary);
 }
