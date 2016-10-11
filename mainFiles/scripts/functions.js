@@ -17,7 +17,7 @@ function handleData(key) {
             var data = JSON.parse(xhr.responseText);
             window[key] = data[key];
             handleJson[key].handle(data);
-            var countAddedDivs;
+            /*var countAddedDivs;
             switch (key) {
                 case "Extradecomposers":
                     countAddedDivs=0;
@@ -25,8 +25,8 @@ function handleData(key) {
                 case "Black_parody":
                     countAddedDivs=1;
                     break;
-            }
-            buildHtmlInPrimary(key, countAddedDivs);
+            } */
+            buildHtmlInPrimary(key);
         }
     };
     xhr.onerror = function (event) {
@@ -37,29 +37,52 @@ function fakeFunction(data) {
     console.log('Fake: ', data);
 }
 
-function buildHtmlInPrimary (key, countAddedDivs) {
-    //alert(key);
+function buildHtmlInPrimary (key) {
+    //console.log(key);
     var primary = main.getElement("primary");
-    primary.innerHTML+="<div class='componentOfPrimary'>"+
-                            "<h3>Заголовок</h3>"+
+    primary.innerHTML+="<div class='componentsOfPrimary'>"+
+                            "<h3></h3>"+
                             "<div class='mainPart'>"+
-                                "<div class='image'>image</div>"+
+                                "<div class='image'></div>"+
                                 "<div class='TextAndEnter'>"+
-                                    "<p class='preview'>text</p><div class='entersToSecondary'>Enter</div>"+
+                                    "<p class='preview'></p><div class='entersToSecondary'></div>"+
                                 "</div>"+
                             "</div>" +
                        "</div>";
     var entrancesToSecondary = primary.getElementsByClassName("entersToSecondary");
-    console.log(countAddedDivs);
-    console.log(entrancesToSecondary);
     if (entrancesToSecondary.length==2) {
-       // console.log(entrancesToSecondary[0]);
-       main.setClickOnBeginningDivs(key, entrancesToSecondary);
+        //console.log(entrancesToSecondary);
+        fillComponentsOfPrimary (key, primary, entrancesToSecondary);
     }
-    //fillComponentsOfPrimary(key, countAddedDivs, primary);
 }
-
-function setComponentsOfBeginning (nameOfPlay) {
+function fillComponentsOfPrimary (key, primary, entrancesToSecondary) {
+   var components = primary.getElementsByClassName("componentsOfPrimary");
+    var elemsOfPrimary = window[key]["onTheBeginning"];
+    console.log(elemsOfPrimary);
+    var countElems;
+    for (countElems=0; countElems < 2; countElems++) {
+         //primary.getElementsByClassName("componentsOfPrimary")[countElems].innerText=elemsOfPrimary.header;
+        var nameOfPlay;
+        switch (countElems) {
+            case 0:
+                nameOfPlay="Extradecomposers";
+                break;
+            case 1:
+                nameOfPlay="Black_parody";
+                break;
+        }
+        console.log(nameOfPlay);
+        console.log(countElems);
+        var elemsOfPrimary = window[nameOfPlay]["onTheBeginning"];
+        primary.getElementsByTagName("H3")[countElems].innerText=elemsOfPrimary.header;
+        primary.getElementsByClassName("image")[countElems].innerHTML=elemsOfPrimary["imgOnPrimary"];
+        primary.getElementsByClassName("preview")[countElems].innerText=elemsOfPrimary["preview"];
+        primary.getElementsByClassName("entersToSecondary")[countElems].innerText="Enter";
+        //main.setClickOnBeginningDivs(nameOfPlay, entrancesToSecondary, countElems);
+     }
+     /* */
+}
+function setComponentsOfPrimary (nameOfPlay) {
     var componentsOfBeginning = window[nameOfPlay]['onTheBeginning'];
     //document.getElementById("header").InnerText = window[nameOfPlay]['onTheBeginning'].header;
     main.setHtmlIntoStaticElement('bigImage', componentsOfBeginning["images"][0]);
@@ -73,7 +96,7 @@ function setComponentsOfBeginning (nameOfPlay) {
 function changeBigImageWithHeader() {
     var arrayOfLittleImages = main.getElement("littleImages");
     var bigImage=main.getElement("bigImage").getElementsByTagName("Img")[0];
-    console.log(bigImage);
+    //console.log(bigImage);
     for (var runLittleImages = 0; runLittleImages < arrayOfLittleImages.length; runLittleImages++) {
         arrayOfLittleImages[runLittleImages].onmouseover = function () {
             bigImage.src = this.src;
@@ -123,7 +146,7 @@ function moveActive(clickedButton, PartOfIdOfDivForButtons, objectOfButtons, nam
     realizeExchangeBetweenButtons (clickedButton, otherButton, nameOfPlay, delClass);
     var beginning = main.getElement("beginning");
     if (beginning.style.display !== "none") {
-        setComponentsOfBeginning(nameOfPlay);
+        setComponentsOfPrimary(nameOfPlay);
         if ((objectOfButtons["ButtonsToRechoice"]!==undefined)&&
             (objectOfButtons["ButtonsToRechoice"].length==2)) {
             for (var runBtns=0; runBtns<2; runBtns++) {

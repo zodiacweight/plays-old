@@ -62,49 +62,14 @@ var main = (function () {
         removeClassForStaticElement: function (element_name, removedClass) {
             elements[element_name].classList.remove(removedClass);
         },
-        setClickOnBeginningDivs: function (nameOfPlay, entrancesToSecondary) {
-            for (var c=0; c<2; c++) {
-                entrancesToSecondary[c].onclick = function () {
+        setClickOnBeginningDivs: function (nameOfPlay, entrancesToSecondary, countElems) {
+                entrancesToSecondary[countElems].onclick = function () {
                     setColors(nameOfPlay);
-                    setComponentsOfBeginning(nameOfPlay);
+                    setComponentsOfPrimary(nameOfPlay);
                     $("#primary").fadeOut(670);
                     elements["secondary"].classList.remove("hidden");
                     setButtonsToChoicePlay("ButtonsToChoicePlay", nameOfPlay);
                 };
-            }
-            /*entrancesToSecondary[0].onclick = function () {
-                nameOfPlay="Extradecomposers";
-                setColors(nameOfPlay);
-                setComponentsOfBeginning(nameOfPlay);
-                $("#primary").fadeOut(670);
-                elements["secondary"].classList.remove("hidden");
-                setButtonsToChoicePlay("ButtonsToChoicePlay", nameOfPlay);
-            };
-            entrancesToSecondary[1].onclick = function () {
-                nameOfPlay="Black_parody";
-                setColors(nameOfPlay);
-                setComponentsOfBeginning(nameOfPlay);
-                $("#primary").fadeOut(670);
-                elements["secondary"].classList.remove("hidden");
-                setButtonsToChoicePlay("ButtonsToChoicePlay", nameOfPlay);
-            };*/
-            /*for (var count=0; count<2; count++) { }
-                entrancesToSecondary[count].onclick = function () {
-                    var nameOfPlay;
-                    switch (this.innerText) {
-                        case "Special scavengers":
-                        nameOfPlay="Extradecomposers";
-                        break;
-                        case "Black parody":
-                        nameOfPlay="Black_parody";
-                        break;
-                    }
-                    setColors(nameOfPlay);
-                    setComponentsOfBeginning(nameOfPlay);
-                    $("#primary").fadeOut(670);
-                    elements["secondary"].classList.remove("hidden");
-                    setButtonsToChoicePlay("ButtonsToChoicePlay", nameOfPlay);
-                } */
 
         },
         setClickOnKey: function (nameOfPlay) {
