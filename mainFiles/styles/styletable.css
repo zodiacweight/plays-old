@@ -54,6 +54,10 @@
        margin-bottom: 4%;
        width: 70%;
    }
+   .clicked {
+       background-color: navy;
+       color: azure;
+   }
     .preview {
         font-size: 22px;
         padding-left: 6px;

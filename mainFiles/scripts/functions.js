@@ -53,6 +53,12 @@ function buildHtmlInPrimary (key, countAddedDivs) {
     console.log(countAddedDivs);
     console.log(entrancesToSecondary);
     if (entrancesToSecondary.length==2) {
+        console.log(entrancesToSecondary[0]);
+        for (var c=0; c<2; c++) {
+            entrancesToSecondary[c].onclick = function () {
+                this.classList.toggle("clicked");
+            };
+        }
        // main.setClickOnBeginningDivs(entrancesToSecondary);
     }
     //fillComponentsOfPrimary(key, countAddedDivs, primary);
