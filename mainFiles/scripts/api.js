@@ -3,7 +3,6 @@ var main = (function () {
         body: document.getElementsByTagName("Body")[0],
         headerLogotip: document.getElementById("headerLogotip"),
         beginning: document.getElementById("beginning"),
-        //beginningDivs: this.primary.getElementsByTagName("Div"),
         primary: document.getElementById("primary"),
         secondary: document.getElementById("secondary"),
         bigImage: document.getElementById("bigImage"),
