@@ -24,19 +24,7 @@ var main = (function () {
     };
     return {
         setHtmlIntoStaticElement: function (element_name, html) {
-            if (typeof(html)== "object") {
-                elements[element_name].innerHTML="";
-                if(Array.isArray()){
-
-                }else{
-
-                }
-                for (var clue in html) {
-                    this.addHTML(element_name, html[clue]);
-                }
-            } else {
-                elements[element_name].innerHTML = html;
-            }
+            elements[element_name].innerHTML = html;
         },
         getElement: function (element_name) {
             return elements[element_name];
@@ -45,7 +33,6 @@ var main = (function () {
             elements[element_name].innerHTML += html;
         },
         regularVisibility: function (arr) {
-
             for (var runElems=0; runElems<3; runElems++) {
                 elements[arr[runElems][0]].style.display=arr[runElems][1];
             }
