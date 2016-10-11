@@ -63,7 +63,12 @@ var main = (function () {
             elements[element_name].classList.remove(removedClass);
         },
         setClickOnBeginningDivs: function (entrancesToSecondary) {
-            entrancesToSecondary[0].onclick = function () {
+            for (var c=0; c<2; c++) {
+                entrancesToSecondary[c].onclick = function () {
+                    this.classList.toggle("clicked");
+                };
+            }
+            /*entrancesToSecondary[0].onclick = function () {
                 nameOfPlay="Extradecomposers";
                 setColors(nameOfPlay);
                 setComponentsOfBeginning(nameOfPlay);
@@ -78,7 +83,7 @@ var main = (function () {
                 $("#primary").fadeOut(670);
                 elements["secondary"].classList.remove("hidden");
                 setButtonsToChoicePlay("ButtonsToChoicePlay", nameOfPlay);
-            };
+            };*/
             /*for (var count=0; count<2; count++) { }
                 entrancesToSecondary[count].onclick = function () {
                     var nameOfPlay;
