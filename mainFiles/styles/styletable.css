@@ -1,8 +1,8 @@
    #primary {
-       width: 70%;
-       border: 1px solid;
-       margin-left: 15%;
-       margin-top: 4%;
+       width: 94%;
+       margin-left: 3%;
+       margin-top: 3%;
+       border: 2px solid;
    }
    #primary > p {
        font-size: 20px;
@@ -10,58 +10,62 @@
        width: 86%;
        margin-left: 5%;
    }
-   #primary > div {
-       border: 2px solid hotpink;
-       border-radius: 7px;
+    #divInPrimary {
+       width: 96%;
+       margin-left: 2%;
+       margin-top: 2%;
+       border: 1px solid;
        overflow: auto;
-       width: 80%;
-       margin-left: 10%;
-       margin-bottom: 4%;
    }
-   #primary > div > h3 {
-       margin-left: 6%;
+   #divInPrimary > div {
+       width: 45%;
+       margin-left: 2%;
+       margin-bottom: 2%;
+       margin-top: 1%;
+       float: left;
+       border: 2px solid hotpink;
+       border-radius: 10px;
+       overflow: auto;
+   }
+   #divInPrimary > div > h2 {
+       margin-left: 16%;
        margin-top: 2%;
        border: 1px solid mediumvioletred;
-       font-size: 20px;
+       padding: 6px;
+       font-size: 28px;
    }
    .mainPart {
        overflow: auto;
-       /*
-  border: 1px solid;
-       width: 80%;
-        */
+       border: 1px solid mediumvioletred;
+       width: 94%;
+       margin-left: 3%;
+       margin-top: 2%;
+       margin-bottom: 2%;
    }
-   #primary .image {
+   .mainPart > div {
+       margin-top: 1%;
+   }
+   .mainPart .image {
        float: left;
        width: 20%;
        margin-left: 3%;
-       margin-top: 4%;
        margin-bottom: 4%;
-       border: 1px solid mediumvioletred;
-   }
-   .mainPart {
-       border: 1px solid mediumvioletred;
    }
    .image > img {
        width: 100%;
    }
    .TextAndEnter {
        float: left;
-       border: 1px solid;
-       padding: 5px;
-       margin-top: 4%;
+       width: 70%;
        margin-left: 1%;
        margin-bottom: 4%;
-       width: 70%;
-   }
-   .clicked {
-       background-color: navy;
-       color: azure;
+       border: 1px solid;
+       padding: 5px;
    }
     .preview {
+        margin-top: 4px;
         font-size: 22px;
-        padding-left: 6px;
-        padding-right: 8px;
+        padding: 10px;
         border: 1px solid mediumvioletred;
     }
    .entersToSecondary {
@@ -253,11 +257,10 @@
          #top_of_play {
              overflow: auto;
              margin-left: 8%;
-             margin-bottom: 2%;
+             margin-bottom: 1%;
          }
          #top_of_play > div {
              margin-left: 2%;
-             border: 1px solid;
              float: left;
          }
          #top_of_play > div > h2 {
@@ -305,7 +308,6 @@
          #mainArea {
              width: 98%;
              margin-left: 1%;
-             border: 1px solid;
          }
          #mainArea > * {
              font-family: "Segoe UI";
@@ -328,7 +330,6 @@
          }
          #content_of_play {
              width: 100%;
-             //: 1px solid;
          }
          #content_of_play img {
              width: 60%;

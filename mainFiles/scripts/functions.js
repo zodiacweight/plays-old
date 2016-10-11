@@ -29,32 +29,22 @@ function fakeFunction(data) {
 }
 
 function buildHtmlInPrimary (key) {
-    var primary = main.getElement("primary");
-    primary.innerHTML+="<div class='componentsOfPrimary'>"+
-                            "<h3></h3>"+
-                            "<div class='mainPart'>"+
-                                "<div class='image'></div>"+
-                                "<div class='TextAndEnter'>"+
-                                    "<p class='preview'></p><div class='entersToSecondary'></div>"+
-                                "</div>"+
-                            "</div>" +
+    var divInPrimary = main.getElement("divInPrimary");
+    divInPrimary.innerHTML+="<div class='componentsOfPrimary'>"+
+                                "<h2></h2>"+
+                                "<div class='mainPart'>"+
+                                    "<div class='image'></div>"+
+                                    "<div class='TextAndEnter'>"+
+                                        "<p class='preview'></p><div class='entersToSecondary'></div>"+
+                                    "</div>"+
+                                "</div>" +
                        "</div>";
     var entrancesToSecondary = primary.getElementsByClassName("entersToSecondary");
     if (entrancesToSecondary.length==2) {
-        fillComponentsOfPrimary (key, primary, entrancesToSecondary);
+        fillComponentsOfPrimary (key, divInPrimary, entrancesToSecondary);
     }
 }
-function setComponentsOfPrimary (nameOfPlay) {
-    var componentsOfBeginning = window[nameOfPlay]['onTheBeginning'];
-    main.setHtmlIntoStaticElement('bigImage', componentsOfBeginning["images"][0]);
-    main.setHtmlIntoStaticElement("divWithLittleImages", componentsOfBeginning["images"][0]);
-    document.getElementById("main_in_preview").innerText = componentsOfBeginning["preview"];
-    for (var addLittleImages = 1; addLittleImages < componentsOfBeginning["images"].length; addLittleImages++) {
-        main.addHTML("divWithLittleImages", componentsOfBeginning["images"][addLittleImages]);
-    }
-    changeBigImageWithHeader();
-}
-function fillComponentsOfPrimary (key, primary, entrancesToSecondary) {
+function fillComponentsOfPrimary (key, divInPrimary, entrancesToSecondary) {
     var countElems;
     for (countElems=0; countElems < 2; countElems++) {
         var nameOfPlay;
@@ -69,12 +59,22 @@ function fillComponentsOfPrimary (key, primary, entrancesToSecondary) {
         console.log(nameOfPlay);
         console.log(countElems);
         var elemsOfPrimary = window[nameOfPlay]["onTheBeginning"];
-        primary.getElementsByTagName("H3")[countElems].innerText=elemsOfPrimary.header;
-        primary.getElementsByClassName("image")[countElems].innerHTML=elemsOfPrimary["imgOnPrimary"];
-        primary.getElementsByClassName("preview")[countElems].innerText=elemsOfPrimary["preview"];
-        primary.getElementsByClassName("entersToSecondary")[countElems].innerText="Enter";
+        divInPrimary.getElementsByTagName("H2")[countElems].innerText=elemsOfPrimary.header;
+        divInPrimary.getElementsByClassName("image")[countElems].innerHTML=elemsOfPrimary["imgOnPrimary"];
+        divInPrimary.getElementsByClassName("preview")[countElems].innerText=elemsOfPrimary["preview"];
+        divInPrimary.getElementsByClassName("entersToSecondary")[countElems].innerText="Enter";
         main.setClickOnBeginningDivs(nameOfPlay, entrancesToSecondary, countElems);
     }
+}
+function setComponentsOfSecondary (nameOfPlay) {
+    var componentsOfBeginning = window[nameOfPlay]['onTheBeginning'];
+    main.setHtmlIntoStaticElement('bigImage', componentsOfBeginning["images"][0]);
+    main.setHtmlIntoStaticElement("divWithLittleImages", componentsOfBeginning["images"][0]);
+    document.getElementById("main_in_preview").innerText = componentsOfBeginning["preview"];
+    for (var addLittleImages = 1; addLittleImages < componentsOfBeginning["images"].length; addLittleImages++) {
+        main.addHTML("divWithLittleImages", componentsOfBeginning["images"][addLittleImages]);
+    }
+    changeBigImageWithHeader();
 }
 function changeBigImageWithHeader() {
     var arrayOfLittleImages = main.getElement("littleImages");
@@ -128,7 +128,7 @@ function moveActive(clickedButton, PartOfIdOfDivForButtons, objectOfButtons, nam
     realizeExchangeBetweenButtons (clickedButton, otherButton, nameOfPlay, delClass);
     var beginning = main.getElement("beginning");
     if (beginning.style.display !== "none") {
-        setComponentsOfPrimary(nameOfPlay);
+        setComponentsOfSecondary(nameOfPlay);
         if ((objectOfButtons["ButtonsToRechoice"]!==undefined)&&
             (objectOfButtons["ButtonsToRechoice"].length==2)) {
             for (var runBtns=0; runBtns<2; runBtns++) {

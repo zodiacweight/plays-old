@@ -4,6 +4,7 @@ var main = (function () {
         headerLogotip: document.getElementById("headerLogotip"),
         beginning: document.getElementById("beginning"),
         primary: document.getElementById("primary"),
+        divInPrimary: document.getElementById("divInPrimary"),
         secondary: document.getElementById("secondary"),
         bigImage: document.getElementById("bigImage"),
         divWithLittleImages: document.getElementById("divWithLittleImages"),
@@ -51,7 +52,7 @@ var main = (function () {
         setClickOnBeginningDivs: function (nameOfPlay, entrancesToSecondary, countElems) {
                 entrancesToSecondary[countElems].onclick = function () {
                     setColors(nameOfPlay);
-                    setComponentsOfPrimary(nameOfPlay);
+                    setComponentsOfSecondary(nameOfPlay);
                     $("#primary").fadeOut(670);
                     elements["secondary"].classList.remove("hidden");
                     setButtonsToChoicePlay("ButtonsToChoicePlay", nameOfPlay);
