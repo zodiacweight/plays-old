@@ -253,7 +253,7 @@ function setClickToLoadPart(nameOfPlay) {
                 main.setHtmlIntoStaticElement("mainArea", inMainArea);
                document.getElementById("toChooseRoles").innerHTML = "<h4>There are the following characters in this part:</h4>" +
                     "<div id='listOfCheckboxes'></div><div><input id='paintreplics' type='button' " +
-                    "value='paint roles and / or clear them '></div>";
+                    "value='paint roles and / or clear them'></div>";
                 document.getElementById("top_of_play").innerHTML = "<div><h2 id='headerForPart'></h2></div>"
                     + "<div id='buttons'><input type='button' value='<' id='scrollBack'>" +
                     "<input type='button' value='>' id='scrollFront'>" +
@@ -335,7 +335,7 @@ function setClickToLoadPart(nameOfPlay) {
                             }
                         }
                     }
-                    else {
+                    else { // если есть конъюнкция
                         var namesInConjuction = name_in_h4.split(" & "),
                             numberOfCheckedRolesInConjuction = 0;
                         for (var runNamesInConjuction in namesInConjuction) {
@@ -344,29 +344,27 @@ function setClickToLoadPart(nameOfPlay) {
                                 searchedRole = namesInConjuction[runNamesInConjuction];
                             }
                         }
-                        var delClass;
+                        var delPaintingClass;
                         switch (numberOfCheckedRolesInConjuction) {
                             case 0:
                                 if (divsWithReplics[runDivs].classList.length==2) {
-                                    delClass =  divsWithReplics[runDivs].classList[1];
-                                    divsWithReplics[runDivs].classList.remove(delClass);
+                                    //alert("Ни одна роль из конъюнкции не выбрана!");
+                                    delPaintingClass =  divsWithReplics[runDivs].classList[1];
+                                    divsWithReplics[runDivs].classList.remove(delPaintingClass);
                                 }
                                 break;
                             case 1:
-                                if (divsWithReplics[runDivs].classList.contains("commonPaint")) {
-                                    divsWithReplics[runDivs].classList.remove("commonPaint");
+                                if (divsWithReplics[runDivs].classList.length>1) {
+                                    delPaintingClass=divsWithReplics[runDivs].classList[1];
+                                    divsWithReplics[runDivs].classList.remove(delPaintingClass);
                                 }
                                 defineNameInClass(searchedRole,  divsWithReplics[runDivs], "paint");
-                                if (divsWithReplics[runDivs].classList.length>2) {
-                                    var delClass2 = divsWithReplics[runDivs].classList[1];
-                                    divsWithReplics[runDivs].classList.remove(delClass2);
-                                }
                                 break;
                             default:
                                 if (divsWithReplics[runDivs].classList.length>1) {
                                     if(divsWithReplics[runDivs].classList[1].indexOf("paintedReplicsOf")==0) {
-                                        delClass = divsWithReplics[runDivs].classList[1];
-                                        divsWithReplics[runDivs].classList.remove(delClass);
+                                        delPaintingClass = divsWithReplics[runDivs].classList[1];
+                                        divsWithReplics[runDivs].classList.remove(delPaintingClass);
                                     }
                                 }
                                 if (!(divsWithReplics[runDivs].classList.contains("commonPaint"))) {
