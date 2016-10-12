@@ -12,7 +12,7 @@ function handleData(key) {
         // 4. Если код ответа сервера не 200, то это ошибка
         if (xhr.status != 200) {
             // обработать ошибку
-           // console.log(xhr.status + ': ' + xhr.statusText);
+            // console.log(xhr.status + ': ' + xhr.statusText);
         } else {
             var data = JSON.parse(xhr.responseText);
             window[key] = data[key];
@@ -21,7 +21,7 @@ function handleData(key) {
         }
     };
     xhr.onerror = function (event) {
-       console.log(event);
+        console.log(event);
     };
 }
 function fakeFunction(data) {
@@ -31,14 +31,14 @@ function fakeFunction(data) {
 function buildHtmlInPrimary (key) {
     var divInPrimary = main.getElement("divInPrimary");
     divInPrimary.innerHTML+="<div class='componentsOfPrimary'>"+
-                                "<h2></h2>"+
-                                "<div class='mainPart'>"+
-                                    "<div class='image'></div>"+
-                                    "<div class='TextAndEnter'>"+
-                                        "<p class='preview'></p><div class='entersToSecondary'></div>"+
-                                    "</div>"+
-                                "</div>" +
-                       "</div>";
+        "<h2></h2>"+
+        "<div class='mainPart'>"+
+        "<div class='image'></div>"+
+        "<div class='TextAndEnter'>"+
+        "<p class='preview'></p><div class='entersToSecondary'></div>"+
+        "</div>"+
+        "</div>" +
+        "</div>";
     var entrancesToSecondary = primary.getElementsByClassName("entersToSecondary");
     if (entrancesToSecondary.length==2) {
         fillComponentsOfPrimary (key, divInPrimary, entrancesToSecondary);
@@ -56,8 +56,6 @@ function fillComponentsOfPrimary (key, divInPrimary, entrancesToSecondary) {
                 nameOfPlay="Black_parody";
                 break;
         }
-        console.log(nameOfPlay);
-        console.log(countElems);
         var elemsOfPrimary = window[nameOfPlay]["onTheBeginning"];
         divInPrimary.getElementsByTagName("H2")[countElems].innerText=elemsOfPrimary.header;
         divInPrimary.getElementsByClassName("image")[countElems].innerHTML=elemsOfPrimary["imgOnPrimary"];
@@ -72,7 +70,7 @@ function setComponentsOfSecondary (nameOfPlay) {
     main.setHtmlIntoStaticElement("divWithLittleImages", componentsOfBeginning["images"][0]);
     document.getElementById("main_in_preview").innerText = componentsOfBeginning["preview"];
     for (var addLittleImages = 1; addLittleImages < componentsOfBeginning["images"].length; addLittleImages++) {
-        main.addHTML("divWithLittleImages", componentsOfBeginning["images"][addLittleImages]);
+        main.addHtmlIntoStaticElement("divWithLittleImages", componentsOfBeginning["images"][addLittleImages]);
     }
     changeBigImageWithHeader();
 }
@@ -139,7 +137,7 @@ function moveActive(clickedButton, PartOfIdOfDivForButtons, objectOfButtons, nam
                     otherButton=objectOfButtons["ButtonsToRechoice"][runBtns];
                 }
             }
-           realizeExchangeBetweenButtons (clickedButton, otherButton, nameOfPlay, "unclickedButton_"+nameOfPlay+"_choiced");
+            realizeExchangeBetweenButtons (clickedButton, otherButton, nameOfPlay, "unclickedButton_"+nameOfPlay+"_choiced");
         }
     }
     setColors(nameOfPlay);
@@ -157,13 +155,13 @@ function openGates() {
 }
 function setColors(nameOfPlay) {
     var addedClassForContentList = "contentListFor"+nameOfPlay,
-    instruction = document.getElementById("instruction");
+        instruction = document.getElementById("instruction");
     switch (nameOfPlay) {
         case "Extradecomposers":
             if (main.getElement("beginning").style.display!=="none") {
                 main.setCssProperty([
-                                        ["main_in_preview","color","mediumvioletred"]
-                                    ]);
+                    ["main_in_preview","color","mediumvioletred"]
+                ]);
                 if (instruction!==null) {
                     instruction.style.color = "#08088A";
                 }
@@ -173,13 +171,13 @@ function setColors(nameOfPlay) {
         case "Black_parody":
             if (main.getElement("beginning").style.display!=="none") {
                 main.setCssProperty([
-                        ["main_in_preview","color","#A9BCF5"]
-                    ]);
+                    ["main_in_preview","color","#A9BCF5"]
+                ]);
                 if (instruction!==null) {
                     instruction.style.color = "#08088A";
                 }
             }
-             main.setCssProperty([["rightHalf", "color", "lightgoldenrodyellow"]]);
+            main.setCssProperty([["rightHalf", "color", "lightgoldenrodyellow"]]);
             break;
     }
     main.getElement("body").backgroundColor="";
@@ -200,9 +198,9 @@ function addPartsToContentList(nameOfPlay) {
     }
     for (var part in window[nameOfPlay]["Parts"]) {
         var numberOfPart = window[nameOfPlay]["Parts"][part]["number"];
-        main.addHTML("listOfParts", "<p id='Part" + numberOfPart + "'>Part " + numberOfPart  + "</p>");
+        main.addHtmlIntoStaticElement("listOfParts", "<p id='Part" + numberOfPart + "'>Part " + numberOfPart  + "</p>");
     }
-    main.addHTML("listOfParts", "<p id='about_characters'>About characters</p>");
+    main.addHtmlIntoStaticElement("listOfParts", "<p id='about_characters'>About characters</p>");
     setClickToLoadPart(nameOfPlay);
 }
 
@@ -217,7 +215,7 @@ function loadAboutCharacters(nameOfPlay) {
     }
     main.setHtmlIntoStaticElement("mainArea", "<h2>About Characters</h2>");
     for (var addPartAboutCharacters = 0; addPartAboutCharacters < window[nameOfPlay]['About characters'].length; addPartAboutCharacters++) {
-        main.addHTML("mainArea", "<p>" + window[nameOfPlay]['About characters'][addPartAboutCharacters] + "</p>");
+        main.addHtmlIntoStaticElement("mainArea", "<p>"+window[nameOfPlay]['About characters'][addPartAboutCharacters]+"</p>");
     }
 }
 function setClickToLoadPart(nameOfPlay) {
@@ -239,19 +237,19 @@ function setClickToLoadPart(nameOfPlay) {
             var PartNumber = this.innerText; index_of_part = parts_with_numbers.indexOf(PartNumber);
             if (main.getElement("contentlist").style.borderRight != "") {
                 main.setCssProperty([
-                      ["contentlist", "borderRight", ""],
-                      ["rightHalf", "borderLeft", "3px solid"]
-                    ]);
+                    ["contentlist", "borderRight", ""],
+                    ["rightHalf", "borderLeft", "3px solid"]
+                ]);
             }
             if (countClicks == 1) {
                 if (!(main.getElement("rightHalf").classList.contains("addStylesForContent"))) {
                     main.addClassForStaticElement("rightHalf", "addedClass");
                 }
-                    inMainArea= ["<div id='toChooseRoles'></div>",
+                inMainArea= ["<div id='toChooseRoles'></div>",
                     "<div id='top_of_play'></div>",
                     "<div id='content_of_play'></div>"];
-                main.setHtmlIntoStaticElement("mainArea", inMainArea);
-               document.getElementById("toChooseRoles").innerHTML = "<h4>There are the following characters in this part:</h4>" +
+                main.addHtmlIntoStaticElement("mainArea", inMainArea);
+                document.getElementById("toChooseRoles").innerHTML = "<h4>There are the following characters in this part:</h4>" +
                     "<div id='listOfCheckboxes'></div><div><input id='paintreplics' type='button' " +
                     "value='paint roles and / or clear them'></div>";
                 document.getElementById("top_of_play").innerHTML = "<div><h2 id='headerForPart'></h2></div>"
@@ -305,7 +303,7 @@ function setClickToLoadPart(nameOfPlay) {
                             searchedRole = presRoles.Array[runchecks].substring(0, posOfAmp);
                         }
                         else {
-                             searchedRole=presRoles.Array[runchecks];
+                            searchedRole=presRoles.Array[runchecks];
                         }
                         checkedRoles[searchedRole]=true;
                     }
@@ -314,7 +312,7 @@ function setClickToLoadPart(nameOfPlay) {
                     name_in_h4=divsWithReplics[runDivs].getElementsByTagName("H4")[0].innerText;
                     if (name_in_h4.indexOf(" & ")==-1) {
                         if((name_in_h4.indexOf("'s")!==-1)&&(name_in_h4.indexOf("Christian")==-1)
-                           &&(name_in_h4.indexOf("Author")==-1)) {
+                            &&(name_in_h4.indexOf("Author")==-1)) {
                             var posOfAmp = name_in_h4.indexOf("'s");
                             searchedRole = name_in_h4.substring(0, posOfAmp);
                         }
@@ -337,21 +335,34 @@ function setClickToLoadPart(nameOfPlay) {
                     }
                     else { // если есть конъюнкция
                         var namesInConjuction = name_in_h4.split(" & "),
-                            numberOfCheckedRolesInConjuction = 0;
-                        for (var runNamesInConjuction in namesInConjuction) {
+                            numberOfCheckedRolesInConjuction = 0, delPaintingClass,
+                            h4=divsWithReplics[runDivs].getElementsByTagName("H4")[0];
+                        for (var runNamesInConjuction=0; runNamesInConjuction < namesInConjuction.length; runNamesInConjuction++)
+                        {
                             if (namesInConjuction[runNamesInConjuction] in checkedRoles) {
                                 numberOfCheckedRolesInConjuction++;
                                 searchedRole = namesInConjuction[runNamesInConjuction];
                             }
                         }
-                        var delPaintingClass;
                         switch (numberOfCheckedRolesInConjuction) {
-                            case 0:
+                            case 0: // Ни одно имя в конъюнкции не чекнуто. Нужно сделать так, чтобы в h4 не было span.
                                 if (divsWithReplics[runDivs].classList.length==2) {
                                     //alert("Ни одна роль из конъюнкции не выбрана!");
                                     delPaintingClass =  divsWithReplics[runDivs].classList[1];
                                     divsWithReplics[runDivs].classList.remove(delPaintingClass);
                                 }
+
+                            /*  var checkLightedRoles = h4.getElementsByTagName("Span");
+                                if (checkLightedRoles!==[]) {
+                                 h4.innerHTML="";
+                                 h4.innerText=namesInConjuction[0];
+                                 runNamesInConjuction=1;
+                                 while (runNamesInConjuction < namesInConjuction.length) {
+                                 runNamesInConjuction++;
+                                 searchedRole = namesInConjuction[runNamesInConjuction];
+                                 h4.innerText+=" & "+searchedRole;
+                                 }
+                                 } */
                                 break;
                             case 1:
                                 if (divsWithReplics[runDivs].classList.length>1) {
@@ -371,7 +382,40 @@ function setClickToLoadPart(nameOfPlay) {
                                     divsWithReplics[runDivs].classList.add("commonPaint");
                                 }
                         }
-
+                        console.log(namesInConjuction);
+                        console.log(numberOfCheckedRolesInConjuction);
+                        /* if (numberOfCheckedRolesInConjuction > 0) {
+                         h4.innerHTML="";
+                         if (numberOfCheckedRolesInConjuction < namesInConjuction.length) { // выбраны некоторые роли конъюнкции
+                         console.log(namesInConjuction);
+                         runNamesInConjuction=0;
+                         h4.innerText="";
+                         while (runNamesInConjuction < namesInConjuction.length) {
+                         if (namesInConjuction[runNamesInConjuction] in checkedRoles) {
+                         searchedRole=namesInConjuction[runNamesInConjuction];
+                         var nameInClass=defineNameInClass(searchedRole,  divsWithReplics[runDivs], "only define class");
+                         h4.innerHTML+="<span class='highlightedOf"+nameInClass+ "'>"+searchedRole+"</span>";
+                         console.log(searchedRole);
+                         }
+                         else {
+                         h4.innerHTML+="<span>"+searchedRole+"</span>";
+                         }
+                         if (runNamesInConjuction < namesInConjuction.length-1) {
+                         h4.innerHTML+=" & ";
+                         }
+                         runNamesInConjuction++;
+                         }
+                         }
+                         else { // выбраны все роли конъюнкции
+                         h4.innerText=namesInConjuction[0];
+                         runNamesInConjuction=1;
+                         while (runNamesInConjuction < namesInConjuction.length) {
+                         searchedRole = namesInConjuction[runNamesInConjuction];
+                         h4.innerHtml+="<span> & "+searchedRole+"</span>";
+                         runNamesInConjuction++;
+                         }
+                         }
+                         } */
                     }
                 }
             };
@@ -402,11 +446,11 @@ function setEventsWithMouse (curPart) {
         this.classList.remove("mouseOnItem");
     };
 }
-function defineNameInClass (searchedRole,  currentReplic, PoC) {
+function defineNameInClass (searchedRole,  currentReplic, whatToDo) {
     var nameInClass;
     if (searchedRole=="Author's words") {
         nameInClass = "Author";
-        paintOrClearReplic(currentReplic, nameInClass, PoC);
+        paintOrClearReplic(currentReplic, nameInClass, whatToDo);
     }
     else {
         switch (searchedRole) {
@@ -441,11 +485,16 @@ function defineNameInClass (searchedRole,  currentReplic, PoC) {
                 }
                 break;
         }
-        paintOrClearReplic(currentReplic, nameInClass, PoC);
+        if (whatToDo=="only define class") {
+            return nameInClass;
+        }
+        else {
+            paintOrClearReplic(currentReplic, nameInClass, whatToDo);
+        }
     }
 }
-function paintOrClearReplic (currentReplic, nameInClass, PoC) {
-    switch (PoC) {
+function paintOrClearReplic (currentReplic, nameInClass, whatToDo) {
+    switch (whatToDo) {
         case "paint":
             if (!(currentReplic.classList.contains("paintedReplicsOf"+nameInClass))) {
                 currentReplic.classList.add("paintedReplicsOf"+nameInClass);

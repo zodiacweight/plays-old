@@ -30,8 +30,18 @@ var main = (function () {
         getElement: function (element_name) {
             return elements[element_name];
         },
-        addHTML: function (element_name, html) {
-            elements[element_name].innerHTML += html;
+        addHtmlIntoStaticElement: function (element_name, html) {
+            if (typeof (html)=="object") {
+                //if (html.isArray()) { }
+                elements[element_name].innerHTML = html[0];
+                for (var i=1; i<html.length; i++) {
+                        elements[element_name].innerHTML += html[i];
+                }
+            }
+            else {
+                elements[element_name].innerHTML += html;
+            }
+
         },
         regularVisibility: function (arr) {
             for (var runElems=0; runElems<3; runElems++) {
