@@ -309,7 +309,10 @@ function setClickToLoadPart(nameOfPlay) {
                     }
                 }
                 for (var runDivs = 0; runDivs < divsWithReplics.length; runDivs++) {
-                    name_in_h4=divsWithReplics[runDivs].getElementsByTagName("H4")[0].innerText;
+                    var headerWithRoles = divsWithReplics[runDivs].getElementsByTagName("H4")[0];
+                    name_in_h4=headerWithRoles.innerText;
+                    console.log("При клике");
+                    console.log(name_in_h4.indexOf(" & ")==-1);
                     if (name_in_h4.indexOf(" & ")==-1) {
                         if((name_in_h4.indexOf("'s")!==-1)&&(name_in_h4.indexOf("Christian")==-1)
                             &&(name_in_h4.indexOf("Author")==-1)) {
@@ -337,13 +340,16 @@ function setClickToLoadPart(nameOfPlay) {
                         var namesInConjuction = name_in_h4.split(" & "),
                             numberOfCheckedRolesInConjuction = 0, delPaintingClass,
                             h4=divsWithReplics[runDivs].getElementsByTagName("H4")[0];
+                        //console.log(namesInConjuction);
                         for (var runNamesInConjuction=0; runNamesInConjuction < namesInConjuction.length; runNamesInConjuction++)
                         {
-                            if (namesInConjuction[runNamesInConjuction] in checkedRoles) {
+                             if (namesInConjuction[runNamesInConjuction] in checkedRoles) {
                                 numberOfCheckedRolesInConjuction++;
                                 searchedRole = namesInConjuction[runNamesInConjuction];
                             }
                         }
+                       // alert(numberOfCheckedRolesInConjuction);
+                        //console.log(numberOfCheckedRolesInConjuction);
                         switch (numberOfCheckedRolesInConjuction) {
                             case 0: // Ни одно имя в конъюнкции не чекнуто. Нужно сделать так, чтобы в h4 не было span.
                                 if (divsWithReplics[runDivs].classList.length==2) {
@@ -382,8 +388,48 @@ function setClickToLoadPart(nameOfPlay) {
                                     divsWithReplics[runDivs].classList.add("commonPaint");
                                 }
                         }
-                        console.log(namesInConjuction);
-                        console.log(numberOfCheckedRolesInConjuction);
+                        //console.log(headerWithRoles);
+                        var rolesInSpans = headerWithRoles.getElementsByTagName("Span")[0];
+                        if(rolesInSpans==undefined) {
+                            alert("if");
+                            headerWithRoles.innerText="";
+                            for (var runRoles=0; runRoles<namesInConjuction.length; runRoles++) {
+                                headerWithRoles.innerHTML+="<span>"+namesInConjuction[runRoles]+"</span>";
+                                if(runRoles<namesInConjuction.length-1) {
+                                    headerWithRoles.innerHTML+="<span> & </span>";
+                                }
+                            }
+                            /*headerWithRoles.innerHTML+="<span>Роль</span> & <span>Роль</span>";*/
+                        }
+                        else {
+                           alert("else");
+                        }
+                         /*  if (rolesInSpans.length==0) {
+                            headerWithRoles.innerText="";
+                            for (var runRoles=0; runRoles<namesInConjuction.length; runRoles++) {
+                                headerWithRoles.innerHTML+="<span>"+namesInConjuction[runRoles]+"</span>";
+                            }
+                            rolesInSpans = headerWithRoles.getElementsByTagName("Span");
+                            console.log(rolesInSpans.length);
+                            //console.log(namesInConjuction);
+                           if ((numberOfCheckedRolesInConjuction>0)&&(numberOfCheckedRolesInConjuction<namesInConjuction.length))
+                            {
+                                console.log("if");
+                            }
+                            else {
+                                console.log("else");
+                            }
+                            for (var runRoles=0; runRoles<namesInConjuction.length; runRoles++) {
+                                headerWithRoles.innerHTML+="<span>"+namesInConjuction[runRoles]+"</span>";
+                            }
+
+                        }*/
+                         /*  else {
+
+                        }
+                        rolesInSpans = headerWithRoles.getElementsByTagName("Span"); */
+                       // headerWithRoles.innerHTML="<span>Роль</span> & <span>Роль</span>";
+                        /*console.log(numberOfCheckedRolesInConjuction); */
                         /* if (numberOfCheckedRolesInConjuction > 0) {
                          h4.innerHTML="";
                          if (numberOfCheckedRolesInConjuction < namesInConjuction.length) { // выбраны некоторые роли конъюнкции
