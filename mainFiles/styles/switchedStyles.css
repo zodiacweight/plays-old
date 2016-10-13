@@ -22,10 +22,6 @@
     background-color: lightblue;
     color: darkviolet;
 }
-.words_of_char > h4 > span {
-    padding: 4px;
-    text-decoration: underline;
-}
 .paintedReplicsOfAuthor {
     border: 3px dashed darkviolet;
     border-radius: 4px;
@@ -43,8 +39,10 @@
     color: darkmagenta;
 }
 .highlightedOfHelen {
-    background-color: lightyellow;
-    color: mediumblue;
+    background-color: darkviolet;
+    color: lightpink;
+    padding: 6px;
+    text-decoration: underline;
 }
 .paintedReplicsOfJudy {
     background-image: url("../../images/textures/mist.jpg");
@@ -54,6 +52,8 @@
 .highlightedOfJudy {
     background-color: aquamarine;
     color: #0B0B61;
+    padding: 6px;
+    text-decoration: underline;
 }
 .paintedReplicsOfCassandra {
     background-image: url("../../images/textures/ocean.jpg");
@@ -63,6 +63,8 @@
 .highlightedOfCassandra {
     background-color: darkorchid;
     color: beige;
+    padding: 6px;
+    text-decoration: underline;
 }
 .paintedReplicsOfCassandra > p {
     color: whitesmoke;
@@ -80,6 +82,8 @@
 .highlightedOfBeatrix {
     background-color: cyan;
     color: blue;
+    padding: 6px;
+    text-decoration: underline;
 }
 .paintedReplicsOfMrsJakins {
     background-image: url("../../images/textures/pink_paper.jpg");
@@ -95,10 +99,6 @@
     background-color: lightblue;
     border: 3px solid darkblue; !important;
     color: darkslateblue;
-}
-.highlightedOfJamesMcHein {
-    background-color: aquamarine;
-    color: navy;
 }
 .paintedReplicsOfWomanDevil {
     background-image: url("../../images/textures/bumaga_texture_101.jpg");

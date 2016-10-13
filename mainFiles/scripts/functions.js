@@ -382,14 +382,10 @@ function setClickToLoadPart(nameOfPlay) {
                         }
                         var spans = headerWithRoles.getElementsByTagName("Span"), runRoles;
                         if ((numberOfCheckedRolesInConjuction < namesInConjuction.length)&&(numberOfCheckedRolesInConjuction>0)){
-                            console.log("Некоторые");
                             for (runRoles=0; runRoles < spans.length; runRoles++) {
                                 if(spans[runRoles].innerText!==" & ") {
                                     searchedRole=spans[runRoles].innerText;
                                     if((searchedRole in checkedRoles)&&(spans[runRoles].classList.length==0)){
-                                        if(searchedRole="James McHein") {
-                                            searchedRole="JamesMcHein";
-                                        }
                                         spans[runRoles].classList.add("highlightedOf"+searchedRole);
                                     }
                                     else {
@@ -403,15 +399,12 @@ function setClickToLoadPart(nameOfPlay) {
                             }
                         }
                         else {
-                            for (runRoles=0; runRoles < spans.length; runRoles++) {
-                                if(spans[runRoles].innerText!==" & ") {
-                                    if(spans[runRoles].classList.length>0) {
-                                        var deletedClass=spans[runRoles].classList[0];
-                                        spans[runRoles].classList.remove(deletedClass);
-                                    }
+                                for (runRoles=0; runRoles < spans.length; runRoles++) {
+                                        if(spans[runRoles].classList.length>0) {
+                                            var deletedClass=spans[runRoles].classList[0];
+                                            spans[runRoles].classList.remove(deletedClass);
+                                        }
                                 }
-                            }
-                            console.log("все или никакие");
                         }
                     }
                 }
@@ -482,6 +475,8 @@ function defineNameInClass (searchedRole,  currentReplic, whatToDo) {
                 }
                 break;
         }
+        /* Возможно, где-то будут вызовы функции defineNameInClass с аргументом "only define class". Смотря, какие
+         * реплики. */
         if (whatToDo=="only define class") {
             return nameInClass;
         }
