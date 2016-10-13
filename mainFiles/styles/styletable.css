@@ -377,3 +377,6 @@
         #fortypes {
             font-size: 18px;
         }
+        .headerWithRoles > span {
+            font-weight: bold;
+        }

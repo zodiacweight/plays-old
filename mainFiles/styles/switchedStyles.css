@@ -22,10 +22,6 @@
     background-color: lightblue;
     color: darkviolet;
 }
-.words_of_char > h4 > span {
-    padding: 4px;
-    text-decoration: underline;
-}
 .paintedReplicsOfAuthor {
     border: 3px dashed darkviolet;
     border-radius: 4px;

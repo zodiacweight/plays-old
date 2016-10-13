@@ -351,7 +351,6 @@ function setClickToLoadPart(nameOfPlay) {
                                     delPaintingClass =  divsWithReplics[runDivs].classList[1];
                                     divsWithReplics[runDivs].classList.remove(delPaintingClass);
                                 }
-
                             /*  var checkLightedRoles = h4.getElementsByTagName("Span");
                                 if (checkLightedRoles!==[]) {
                                  h4.innerHTML="";
@@ -382,40 +381,67 @@ function setClickToLoadPart(nameOfPlay) {
                                     divsWithReplics[runDivs].classList.add("commonPaint");
                                 }
                         }
-                        console.log(namesInConjuction);
-                        console.log(numberOfCheckedRolesInConjuction);
-                        /* if (numberOfCheckedRolesInConjuction > 0) {
-                         h4.innerHTML="";
-                         if (numberOfCheckedRolesInConjuction < namesInConjuction.length) { // выбраны некоторые роли конъюнкции
-                         console.log(namesInConjuction);
-                         runNamesInConjuction=0;
-                         h4.innerText="";
-                         while (runNamesInConjuction < namesInConjuction.length) {
-                         if (namesInConjuction[runNamesInConjuction] in checkedRoles) {
-                         searchedRole=namesInConjuction[runNamesInConjuction];
-                         var nameInClass=defineNameInClass(searchedRole,  divsWithReplics[runDivs], "only define class");
-                         h4.innerHTML+="<span class='highlightedOf"+nameInClass+ "'>"+searchedRole+"</span>";
-                         console.log(searchedRole);
-                         }
-                         else {
-                         h4.innerHTML+="<span>"+searchedRole+"</span>";
-                         }
-                         if (runNamesInConjuction < namesInConjuction.length-1) {
-                         h4.innerHTML+=" & ";
-                         }
-                         runNamesInConjuction++;
-                         }
-                         }
-                         else { // выбраны все роли конъюнкции
-                         h4.innerText=namesInConjuction[0];
-                         runNamesInConjuction=1;
-                         while (runNamesInConjuction < namesInConjuction.length) {
-                         searchedRole = namesInConjuction[runNamesInConjuction];
-                         h4.innerHtml+="<span> & "+searchedRole+"</span>";
-                         runNamesInConjuction++;
-                         }
-                         }
-                         } */
+                        /*console.log(namesInConjuction);
+                        console.log(numberOfCheckedRolesInConjuction); */
+                        // Алгоритм, действующий на имена в конъюнкции
+                        var headerWithRoles = divsWithReplics[runDivs].getElementsByClassName("headerWithRoles")[0];
+                       // var rolesInSpans = h4.getElementsByTagName("Span");
+                        if (headerWithRoles===undefined) {
+                            //alert("Условие выполнено!");
+                            h4.innerText="";
+                            var newContentForH4;
+                            if (namesInConjuction.length==2) {
+                                newContentForH4 = "<h4 class='headerWithRoles'><span></span> & <span></span></h4>";
+                            }
+                            if (namesInConjuction.length==3) {
+                                newContentForH4 = "<h4 class='headerWithRoles'><span></span> & <span></span> & <span></span></h4>";
+
+                            }
+                            h4 = newContentForH4;
+                            console.log(h4);
+                            h4.innerHTML+="<span class='new_span'></span>";
+                            console.log(h4);
+                            /*headerWithRoles = divsWithReplics[runDivs].getElementsByTagName("H4")[0];
+                            runNamesInConjuction=0;
+                            while (runNamesInConjuction < namesInConjuction.length) {
+                                runNamesInConjuction++;
+                                searchedRole = namesInConjuction[runNamesInConjuction];
+                                var roleInSpan = headerWithRoles.getElementsByTagName("Span")[runNamesInConjuction];
+                                roleInSpan.innerText = namesInConjuction[runNamesInConjuction ];
+                            }
+                            var lastIndex=namesInConjuction.length-1;
+                            //headerWithRoles.getElementsByTagName("Span")[]innerHTML+="<span>"+namesInConjuction[lastIndex]+"</span>";
+                            var rolesInSpans = headerWithRoles.getElementsByTagName("Span"); */
+                        }
+                        console.log(headerWithRoles);
+                        runNamesInConjuction=0;
+                        var delClassInConjuction;
+                       /* if ((numberOfCheckedRolesInConjuction > 0)&&(numberOfCheckedRolesInConjuction < namesInConjuction.length)){
+                            console.log(rolesInSpans);
+                            while (runNamesInConjuction < namesInConjuction.length) {
+                                searchedRole = namesInConjuction[runNamesInConjuction];
+                                if ((searchedRole in checkedRoles)&&(rolesInSpans[runNamesInConjuction].classList.length==0)) {
+                                    var nameInClass = defineNameInClass(searchedRole,  divsWithReplics[runDivs], "only define class");
+                                    rolesInSpans[runNamesInConjuction].classList.addClass("highlightedOf"+nameInClass);
+                                }
+                                else {
+                                    if ((!(searchedRole in checkedRoles))&&(rolesInSpans[runNamesInConjuction].classList.length==1)) {
+                                        delClassInConjuction = rolesInSpans[runNamesInConjuction].classList[0];
+                                        rolesInSpans[runNamesInConjuction].classList.remove(delClassInConjuction);
+                                    }
+                                }
+                                runNamesInConjuction++;
+                            }
+                        }
+                        else {
+                            while (runNamesInConjuction < namesInConjuction.length) {
+                                if (rolesInSpans[runNamesInConjuction].classList.length==1) {
+                                    delClassInConjuction = rolesInSpans[runNamesInConjuction].classList[0];
+                                }
+                                runNamesInConjuction++;
+                            }
+                        } */
+
                     }
                 }
             };
