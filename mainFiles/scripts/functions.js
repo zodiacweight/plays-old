@@ -333,7 +333,7 @@ function setClickToLoadPart(nameOfPlay) {
                             }
                         }
                     }
-                    else { // если есть конъюнкция
+                    else {
                         var namesInConjuction = name_in_h4.split(" & "),
                             numberOfCheckedRolesInConjuction = 0, delPaintingClass,
                             h4=divsWithReplics[runDivs].getElementsByTagName("H4")[0];
@@ -382,11 +382,28 @@ function setClickToLoadPart(nameOfPlay) {
                                 }
                         }
                         var headerWithRoles = divsWithReplics[runDivs].getElementsByTagName("H4")[0];
-                        headerWithRoles.innerText="";
-                        console.log(namesInConjuction);
-                        for (var runRoles=0; runRoles<namesInConjuction.length; runRoles++) {
-                            headerWithRoles.innerHTML+="<span>"+namesInConjuction[runRoles]+"</span>";
+                     //   console.log(headerWithRoles);
+                        var rolesInSpans = headerWithRoles.getElementsByTagName("Span");
+                      //  console.log(rolesInSpans);
+                        if (rolesInSpans.length==0) {
+                            headerWithRoles.innerText="";
+                            //console.log(namesInConjuction);
+                            if ((numberOfCheckedRolesInConjuction>0)&&(numberOfCheckedRolesInConjuction<namesInConjuction.length))
+                            {
+                                console.log("if");
+                            }
+                            else {
+                                console.log("else");
+                            }
+                            for (var runRoles=0; runRoles<namesInConjuction.length; runRoles++) {
+                                headerWithRoles.innerHTML+="<span>"+namesInConjuction[runRoles]+"</span>";
+                            }
+
                         }
+                        else {
+
+                        }
+                        rolesInSpans = headerWithRoles.getElementsByTagName("Span");
                        // headerWithRoles.innerHTML="<span>Роль</span> & <span>Роль</span>";
                         /*console.log(numberOfCheckedRolesInConjuction); */
                         /* if (numberOfCheckedRolesInConjuction > 0) {
