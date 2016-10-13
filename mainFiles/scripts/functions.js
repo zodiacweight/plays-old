@@ -311,8 +311,8 @@ function setClickToLoadPart(nameOfPlay) {
                 for (var runDivs = 0; runDivs < divsWithReplics.length; runDivs++) {
                     var headerWithRoles = divsWithReplics[runDivs].getElementsByTagName("H4")[0];
                     name_in_h4=headerWithRoles.innerText;
-                    console.log("При клике");
-                    console.log(name_in_h4.indexOf(" & ")==-1);
+                    //console.log("При клике");
+                   // console.log(name_in_h4.indexOf(" & ")==-1);
                     if (name_in_h4.indexOf(" & ")==-1) {
                         if((name_in_h4.indexOf("'s")!==-1)&&(name_in_h4.indexOf("Christian")==-1)
                             &&(name_in_h4.indexOf("Author")==-1)) {
@@ -391,7 +391,7 @@ function setClickToLoadPart(nameOfPlay) {
                         //console.log(headerWithRoles);
                         var rolesInSpans = headerWithRoles.getElementsByTagName("Span")[0];
                         if(rolesInSpans==undefined) {
-                            alert("if");
+                            //alert("if");
                             headerWithRoles.innerText="";
                             for (var runRoles=0; runRoles<namesInConjuction.length; runRoles++) {
                                 headerWithRoles.innerHTML+="<span>"+namesInConjuction[runRoles]+"</span>";
@@ -402,28 +402,62 @@ function setClickToLoadPart(nameOfPlay) {
                             /*headerWithRoles.innerHTML+="<span>Роль</span> & <span>Роль</span>";*/
                         }
                         else {
-                           alert("else");
+                           //alert("else");
                         }
-                         /*  if (rolesInSpans.length==0) {
-                            headerWithRoles.innerText="";
-                            for (var runRoles=0; runRoles<namesInConjuction.length; runRoles++) {
-                                headerWithRoles.innerHTML+="<span>"+namesInConjuction[runRoles]+"</span>";
-                            }
-                            rolesInSpans = headerWithRoles.getElementsByTagName("Span");
-                            console.log(rolesInSpans.length);
-                            //console.log(namesInConjuction);
-                           if ((numberOfCheckedRolesInConjuction>0)&&(numberOfCheckedRolesInConjuction<namesInConjuction.length))
-                            {
-                                console.log("if");
-                            }
-                            else {
-                                console.log("else");
-                            }
-                            for (var runRoles=0; runRoles<namesInConjuction.length; runRoles++) {
-                                headerWithRoles.innerHTML+="<span>"+namesInConjuction[runRoles]+"</span>";
-                            }
+                       // console.log(numberOfCheckedRolesInConjuction);
+                        var spans = headerWithRoles.getElementsByTagName("Span"), runRoles;
+                        if ((numberOfCheckedRolesInConjuction < namesInConjuction.length)&&(numberOfCheckedRolesInConjuction>0)){
+                            console.log("Некоторые");
+                            for (runRoles=0; runRoles < spans.length; runRoles++) {
+                                if(spans[runRoles].innerText!==" & ") {
+                                    searchedRole=spans[runRoles].innerText;
+                                    if((searchedRole in checkedRoles)&&(spans[runRoles].classList.length==0)){
+                                        if(searchedRole="James McHein") {
+                                            searchedRole="JamesMcHein";
+                                        }
+                                        spans[runRoles].classList.add("highlightedOf"+searchedRole);
+                                    }
+                                    else {
+                                        if((!(searchedRole in checkedRoles))&&(spans[runRoles].classList.length==1)) {
+                                            var deletedClass=spans[runRoles].classList[0];
+                                            spans[runRoles].classList.remove(deletedClass);
+                                        }
+                                    }
+                                }
 
-                        }*/
+                            }
+                        }
+                        else {
+                            for (runRoles=0; runRoles < spans.length; runRoles++) {
+                                if(spans[runRoles].innerText!==" & ") {
+                                    if(spans[runRoles].classList.length>0) {
+                                        var deletedClass=spans[runRoles].classList[0];
+                                        spans[runRoles].classList.remove(deletedClass);
+                                    }
+                                }
+                            }
+                            console.log("все или никакие");
+                        }
+                        /*  if (rolesInSpans.length==0) {
+                           headerWithRoles.innerText="";
+                           for (var runRoles=0; runRoles<namesInConjuction.length; runRoles++) {
+                               headerWithRoles.innerHTML+="<span>"+namesInConjuction[runRoles]+"</span>";
+                           }
+                           rolesInSpans = headerWithRoles.getElementsByTagName("Span");
+                           console.log(rolesInSpans.length);
+                           //console.log(namesInConjuction);
+                          if ((numberOfCheckedRolesInConjuction>0)&&(numberOfCheckedRolesInConjuction<namesInConjuction.length))
+                           {
+                               console.log("if");
+                           }
+                           else {
+                               console.log("else");
+                           }
+                           for (var runRoles=0; runRoles<namesInConjuction.length; runRoles++) {
+                               headerWithRoles.innerHTML+="<span>"+namesInConjuction[runRoles]+"</span>";
+                           }
+
+                       }*/
                          /*  else {
 
                         }
