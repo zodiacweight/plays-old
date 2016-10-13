@@ -351,18 +351,17 @@ function setClickToLoadPart(nameOfPlay) {
                                     delPaintingClass =  divsWithReplics[runDivs].classList[1];
                                     divsWithReplics[runDivs].classList.remove(delPaintingClass);
                                 }
-
-                            /*  var checkLightedRoles = h4.getElementsByTagName("Span");
-                                if (checkLightedRoles!==[]) {
-                                 h4.innerHTML="";
-                                 h4.innerText=namesInConjuction[0];
-                                 runNamesInConjuction=1;
-                                 while (runNamesInConjuction < namesInConjuction.length) {
-                                 runNamesInConjuction++;
-                                 searchedRole = namesInConjuction[runNamesInConjuction];
-                                 h4.innerText+=" & "+searchedRole;
-                                 }
-                                 } */
+                                /*     var checkLightedRoles = h4.getElementsByTagName("Span");
+                                    if (checkLightedRoles!==[]) {
+                                     h4.innerHTML="";
+                                     h4.innerText=namesInConjuction[0];
+                                     runNamesInConjuction=1;
+                                     while (runNamesInConjuction < namesInConjuction.length) {
+                                     runNamesInConjuction++;
+                                     searchedRole = namesInConjuction[runNamesInConjuction];
+                                     h4.innerText+=" & "+searchedRole;
+                                     }
+                                } */
                                 break;
                             case 1:
                                 if (divsWithReplics[runDivs].classList.length>1) {
@@ -382,8 +381,14 @@ function setClickToLoadPart(nameOfPlay) {
                                     divsWithReplics[runDivs].classList.add("commonPaint");
                                 }
                         }
+                        var headerWithRoles = divsWithReplics[runDivs].getElementsByTagName("H4")[0];
+                        headerWithRoles.innerText="";
                         console.log(namesInConjuction);
-                        console.log(numberOfCheckedRolesInConjuction);
+                        for (var runRoles=0; runRoles<namesInConjuction.length; runRoles++) {
+                            headerWithRoles.innerHTML+="<span>"+namesInConjuction[runRoles]+"</span>";
+                        }
+                       // headerWithRoles.innerHTML="<span>Роль</span> & <span>Роль</span>";
+                        /*console.log(numberOfCheckedRolesInConjuction); */
                         /* if (numberOfCheckedRolesInConjuction > 0) {
                          h4.innerHTML="";
                          if (numberOfCheckedRolesInConjuction < namesInConjuction.length) { // выбраны некоторые роли конъюнкции
