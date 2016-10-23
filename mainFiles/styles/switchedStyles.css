@@ -22,16 +22,21 @@
     background-color: lightblue;
     color: darkviolet;
 }
-.paintedReplicsOfAuthor {
+.paintedReplicsOfAuthor_Extradecomposers {
     border: 3px dashed darkviolet;
     border-radius: 4px;
     background-image: url("../../images/textures/buket.jpg");
 }
-.paintedReplicsOfAuthor > h4 {
+.paintedReplicsOfAuthor_Extradecomposers > h4 {
     color: black;
 }
-.paintedReplicsOfAuthor > p {
+.paintedReplicsOfAuthor_Extradecomposers > p {
     color: #0B0B61;
+}
+.paintedReplicsOfAuthor_Black_parody {
+    background-image: url("../../images/textures/background.jpg");
+    color: mediumvioletred;
+    border: 1px solid;
 }
 .paintedReplicsOfHelen {
     background-image: url("../../images/textures/calm_water3.jpg");

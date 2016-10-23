@@ -326,11 +326,11 @@ function setClickToLoadPart(nameOfPlay) {
                             }
                         }
                         if((searchedRole in checkedRoles)&&(divsWithReplics[runDivs].classList.length==1)) {
-                            defineNameInClass(searchedRole, divsWithReplics[runDivs], "paint");
+                            defineNameInClass(searchedRole, divsWithReplics[runDivs], "paint", nameOfPlay);
                         }
                         else {
                             if((!(searchedRole in checkedRoles))&&(divsWithReplics[runDivs].classList.length==2)) {
-                                defineNameInClass(searchedRole,  divsWithReplics[runDivs], "deletePaint");
+                                defineNameInClass(searchedRole,  divsWithReplics[runDivs], "deletePaint", nameOfPlay);
                             }
                         }
                     }
@@ -357,7 +357,7 @@ function setClickToLoadPart(nameOfPlay) {
                                     delPaintingClass=divsWithReplics[runDivs].classList[1];
                                     divsWithReplics[runDivs].classList.remove(delPaintingClass);
                                 }
-                                defineNameInClass(searchedRole,  divsWithReplics[runDivs], "paint");
+                                defineNameInClass(searchedRole,  divsWithReplics[runDivs], "paint", nameOfPlay);
                                 break;
                             default:
                                 if (divsWithReplics[runDivs].classList.length>1) {
@@ -436,10 +436,11 @@ function setEventsWithMouse (curPart) {
         this.classList.remove("mouseOnItem");
     };
 }
-function defineNameInClass (searchedRole,  currentReplic, whatToDo) {
+function defineNameInClass (searchedRole,  currentReplic, whatToDo, nameInPlay) {
+    console.log(nameInPlay);
     var nameInClass;
     if (searchedRole=="Author's words") {
-        nameInClass = "Author";
+        nameInClass = "Author_"+nameInPlay;
         paintOrClearReplic(currentReplic, nameInClass, whatToDo);
     }
     else {
