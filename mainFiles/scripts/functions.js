@@ -31,14 +31,14 @@ function fakeFunction(data) {
 function buildHtmlInPrimary (key) {
     var divInPrimary = main.getElement("divInPrimary");
     divInPrimary.innerHTML+="<div class='componentsOfPrimary'>"+
-        "<h2></h2>"+
-        "<div class='mainPart'>"+
-        "<div class='image'></div>"+
-        "<div class='TextAndEnter'>"+
-        "<p class='preview'></p><div class='entersToSecondary'></div>"+
-        "</div>"+
-        "</div>" +
-        "</div>";
+                                "<h2></h2>"+
+                                "<div class='mainPart'>"+
+                                    "<div class='image'></div>"+
+                                    "<div class='TextAndEnter'>"+
+                                        "<p class='preview'></p><div class='entersToSecondary'></div>"+
+                                    "</div>"+
+                                "</div>" +
+                             "</div>";
     var entrancesToSecondary = primary.getElementsByClassName("entersToSecondary");
     if (entrancesToSecondary.length==2) {
         fillComponentsOfPrimary (key, divInPrimary, entrancesToSecondary);
@@ -129,6 +129,7 @@ function moveActive(clickedButton, PartOfIdOfDivForButtons, objectOfButtons, nam
         setComponentsOfSecondary(nameOfPlay);
         if ((objectOfButtons["ButtonsToRechoice"]!==undefined)&&
             (objectOfButtons["ButtonsToRechoice"].length==2)) {
+            alert("Попали!");
             for (var runBtns=0; runBtns<2; runBtns++) {
                 if(objectOfButtons["ButtonsToRechoice"][runBtns].getAttribute("data-source")==nameOfPlay) {
                     clickedButton=objectOfButtons["ButtonsToRechoice"][runBtns];

@@ -1,33 +1,33 @@
    #primary {
        width: 94%;
        margin-left: 3%;
-       margin-top: 3%;
+       margin-top: 2.5%;
        border: 2px solid;
        background-image: url("../../images/textures/buket.jpg");
    }
    #primary > p {
-       font-size: 24px;
+       font-size: 20px;
+       font-family: "Yu Gothic UI";
        padding: 6px;
        width: 67%;
-       border: 1px solid;
+       /*border: 1px solid; */
        margin-left: 12%;
-       margin-top: 2%;
+       margin-top: 1%;
    }
     #divInPrimary {
        width: 96%;
        margin-left: 2%;
-       margin-top: 2%;
-       margin-bottom: 1%;
-       border: 1px solid lightblue;
+       margin-top: 1%;
+       margin-bottom: 0.5%;
        overflow: auto;
    }
    #divInPrimary > div {
-       width: 46%;
+       width: 48%;
        margin-left: 1%;
-       margin-bottom: 2%;
-       margin-top: 1%;
+       margin-bottom: 1%;
+       margin-top: 0.5%;
        float: left;
-       border: 3px solid steelblue;
+       border: 2px solid steelblue;
        border-radius: 10px;
        background-color: lightcyan;
        overflow: auto;
@@ -35,17 +35,17 @@
    #divInPrimary > div > h2 {
        margin-left: 26%;
        margin-top: 2%;
-       width: 37%;
-       border: 1px solid darkblue;
-       padding: 8px;
-       font-size: 28px;
+       width: 45%;
+       /*border: 1px solid darkblue; */
+       padding: 6px;
+       font-size: 24px;
    }
    .mainPart {
        overflow: auto;
        border: 1px solid dodgerblue;
-       width: 96%;
+       width: 97%;
        margin-left: 2%;
-       margin-top: 2%;
+       margin-top: 1%;
        margin-bottom: 2%;
    }
    .mainPart > div {
@@ -64,30 +64,34 @@
        float: left;
        width: 70%;
        margin-left: 1%;
-       margin-bottom: 4%;
-       border: 1px solid lightcyan;
+       margin-bottom: 2%;
+       border: 1px solid darkslategrey;
        padding: 5px;
    }
     .preview {
         margin-top: 4px;
-        font-size: 22px;
-        padding: 16px;
+        margin-bottom: 0;
+        font-size: 16px;
+        padding: 11px;
         border: 1px solid mediumvioletred;
+        font-family: "Microsoft YaHei UI";
     }
    .entersToSecondary {
-       margin: 3%;
+       margin-left: 4%;
+       margin-top: 3%;
+       margin-bottom: 1%;
        width: 20%;
        border: 1px solid palevioletred;
        border-radius: 5px;
        padding-top: 5px;
-       padding-bottom: 5px;
+       padding-bottom: 1%;
        padding-left: 10%;
-       font-size: 24px;
+       font-size: 20px;
    }
    .addClassForEnters {
        background-color: darkviolet;
-       color: lightpink;
-       border: 2px solid midnightblue;
+       color: lightyellow;
+       border: 2px solid lightpink;
    }
     #secondary {
         overflow: auto;
