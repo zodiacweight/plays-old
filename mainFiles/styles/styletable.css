@@ -102,21 +102,30 @@
         border: 2px solid indigo;
         border-radius: 8px;
     }
-    #divForButtonsToChoicePlay > button {
-        margin-top: 6%;
-        margin-left: 4%;
-        font-size: 20px;
-        padding: 7px;
+    #enter {
+        margin-bottom: 2%;
     }
-    #enter > input {
-        font-size: 20px;
-        padding: 6px;
-        border-radius: 4px;
-        margin-left: 15%;
+   #enter > #divForButtonsToChoicePlay {
+       margin-top: 1%;
+   }
+   #enter > #divForButtonsToChoicePlay > button {
         margin-top: 4%;
+        margin-left: 4%;
+        margin-bottom: 2%;
+        font-size: 16px;
+        padding: 7px;
+        border: 1px solid lightsteelblue;
     }
-    #enter > img {
-        margin-top: 5%;
+   #enter > #buttonToEnter {
+       margin-left: 35%;
+       margin-top: 1%;
+       font-size: 16px;
+       padding: 6px;
+    }
+    #enter img {
+        margin-top: 2%;
+        margin-left: 22%;
+        width: 56%;
     }
     #divWithLittleImages {
         width: 10%;
@@ -148,24 +157,16 @@
         font-family: "Yu Gothic UI";
     }
     #preview_and_enter > * {
-        border: 1px solid;
+        border: 1px solid royalblue;
         margin-left: 2%;
         margin-right: 2%;
         margin-top: 3%;
     }
     #preview {
-        border-color: darkviolet;
         padding: 4px;
     }
     #preview > p {
-        font-size: 20px;
-    }
-    #enter {
-        font-size: 26px;
-        width: 98%;
-        margin-left: 1%;
-        margin-bottom: 2%;
-        border: 1px solid;
+        font-size: 18px;
     }
      #instruction {
          width: 85%;
@@ -173,21 +174,6 @@
          font-size: 20px;
          font-weight: bold;
      }
-     #buttonsToEnter {
-         margin-left: 10%;
-         width: 80%;
-     }
-     #buttonsToEnter > button {
-         font-size: 20px;
-         padding: 14px;
-         margin-left: 4px;
-         border-radius: 6px;
-     }
-    #enter > img {
-        width: 58%;
-        margin-top: 1%;
-        margin-left: 15%;
-    }
      #contentlist {
          float: left;
          width: 15%;
