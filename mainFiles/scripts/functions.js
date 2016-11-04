@@ -314,6 +314,7 @@ function setClickToLoadPart(nameOfPlay) {
                             &&(name_in_h4.indexOf("Author")==-1)) {
                             var posOfAmp = name_in_h4.indexOf("'s");
                             searchedRole = name_in_h4.substring(0, posOfAmp);
+                            console.log(searchedRole);
                         }
                         else {
                             if(name_in_h4=="Being") {
@@ -521,8 +522,7 @@ function changePart(PartNumber, index_of_part, chosenPlay, addedHTMLToContainPar
             addedHTMLToContainPart.content_of_play.innerHTML += arrayElementObject[subjectName];
         }
         else {
-            if (!(subjectName in presRoles.Obj) && subjectName !== "Being" && subjectName.indexOf(' &') < 0 &&
-                subjectName.indexOf("as answer") < 0) {
+            if ((!(subjectName in presRoles.Obj)) && (subjectName !== "Being") && (subjectName.indexOf(' &') < 0)) {
                 presRoles.Obj[subjectName] = true;
                 presRoles.Array.push(subjectName);
                 switch (subjectName) {
@@ -541,6 +541,13 @@ function changePart(PartNumber, index_of_part, chosenPlay, addedHTMLToContainPar
                                 " (a new unfamiliar creature)</p>";
                         }
                         else {
+                            if((subjectName.indexOf("'s")!==-1)&&(subjectName.indexOf("Author")==-1)
+                                &&(subjectName.indexOf("Christian")==-1)&&(subjectName.indexOf("Beatrix")==-1)) {
+                                var posOfAmp = subjectName.indexOf("'s");
+                                subjectName=subjectName.substring(0, posOfAmp);
+
+
+                            }
                             addedHTMLToContainPart.toChooseRoles.listOfCheckboxes.innerHTML +=
                                 "<p><input type='checkbox' class='checkcharacter'>" + subjectName + "</p>";
                         }
@@ -556,6 +563,7 @@ function changePart(PartNumber, index_of_part, chosenPlay, addedHTMLToContainPar
             addDivsWithReplics(addedHTMLToContainPart.content_of_play, innerContent, counterAddReplics);
         }
     }
+    console.log(presRoles.obj);
 }
 setContents = function (replics_of_choicedpart, contents, subjectName, className) {
     var innerContent = {
