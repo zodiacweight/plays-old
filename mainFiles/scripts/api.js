@@ -31,7 +31,6 @@ var main = (function () {
         },
         addHtmlIntoStaticElement: function (element_name, html) {
             if (typeof (html)=="object") {
-                //if (html.isArray()) { }
                 elements[element_name].innerHTML = html[0];
                 for (var i=1; i<html.length; i++) {
                         elements[element_name].innerHTML += html[i];

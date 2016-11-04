@@ -435,7 +435,7 @@ function setEventsWithMouse (curPart) {
     };
 }
 function defineNameInClass (searchedRole,  currentReplic, whatToDo, nameInPlay) {
-    console.log(nameInPlay);
+    //console.log(nameInPlay);
     var nameInClass;
     if (searchedRole=="Author's words") {
         nameInClass = "Author_"+nameInPlay;
