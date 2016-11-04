@@ -521,8 +521,7 @@ function changePart(PartNumber, index_of_part, chosenPlay, addedHTMLToContainPar
             addedHTMLToContainPart.content_of_play.innerHTML += arrayElementObject[subjectName];
         }
         else {
-            if (!(subjectName in presRoles.Obj) && subjectName !== "Being" && subjectName.indexOf(' &') < 0 &&
-                subjectName.indexOf("as answer") < 0) {
+            if (!(subjectName in presRoles.Obj) && subjectName !== "Being" && subjectName.indexOf(' &') < 0) {
                 presRoles.Obj[subjectName] = true;
                 presRoles.Array.push(subjectName);
                 switch (subjectName) {
@@ -541,11 +540,25 @@ function changePart(PartNumber, index_of_part, chosenPlay, addedHTMLToContainPar
                                 " (a new unfamiliar creature)</p>";
                         }
                         else {
-                            addedHTMLToContainPart.toChooseRoles.listOfCheckboxes.innerHTML +=
-                                "<p><input type='checkbox' class='checkcharacter'>" + subjectName + "</p>";
+                            var nameInCheck;
+                           /* */if((subjectName.indexOf("'s")!==-1)&&(subjectName.indexOf("Author")==-1)
+                                &&(subjectName.indexOf("Christian")==-1)&&(subjectName.indexOf("Beatrix")==-1)) {
+                                    var posOfAmp = subjectName.indexOf("'s");
+                                    nameInCheck=subjectName.substring(0, posOfAmp);
+                                    console.log(nameInCheck);
+                                }
+                                else {
+                                    nameInCheck=subjectName;
+                                }
+                               // alert("условия выполнены! subjectName = "+subjectName);
+                           // if(!(nameInCheck in presRoles.Obj)) {}
+                                addedHTMLToContainPart.toChooseRoles.listOfCheckboxes.innerHTML +=
+                                    "<p><input type='checkbox' class='checkcharacter'>" + nameInCheck + "</p>";
+
                         }
                 }
             }
+        }
             if (subjectName == "Author's words") {
                 className = 'authorwords';
             } else {
@@ -554,9 +567,11 @@ function changePart(PartNumber, index_of_part, chosenPlay, addedHTMLToContainPar
             innerContent = setContents(replics_of_choicedpart, arrayElementObject[subjectName], subjectName, className);
             counterAddReplics++;
             addDivsWithReplics(addedHTMLToContainPart.content_of_play, innerContent, counterAddReplics);
+
         }
+        console.log(presRoles.Obj);
     }
-}
+
 setContents = function (replics_of_choicedpart, contents, subjectName, className) {
     var innerContent = {
         class: className,

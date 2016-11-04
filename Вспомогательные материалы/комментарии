@@ -1,9 +1,8 @@
-Выделение / перевыделение ролей в заголовке:
-В том случае, когда 0 < numberOfCheckedRolesInConjuction < namesInConjuction.length:
-Выбранные роли должны получить специальный класс в заголовке.
-Заголовок теряет inneText или innerHTML и заполняется: в цикле туда добавляется по одному элементу из namesInConjuction6
-Если роль выбрана, то она туда добавляется в тегах span с нужным классом, иначе добавляется без ничего.
-
-Удаление выделений ролей из заголовка:
-В том случае, когда numberOfCheckedRolesInConjuction=0, проверяется, есть ли в заголовке теги span. Если есть, заголовок
-по-новому заполняется ролями без ничего.
+Условие: Если есть 's, но нет Author, Christian, Beatrix:
+    1. nameInCheck вырезается из subjectName от 0 до позиции амперсанта;
+    2. Если nameInCheck нет в presRoles.Obj, в listOfCheckboxes добавляется чекбокс с nameInCheck.
+    3. nameInCheck добавляется в presRoles.Obj.
+Иначе: Если в presRoles.Obj нет subjectName:
+    1. subjectName туда добавляется.
+    2. Switch (Snake, mrs Jakins) - так и остается.
+    3. То, что в else в default: в listOfCheckboxes добавляется чекбокс с subjectName.
