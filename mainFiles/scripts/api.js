@@ -2,7 +2,6 @@ var main = (function () {
     var elements = {
         body: document.getElementsByTagName("Body")[0],
         headerLogotip: document.getElementById("headerLogotip"),
-        beginning: document.getElementById("beginning"),
         primary: document.getElementById("primary"),
         divInPrimary: document.getElementById("divInPrimary"),
         secondary: document.getElementById("secondary"),
@@ -46,6 +45,7 @@ var main = (function () {
         regularVisibility: function (arr) {
             for (var runElems=0; runElems<3; runElems++) {
                 elements[arr[runElems][0]].style.display=arr[runElems][1];
+                console.log(elements[arr[runElems][0]] +': '+arr[runElems][1]);
             }
         },
         setCssProperty: function (arr) {
