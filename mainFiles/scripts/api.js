@@ -2,7 +2,6 @@ var main = (function () {
     var elements = {
         body: document.getElementsByTagName("Body")[0],
         headerLogotip: document.getElementById("headerLogotip"),
-        beginning: document.getElementById("beginning"),
         primary: document.getElementById("primary"),
         divInPrimary: document.getElementById("divInPrimary"),
         secondary: document.getElementById("secondary"),

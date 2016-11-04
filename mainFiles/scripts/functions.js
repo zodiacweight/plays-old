@@ -124,8 +124,6 @@ function moveActive(clickedButton, PartOfIdOfDivForButtons, objectOfButtons, nam
     }
     var delClass = clickedButton.classList[0];
     realizeExchangeBetweenButtons (clickedButton, otherButton, nameOfPlay, delClass);
-    var beginning = main.getElement("beginning");
-    //if (beginning.style.display !== "none") { }
         setComponentsOfSecondary(nameOfPlay);
         if ((objectOfButtons["ButtonsToRechoice"]!==undefined)&&
             (objectOfButtons["ButtonsToRechoice"].length==2)) {
@@ -140,7 +138,6 @@ function moveActive(clickedButton, PartOfIdOfDivForButtons, objectOfButtons, nam
             }
             realizeExchangeBetweenButtons (clickedButton, otherButton, nameOfPlay, "unclickedButton_"+nameOfPlay+"_choiced");
         }
-
     setColors(nameOfPlay);
 }
 function openGates() {
@@ -159,7 +156,7 @@ function setColors(nameOfPlay) {
         instruction = document.getElementById("instruction");
     switch (nameOfPlay) {
         case "Extradecomposers":
-            if (main.getElement("beginning").style.display!=="none") {
+            if (main.getElement("secondary").style.display!=="none") {
                 main.setCssProperty([
                     ["main_in_preview","color","mediumvioletred"]
                 ]);
@@ -170,7 +167,7 @@ function setColors(nameOfPlay) {
             main.setCssProperty([["rightHalf", "color", "black"]]);
             break;
         case "Black_parody":
-            if (main.getElement("beginning").style.display!=="none") {
+            if (main.getElement("secondary").style.display!=="none") {
                 main.setCssProperty([
                     ["main_in_preview","color","#A9BCF5"]
                 ]);
