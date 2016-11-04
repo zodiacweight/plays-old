@@ -125,7 +125,7 @@ function moveActive(clickedButton, PartOfIdOfDivForButtons, objectOfButtons, nam
     var delClass = clickedButton.classList[0];
     realizeExchangeBetweenButtons (clickedButton, otherButton, nameOfPlay, delClass);
     var beginning = main.getElement("beginning");
-    if (beginning.style.display !== "none") {
+    //if (beginning.style.display !== "none") { }
         setComponentsOfSecondary(nameOfPlay);
         if ((objectOfButtons["ButtonsToRechoice"]!==undefined)&&
             (objectOfButtons["ButtonsToRechoice"].length==2)) {
@@ -140,7 +140,7 @@ function moveActive(clickedButton, PartOfIdOfDivForButtons, objectOfButtons, nam
             }
             realizeExchangeBetweenButtons (clickedButton, otherButton, nameOfPlay, "unclickedButton_"+nameOfPlay+"_choiced");
         }
-    }
+
     setColors(nameOfPlay);
 }
 function openGates() {
@@ -148,7 +148,7 @@ function openGates() {
         main.getElement("gate").src="images/on_the_beginning/opened_gate.jpg";
         main.getElement("gate").onmouseover = function () {
             if (this.src.indexOf("closed")==-1) {
-                main.regularVisibility([["beginning", "none"],["contentlist","block"],["rightHalf","block"]]);
+                main.regularVisibility([["secondary", "none"],["contentlist","block"],["rightHalf","block"]]);
                 main.setCssProperty([["contentlist", "borderRight", "3px solid"]]);
             }
         };
