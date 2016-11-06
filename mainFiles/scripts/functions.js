@@ -521,43 +521,83 @@ function changePart(PartNumber, index_of_part, chosenPlay, addedHTMLToContainPar
             addedHTMLToContainPart.content_of_play.innerHTML += arrayElementObject[subjectName];
         }
         else {
-            if (!(subjectName in presRoles.Obj) && subjectName !== "Being" && subjectName.indexOf(' &') < 0) {
-                presRoles.Obj[subjectName] = true;
-                presRoles.Array.push(subjectName);
-                switch (subjectName) {
-                    case "Snake":
-                        addedHTMLToContainPart.toChooseRoles.listOfCheckboxes.innerHTML +=
-                            "<p><input type='checkbox' class='checkcharacter'>" + subjectName + " (Woman-devil)</p>";
-                        break;
-                    case "Mrs Jakins":
-                        addedHTMLToContainPart.toChooseRoles.listOfCheckboxes.innerHTML +=
-                            "<p><input type='checkbox' class='checkcharacter'>" + subjectName + " (Christian's grandma)</p>";
-                        break;
-                    default:
-                        if ((PartNumber == "Part 1.2") && (subjectName == "Beatrix")) {
-                            addedHTMLToContainPart.toChooseRoles.listOfCheckboxes.innerHTML +=
-                                "<p><input type='checkbox' class='checkcharacter'>" + subjectName +
-                                " (a new unfamiliar creature)</p>";
-                        }
-                        else {
-                            var nameInCheck;
-                           /* */if((subjectName.indexOf("'s")!==-1)&&(subjectName.indexOf("Author")==-1)
-                                &&(subjectName.indexOf("Christian")==-1)&&(subjectName.indexOf("Beatrix")==-1)) {
-                                    var posOfAmp = subjectName.indexOf("'s");
-                                    nameInCheck=subjectName.substring(0, posOfAmp);
-                                    console.log(nameInCheck);
+             var nameInCheck;
+             // В if else определяется nameInCheck, далее - добавляется чекбокс с nameInCheck, если надо.
+            if (nameInCheck!==undefined) {
+                if(nameInCheck.indexOf(" &")==-1){
+                      if((subjectName.indexOf("'s")!==-1)&&(subjectName.indexOf("Author")==-1)&&(subjectName.indexOf("Christian")==-1)
+                     &&(subjectName.indexOf("Beatrix")==-1)) {
+                     var posOfAmp = subjectName.indexOf("'s");
+                     nameInCheck=subjectName.substring(0, posOfAmp);
+                    /* addedHTMLToContainPart.toChooseRoles.listOfCheckboxes.innerHTML +="<p><input type='checkbox' " +
+                     "class='checkcharacter'>" + nameInCheck + "</p>"; */
+                      }
+                      else {
+                            nameInCheck=subjectName;
+                      }
+                      if (!(nameInCheck in presRoles.Obj)) {
+                                switch (nameInCheck) {
+                                    case "Snake":
+                                        addedHTMLToContainPart.toChooseRoles.listOfCheckboxes.innerHTML +=
+                                            "<p><input type='checkbox' class='checkcharacter'>" +  nameInCheck + " (Woman-devil)</p>";
+                                        break;
+                                    case "Mrs Jakins":
+                                        addedHTMLToContainPart.toChooseRoles.listOfCheckboxes.innerHTML +=
+                                            "<p><input type='checkbox' class='checkcharacter'>" +  nameInCheck + " (Christian's grandma)</p>";
+                                        break;
+                                    default:
+                                        if ((PartNumber == "Part 1.2") && ( nameInCheck == "Beatrix")) {
+                                            addedHTMLToContainPart.toChooseRoles.listOfCheckboxes.innerHTML +=
+                                                "<p><input type='checkbox' class='checkcharacter'>" +  nameInCheck +
+                                                " (a new unfamiliar creature)</p>";
+                                        }
+                                        else {
+                                            addedHTMLToContainPart.toChooseRoles.listOfCheckboxes.innerHTML +="<p><input type='checkbox' " +
+                                            "class='checkcharacter'>" + nameInCheck + "</p>";
+                                        }
                                 }
-                                else {
-                                    nameInCheck=subjectName;
-                                }
-                               // alert("условия выполнены! subjectName = "+subjectName);
-                           // if(!(nameInCheck in presRoles.Obj)) {}
-                                addedHTMLToContainPart.toChooseRoles.listOfCheckboxes.innerHTML +=
-                                    "<p><input type='checkbox' class='checkcharacter'>" + nameInCheck + "</p>";
-
+                                presRoles.obj[nameInCheck]="added";
+                                presRoles.Array.push(nameInCheck);
                         }
                 }
             }
+            /*  if (!(subjectName in presRoles.Obj) && subjectName !== "Being" && subjectName.indexOf(' &') < 0) {
+                  presRoles.Obj[subjectName] = true;
+                  presRoles.Array.push(subjectName);
+                  switch (subjectName) {
+                      case "Snake":
+                          addedHTMLToContainPart.toChooseRoles.listOfCheckboxes.innerHTML +=
+                              "<p><input type='checkbox' class='checkcharacter'>" + subjectName + " (Woman-devil)</p>";
+                          break;
+                      case "Mrs Jakins":
+                          addedHTMLToContainPart.toChooseRoles.listOfCheckboxes.innerHTML +=
+                              "<p><input type='checkbox' class='checkcharacter'>" + subjectName + " (Christian's grandma)</p>";
+                          break;
+                      default:
+                          if ((PartNumber == "Part 1.2") && (subjectName == "Beatrix")) {
+                              addedHTMLToContainPart.toChooseRoles.listOfCheckboxes.innerHTML +=
+                         "<p><input type='checkbox' class='checkcharacter'>" + subjectName +
+                                  " (a new unfamiliar creature)</p>";
+                          }
+                          else {
+                              var nameInCheck;
+                           if((subjectName.indexOf("'s")!==-1)&&(subjectName.indexOf("Author")==-1)
+                                  &&(subjectName.indexOf("Christian")==-1)&&(subjectName.indexOf("Beatrix")==-1)) {
+                                      var posOfAmp = subjectName.indexOf("'s");
+                                      nameInCheck=subjectName.substring(0, posOfAmp);
+                                      console.log(nameInCheck);
+                                  }
+                                  else {
+                                      nameInCheck=subjectName;
+                                  }
+                                 // alert("условия выполнены! subjectName = "+subjectName);
+                             // if(!(nameInCheck in presRoles.Obj)) {}
+                                  addedHTMLToContainPart.toChooseRoles.listOfCheckboxes.innerHTML +=
+                                      "<p><input type='checkbox' class='checkcharacter'>" + nameInCheck + "</p>";
+
+                          }
+                  }
+              }*/
         }
             if (subjectName == "Author's words") {
                 className = 'authorwords';

@@ -1,7 +1,7 @@
-Условие: Если есть 's, но нет Author, Christian, Beatrix:
+Условие: Если есть 's, но нет Author, Christian, Beatrix и конъюнкции:
     1. nameInCheck вырезается из subjectName от 0 до позиции амперсанта;
     2. Если nameInCheck нет в presRoles.Obj, в listOfCheckboxes добавляется чекбокс с nameInCheck.
-    3. nameInCheck добавляется в presRoles.Obj.
+    3. nameInCheck добавляется в presRoles.Obj и presRoles.Arr.
 Иначе: Если в presRoles.Obj нет subjectName:
     1. subjectName туда добавляется.
     2. Switch (Snake, mrs Jakins) - так и остается.
