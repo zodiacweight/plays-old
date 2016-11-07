@@ -125,7 +125,7 @@ function moveActive(clickedButton, PartOfIdOfDivForButtons, objectOfButtons, nam
     var delClass = clickedButton.classList[0];
     realizeExchangeBetweenButtons (clickedButton, otherButton, nameOfPlay, delClass);
         setComponentsOfSecondary(nameOfPlay);
-        if ((objectOfButtons["ButtonsToRechoice"]!==undefined)&&
+      /*  if ((objectOfButtons["ButtonsToRechoice"]!==undefined)&&
             (objectOfButtons["ButtonsToRechoice"].length==2)) {
             alert("Попали!");
             for (var runBtns=0; runBtns<2; runBtns++) {
@@ -137,7 +137,7 @@ function moveActive(clickedButton, PartOfIdOfDivForButtons, objectOfButtons, nam
                 }
             }
             realizeExchangeBetweenButtons (clickedButton, otherButton, nameOfPlay, "unclickedButton_"+nameOfPlay+"_choiced");
-        }
+        }*/
     setColors(nameOfPlay);
 }
 function openGates() {
@@ -153,7 +153,8 @@ function openGates() {
 }
 function setColors(nameOfPlay) {
     var addedClassForContentList = "contentListFor"+nameOfPlay,
-        instruction = document.getElementById("instruction");
+        instruction = document.getElementById("instruction"),
+        colorsForButton = {textColor: "", backgroundColor: ""};
     switch (nameOfPlay) {
         case "Extradecomposers":
             if (main.getElement("secondary").style.display!=="none") {
@@ -165,6 +166,8 @@ function setColors(nameOfPlay) {
                 }
             }
             main.setCssProperty([["rightHalf", "color", "black"]]);
+            colorsForButton.textColor="#CEECF5";
+            colorsForButton.backgroundColor="#0B3861";
             break;
         case "Black_parody":
             if (main.getElement("secondary").style.display!=="none") {
@@ -176,8 +179,12 @@ function setColors(nameOfPlay) {
                 }
             }
             main.setCssProperty([["rightHalf", "color", "lightgoldenrodyellow"]]);
+            colorsForButton.textColor="#2F0B3A";
+            colorsForButton.backgroundColor="#BCA9F5";
             break;
     }
+    main.getElement("buttonToRechoice").style.backgroundColor=colorsForButton.backgroundColor;
+    main.getElement("buttonToRechoice").style.color=colorsForButton.textColor;
     main.getElement("body").backgroundColor="";
     main.getElement("body").setAttribute("id", "backgroundFor"+nameOfPlay);
     if(main.getElement("contentlist").classList.length>0) {

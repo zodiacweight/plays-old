@@ -167,15 +167,13 @@
 }
 .paintedReplicsOfSophie {
     background-image: url("../../images/textures/images4.jpg");
-    border: 3px solid deeppink; !important;
+    border: 3px solid lightpink; !important;
     color: lightyellow;
 }
 .paintedReplicsOfNick {
     background-image: url("../../images/textures/green_marble.jpg");
     color: aliceblue;
-    /*border: 3px solid lightgreen; !important; */
 }
-
 .paintedReplicsOf1 {
     background-color: lightgreen;
     border: 3px solid seagreen; !important;

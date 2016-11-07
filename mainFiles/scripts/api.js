@@ -14,7 +14,7 @@ var main = (function () {
         buttonToEnter:  document.getElementById("buttonToEnter"),
         gate: document.getElementById("gate"),
         contentlist: document.getElementById("contentlist"),
-        DivForButtonsToRechoice: document.getElementById("DivForButtonsToRechoice"),
+        buttonToRechoice: document.getElementById("DivForButtonToRechoice").getElementsByTagName("Button")[0],
         listOfParts: document.getElementById("listOfParts"),
         rightHalf: document.getElementById("rightHalf"),
         mainArea: document.getElementById("mainArea"),
