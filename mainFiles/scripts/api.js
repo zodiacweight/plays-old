@@ -22,6 +22,7 @@ var main = (function () {
         replics_of_choicedpart: {},
         itemsAboutCharacters: []
     };
+    elements.tagsToFinishText=elements.buttonToRechoice.getElementsByTagName("Span")[0];
     return {
         setHtmlIntoStaticElement: function (element_name, html) {
             elements[element_name].innerHTML = html;
@@ -31,6 +32,7 @@ var main = (function () {
         },
         addHtmlIntoStaticElement: function (element_name, html) {
             if (typeof (html)=="object") {
+                console.log(html);
                 elements[element_name].innerHTML = html[0];
                 for (var i=1; i<html.length; i++) {
                         elements[element_name].innerHTML += html[i];
@@ -65,7 +67,7 @@ var main = (function () {
                 this.classList.remove("addClassForEnters");
             };
             entrancesToSecondary[countElems].onclick = function () {
-                    setColors(nameOfPlay);
+                    setColors(nameOfPlay, 'no');
                     setComponentsOfSecondary(nameOfPlay);
                     $("#primary").fadeOut(670);
                     elements["secondary"].classList.remove("hidden");
@@ -79,6 +81,7 @@ var main = (function () {
                 addPartsToContentList(nameOfPlay);
                 loadAboutCharacters(nameOfPlay);
                 openGates();
+                finishTextOnButton (nameOfPlay);
             }
         }
     };

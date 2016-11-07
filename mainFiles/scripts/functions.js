@@ -138,7 +138,7 @@ function moveActive(clickedButton, PartOfIdOfDivForButtons, objectOfButtons, nam
             }
             realizeExchangeBetweenButtons (clickedButton, otherButton, nameOfPlay, "unclickedButton_"+nameOfPlay+"_choiced");
         }*/
-    setColors(nameOfPlay);
+    setColors(nameOfPlay, "no");
 }
 function openGates() {
     setTimeout(function () {
@@ -151,49 +151,65 @@ function openGates() {
         };
     }, 400);
 }
-function setColors(nameOfPlay) {
-    var addedClassForContentList = "contentListFor"+nameOfPlay,
-        instruction = document.getElementById("instruction"),
-        colorsForButton = {textColor: "", backgroundColor: ""};
-    switch (nameOfPlay) {
-        case "Extradecomposers":
-            if (main.getElement("secondary").style.display!=="none") {
-                main.setCssProperty([
-                    ["main_in_preview","color","mediumvioletred"]
-                ]);
-                if (instruction!==null) {
-                    instruction.style.color = "#08088A";
+function setColors(nameOfPlay, toChooseRoles) {
+    //alert(toChooseRoles=="no");
+    if(toChooseRoles=="no") {
+        var addedClassForContentList = "contentListFor"+nameOfPlay,
+            instruction = document.getElementById("instruction"), bckgr, bord;
+        switch (nameOfPlay) {
+            case "Extradecomposers":
+                if (main.getElement("secondary").style.display!=="none") {
+                    main.setCssProperty([
+                        ["main_in_preview","color","mediumvioletred"]
+                    ]);
+                    if (instruction!==null) {
+                        instruction.style.color = "#08088A";
+                    }
                 }
-            }
-            main.setCssProperty([["rightHalf", "color", "black"]]);
-            colorsForButton.textColor="#CEECF5";
-            colorsForButton.backgroundColor="#0B3861";
-            break;
-        case "Black_parody":
-            if (main.getElement("secondary").style.display!=="none") {
-                main.setCssProperty([
-                    ["main_in_preview","color","#A9BCF5"]
-                ]);
-                if (instruction!==null) {
-                    instruction.style.color = "#08088A";
+                main.setCssProperty([["rightHalf", "color", "black"]]);
+                main.getElement("buttonToRechoice").style.backgroundColor="#0B3861";
+                main.getElement("buttonToRechoice").style.color="#CEECF5";
+                break;
+            case "Black_parody":
+                if (main.getElement("secondary").style.display!=="none") {
+                    main.setCssProperty([
+                        ["main_in_preview","color","#A9BCF5"]
+                    ]);
+                    if (instruction!==null) {
+                        instruction.style.color = "#08088A";
+                    }
                 }
-            }
-            main.setCssProperty([["rightHalf", "color", "lightgoldenrodyellow"]]);
-            colorsForButton.textColor="#2F0B3A";
-            colorsForButton.backgroundColor="#BCA9F5";
-            break;
-    }
-    main.getElement("buttonToRechoice").style.backgroundColor=colorsForButton.backgroundColor;
-    main.getElement("buttonToRechoice").style.color=colorsForButton.textColor;
-    main.getElement("body").backgroundColor="";
-    main.getElement("body").setAttribute("id", "backgroundFor"+nameOfPlay);
-    if(main.getElement("contentlist").classList.length>0) {
-        if(main.getElement("contentlist").classList[0].indexOf(nameOfPlay)==-1) {
-            var removedClass=main.getElement("contentlist").classList[0];
-            main.removeClassForStaticElement("contentlist", removedClass);
+                main.setCssProperty([["rightHalf", "color", "lightgoldenrodyellow"]]);
+                main.getElement("buttonToRechoice").style.backgroundColor="#BCA9F5";
+                main.getElement("buttonToRechoice").style.color="#2F0B3A";
+                break;
         }
+        main.getElement("body").backgroundColor="";
+        main.getElement("body").setAttribute("id", "backgroundFor"+nameOfPlay);
+        var toChooseRoles=document.getElementById("toChooseRoles");
+        if(main.getElement("contentlist").classList.length>0) {
+            if(main.getElement("contentlist").classList[0].indexOf(nameOfPlay)==-1) {
+                var removedClass=main.getElement("contentlist").classList[0];
+                main.removeClassForStaticElement("contentlist", removedClass);
+            }
+        }
+        main.addClassForStaticElement("contentlist", addedClassForContentList);
     }
-    main.addClassForStaticElement("contentlist", addedClassForContentList);
+    else {
+        var bckgr, bord;
+        switch (nameOfPlay) {
+            case "Extradecomposers":
+                bckgr="#A9BCF5";
+                bord="";
+                break;
+            case "Black_parody":
+                bckgr="";
+                bord="2px solid lightcyan";
+                break;
+        }
+        toChooseRoles.style.backgroundColor=bckgr;
+        toChooseRoles.style.border=bord;
+    }
 
 }
 function addPartsToContentList(nameOfPlay) {
@@ -208,7 +224,19 @@ function addPartsToContentList(nameOfPlay) {
     main.addHtmlIntoStaticElement("listOfParts", "<p id='about_characters'>About characters</p>");
     setClickToLoadPart(nameOfPlay);
 }
-
+function finishTextOnButton (nameOfPlay) {
+    var changedNameOfPlay;
+    switch (nameOfPlay) {
+        case "Extradecomposers":
+            changedNameOfPlay="Black_parody";
+            break;
+        case "Black_parody":
+            changedNameOfPlay = "Extradecomposers";
+            break;
+    }
+    main.getElement("tagsToFinishText").innerText=" "+changedNameOfPlay;
+    return changedNameOfPlay
+}
 function loadAboutCharacters(nameOfPlay) {
     if (main.getElement("contentlist").style.borderRight == "") {
         main.setCssProperty(
@@ -254,6 +282,7 @@ function setClickToLoadPart(nameOfPlay) {
                     "<div id='top_of_play'></div>",
                     "<div id='content_of_play'></div>"];
                 main.addHtmlIntoStaticElement("mainArea", inMainArea);
+                console.log("toChooseRoles");
                 document.getElementById("toChooseRoles").innerHTML = "<h4>There are the following characters in this part:</h4>" +
                     "<div id='listOfCheckboxes'></div><div><input id='paintreplics' type='button' " +
                     "value='paint roles and / or clear them'></div>";
@@ -264,6 +293,9 @@ function setClickToLoadPart(nameOfPlay) {
             }
             var addedHTMLToContainPart = {};
             addedHTMLToContainPart.toChooseRoles = document.getElementById("toChooseRoles");
+           // console.log(addedHTMLToContainPart.toChooseRoles);
+            var toChooseRoles=document.getElementById("toChooseRoles");
+            setColors(nameOfPlay, toChooseRoles);
             addedHTMLToContainPart.toChooseRoles.listOfCheckboxes = document.getElementById("listOfCheckboxes");
             addedHTMLToContainPart.top_of_play = document.getElementById("top_of_play");
             addedHTMLToContainPart.top_of_play.titleOfPart = document.getElementById("headerForPart");
@@ -320,7 +352,6 @@ function setClickToLoadPart(nameOfPlay) {
                         var nameInCheck=defineNameInCheckbox(name_in_h4);
                         if((nameInCheck in checkedRoles)&&(divsWithReplics[runDivs].classList.length==1)) {
                             defineNameInClass(nameInCheck, divsWithReplics[runDivs], "paint", nameOfPlay);
-                            console.log(nameInCheck);
                         }
                         else {
                             if((!(nameInCheck in checkedRoles))&&(divsWithReplics[runDivs].classList.length==2)) {
