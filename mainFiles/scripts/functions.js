@@ -291,44 +291,33 @@ function setClickToLoadPart(nameOfPlay) {
             var checkboxes = document.getElementsByClassName("checkcharacter");
             document.getElementById("paintreplics").onclick = function () {
                 var divsWithReplics = document.getElementById("content_of_play").getElementsByTagName("Div"),
-                    name_in_h4, checkedRoles = {}, searchedRole;
+                    name_in_h4, checkedRoles = {}, nameInCheck;
                 for (var runchecks = 0; runchecks < checkboxes.length; runchecks++) {
                     if (checkboxes[runchecks].checked) {
                         if ((presRoles.Array[runchecks].indexOf("'s")!==-1)&&
                             (presRoles.Array[runchecks].indexOf("Author")==-1)
                             &&(presRoles.Array[runchecks].indexOf("Christian")==-1)) {
                             var posOfAmp = presRoles.Array[runchecks].indexOf("'s");
-                            searchedRole = presRoles.Array[runchecks].substring(0, posOfAmp);
+                            nameInCheck = presRoles.Array[runchecks].substring(0, posOfAmp);
                         }
                         else {
-                            searchedRole=presRoles.Array[runchecks];
+                            nameInCheck=presRoles.Array[runchecks];
                         }
-                        checkedRoles[searchedRole]=true;
+                        checkedRoles[nameInCheck]=true;
                     }
                 }
                 for (var runDivs = 0; runDivs < divsWithReplics.length; runDivs++) {
                     var headerWithRoles = divsWithReplics[runDivs].getElementsByTagName("H4")[0];
                     name_in_h4=headerWithRoles.innerText;
                     if (name_in_h4.indexOf(" & ")==-1) {
-                        if((name_in_h4.indexOf("'s")!==-1)&&(name_in_h4.indexOf("Christian")==-1)
-                            &&(name_in_h4.indexOf("Author")==-1)) {
-                            var posOfAmp = name_in_h4.indexOf("'s");
-                            searchedRole = name_in_h4.substring(0, posOfAmp);
+                        var nameInCheck=defineNameInCheckbox(name_in_h4);
+                        if((nameInCheck in checkedRoles)&&(divsWithReplics[runDivs].classList.length==1)) {
+                            defineNameInClass(nameInCheck, divsWithReplics[runDivs], "paint", nameOfPlay);
+                            console.log(nameInCheck);
                         }
                         else {
-                            if(name_in_h4=="Being") {
-                                searchedRole="Beatrix";
-                            }
-                            else {
-                                searchedRole=name_in_h4;
-                            }
-                        }
-                        if((searchedRole in checkedRoles)&&(divsWithReplics[runDivs].classList.length==1)) {
-                            defineNameInClass(searchedRole, divsWithReplics[runDivs], "paint", nameOfPlay);
-                        }
-                        else {
-                            if((!(searchedRole in checkedRoles))&&(divsWithReplics[runDivs].classList.length==2)) {
-                                defineNameInClass(searchedRole,  divsWithReplics[runDivs], "deletePaint", nameOfPlay);
+                            if((!(nameInCheck in checkedRoles))&&(divsWithReplics[runDivs].classList.length==2)) {
+                                defineNameInClass(nameInCheck,  divsWithReplics[runDivs], "deletePaint", nameOfPlay);
                             }
                         }
                     }
@@ -340,7 +329,7 @@ function setClickToLoadPart(nameOfPlay) {
                         {
                              if (namesInConjuction[runNamesInConjuction] in checkedRoles) {
                                 numberOfCheckedRolesInConjuction++;
-                                searchedRole = namesInConjuction[runNamesInConjuction];
+                                nameInCheck = namesInConjuction[runNamesInConjuction];
                             }
                         }
                         switch (numberOfCheckedRolesInConjuction) {
@@ -355,7 +344,7 @@ function setClickToLoadPart(nameOfPlay) {
                                     delPaintingClass=divsWithReplics[runDivs].classList[1];
                                     divsWithReplics[runDivs].classList.remove(delPaintingClass);
                                 }
-                                defineNameInClass(searchedRole,  divsWithReplics[runDivs], "paint", nameOfPlay);
+                                defineNameInClass(nameInCheck,  divsWithReplics[runDivs], "paint", nameOfPlay);
                                 break;
                             default:
                                 if (divsWithReplics[runDivs].classList.length>1) {
@@ -382,12 +371,12 @@ function setClickToLoadPart(nameOfPlay) {
                         if ((numberOfCheckedRolesInConjuction < namesInConjuction.length)&&(numberOfCheckedRolesInConjuction>0)){
                             for (runRoles=0; runRoles < spans.length; runRoles++) {
                                 if(spans[runRoles].innerText!==" & ") {
-                                    searchedRole=spans[runRoles].innerText;
-                                    if((searchedRole in checkedRoles)&&(spans[runRoles].classList.length==0)){
-                                        spans[runRoles].classList.add("highlightedOf"+searchedRole);
+                                    nameInCheck=spans[runRoles].innerText;
+                                    if((nameInCheck in checkedRoles)&&(spans[runRoles].classList.length==0)){
+                                        spans[runRoles].classList.add("highlightedOf"+nameInCheck);
                                     }
                                     else {
-                                        if((!(searchedRole in checkedRoles))&&(spans[runRoles].classList.length==1)) {
+                                        if((!(nameInCheck in checkedRoles))&&(spans[runRoles].classList.length==1)) {
                                             var deletedClass=spans[runRoles].classList[0];
                                             spans[runRoles].classList.remove(deletedClass);
                                         }
@@ -434,40 +423,36 @@ function setEventsWithMouse (curPart) {
         this.classList.remove("mouseOnItem");
     };
 }
-function defineNameInClass (searchedRole,  currentReplic, whatToDo, nameInPlay) {
-    //console.log(nameInPlay);
+function defineNameInClass (nameInCheck,  currentReplic, whatToDo, nameInPlay) {
     var nameInClass;
-    if (searchedRole=="Author's words") {
+    if (nameInCheck=="Author's words") {
         nameInClass = "Author_"+nameInPlay;
         paintOrClearReplic(currentReplic, nameInClass, whatToDo);
     }
     else {
-        switch (searchedRole) {
+        switch (nameInCheck) {
             case "Woman-devil":
                 nameInClass="WomanDevil";
                 break;
-            case "Mr Stevenson":
-                nameInClass="Mr";
-                break;
             case "Christian's grandpa":
-                nameInClass="Mr";
+                nameInClass="MrJakins";
                 break;
             case "Christian's grandma":
                 nameInClass="MrsJakins";
                 break;
             default:
-                if (searchedRole.indexOf(" ")==-1) {
-                    nameInClass=searchedRole;
+                if (nameInCheck.indexOf(" ")==-1) {
+                    nameInClass=nameInCheck;
                 }
                 else {
-                    nameInClass = searchedRole[0].toUpperCase();
-                    for (var c=1; c < searchedRole.length; c++) {
-                        if (searchedRole[c]!==" ") {
-                            if (searchedRole[c-1] == " ") {
-                                nameInClass+=searchedRole[c].toUpperCase();
+                    nameInClass = nameInCheck[0].toUpperCase();
+                    for (var c=1; c < nameInCheck.length; c++) {
+                        if (nameInCheck[c]!==" ") {
+                            if (nameInCheck[c-1] == " ") {
+                                nameInClass+=nameInCheck[c].toUpperCase();
                             }
                             else {
-                                nameInClass+=searchedRole[c];
+                                nameInClass+=nameInCheck[c];
                             }
                         }
                     }
@@ -521,20 +506,8 @@ function changePart(PartNumber, index_of_part, chosenPlay, addedHTMLToContainPar
             addedHTMLToContainPart.content_of_play.innerHTML += arrayElementObject[subjectName];
         }
         else {
-             var nameInCheck;
-             // В if else определяется nameInCheck, далее - добавляется чекбокс с nameInCheck, если надо.
-            if (nameInCheck!==undefined) {
-                if(nameInCheck.indexOf(" &")==-1){
-                      if((subjectName.indexOf("'s")!==-1)&&(subjectName.indexOf("Author")==-1)&&(subjectName.indexOf("Christian")==-1)
-                     &&(subjectName.indexOf("Beatrix")==-1)) {
-                     var posOfAmp = subjectName.indexOf("'s");
-                     nameInCheck=subjectName.substring(0, posOfAmp);
-                    /* addedHTMLToContainPart.toChooseRoles.listOfCheckboxes.innerHTML +="<p><input type='checkbox' " +
-                     "class='checkcharacter'>" + nameInCheck + "</p>"; */
-                      }
-                      else {
-                            nameInCheck=subjectName;
-                      }
+                if(subjectName.indexOf(" &")==-1){
+                    var nameInCheck=defineNameInCheckbox(subjectName);
                       if (!(nameInCheck in presRoles.Obj)) {
                                 switch (nameInCheck) {
                                     case "Snake":
@@ -552,52 +525,14 @@ function changePart(PartNumber, index_of_part, chosenPlay, addedHTMLToContainPar
                                                 " (a new unfamiliar creature)</p>";
                                         }
                                         else {
-                                            addedHTMLToContainPart.toChooseRoles.listOfCheckboxes.innerHTML +="<p><input type='checkbox' " +
-                                            "class='checkcharacter'>" + nameInCheck + "</p>";
+                                            addedHTMLToContainPart.toChooseRoles.listOfCheckboxes.innerHTML +=
+                                            "<p><input type='checkbox' " + "class='checkcharacter'>" + nameInCheck + "</p>";
                                         }
                                 }
-                                presRoles.obj[nameInCheck]="added";
+                                presRoles.Obj[nameInCheck]="added";
                                 presRoles.Array.push(nameInCheck);
                         }
                 }
-            }
-            /*  if (!(subjectName in presRoles.Obj) && subjectName !== "Being" && subjectName.indexOf(' &') < 0) {
-                  presRoles.Obj[subjectName] = true;
-                  presRoles.Array.push(subjectName);
-                  switch (subjectName) {
-                      case "Snake":
-                          addedHTMLToContainPart.toChooseRoles.listOfCheckboxes.innerHTML +=
-                              "<p><input type='checkbox' class='checkcharacter'>" + subjectName + " (Woman-devil)</p>";
-                          break;
-                      case "Mrs Jakins":
-                          addedHTMLToContainPart.toChooseRoles.listOfCheckboxes.innerHTML +=
-                              "<p><input type='checkbox' class='checkcharacter'>" + subjectName + " (Christian's grandma)</p>";
-                          break;
-                      default:
-                          if ((PartNumber == "Part 1.2") && (subjectName == "Beatrix")) {
-                              addedHTMLToContainPart.toChooseRoles.listOfCheckboxes.innerHTML +=
-                         "<p><input type='checkbox' class='checkcharacter'>" + subjectName +
-                                  " (a new unfamiliar creature)</p>";
-                          }
-                          else {
-                              var nameInCheck;
-                           if((subjectName.indexOf("'s")!==-1)&&(subjectName.indexOf("Author")==-1)
-                                  &&(subjectName.indexOf("Christian")==-1)&&(subjectName.indexOf("Beatrix")==-1)) {
-                                      var posOfAmp = subjectName.indexOf("'s");
-                                      nameInCheck=subjectName.substring(0, posOfAmp);
-                                      console.log(nameInCheck);
-                                  }
-                                  else {
-                                      nameInCheck=subjectName;
-                                  }
-                                 // alert("условия выполнены! subjectName = "+subjectName);
-                             // if(!(nameInCheck in presRoles.Obj)) {}
-                                  addedHTMLToContainPart.toChooseRoles.listOfCheckboxes.innerHTML +=
-                                      "<p><input type='checkbox' class='checkcharacter'>" + nameInCheck + "</p>";
-
-                          }
-                  }
-              }*/
         }
             if (subjectName == "Author's words") {
                 className = 'authorwords';
@@ -609,9 +544,23 @@ function changePart(PartNumber, index_of_part, chosenPlay, addedHTMLToContainPar
             addDivsWithReplics(addedHTMLToContainPart.content_of_play, innerContent, counterAddReplics);
 
         }
-        console.log(presRoles.Obj);
     }
-
+function defineNameInCheckbox (name) {
+    if((name.indexOf("'s")!==-1)&&(name.indexOf("Author")==-1)&&(name.indexOf("Christian")==-1)
+        &&(name.indexOf("Beatrix")==-1)&&(name!=="Being")) {
+        var posOfAmp = name.indexOf("'s");
+        var nameInCheck=name.substring(0, posOfAmp);
+    }
+    else {
+        if(name=="Being") {
+            nameInCheck="Beatrix";
+        }
+        else {
+            nameInCheck=name;
+        }
+    }
+    return nameInCheck;
+}
 setContents = function (replics_of_choicedpart, contents, subjectName, className) {
     var innerContent = {
         class: className,
