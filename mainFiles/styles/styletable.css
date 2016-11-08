@@ -162,10 +162,8 @@
     }
 
     #bigImageWithHeader > h2 {
-        border: 1px solid;
-        margin: 1% 26% 1% 29%;
-        font-size: xx-large;
-        color: darkblue;
+        margin: 1% 19% 1% 39%;
+        font-size: x-large;
     }
 
     #bigImage {
@@ -281,7 +279,7 @@
         width: 60%;
         padding-top: 7px;
         padding-left: 6px;
-        margin-bottom: 2%;
+        margin-bottom: 6%;
         margin-top: 2%;
     }
 

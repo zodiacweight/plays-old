@@ -160,7 +160,7 @@ function setColors(nameOfPlay, toChooseRoles) {
             case "Extradecomposers":
                 if (main.getElement("secondary").style.display!=="none") {
                     main.setCssProperty([
-                        ["main_in_preview","color","mediumvioletred"]
+                        ["main_in_preview","color","#08088A"]
                     ]);
                     if (instruction!==null) {
                         instruction.style.color = "#08088A";
@@ -169,11 +169,12 @@ function setColors(nameOfPlay, toChooseRoles) {
                 main.setCssProperty([["rightHalf", "color", "black"]]);
                 main.getElement("buttonToRechoice").style.backgroundColor="#0B3861";
                 main.getElement("buttonToRechoice").style.color="#CEECF5";
+                main.getElement("headerInSecondary").style.color="darkblue";
                 break;
             case "Black_parody":
                 if (main.getElement("secondary").style.display!=="none") {
                     main.setCssProperty([
-                        ["main_in_preview","color","#A9BCF5"]
+                        ["main_in_preview","color","#ECCEF5"]
                     ]);
                     if (instruction!==null) {
                         instruction.style.color = "#08088A";
@@ -182,6 +183,7 @@ function setColors(nameOfPlay, toChooseRoles) {
                 main.setCssProperty([["rightHalf", "color", "lightgoldenrodyellow"]]);
                 main.getElement("buttonToRechoice").style.backgroundColor="#BCA9F5";
                 main.getElement("buttonToRechoice").style.color="#2F0B3A";
+                main.getElement("headerInSecondary").style.color="#ECCEF5";
                 break;
         }
         main.getElement("body").backgroundColor="";

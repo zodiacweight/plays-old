@@ -5,6 +5,7 @@ var main = (function () {
         primary: document.getElementById("primary"),
         divInPrimary: document.getElementById("divInPrimary"),
         secondary: document.getElementById("secondary"),
+        headerInSecondary: document.getElementById("header"),
         bigImage: document.getElementById("bigImage"),
         divWithLittleImages: document.getElementById("divWithLittleImages"),
         littleImages: document.getElementById("divWithLittleImages").getElementsByTagName("Img"),
