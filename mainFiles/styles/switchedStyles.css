@@ -161,7 +161,7 @@
     border: 3px solid saddlebrown;
 }
 .paintedReplicsOfQuentin {
-    background-image: url("../../images/textures/fioletovyj-fon33.jpg");
+    background-image: url("../../images/textures/peacock.jpg");
     border: 3px solid darkslategray; !important;
     color: lightpink;
 }
@@ -180,22 +180,26 @@
     color: darkslategrey;
 }
 .paintedReplicsOf2 {
-    background-color: lightgray;
+    background-color: darkcyan;
     border: 3px solid darkslategrey; !important;
     color: darkslategrey;
 }
 .paintedReplicsOf3 {
-    background-color: lightcyan;
+    background-color: mediumseagreen;
     border: 3px solid seagreen; !important;
     color: darkslateblue;
 }
 .paintedWordsFromVocabulary_Extradecomposers {
     background-color: indigo;
+    text-decoration: underline;
     color: aliceblue;
     padding: 4px;
 }
 .paintedWordsFromVocabulary_Black_parody {
-    background-color: lightgray;
+    /* Фон для раскрашенных слов - светлый, раскраска реплик - темная или цвета, отличного от фона раскраски слов из
+     вокобуляра*/
+    background-color: lightsteelblue;
+    text-decoration: underline;
     color: darkslategray;
     padding: 4px;
 }

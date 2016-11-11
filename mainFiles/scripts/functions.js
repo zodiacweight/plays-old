@@ -125,19 +125,6 @@ function moveActive(clickedButton, PartOfIdOfDivForButtons, objectOfButtons, nam
     var delClass = clickedButton.classList[0];
     realizeExchangeBetweenButtons (clickedButton, otherButton, nameOfPlay, delClass);
         setComponentsOfSecondary(nameOfPlay);
-      /*  if ((objectOfButtons["ButtonsToRechoice"]!==undefined)&&
-            (objectOfButtons["ButtonsToRechoice"].length==2)) {
-            alert("Попали!");
-            for (var runBtns=0; runBtns<2; runBtns++) {
-                if(objectOfButtons["ButtonsToRechoice"][runBtns].getAttribute("data-source")==nameOfPlay) {
-                    clickedButton=objectOfButtons["ButtonsToRechoice"][runBtns];
-                }
-                else {
-                    otherButton=objectOfButtons["ButtonsToRechoice"][runBtns];
-                }
-            }
-            realizeExchangeBetweenButtons (clickedButton, otherButton, nameOfPlay, "unclickedButton_"+nameOfPlay+"_choiced");
-        }*/
     setColors(nameOfPlay, "no");
 }
 function openGates() {
@@ -152,7 +139,6 @@ function openGates() {
     }, 400);
 }
 function setColors(nameOfPlay, toChooseRoles) {
-    //alert(toChooseRoles=="no");
     if(toChooseRoles=="no") {
         var addedClassForContentList = "contentListFor"+nameOfPlay,
             instruction = document.getElementById("instruction"), bckgr, bord;
@@ -227,16 +213,32 @@ function addPartsToContentList(nameOfPlay) {
     setClickToLoadPart(nameOfPlay);
 }
 function finishTextOnButton (nameOfPlay) {
-    var changedNameOfPlay;
+    var changedNameOfPlay, labelOnButton;
     switch (nameOfPlay) {
         case "Extradecomposers":
             changedNameOfPlay="Black_parody";
+            switch(main.getElement("contentlist").style.display) {
+                case "none":
+                labelOnButton="Black parody";
+                break;
+                case "block":
+                labelOnButton="Special scavengers";
+                break;
+            }
             break;
         case "Black_parody":
             changedNameOfPlay = "Extradecomposers";
+            switch(main.getElement("contentlist").style.display) {
+                case "none":
+                    labelOnButton="Special scavengers";
+                    break;
+                case "block":
+                    labelOnButton="Black parody";
+                    break;
+            }
             break;
     }
-    main.getElement("tagsToFinishText").innerText=" "+changedNameOfPlay;
+    main.getElement("tagsToFinishText").innerText=" "+labelOnButton;
     return changedNameOfPlay
 }
 function loadAboutCharacters(nameOfPlay) {
@@ -284,7 +286,6 @@ function setClickToLoadPart(nameOfPlay) {
                     "<div id='top_of_play'></div>",
                     "<div id='content_of_play'></div>"];
                 main.addHtmlIntoStaticElement("mainArea", inMainArea);
-                console.log("toChooseRoles");
                 document.getElementById("toChooseRoles").innerHTML = "<h4>There are the following characters in this part:</h4>" +
                     "<div id='listOfCheckboxes'></div><div><input id='paintreplics' type='button' " +
                     "value='paint roles and / or clear them'></div>";
@@ -295,7 +296,6 @@ function setClickToLoadPart(nameOfPlay) {
             }
             var addedHTMLToContainPart = {};
             addedHTMLToContainPart.toChooseRoles = document.getElementById("toChooseRoles");
-           // console.log(addedHTMLToContainPart.toChooseRoles);
             var toChooseRoles=document.getElementById("toChooseRoles");
             setColors(nameOfPlay, toChooseRoles);
             addedHTMLToContainPart.toChooseRoles.listOfCheckboxes = document.getElementById("listOfCheckboxes");
@@ -579,9 +579,11 @@ function changePart(PartNumber, index_of_part, chosenPlay, addedHTMLToContainPar
             } else {
                 className = 'words_of_char';
             }
+            var replics = chosenPlay["Parts"][index_of_part]["replics"];
             innerContent = setContents(replics_of_choicedpart, arrayElementObject[subjectName], subjectName, className);
+            //console.log(replics);
             counterAddReplics++;
-            addDivsWithReplics(addedHTMLToContainPart.content_of_play, innerContent, counterAddReplics);
+            addDivsWithReplics(addedHTMLToContainPart.content_of_play, innerContent, counterAddReplics, replics);
 
         }
     }
@@ -617,10 +619,18 @@ setContents = function (replics_of_choicedpart, contents, subjectName, className
     }
     return innerContent;
 };
-addDivsWithReplics = function (html, innerContent, counterAddReplics) {
+addDivsWithReplics = function (html, innerContent, counterAddReplics, replics) {
     var counterAddParagraphsOfReplic=0;
     html.innerHTML += "<div class='" + innerContent.class + "'> <h4>" + innerContent.h4 +
         "</h4><p>" + innerContent.contents[0] + "</p></div>";
+    var getting = html.getElementsByTagName("Div");
+    if(counterAddReplics==replics.length-1) {
+
+    }
+     //   console.log(counterAddReplics, ", ", getting.length);
+    /*if(counterAddReplics==2) {
+        console.log(replics.length);
+    } */
     if (innerContent.contents.length>1) {
         counterAddParagraphsOfReplic=1;
         var replics = html.getElementsByTagName("Div");
