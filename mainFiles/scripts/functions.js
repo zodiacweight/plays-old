@@ -584,7 +584,6 @@ function changePart(PartNumber, index_of_part, chosenPlay, addedHTMLToContainPar
             //console.log(replics);
             counterAddReplics++;
             addDivsWithReplics(addedHTMLToContainPart.content_of_play, innerContent, counterAddReplics, replics);
-
         }
     }
 function defineNameInCheckbox (name) {
@@ -623,15 +622,10 @@ addDivsWithReplics = function (html, innerContent, counterAddReplics, replics) {
     var counterAddParagraphsOfReplic=0;
     html.innerHTML += "<div class='" + innerContent.class + "'> <h4>" + innerContent.h4 +
         "</h4><p>" + innerContent.contents[0] + "</p></div>";
-    if(counterAddReplics==replics.length-1) {
-        console.log(replics.length);
-        //var getting = html.getElementsByTagName("Div")[counterAddReplics];
-        //getting.style.marginBottom="7%";
+    if(counterAddReplics==replics.length) {
+      var getting = html.getElementsByTagName("Div")[counterAddReplics-1];
+        getting.style.marginBottom="8%";
     }
-     //   console.log(counterAddReplics, ", ", getting.length);
-     /* if(counterAddReplics==2) {
-        console.log(replics.length);
-    } */
     if (innerContent.contents.length>1) {
         counterAddParagraphsOfReplic=1;
         var replics = html.getElementsByTagName("Div");
