@@ -538,8 +538,8 @@ function changePart(PartNumber, index_of_part, chosenPlay, addedHTMLToContainPar
     addedHTMLToContainPart.toChooseRoles.listOfCheckboxes.innerHTML = "";
     addedHTMLToContainPart.top_of_play.titleOfPart.innerText = PartNumber + " " + chosenPlay["Parts"][index_of_part]["header"];
     addedHTMLToContainPart.content_of_play.innerHTML = "";
-    var counterAddReplics= 0;
-    for (var index in chosenPlay["Parts"][index_of_part]["replics"]) {
+    var counterAddReplics= 0, replics = chosenPlay["Parts"][index_of_part]["replics"];
+    for (var index=0; index < replics.length; index++) {
         var arrayElementObject = chosenPlay["Parts"][index_of_part]["replics"][index];
         var subjectName = Object.keys(arrayElementObject)[0], className;
         if (subjectName == "image") {
@@ -623,12 +623,13 @@ addDivsWithReplics = function (html, innerContent, counterAddReplics, replics) {
     var counterAddParagraphsOfReplic=0;
     html.innerHTML += "<div class='" + innerContent.class + "'> <h4>" + innerContent.h4 +
         "</h4><p>" + innerContent.contents[0] + "</p></div>";
-    var getting = html.getElementsByTagName("Div");
     if(counterAddReplics==replics.length-1) {
-
+        console.log(replics.length);
+        //var getting = html.getElementsByTagName("Div")[counterAddReplics];
+        //getting.style.marginBottom="7%";
     }
      //   console.log(counterAddReplics, ", ", getting.length);
-    /*if(counterAddReplics==2) {
+     /* if(counterAddReplics==2) {
         console.log(replics.length);
     } */
     if (innerContent.contents.length>1) {
