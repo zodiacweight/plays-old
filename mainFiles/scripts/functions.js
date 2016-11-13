@@ -573,7 +573,7 @@ function changePart(PartNumber, index_of_part, chosenPlay, addedHTMLToContainPar
                                 presRoles.Array.push(nameInCheck);
                         }
                 }
-        }
+
             if (subjectName == "Author's words") {
                 className = 'authorwords';
             } else {
@@ -581,11 +581,12 @@ function changePart(PartNumber, index_of_part, chosenPlay, addedHTMLToContainPar
             }
             var replics = chosenPlay["Parts"][index_of_part]["replics"];
             innerContent = setContents(replics_of_choicedpart, arrayElementObject[subjectName], subjectName, className);
-            //console.log(replics);
-            counterAddReplics++;
-            addDivsWithReplics(addedHTMLToContainPart.content_of_play, innerContent, counterAddReplics, replics);
         }
+        //console.log(replics);
+        counterAddReplics++;
+        addDivsWithReplics(addedHTMLToContainPart.content_of_play, innerContent, counterAddReplics, replics);
     }
+}
 function defineNameInCheckbox (name) {
     if((name.indexOf("'s")!==-1)&&(name.indexOf("Author")==-1)&&(name.indexOf("Christian")==-1)
         &&(name.indexOf("Beatrix")==-1)&&(name!=="Being")) {
