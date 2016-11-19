@@ -91,8 +91,8 @@ var presRoles = {
     Obj: {}
 };
 var handleJson = {
-    Extradecomposers: {
-        path: 'mainFiles/jsons/special_scavengers.json',
+    Xmarine: {
+        path: 'mainFiles/jsons/Xmarine.json',
         handle: function (data) {
             this.data = data;
             main.getElement("contentlist").style.display = "none";
@@ -102,7 +102,7 @@ var handleJson = {
             }, 1800);
         },
         data:null,
-        buttonText: 'Extradecomposers'
+        buttonText: 'Xmarine'
     },
     Black_parody: {
         path: 'mainFiles/jsons/black_parody.json',

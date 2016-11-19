@@ -1,4 +1,4 @@
-handleData('Extradecomposers');
+handleData('Xmarine');
 handleData('Black_parody');
 main.getElement("buttonToRechoice").onclick = function () {
     var idOfBody=main.getElement("body").id, nameOfPlay=idOfBody.substring(13);

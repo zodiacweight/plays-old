@@ -1,10 +1,10 @@
-#backgroundForExtradecomposers {
+#backgroundForXmarine {
     background-image: url("../../images/textures/waterdrops.jpg");
 }
 #backgroundForBlack_parody {
     background-image: url("../../images/textures/texture.jpg");
 }
-.contentListForExtradecomposers {
+.contentListForXmarine {
     border-color: #345693;
     background-color: rgba(0, 087, 990, 0.30);
     color: darkblue;
@@ -14,7 +14,7 @@
     background-color: rgba(25, 12, 90, 0.25);
     color: lightsteelblue;
 }
-.unclickedButton_Extradecomposers_choiced {
+.unclickedButton_Xmarine_choiced {
     background-color: darkviolet;
     color: lightblue;
 }
@@ -22,15 +22,15 @@
     background-color: lightblue;
     color: darkviolet;
 }
-.paintedReplicsOfAuthor_Extradecomposers {
+.paintedReplicsOfAuthor_Xmarine {
     border: 3px dashed darkviolet;
     border-radius: 4px;
     background-image: url("../../images/textures/buket.jpg");
 }
-.paintedReplicsOfAuthor_Extradecomposers > h4 {
+.paintedReplicsOfAuthor_Xmarine > h4 {
     color: black;
 }
-.paintedReplicsOfAuthor_Extradecomposers > p {
+.paintedReplicsOfAuthor_Xmarine > p {
     color: #0B0B61;
 }
 .paintedReplicsOfAuthor_Black_parody {
@@ -189,7 +189,7 @@
     border: 3px solid seagreen; !important;
     color: darkslateblue;
 }
-.paintedWordsFromVocabulary_Extradecomposers {
+.paintedWordsFromVocabulary_Xmarine {
     background-color: indigo;
     text-decoration: underline;
     color: aliceblue;

@@ -4,7 +4,7 @@
 function handleData(key) {
 // 1. Создаём новый объект XMLHttpRequest
     var xhr = new XMLHttpRequest();
-// 2. Конфигурируем его: GET-запрос на URL 'special_scavengers.json'
+// 2. Конфигурируем его: GET-запрос на URL 'Xmarine.json'
     xhr.open('GET', handleJson[key].path);// путь к тому или иному json
 // 3. Отсылаем запрос
     xhr.send();
@@ -50,7 +50,7 @@ function fillComponentsOfPrimary (key, divInPrimary, entrancesToSecondary) {
         var nameOfPlay;
         switch (countElems) {
             case 0:
-                nameOfPlay="Extradecomposers";
+                nameOfPlay="Xmarine";
                 break;
             case 1:
                 nameOfPlay="Black_parody";
@@ -58,6 +58,7 @@ function fillComponentsOfPrimary (key, divInPrimary, entrancesToSecondary) {
         }
         var elemsOfPrimary = window[nameOfPlay]["onTheBeginning"];
         divInPrimary.getElementsByTagName("H2")[countElems].innerText=elemsOfPrimary.header;
+        console.log(elemsOfPrimary.header);
         divInPrimary.getElementsByClassName("image")[countElems].innerHTML=elemsOfPrimary["imgOnPrimary"];
         divInPrimary.getElementsByClassName("preview")[countElems].innerText=elemsOfPrimary["preview"];
         divInPrimary.getElementsByClassName("entersToSecondary")[countElems].innerText="Enter";
@@ -143,7 +144,7 @@ function setColors(nameOfPlay, toChooseRoles) {
         var addedClassForContentList = "contentListFor"+nameOfPlay,
             instruction = document.getElementById("instruction"), bckgr, bord;
         switch (nameOfPlay) {
-            case "Extradecomposers":
+            case "Xmarine":
                 if (main.getElement("secondary").style.display!=="none") {
                     main.setCssProperty([
                         ["main_in_preview","color","#08088A"]
@@ -186,7 +187,7 @@ function setColors(nameOfPlay, toChooseRoles) {
     else {
         var bckgr, bord;
         switch (nameOfPlay) {
-            case "Extradecomposers":
+            case "Xmarine":
                 bckgr="#A9BCF5";
                 bord="";
                 break;
@@ -215,22 +216,22 @@ function addPartsToContentList(nameOfPlay) {
 function finishTextOnButton (nameOfPlay) {
     var changedNameOfPlay, labelOnButton;
     switch (nameOfPlay) {
-        case "Extradecomposers":
+        case "Xmarine":
             changedNameOfPlay="Black_parody";
             switch(main.getElement("contentlist").style.display) {
                 case "none":
                 labelOnButton="Black parody";
                 break;
                 case "block":
-                labelOnButton="Special scavengers";
+                labelOnButton="X-marine";
                 break;
             }
             break;
         case "Black_parody":
-            changedNameOfPlay = "Extradecomposers";
+            changedNameOfPlay = "Xmarine";
             switch(main.getElement("contentlist").style.display) {
                 case "none":
-                    labelOnButton="Special scavengers";
+                    labelOnButton="X-marine";
                     break;
                 case "block":
                     labelOnButton="Black parody";
