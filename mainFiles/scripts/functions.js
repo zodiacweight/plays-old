@@ -12,7 +12,7 @@ function handleData(key) {
         // 4. Если код ответа сервера не 200, то это ошибка
         if (xhr.status != 200) {
             // обработать ошибку
-            // console.log(xhr.status + ': ' + xhr.statusText);
+            console.log(xhr.status + ': ' + xhr.statusText);
         } else {
             var data = JSON.parse(xhr.responseText);
             window[key] = data[key];
@@ -58,7 +58,6 @@ function fillComponentsOfPrimary (key, divInPrimary, entrancesToSecondary) {
         }
         var elemsOfPrimary = window[nameOfPlay]["onTheBeginning"];
         divInPrimary.getElementsByTagName("H2")[countElems].innerText=elemsOfPrimary.header;
-        console.log(elemsOfPrimary.header);
         divInPrimary.getElementsByClassName("image")[countElems].innerHTML=elemsOfPrimary["imgOnPrimary"];
         divInPrimary.getElementsByClassName("preview")[countElems].innerText=elemsOfPrimary["preview"];
         divInPrimary.getElementsByClassName("entersToSecondary")[countElems].innerText="Enter";
@@ -284,6 +283,7 @@ function setClickToLoadPart(nameOfPlay) {
                     main.addClassForStaticElement("rightHalf", "addedClass");
                 }
                 inMainArea= ["<div id='toChooseRoles'></div>",
+                    "<div id='sharing_roles'></div>",
                     "<div id='top_of_play'></div>",
                     "<div id='content_of_play'></div>"];
                 main.addHtmlIntoStaticElement("mainArea", inMainArea);
@@ -297,8 +297,8 @@ function setClickToLoadPart(nameOfPlay) {
             }
             var addedHTMLToContainPart = {};
             addedHTMLToContainPart.toChooseRoles = document.getElementById("toChooseRoles");
-            var toChooseRoles=document.getElementById("toChooseRoles");
-            setColors(nameOfPlay, toChooseRoles);
+            addedHTMLToContainPart.sharing_roles = document.getElementById("sharing_roles");
+            setColors(nameOfPlay, addedHTMLToContainPart.toChooseRoles);
             addedHTMLToContainPart.toChooseRoles.listOfCheckboxes = document.getElementById("listOfCheckboxes");
             addedHTMLToContainPart.top_of_play = document.getElementById("top_of_play");
             addedHTMLToContainPart.top_of_play.titleOfPart = document.getElementById("headerForPart");
@@ -539,6 +539,27 @@ function changePart(PartNumber, index_of_part, chosenPlay, addedHTMLToContainPar
     addedHTMLToContainPart.toChooseRoles.listOfCheckboxes.innerHTML = "";
     addedHTMLToContainPart.top_of_play.titleOfPart.innerText = PartNumber + " " + chosenPlay["Parts"][index_of_part]["header"];
     addedHTMLToContainPart.content_of_play.innerHTML = "";
+    if("sharing_roles" in  chosenPlay["Parts"][index_of_part]) {
+        var instToShareRoles =  chosenPlay["Parts"][index_of_part]["sharing_roles"],
+            runInInst=0;
+        addedHTMLToContainPart.sharing_roles.innerHTML="<b>Rational allocation roles</b>";
+        while (runInInst<instToShareRoles.length) {
+            addedHTMLToContainPart.sharing_roles.innerHTML+="<p>"+instToShareRoles[runInInst]+"</p>";
+            runInInst++;
+        }
+        if (!(addedHTMLToContainPart.sharing_roles.classList.contains("visible_sharing_roles"))) {
+            console.log("Попали");
+            addedHTMLToContainPart.sharing_roles.classList.add("visible_sharing_roles");
+        }
+    }
+    else {
+        if (addedHTMLToContainPart.sharing_roles.innerHTML!=="") {
+            addedHTMLToContainPart.sharing_roles.innerHTML="";
+        }
+        if (addedHTMLToContainPart.sharing_roles.classList.contains("visible_sharing_roles")) {
+            addedHTMLToContainPart.sharing_roles.classList.remove("visible_sharing_roles");
+        }
+    }
     var counterAddReplics= 0, replics = chosenPlay["Parts"][index_of_part]["replics"];
     for (var index=0; index < replics.length; index++) {
         var arrayElementObject = chosenPlay["Parts"][index_of_part]["replics"][index];
@@ -583,7 +604,6 @@ function changePart(PartNumber, index_of_part, chosenPlay, addedHTMLToContainPar
             var replics = chosenPlay["Parts"][index_of_part]["replics"];
             innerContent = setContents(replics_of_choicedpart, arrayElementObject[subjectName], subjectName, className);
         }
-        //console.log(replics);
         counterAddReplics++;
         addDivsWithReplics(addedHTMLToContainPart.content_of_play, innerContent, counterAddReplics, replics);
     }

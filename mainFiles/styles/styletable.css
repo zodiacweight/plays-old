@@ -122,12 +122,15 @@
     }
 
     #enter > #divForButtonsToChoicePlay {
+        width: 55%;
         margin-top: 1%;
+        margin-left: 22%;
+        margin-bottom: 4%;
     }
 
     #enter > #divForButtonsToChoicePlay > button {
         margin-top: 4%;
-        margin-left: 4%;
+        margin-left: 2%;
         margin-bottom: 2%;
         font-size: 16px;
         padding: 7px;
@@ -136,7 +139,7 @@
 
     #enter > #buttonToEnter {
         margin-left: 35%;
-        margin-top: 1%;
+        /*margin-top: 1%; */
         font-size: 16px;
         padding: 6px;
     }
@@ -279,7 +282,7 @@
         width: 60%;
         padding-top: 7px;
         padding-left: 6px;
-        margin-bottom: 6%;
+        margin-bottom: 4%;
         margin-top: 2%;
     }
 
@@ -300,6 +303,25 @@
     .labels_for_roles {
         color: darkviolet;
         font-weight: bold;
+    }
+
+    #sharing_roles {
+        width: 75%;
+        margin-left: 7%;
+    }
+
+    .visible_sharing_roles {
+        margin-bottom: 6%;
+    }
+
+    .visible_sharing_roles > b {
+        margin-left: 22%;
+        font-size: 24px;
+    }
+
+    .visible_sharing_roles > p {
+        margin-left: 25%;
+        font-size: 22px;
     }
 
     #top_of_play {

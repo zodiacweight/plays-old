@@ -21,7 +21,7 @@
       ],
       "Parts": [
        {"number": 1.1, "header": "Storie about a peculiar human",
-         "replics": [
+       "replics": [
            {"Author's words": ["The scene of meeting between three personages, who talk about one unusual event. Helen meets her friends, Judy and Cassandra, and they expect her to share some sensational news."]},
            {"Helen": ["Cassandra, Judy, I am happy to meet you! How do you do?"]},
            {"Judy": ["We are bored. Frankly, we are already fed up with this study."]},
@@ -281,7 +281,7 @@
            {"Crab": ["I see you like this castle. "]},
            {"Beatrix": ["There were nothing like this in other places where I lived earlier. It is curious who has <span class=\"from_vocabulary\">devices</span> all of this."]},
            {"Crab": ["There is another catfish who is sleeping now behind it. There are also some other animals in our aquarium who is in the castle now. I would like all of us to <span class=\"from_vocabulary\">attend</span> in our general <span class=\"from_vocabulary\">allotment</span> in this castle sometimes and you to tell about yourself more. Your appearance in our congregation is a <span class=\"from_vocabulary\">grander</span> event. But we have to <span class=\"from_vocabulary\">postpone</span> our general meeting because some animals are not ready to it at the moment."]},
-           {"Beatrix": ["I remember my host <span class=\"from_vocabulary\">conjured</span> me to stay away from the surface of our water space because otherwise it may be dangerous. The danger is in her dog who can <span class=\"from_vocabulary\">afford</span> to make us its <span class=\"from_vocabulary\">booty</span>. She <span class=\"from_vocabulary\">daunted me with her dog. It seems her dog is <span class=\"from_vocabulary\">merciless</span>. I think he is a predatory animal."]},
+           {"Beatrix": ["I remember my host <span class=\"from_vocabulary\">conjured</span> me to stay away from the surface of our water space because otherwise it may be dangerous. The danger is in her dog who can <span class=\"from_vocabulary\">afford</span> to make us its <span class=\"from_vocabulary\">booty</span>. She <span class=\"from_vocabulary\">daunted</span> me with her dog. It seems her dog is <span class=\"from_vocabulary\">merciless</span>. I think it is a predatory animal."]},
            {"Tortoise female": ["Yes, I am agree with you. But I am sure just <span class=\"from_vocabulary\">complience</span> her instructions means we have no reasons to be <span class=\"from_vocabulary\">anxious</span> about our lives. The dog has no possibilities to perpetuate into our space."]},
            {"Beatrix": ["She <span class=\"from_vocabulary\">conjured</span> me to do as she said. I understand her, but she has covered the surface with something. Is it not too much? To be frankly I would have <span class=\"from_vocabulary\">inclination</span> to walk out of this aquarium because there is much interesting things outside. I would be careful about my security."]},
            {"Tortoise female": ["We compassionate you, but we can help with nothing to you. You can discuss this problem with the host if you have not discussed it yet to the enough extent."]},
@@ -505,7 +505,9 @@
              ]
            }
          ]},
-       {"number": 1.6, "header": "Happy! Beatrix is alive",
+       {"number": 1.6,
+         "sharing_roles": ["Rational allocation roles", "For 2 players: a player who has author's words has to have also Helen or Beatrix, because there is only one author's replic", "For 3 players: it will be better to play by queue than according to choice roles."],
+         "header": "Happy! Beatrix is alive",
          "replics":[
            {
              "Author's words": [
@@ -2307,7 +2309,8 @@
              ]
            }
          ]},
-       {"number": "1.10", "header": "Christian tells to the girls more",
+       {"number": "1.10",
+         "header": "Christian tells to the girls more",
          "replics":[
            {
              "Helen": [
@@ -2855,7 +2858,9 @@
              ]
            }
          ]},
-       {"number": 1.11, "header": "A special new",
+       {"number": 1.11,
+         "sharing_roles": ["There is a long replic of Beatrix's letter, but only one. So you must have other role(s) besides this role."],
+         "header": "A special new",
          "replics":[
            {
              "Author's words": [
@@ -3604,7 +3609,9 @@
              ]
            }
          ]},
-       {"number": 1.14, "header": "Judy meets Woman-devil",
+       {"number": 1.14,
+         "sharing_roles": ["For 2 players:", "Share Judy, Beatrix, Woman-devil and Author as 2:2. For example, especially suitable is:", "1. Judy and Beatrix", "2. Woman-devil and Author.", "No matter whose will be Helen and Cassandra, because there are very little of their words."],
+         "header": "Judy meets Woman-devil",
          "replics":[
            {
              "Author's words": [
@@ -4784,7 +4791,9 @@
              ]
            }
          ]},
-       {"number": 1.16, "header": "Conversation about Beatrix's adoption",
+       {"number": 1.16,
+         "sharing_roles": ["For 2 players:", "1. Timothy and may be somebody else", "2. Snake and may be somebody else", "For 3 players by terms."],
+         "header": "Conversation about Beatrix's adoption",
          "replics":[ {
            "Author's words": [
              "This morning Timothy came to the train station. There will be something unexpectable for him in the station, but he has not know about it yet."
