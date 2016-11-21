@@ -695,7 +695,10 @@
              ]
            }
          ]},
-       {"number": 1.7, "header": "Helen is a guest of Chrisian and mrs Jakins",
+       {"number": 1.7,
+         "sharing_roles": ["For 2 players:", "1. Christian", "2. Helen", "Mrs Jakins better to Helen than to Christian",
+         "For 3 players by term"],
+         "header": "Helen is a guest of Chrisian and mrs Jakins",
          "replics":[
            {
              "Christian": [
@@ -1023,7 +1026,9 @@
              ]
            }
          ]},
-       {"number": 1.8, "header": "Planning holidays",
+       {"number": 1.8,
+         "sharing_roles": ["Everybody of players must have Helen, Cassandra or Judy, because these characters have replics distributed all over this part. The rest roles: Beatrix, James and author also may be allocated by all the players"],
+         "header": "Planning holidays",
          "replics":[
            {
              "Author's words": [
@@ -3610,7 +3615,7 @@
            }
          ]},
        {"number": 1.14,
-         "sharing_roles": ["For 2 players:", "Share Judy, Beatrix, Woman-devil and Author as 2:2. For example, especially suitable is:", "1. Judy and Beatrix", "2. Woman-devil and Author.", "No matter whose will be Helen and Cassandra, because there are very little of their words."],
+         "sharing_roles": ["For 2 players:", "Share Judy, Beatrix, Woman-devil and Author as 2:2. For example, especially suitable is:", "1. Judy and Beatrix", "2. Woman-devil and Author.", "For 3 players:", "1. Woman-devil", "Judy, Beatrix and Author must be shared between other 2 players in such way:", "2. Judy and author", "3. Beatrix", "or", "2. Judy", "3. Author and Beatrix", "No matter whose will be Helen and Cassandra, because there are very little of their words."],
          "header": "Judy meets Woman-devil",
          "replics":[
            {
