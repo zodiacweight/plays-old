@@ -506,7 +506,7 @@
            }
          ]},
        {"number": 1.6,
-         "sharing_roles": ["Rational allocation roles", "For 2 players: a player who has author's words has to have also Helen or Beatrix, because there is only one author's replic", "For 3 players: it will be better to play by queue than according to choice roles."],
+         "sharing_roles": ["Rational allocation roles", "<b>For 2 players:</b> a player who has author's words has to have also Helen or Beatrix, because there is only one author's replic", "<b>For 3 players:</b> it will be better to play by queue than according to choice roles."],
          "header": "Happy! Beatrix is alive",
          "replics":[
            {
@@ -696,7 +696,7 @@
            }
          ]},
        {"number": 1.7,
-         "sharing_roles": ["For 2 players:", "1. Christian", "2. Helen", "Mrs Jakins better to Helen than to Christian",
+         "sharing_roles": ["<b>For 2 players:</b>", "1. Christian", "2. Helen", "Mrs Jakins better to Helen than to Christian",
          "For 3 players by term"],
          "header": "Helen is a guest of Chrisian and mrs Jakins",
          "replics":[
@@ -3615,7 +3615,7 @@
            }
          ]},
        {"number": 1.14,
-         "sharing_roles": ["For 2 players:", "Share Judy, Beatrix, Woman-devil and Author as 2:2. For example, especially suitable is:", "1. Judy and Beatrix", "2. Woman-devil and Author.", "For 3 players:", "1. Woman-devil", "Judy, Beatrix and Author must be shared between other 2 players in such way:", "2. Judy and author", "3. Beatrix", "or", "2. Judy", "3. Author and Beatrix", "No matter whose will be Helen and Cassandra, because there are very little of their words."],
+         "sharing_roles": ["<b>For 2 players:</b>", "Share Judy, Beatrix, Woman-devil and Author as 2:2. For example, especially suitable is:", "1. Judy and Beatrix", "2. Woman-devil and Author.", "<b>For 3 players:</b>", "1. Woman-devil", "Judy, Beatrix and Author must be shared between other 2 players in such way:", "2. Judy and author", "3. Beatrix", "or", "2. Judy", "3. Author and Beatrix", "No matter whose will be Helen and Cassandra, because there are very little of their words."],
          "header": "Judy meets Woman-devil",
          "replics":[
            {
@@ -4030,7 +4030,7 @@
            },
            {
              "Judy": [
-               "Oh, no, Woman-devil, stop it, please! I can hold! I am going to fall!"
+               "Oh, no, Woman-devil, stop it, please! I can't hold! I am going to fall!"
              ]
            },
            {
@@ -4797,7 +4797,7 @@
            }
          ]},
        {"number": 1.16,
-         "sharing_roles": ["For 2 players:", "1. Timothy and may be somebody else", "2. Snake and may be somebody else", "For 3 players by terms."],
+         "sharing_roles": ["<b>For 2 players:</b>", "1. Timothy and may be somebody else", "2. Snake and may be somebody else", "For 3 players by terms."],
          "header": "Conversation about Beatrix's adoption",
          "replics":[ {
            "Author's words": [
@@ -5490,7 +5490,12 @@
              ]
            }]
        },
-       {"number": 1.18, "header": "Parting of Beatrix and Woman-devil",
+       {"number": 1.18,
+         "sharing_roles": [
+           "<b>For 2 players:</b>",
+           "One way:", "1. Woman-devil and Beatrix", "2. All the other roles", "Other way:", "1. Woman-devil and somebody else", "2. Beatrix and somebody else", "<b>For 3 players:</b>", "1. Woman-devil", "2. Beatrix", "Author's words and somebody else", "rest role to any of players"
+         ],
+         "header": "Parting of Beatrix and Woman-devil",
           "replics":[
             {
               "Author's words": [
