@@ -10,18 +10,18 @@
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="node_modules/backbone/backbone-min.js"></script>
 </head>
-<body>
+<body id="myBody">
     <!-- Для Primary: -->
     <script type="text/template" id="wrapperOfPrimary">
         <div id="divInPrimary" class="hidden"></div>
     </script>
     <script  type="text/template" id="componentInPrimary">
         <div class='componentsOfPrimary'>
-            <h2></h2>
+            <h2><%=header%></h2>
             <div class='mainPart'>
-                <div class='image'></div>
+                <div class='image'><%=imgOnPrimary%></div>
                 <div class='TextAndEnter'>
-                <p class='preview'></p>
+                <p class='preview'><%=preview%></p>
                 <div class='entersToSecondary'>
                     <a href="#enter_to_secondary">Enter</a>
                 </div>
