@@ -56,9 +56,10 @@ var BuildHtmlPrimary = Backbone.View.extend(
         },
         render: function () {
             var dataPrimeTemplates = retrieveData('BuildHtmlPrimary'),
-            lenght = dataPrimeTemplates.length, blueDiv;
-            for (var countData=0;  countData < length; countData++) {
+                length = dataPrimeTemplates.length, blueDiv;
+            for (var countData=0; countData < length; countData++) {
                 // 1. определяется каждый из двух похожих шаблонов с данными:
+               alert();
                 var primeTemplate = _.template($(".primeTemplate")[countData])(dataPrimeTemplates[countData]);
                 console.log(primeTemplate);
                 //2. В div с id="divInPrimary" добавляется этот шаблон.
@@ -130,7 +131,6 @@ var AppRouter = Backbone.Router.extend({
                     clearInterval(val);
                     var primary = new BuildHtmlPrimary();
                 }
-                //console.log("Xmarine" in window);
             }, 300);
         //  // Здесь тоже должен быть доступен ключ
     },
