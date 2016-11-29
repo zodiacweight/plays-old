@@ -56,12 +56,12 @@ var BuildHtmlPrimary = Backbone.View.extend(
         },
         render: function () {
             var dataPrimeTemplates = retrieveData('BuildHtmlPrimary'),
-                length = dataPrimeTemplates.length, blueDiv;
-            for (var countData=0; countData < length; countData++) {
+                len = dataPrimeTemplates.length, blueDiv;
+            for (var countData=0; countData < len; countData++) {
+                alert();
                 // 1. определяется каждый из двух похожих шаблонов с данными:
-               alert();
-                var primeTemplate = _.template($(".primeTemplate")[countData])(dataPrimeTemplates[countData]);
-                console.log(primeTemplate);
+                //var primeTemplate = _.template($(".primeTemplate")[countData])(dataPrimeTemplates[countData]);
+                //console.log(primeTemplate);
                 //2. В div с id="divInPrimary" добавляется этот шаблон.
                 //primeTemplate.appendTo($("#divInPrimary"));
             }
