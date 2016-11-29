@@ -10,13 +10,20 @@
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="node_modules/backbone/backbone-min.js"></script>
 </head>
-<body id="myBody">
+<body>
+    <div id="wrapper"></div>
     <!-- Для Primary: -->
-    <script type="text/template" id="wrapperOfPrimary">
-        <div id="divInPrimary" class="hidden"></div>
+    <script type="text/template" id="templateOfPrimary">
+        <div id="blueDiv" class="hidden">
+            <p>Для того, чтобы открыть пьесы, следует нажать на вход в одной из ячеек:</p>
+            <div id="divInPrimary">
+                <div><%=primeTemplate%></div>
+                <div><%=primeTemplate%></div>
+            </div>
+        </div>
     </script>
-    <script  type="text/template" id="componentInPrimary">
-        <div class='componentsOfPrimary'>
+    <script  type="text/template" id="primeTemplate">
+        <div class='primeTemplate'>
             <h2><%=header%></h2>
             <div class='mainPart'>
                 <div class='image'><%=imgOnPrimary%></div>
@@ -27,7 +34,7 @@
                 </div>
                 </div>
             </div>
-        </div>;
+        </div>
     </script>
 
     <!-- Для Secondary: -->

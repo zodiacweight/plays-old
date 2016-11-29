@@ -29,49 +29,48 @@ function getData(key) {
         console.log(event);
     };
 }
-function generatePrimeComponents(viewName) {
-    var titleOFPlay = config[viewName]["file_names"],
-        fileContents = [];
+function retrieveData(viewName, viewField, windowField) {
+    if (!viewField) viewField = "file_names";
+    if (!windowField) windowField = "onTheBeginning";
+    var titleOFPlay = config[viewName][viewField], fileContents = [];
     for (var i = 0, j = titleOFPlay.length; i < j; i++) {
-        console.log('current', {
-            'titleOFPlay[i]': titleOFPlay[i] // "Black_parody", "Xmarine"
-        });
         // 1. Разрешаются ли цифры?
-        fileContents.push(window[titleOFPlay[i]]["onTheBeginning"]);
+        fileContents.push(window[titleOFPlay[i]][windowField]);
         // 2. Втюхать эти элементы в div-обертку, которого еще нет
         // 3. Втюхать этот div-обертку с ее содержимым в body по следующему коду:
         // В скобках написать то, что будет означать обертку.
     }
-    // var template = _.template($(".componentsOfPrimary")[i])(comps); // ПЕРЕНЕСТИ!
+    //  // ПЕРЕНЕСТИ!
     // $("#myBody").html(); // ПЕРЕНЕСТИ!
     return fileContents;
 }
 var config = {
-    LoadHtmlPrimary: {
+    BuildHtmlPrimary: {
         file_names: ['Black_parody', 'Xmarine']
     }
 };
-var LoadHtmlPrimary = Backbone.View.extend(
+var BuildHtmlPrimary = Backbone.View.extend(
     {
         initialize: function () {
             this.render();
         },
         render: function () {
-            //var file_names = config.LoadHtmlPrimary.file_names;
-            var data = generatePrimeComponents('LoadHtmlPrimary'); // 2 вложенных подобных шаблона заполняются данными
-            //var wrapperDiv = _.template($('#componentsOfPrimary').html())(data);
-
-            /*$("body").html(wrapperDiv);
-            setTimeout(function () {  
-                wrapperDiv.fadeIn(2400); 
-            }, 1800);*/
-
-            //var templateHTML = _.template($('#wrapperOfPrimary').html())(/**/);
-            //this.$el.html(templateHTML);
-            // for 
-            // Array 'Black_parody','Xmarine'
-            // Здесь должен определяться объект со значениями для X-marine или Black_parody, и должен 
-            //быть доступен ключ
+            var dataPrimeTemplates = retrieveData('BuildHtmlPrimary'),
+            lenght = dataPrimeTemplates.length, blueDiv;
+            for (var countData=0;  countData < length; countData++) {
+                // 1. определяется каждый из двух похожих шаблонов с данными:
+                var primeTemplate = _.template($(".primeTemplate")[countData])(dataPrimeTemplates[countData]);
+                console.log(primeTemplate);
+                //2. В div с id="divInPrimary" добавляется этот шаблон.
+                //primeTemplate.appendTo($("#divInPrimary"));
+            }
+            /* var primary = $("#blueDiv");
+            // 3. Шаблон с id="blueDiv" вставляется в div-обертку (wrapper)
+            $("#wrapper").html(primary);
+            // 4. primary постепенно появляется
+            setTimeout(function () {
+                $("#blueDiv").fadeIn(2400);
+            }, 1800); */
         }
     }
 );
@@ -81,7 +80,7 @@ var Plays = Backbone.Model.extend(
         initialize: function (key) { // Xmarine, black_parody
             // получить файл
             // проверить сохранённый скачанный файл в window[key]
-            getData(key); // onLoad (hidden setInterval)
+            getData(key);
             // console.log(window[key]);
             this.getFileContents(key);  // setInterval
         },
@@ -117,11 +116,11 @@ var Plays = Backbone.Model.extend(
 
 var AppRouter = Backbone.Router.extend({
     routes: {
-        "": "loadPrimary",
-        "enter_to_secondary": "loadSecondary",
+        "": "buildPrimary",
+        "enter_to_secondary": "buildSecondary",
         "enter_to_plays": "enterToPlays"
     },
-    loadPrimary: function () {
+    buildPrimary: function () {
         console.log("Функция вызвана!");
         var xmarine = new Plays("Xmarine");
         var black_parody = new Plays("Black_parody");
@@ -129,14 +128,13 @@ var AppRouter = Backbone.Router.extend({
             function () {
                 if ("Xmarine" in window) {
                     clearInterval(val);
-                    console.log("Попали");
-                    var primary = new LoadHtmlPrimary();
+                    var primary = new BuildHtmlPrimary();
                 }
                 //console.log("Xmarine" in window);
             }, 300);
         //  // Здесь тоже должен быть доступен ключ
     },
-    loadSecondary: function () {
+    buildSecondary: function () {
 
     },
     enterToPlays: function () {
