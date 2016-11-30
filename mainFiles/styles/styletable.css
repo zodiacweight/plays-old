@@ -299,7 +299,35 @@
     #toChooseRoles p input {
         height: 18px;
     }
-
+    form {
+        width: 100%;
+        overflow: auto;
+    }
+    form > div {
+        float: left;
+        border: 1px solid;
+        font-size: 20px;
+        margin-bottom: 2%;
+    }
+    #formDiv1 {
+        width: 27%;
+    }
+    #formDiv2 {
+        width:72%;
+    }
+    form > div > input {
+        width: 25px;
+        margin-left: 1%;
+        font-size: 18px;
+    }
+    form > div > button {
+        margin-top: 3%;
+    }
+    #paintByTerm {
+        font-size: 18px;
+        padding: 6px;
+        margin-left: 2%;
+    }
     .labels_for_roles {
         color: darkviolet;
         font-weight: bold;

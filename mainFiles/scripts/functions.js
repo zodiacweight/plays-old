@@ -288,8 +288,17 @@ function setClickToLoadPart(nameOfPlay) {
                     "<div id='content_of_play'></div>"];
                 main.addHtmlIntoStaticElement("mainArea", inMainArea);
                 document.getElementById("toChooseRoles").innerHTML = "<h4>There are the following characters in this part:</h4>" +
-                    "<div id='listOfCheckboxes'></div><div><input id='paintreplics' type='button' " +
-                    "value='paint roles and / or clear them'></div>";
+                    "<div id='listOfCheckboxes'></div>"+
+                    "<form>"+
+                        "<div id='formDiv1'>"+
+                            "<button id='paintreplics' type='button'>paint by roles</button>"+
+                        "</div>"+
+                        "<div id='formDiv2'>" +
+                            "Begin from the replic №<input id='beginNumb' type='text'> and counting from it paint"+
+                            "every replic №<input id='period' type='text'>"+
+                            "<button type='button' id='paintByTerm'>paint by term</button>"+
+                        "</div>"+
+                    "</form>";
                 document.getElementById("top_of_play").innerHTML = "<div><h2 id='headerForPart'></h2></div>"
                     + "<div id='buttons'><input type='button' value='<' id='scrollBack'>" +
                     "<input type='button' value='>' id='scrollFront'>" +

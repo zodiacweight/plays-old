@@ -90,26 +90,6 @@
     padding: 6px;
     text-decoration: underline;
 }
-.paintedReplicsOfMrsJakins {
-    background-image: url("../../images/textures/pink_paper.jpg");
-    border: 3px solid darkblue; !important;
-    color: darkviolet;
-}
-.paintedReplicsOfMrJakins {
-    background-color: darkblue;
-    border: 3px solid darkblue; !important;
-    color: lightsteelblue;
-}
-.paintedReplicsOfJamesMcHein {
-    background-color: lightblue;
-    border: 3px solid darkblue; !important;
-    color: darkslateblue;
-}
-.paintedReplicsOfWomanDevil {
-    background-image: url("../../images/textures/bumaga_texture_101.jpg");
-    border: 3px solid firebrick; !important;
-    color: black;
-}
 .paintedReplicsOfTortoiseMale {
     background-color: lightsteelblue;
     border: 3px solid darkblue; !important;
@@ -140,6 +120,26 @@
     border: 3px solid darkgreen; !important;
     color: green;
 }
+.paintedReplicsOfMrsJakins {
+    background-image: url("../../images/textures/pink_paper.jpg");
+    border: 3px solid darkblue; !important;
+    color: darkviolet;
+}
+.paintedReplicsOfMrJakins {
+    background-color: darkblue;
+    border: 3px solid darkblue; !important;
+    color: lightsteelblue;
+}
+.paintedReplicsOfJamesMcHein {
+    background-color: lightblue;
+    border: 3px solid darkblue; !important;
+    color: darkslateblue;
+}
+.paintedReplicsOfWomanDevil {
+    background-image: url("../../images/textures/bumaga_texture_101.jpg");
+    border: 3px solid firebrick; !important;
+    color: black;
+}
 .paintedReplicsOfLilian {
     background-color: lightblue;
     border: 3px solid darkblue; !important;
@@ -159,6 +159,16 @@
     background-image: url("../../images/textures/gold.jpg");
     color: #61210B;
     border: 3px solid saddlebrown;
+}
+.paintedReplicsOfRamon {
+    background-image: url("../../images/textures/peacock.jpg");
+    color: lightblue;
+    border: 3px solid blueviolet;
+}
+.paintedReplicsOfMolly {
+    background-image: url("../../images/textures/papyrus.jpg");
+    color: darkred;
+    border: 3px solid darkgreen;
 }
 .paintedReplicsOfQuentin {
     background-image: url("../../images/textures/peacock.jpg");
