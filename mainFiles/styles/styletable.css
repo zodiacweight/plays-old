@@ -305,15 +305,16 @@
     }
     form > div {
         float: left;
-        border: 1px solid;
         font-size: 20px;
-        margin-bottom: 2%;
+        margin-bottom: 4%;
     }
     #formDiv1 {
-        width: 27%;
+        width: 25%;
+        margin-left: 3%;
     }
     #formDiv2 {
-        width:72%;
+        width:65%;
+        margin-left: 2%;
     }
     form > div > input {
         width: 25px;
@@ -326,7 +327,9 @@
     #paintByTerm {
         font-size: 18px;
         padding: 6px;
-        margin-left: 2%;
+        margin-left: 27%;
+        margin-top: 6%;
+        display: block;
     }
     .labels_for_roles {
         color: darkviolet;
