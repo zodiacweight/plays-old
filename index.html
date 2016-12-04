@@ -4,39 +4,14 @@
     <meta charset=UTF-8>
     <title>Title</title>
     <link rel="stylesheet" href="node_modules/bootstrap-grid-only/bootstrap.css"/>
-    <link rel="stylesheet" href="tables_of_styles/styletable.css">
+    <!-- <link rel="stylesheet" href="tables_of_styles/styletable.css"> -->
     <link rel="stylesheet" href="tables_of_styles/switchedStyles.css">
     <script src="node_modules/underscore/underscore-min.js"></script>
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="node_modules/backbone/backbone-min.js"></script>
 </head>
 <body>
-    <div id="wrapper"></div>
-    <!-- Для Primary: -->
-    <script type="text/template" id="templateOfPrimary">
-        <div id="blueDiv" class="hidden">
-            <p>Для того, чтобы открыть пьесы, следует нажать на вход в одной из ячеек:</p>
-            <div id="divInPrimary">
-                <div><%=primeTemplate%></div>
-                <div><%=primeTemplate%></div>
-            </div>
-        </div>
-    </script>
-    <script  type="text/template" id="primeTemplate">
-        <div class='primeTemplate'>
-            <h2><%=header%></h2>
-            <div class='mainPart'>
-                <div class='image'><%=imgOnPrimary%></div>
-                <div class='TextAndEnter'>
-                <p class='preview'><%=preview%></p>
-                <div class='entersToSecondary'>
-                    <a href="#enter_to_secondary">Enter</a>
-                </div>
-                </div>
-            </div>
-        </div>
-    </script>
-
+   
     <!-- Для Secondary: -->
     <script type="text/template" id="secondary">
         <div>
@@ -50,13 +25,7 @@
                     <p id="main_in_preview"></p>
                 </div>
                 <div id="enterSection">
-                    <div id="divForButtonsToChoicePlay">
-                        <button>X-marine</button>
-                        <button>Black parody</button>
-                    </div>
-                    <div>
-                        <a href="#enter_to_plays">Open gate and enter</a>
-                    </div>
+                    
                     <img src="images/on_the_beginning/closed_gate.jpg" id="gate">
                 </div>
             </div>
@@ -64,6 +33,7 @@
     </script>
     <script type="text/template" id="entered">
         <div>
+            <!-- -->
             <div id="left">
                 <button>Change plays on<span></span></button>
                 <div id="listOfParts"></div>
@@ -84,23 +54,16 @@
     <script type="text/template" id="part_loaded">
         <div id="choose_roles">
             <h4>There are the following characters in this part:</h4>
-            <div id='listOfCheckboxes'></div>
-            <input id='paint_by_roles' type='button' value='paint by roles'>
+            
             <input id='paint_by_term' type='button' value="paint by term">
         </div>
         <div id="sharing_roles"></div>
         <div id="top_of_play">
-            <div>
-                <h2 id='headerForPart'></h2>
-            </div>
-            <div id='buttons'>
-                <input type='button' value='◄' id='scrollBack'>
-                <input type='button' value='►' id='fscrollFront'>
-                <input type='button' id='paintWordsFromVocab'>
-            </div>
+            
         </div>
         <div id="content_of_play"></div>
     </script>
     <script src="scripts.js"></script>
+    <script src="templates/test.js"></script>
 </body>
 </html>
