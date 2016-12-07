@@ -156,6 +156,9 @@ function setColors(nameOfPlay, toChooseRoles) {
                 main.getElement("buttonToRechoice").style.backgroundColor="#0B3861";
                 main.getElement("buttonToRechoice").style.color="#CEECF5";
                 main.getElement("headerInSecondary").style.color="darkblue";
+                if(main.getElement("secondary").style.display!=="none") {
+                    main.getElement("instruction").style.color="#0B2161";
+                }
                 break;
             case "Black_parody":
                 if (main.getElement("secondary").style.display!=="none") {
@@ -170,6 +173,9 @@ function setColors(nameOfPlay, toChooseRoles) {
                 main.getElement("buttonToRechoice").style.backgroundColor="#BCA9F5";
                 main.getElement("buttonToRechoice").style.color="#2F0B3A";
                 main.getElement("headerInSecondary").style.color="#ECCEF5";
+                if(main.getElement("secondary").style.display!=="none") {
+                    main.getElement("instruction").style.color="#CED8F6";
+                }
                 break;
         }
         main.getElement("body").backgroundColor="";
@@ -255,6 +261,14 @@ function loadAboutCharacters(nameOfPlay) {
         main.addHtmlIntoStaticElement("mainArea", "<p>"+window[nameOfPlay]['About characters'][addPartAboutCharacters]+"</p>");
     }
 }
+function prepareResponse (color, nameOfPlay, text) {
+    var response = document.getElementById("responseMes");
+    response.style.color = color;
+    response.innerText=text;
+    if (nameOfPlay=="Black_parody") {
+        response.style.backgroundColor="lightskyblue";
+    }
+}
 function setClickToLoadPart(nameOfPlay) {
     var paragraphsInContentList = main.getElement("contentlist").getElementsByTagName("P"), parts_with_numbers = [];
     for (var runPars=0; runPars < paragraphsInContentList.length; runPars++) {
@@ -287,10 +301,11 @@ function setClickToLoadPart(nameOfPlay) {
                     "<div id='top_of_play'></div>",
                     "<div id='content_of_play'></div>"];
                 main.addHtmlIntoStaticElement("mainArea", inMainArea);
-                document.getElementById("toChooseRoles").innerHTML = "<h4>There are the following characters in this part:</h4>" +
-                    "<div id='listOfCheckboxes'></div>"+
+                document.getElementById("toChooseRoles").innerHTML =
                     "<form>"+
                         "<div id='formDiv1'>"+
+                            "<h4>There are the following roles in this part:</h4>" +
+                            "<div id='listOfCheckboxes'></div>"+
                             "<button id='paintreplics' type='button'>paint by roles</button>"+
                         "</div>"+
                         "<div id='formDiv2'>" +
@@ -298,7 +313,8 @@ function setClickToLoadPart(nameOfPlay) {
                             "every replic №<input id='period' type='text'>"+
                             "<button type='button' id='paintByTerm'>paint by term</button>"+
                         "</div>"+
-                    "</form>";
+                    "</form>"+
+                    "<div id=\"responseMes\"></div>";
                 document.getElementById("top_of_play").innerHTML = "<div><h2 id='headerForPart'></h2></div>"
                     + "<div id='buttons'><input type='button' value='<' id='scrollBack'>" +
                     "<input type='button' value='>' id='scrollFront'>" +
@@ -343,6 +359,7 @@ function setClickToLoadPart(nameOfPlay) {
             document.getElementById("paintreplics").onclick = function () {
                 var divsWithReplics = document.getElementById("content_of_play").getElementsByTagName("Div"),
                     name_in_h4, checkedRoles = {}, nameInCheck;
+                prepareResponse("green", nameOfPlay, "Painted!");
                 for (var runchecks = 0; runchecks < checkboxes.length; runchecks++) {
                     if (checkboxes[runchecks].checked) {
                         if ((presRoles.Array[runchecks].indexOf("'s")!==-1)&&
@@ -360,6 +377,9 @@ function setClickToLoadPart(nameOfPlay) {
                 for (var runDivs = 0; runDivs < divsWithReplics.length; runDivs++) {
                     var headerWithRoles = divsWithReplics[runDivs].getElementsByTagName("H4")[0];
                     name_in_h4=headerWithRoles.innerText;
+                    if (divsWithReplics[runDivs].classList.contains("paintedByTerm")) {
+                        divsWithReplics[runDivs].classList.remove("paintedByTerm");
+                    }
                     if (name_in_h4.indexOf(" & ")==-1) {
                         var nameInCheck=defineNameInCheckbox(name_in_h4);
                         if((nameInCheck in checkedRoles)&&(divsWithReplics[runDivs].classList.length==1)) {
@@ -444,6 +464,32 @@ function setClickToLoadPart(nameOfPlay) {
                                 }
                         }
                     }
+                }
+            };
+            document.getElementById("paintByTerm").onclick = function () {
+                var period = +(document.getElementById("period").value),
+                    beginNumb = +(document.getElementById("beginNumb").value),
+                    responseText, possibleNumbers = {
+                    1: "",
+                    2: "",
+                    3: "",
+                    4: ""
+                };
+                if ((period in possibleNumbers) && (period !== 1) && (beginNumb in possibleNumbers)) {
+                    prepareResponse("green", nameOfPlay, "Painted!");
+                    var divsWithReplics = document.getElementById("content_of_play").getElementsByTagName("Div");
+                    for (var runDivs = 0; runDivs < divsWithReplics.length; runDivs++) {
+                        if(divsWithReplics[runDivs].classList.length==2) {
+                            var delClass=divsWithReplics[runDivs].classList[1];
+                            divsWithReplics[runDivs].classList.remove(delClass);
+                        }
+                    }
+                    for (var countToRepaint = beginNumb-1; countToRepaint < divsWithReplics.length; countToRepaint+=period) {
+                        divsWithReplics[countToRepaint].classList.add("paintedByTerm");
+                    }
+                }
+                else {
+                    prepareResponse("red", nameOfPlay, "There are some incorrectly inputed parameters");
                 }
             };
         };

@@ -199,6 +199,11 @@
         font-size: 18px;
     }
 
+    #instrToEnter {
+        font-size: 18px;
+        padding: 7px;
+    }
+
     #DivForButtonsToEnter {
         margin-left: 11%;
     }
@@ -335,7 +340,14 @@
         color: darkviolet;
         font-weight: bold;
     }
-
+    #responseMes {
+        margin-top: 2%;
+        width: 45%;
+        margin-left: 25%;
+        padding-top: 4px;
+        padding-bottom: 4px;
+        padding-left: 25%;
+    }
     #sharing_roles {
         width: 75%;
         margin-left: 7%;
@@ -495,7 +507,10 @@
         margin-top: 2%;
         font-size: 22px;
     }
-
+    .paintedByTerm {
+        background-color: cornflowerblue;
+        color: #0B0B61;
+    }
     #fortypes {
         font-size: 18px;
     }

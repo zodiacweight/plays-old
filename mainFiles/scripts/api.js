@@ -12,6 +12,7 @@ var main = (function () {
         main_in_preview: document.getElementById("main_in_preview"),
         how_to_open_play: document.getElementById("how_to_open_plays"),
         enter: document.getElementById("enter"),
+        instruction: document.getElementById("instrToEnter"),
         buttonToEnter:  document.getElementById("buttonToEnter"),
         gate: document.getElementById("gate"),
         contentlist: document.getElementById("contentlist"),
