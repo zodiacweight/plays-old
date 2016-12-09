@@ -261,13 +261,20 @@ function loadAboutCharacters(nameOfPlay) {
         main.addHtmlIntoStaticElement("mainArea", "<p>"+window[nameOfPlay]['About characters'][addPartAboutCharacters]+"</p>");
     }
 }
-function prepareResponse (color, nameOfPlay, text) {
-    var response = document.getElementById("responseMes");
-    response.style.color = color;
-    response.innerText=text;
+function prepareResponse (valuesOfStyles, nameOfPlay) {
+    var response = document.getElementById("responseMes"), countParams= 0,
+        namesOfStyles = {width: "", color: "", marginLeft: "", text: ""};
     if (nameOfPlay=="Black_parody") {
         response.style.backgroundColor="lightskyblue";
     }
+    for (var key in namesOfStyles) {
+        if (key!=="text") {
+            response.style[key]=valuesOfStyles[countParams];
+            countParams++;
+            //console.log(response.style[key]);
+        }
+    }
+    response.innerText = valuesOfStyles[3];
 }
 function setClickToLoadPart(nameOfPlay) {
     var paragraphsInContentList = main.getElement("contentlist").getElementsByTagName("P"), parts_with_numbers = [];
@@ -302,19 +309,21 @@ function setClickToLoadPart(nameOfPlay) {
                     "<div id='content_of_play'></div>"];
                 main.addHtmlIntoStaticElement("mainArea", inMainArea);
                 document.getElementById("toChooseRoles").innerHTML =
-                    "<form>"+
-                        "<div id='formDiv1'>"+
+                    "<div>"+
+                        "<form id='formDiv1'>"+
                             "<h4>There are the following roles in this part:</h4>" +
                             "<div id='listOfCheckboxes'></div>"+
                             "<button id='paintreplics' type='button'>paint by roles</button>"+
-                        "</div>"+
-                        "<div id='formDiv2'>" +
-                            "Begin from the replic №<input id='beginNumb' type='text'> and counting from it paint"+
-                            "every replic №<input id='period' type='text'>"+
-                            "<button type='button' id='paintByTerm'>paint by term</button>"+
-                        "</div>"+
-                    "</form>"+
-                    "<div id=\"responseMes\"></div>";
+                        "</form>"+
+                    "</div>"+
+                    "<div>"+
+                        "<form id='formDiv2'>" +
+                        "Begin from the replic №<input id='beginNumb' type='text'> and counting from it paint"+
+                        "every replic №<input id='period' type='text'>"+
+                        "<button type='button' id='paintByTerm'>paint by term</button>"+
+                        "</form>"+
+                        "<div id=\"responseMes\"></div>"+
+                    "</div>";
                 document.getElementById("top_of_play").innerHTML = "<div><h2 id='headerForPart'></h2></div>"
                     + "<div id='buttons'><input type='button' value='<' id='scrollBack'>" +
                     "<input type='button' value='>' id='scrollFront'>" +
@@ -359,7 +368,7 @@ function setClickToLoadPart(nameOfPlay) {
             document.getElementById("paintreplics").onclick = function () {
                 var divsWithReplics = document.getElementById("content_of_play").getElementsByTagName("Div"),
                     name_in_h4, checkedRoles = {}, nameInCheck;
-                prepareResponse("green", nameOfPlay, "Painted!");
+                prepareResponse(["30%", "green", "30%", "Painted!"], nameOfPlay);
                 for (var runchecks = 0; runchecks < checkboxes.length; runchecks++) {
                     if (checkboxes[runchecks].checked) {
                         if ((presRoles.Array[runchecks].indexOf("'s")!==-1)&&
@@ -476,7 +485,7 @@ function setClickToLoadPart(nameOfPlay) {
                     4: ""
                 };
                 if ((period in possibleNumbers) && (period !== 1) && (beginNumb in possibleNumbers)) {
-                    prepareResponse("green", nameOfPlay, "Painted!");
+                    prepareResponse(["30%", "green", "30%", "Painted!"], nameOfPlay);
                     var divsWithReplics = document.getElementById("content_of_play").getElementsByTagName("Div");
                     for (var runDivs = 0; runDivs < divsWithReplics.length; runDivs++) {
                         if(divsWithReplics[runDivs].classList.length==2) {
@@ -489,7 +498,7 @@ function setClickToLoadPart(nameOfPlay) {
                     }
                 }
                 else {
-                    prepareResponse("red", nameOfPlay, "There are some incorrectly inputed parameters");
+                    prepareResponse(["70%", "red", "15%", "There are some incorrectly inputed parameters"], nameOfPlay);
                 }
             };
         };

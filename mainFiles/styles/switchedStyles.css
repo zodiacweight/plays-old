@@ -163,7 +163,22 @@
 .paintedReplicsOfRamon {
     background-image: url("../../images/textures/peacock.jpg");
     color: darkblue;
-    border: 3px solid blueviolet;
+    border: 3px solid blueviolet;  !important;
+}
+.paintedReplicsOfCarl {
+    background-color: darkblue;
+    color: lightcyan;
+    border: 3px solid darkblue;  !important;
+}
+.paintedReplicsOfMartin {
+    background-color: cyan;
+    color: indigo;
+    border: 3px solid darkblue;  !important;
+}
+.paintedReplicsOfTraves {
+    background-color: darkseagreen;
+    color: green;
+    border: 3px solid green;  !important;
 }
 .paintedReplicsOfMolly {
     background-image: url("../../images/textures/papyrus.jpg");

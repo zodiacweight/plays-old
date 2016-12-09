@@ -20,6 +20,7 @@ var main = (function () {
         listOfParts: document.getElementById("listOfParts"),
         rightHalf: document.getElementById("rightHalf"),
         mainArea: document.getElementById("mainArea"),
+        namesOfStyles: {width: "", color: "", marginLeft: "", text: ""},
         checkboxes: [],
         replics_of_choicedpart: {},
         itemsAboutCharacters: []
@@ -30,6 +31,7 @@ var main = (function () {
             elements[element_name].innerHTML = html;
         },
         getElement: function (element_name) {
+            console.log(element_name);
             return elements[element_name];
         },
         addHtmlIntoStaticElement: function (element_name, html) {
