@@ -295,12 +295,23 @@
     #toChooseRoles > div {
         width: 49.5%;
         float: left;
+        overflow: auto;
         font-size: 20px;
         margin-top: 4%;
     }
 
     #toChooseRoles > div > form {
-        width: 100%;
+        width: 80%;
+    }
+
+    #form1 {
+        float: left;
+        margin-left: 12%;
+    }
+
+    #form2 {
+        float: right;
+        margin-right: 12%;
     }
 
     #responseMes {
@@ -327,8 +338,8 @@
         font-weight: bold;
     }
     #sharing_roles {
-        width: 75%;
-        margin-left: 7%;
+        width: 78%;
+        margin-left: 5%;
     }
 
     .visible_sharing_roles {
