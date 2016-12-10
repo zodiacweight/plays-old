@@ -296,7 +296,6 @@
         width: 49.5%;
         float: left;
         font-size: 20px;
-        border: 1px solid;
         margin-top: 4%;
     }
 
@@ -308,36 +307,6 @@
         margin-top: 4%;
         padding: 5px;
     }
-    /*#toChooseRoles h4 {
-        font-size: 24px;
-        margin-left: 5%;
-    }
-
-    #toChooseRoles p {
-        font-size: 22px;
-        margin-left: 7%;
-    }
-
-    #toChooseRoles p input {
-        height: 18px;
-    }
-    form {
-        width: 100%;
-        overflow: auto;
-    }
-    form > div {
-        float: left;
-        font-size: 20px;
-        margin-bottom: 4%;
-    }
-    /*#formDiv1 {
-        width: 25%;
-        margin-left: 3%;
-    }
-    #formDiv2 {
-        width:65%;
-        margin-left: 2%;
-    } */
     form > input {
         width: 25px;
         margin-left: 1%;

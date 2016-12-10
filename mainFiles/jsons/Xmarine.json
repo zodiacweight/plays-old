@@ -8,7 +8,7 @@
           "<img src=\"images/on_the_beginning/^27E8DA6FF979455E9D94984FEDAC2E2981B88ACBE2EE11BFCE^pimgpsh_fullsize_distr.jpg\">",
           "<img src=\"images/on_the_beginning/^033ACAC36ACF8BFF5C4B8930EA783B39FF8AD3ED5A7E253331^pimgpsh_fullsize_distr.jpg\">"
         ],
-        "preview": "These plays are about a scientist, possessed with his science who was reborn in his life to do what hehad not been successfull to do in his previous life, and his scientific deal is reseaching spec-scavengers. One of such creatures is somebody like a little cruise flying mermaid and lives in the aquarium of one of Christian'sacquaintances. Later Christian knows that they are created by Woman-devil with a defined purpose. He is enough successfull to know very much what he would like to know, but he finds out something not enough pleasant for himself."
+        "preview": "The plays are about a magic hero who was somebody like a little cruise mermaid and later becomes a mysterious magic superhero. Also there are 3 girls who was percieved as human being, but later it turned out that they are girls-monsters and a special scientist not like all the other scientists."
     },
       "headerLogotip": "<img src=\"images/with_characters/headerLogotipExd.jpg\">",
       "About characters": [
@@ -107,7 +107,7 @@
            {"Cassandra": ["You are a mermaid? Where is your tail then?"]},
            {"Beatrix": ["I do not have a tail. Why do you think I must have a tail?"]},
            {"Cassandra": ["Every mermaid has a tail like one of a fish instead of human legs. Otherwise it is not a mermaid."]},
-           {"Beatrix": ["I am a hybrid creature: a human, an amphibious creature, and a winged creature. I just want to make friends with you, and in general, with all of you. I do not like your <span class=\"from_vocabulary\">flutter</span> . I want to tell you about myself and I want you to listen to me. I come from the swamp, but I decided to move into the ocean."]},
+           {"Beatrix": ["I am a hybrid creature: a human, an amphibious creature, and a winged creature. I just want to make friends with you, and in general, with all of you. I do not like your <span class=\"from_vocabulary\">flutter</span>. I want to tell you about myself and I want you to listen to me. I come from the swamp, but I decided to move into the ocean."]},
            {"Helen": ["Are you from the swamp!? Faugh! This is the table where we eat! Go away now!"]},
            {"Author's words": ["Beatriz jumps at Judy's lap. "]},
            {"Judy": ["Ah-ah-ah-ah-ah-ah-ah-ah! Go away from me!"]},
@@ -126,7 +126,7 @@
            {"Cassandra": ["Do you see how Beatrix is looking at you?"]},
            {"Helen": ["Yes, I see. "]},
            {"Cassandra": ["And I see that it is difficult for her to understand your words."]},
-           {"Helen": ["This will be not only mine, but also her problems. I will make for you, Beatriz, the list of rules that you will have to <span class=\"from_vocabulary\">abide</span> . But first you'll have to obey the rules concerning your own safety. You should keep in mind, that if you will break the rules, you will <span class=\"from_vocabulary\">solicit</span>  а huge trouble."]},
+           {"Helen": ["This will be not only mine, but also her problems. I will make for you, Beatriz, the list of rules that you will have to <span class=\"from_vocabulary\">abide</span>. But first you'll have to obey the rules concerning your own safety. You should keep in mind, that if you will break the rules, you will <span class=\"from_vocabulary\">solicit</span>  а huge trouble."]},
            {"Beatrix": ["But Christian's grandfather said that you will be pleased to <span class=\"from_vocabulary\">nurture</span>  me."]},
            {"Helen": ["Are you ready to listen my rules? To <span class=\"from_vocabulary\">abide the rules is important for your own safety. If you disregard the rules, you can <span class=\"from_vocabulary\">solicit</span>  not only punishment from me. You can die from someone's else hand."]},
            {"Beatrix": ["Helen, I did not expect you to <span class=\"from_vocabulary\">daunt</span>  me! I expected that I will have a good and beloved landlady (? Mistress?)."]},
@@ -3650,12 +3650,15 @@
            },
            {
              "Judy": [
-               "I don't have impression <span class=\"from_vocabulary\"> fertility </span>. I am a monster another breed unlike you two. Woman-devil can feel who is in front of her and our not natural human view is not a <span class=\"from_vocabulary\">hurdle</span> for her to know who we really are. Because I am not such monster as both of you are, I can not worry about Woman-devil's relationships with me as you can because the breed which I belong doesn't have many signs similiar to her signs. I read much about it. I will not <span class=\"from_vocabulary\"> abdicate</span> the unusual intriguing proposal of Beatrix. I think it will be  something just <span class=\"from_vocabulary\">pulsatile</span> to meet with those who created the extradecomposers! They are interesting creatures! So it is such <span class=\"from_vocabulary\">eagerness</span>! Beatrix has already send a letter to Woman-devil. In this letter she asked her such some questions which <span class=\"from_vocabulary\"> imply</span> the information which can help successfully to plan our meeting."
+               "I don't have impression <span class=\"from_vocabulary\"> fertility </span>. I am a monster another breed unlike you two. Woman-devil can feel who is in front of her and our not natural human view is not a <span class=\"from_vocabulary\">hurdle</span> for her to know who we really are. Because of I am not such monster as both of you are, I can not worry about Woman-devil's relationships with me as you can because the breed which I belong doesn't have many signs similiar to her signs. I read much about it. I will not <span class=\"from_vocabulary\"> abdicate</span> the unusual intriguing proposal of Beatrix. I think it will be  something just <span class=\"from_vocabulary\">pulsatile</span> to meet with those who created the extradecomposers! They are interesting creatures! So it is such <span class=\"from_vocabulary\">eagerness</span>! Beatrix has already send a letter to Woman-devil. In this letter she asked her such some questions which <span class=\"from_vocabulary\"> imply</span> the information which can help successfully to plan our meeting."
              ]
            },
            {
+             "Author's words": ["<b>Notice: </b><span class=\"from_vocabulary\">Intrinsically</span> Helen, Judy and Cassandra are monsters, but some time ago they were turned into people with one purpose. It will be explained <span class=\"from_vocabulary\">notably</span> later."]
+           },
+           {
              "Helen": [
-               "In fact, it is not so surprising that Judy is not afraid. You will be a great <span class=\"from_vocabulary\">connoiseur</span> possessing knowledges in the  extra-decomposers area, won't you?"
+               "It is a clever thought, really. In fact, it is not so surprising that Judy is not afraid. You will be a great <span class=\"from_vocabulary\">connoiseur</span> possessing knowledges in the  extra-decomposers area, won't you?"
              ]
            },
            {
@@ -5036,7 +5039,7 @@
            },
            {
              "Christian": [
-               "I can't say <span class=\"from_vocabulary\">\"carry out\"</span>. I don't know how long my <span class=\"from_vocabulary\">contemplation</span>  in this scientific area will be continuing. I can say that I am going to continue my <span class=\"from_vocabulary\">contemplation</span> . But I don't presume it will be finised soon."
+               "I can't say <span class=\"from_vocabulary\">\"carry out\"</span>. I don't know how long my <span class=\"from_vocabulary\">contemplation</span>  in this scientific area will be continuing. I can say that I am going to continue my <span class=\"from_vocabulary\">contemplation</span>. But I don't presume it will be finised soon."
              ]
            },
            {
@@ -5201,12 +5204,12 @@
            },
            {
              "Christian": [
-               "It was very <span class=\"from_vocabulary\">appealing</span>  theme for me in my previous life. As I have already told you and grandpa, I was not lucky to complete some <span class=\"from_vocabulary\">inquiries</span> . And I <span class=\"from_vocabulary\">profess</span>  to do that in this my life."
+               "It was very <span class=\"from_vocabulary\">appealing</span>  theme for me in my previous life. As I have already told you and grandpa, I was not lucky to complete some <span class=\"from_vocabulary\">inquiries</span>. And I <span class=\"from_vocabulary\">profess</span>  to do that in this my life."
              ]
            },
            {
              "Christian's grandma": [
-               "Yes, I remember how much you told us. I was <span class=\"from_vocabulary\">daunted</span> . It is not so airily as you, may be, think, Christian. I have already understood that you <span class=\"from_vocabulary\">purport</span>  something what you <span class=\"from_vocabulary\">purported</span>  in your previous life, but I can't understand something other."
+               "Yes, I remember how much you told us. I was <span class=\"from_vocabulary\">daunted</span>. It is not so airily as you, may be, think, Christian. I have already understood that you <span class=\"from_vocabulary\">purport</span>  something what you <span class=\"from_vocabulary\">purported</span>  in your previous life, but I can't understand something other."
              ]
            },
            {
@@ -5221,7 +5224,7 @@
            },
            {
              "Christian": [
-               "Grandma, it is not just my <span class=\"from_vocabulary\">whim</span> . It is my job and very serious job. Not only I engage it. There are many other scientists who also do it. We communicate between each-other regarding different questions about extra-decomposers. We have found out that the extradecomposers are not so dangerous as you presume."
+               "Grandma, it is not just my <span class=\"from_vocabulary\">whim</span>. It is my job and very serious job. Not only I engage it. There are many other scientists who also do it. We communicate between each-other regarding different questions about extra-decomposers. We have found out that the extradecomposers are not so dangerous as you presume."
              ]
            },
            {
@@ -5236,7 +5239,7 @@
            },
            {
              "Christian's grandma": [
-               "But this your <span class=\"from_vocabulary\">appalling</span>  engagement is not your <span class=\"from_vocabulary\">liability</span>  in front of god. It is <span class=\"from_vocabulary\">dubious</span>  in my <span class=\"from_vocabulary\">vantage point that it is very needful deal. It is a serious life <span class=\"from_vocabulary\">jeopardy</span> . Tell me, please, frankly. Do you really sensate <span class=\"from_vocabulary\">insurmountable</span> demand to mess about these strange nature secrets?"
+               "But this your <span class=\"from_vocabulary\">appalling</span>  engagement is not your <span class=\"from_vocabulary\">liability</span>  in front of god. It is <span class=\"from_vocabulary\">dubious</span>  in my <span class=\"from_vocabulary\">vantage point that it is very needful deal. It is a serious life <span class=\"from_vocabulary\">jeopardy</span>. Tell me, please, frankly. Do you really sensate <span class=\"from_vocabulary\">insurmountable</span> demand to mess about these strange nature secrets?"
              ]
            },
            {
@@ -5734,7 +5737,7 @@
             "sharing_roles": ["<b>For 2 players:</b>", "1. Ramon and somebody else", "2. Author and somebody else"],
             "header": "New company",
             "replics": [
-              {"Author's words": ["There are not one city in the world which has its superhero. Also it is the fact that not every city in the world has a superhero, but there are rumors that the Los Angeles city does. People in this city are very glad about this hypothesis, but it is only a hypothesis. Some people don't beleive in existance of any superhero not only in Los Angeles, but also in the whole world. At the same time not anybody of them thinks about people of the faithful category as about crazy and wacky people. At least it is <span class=\"from_vocabulary\">pertinent</span> to beleive in superheroes in Los Angeles, but not everybody beleives in them.", "Sometimes happened some very interesting situations in Los Angeles: people saw somebody like a superhero who helped them in hard situations. After that this information was reported in news, but other people, who might hear and watch via television these news, but did not see no one superhero in their real life. could beleive or not beleive that anything in the news could be a <span class=\"from_vocabulary\">sheer</span>  true. How they can know? Maybe the tv-program was made for public to get financial success thought television, but the news were not true.", "This is a storie about one optimistic human who met with the great superhero. Ramon was invited in a arrangement by his friends. They assigned a certain day, time and place for this meeting. At the assigned day Ramon played cards with one of his friends. Later his friends left him and went home to do his <span class=\"from_vocabulary\">undertakings</span> . Ramon was watching news and concert at the tv until the time when his alarm sounded. When the time had come Ramon switched off the tv, dressed, comped, left his living place, sat in his car and set off to event with his new friends."]},
+              {"Author's words": ["There are not one city in the world which has its superhero. Also it is the fact that not every city in the world has a superhero, but there are rumors that the Los Angeles city does. People in this city are very glad about this hypothesis, but it is only a hypothesis. Some people don't beleive in existance of any superhero not only in Los Angeles, but also in the whole world. At the same time not anybody of them thinks about people of the faithful category as about crazy and wacky people. At least it is <span class=\"from_vocabulary\">pertinent</span> to beleive in superheroes in Los Angeles, but not everybody beleives in them.", "Sometimes happened some very interesting situations in Los Angeles: people saw somebody like a superhero who helped them in hard situations. After that this information was reported in news, but other people, who might hear and watch via television these news, but did not see no one superhero in their real life. could beleive or not beleive that anything in the news could be a <span class=\"from_vocabulary\">sheer</span>  true. How they can know? Maybe the tv-program was made for public to get financial success thought television, but the news were not true.", "This is a storie about one optimistic human who met with the great superhero. Ramon was invited in a arrangement by his friends. They assigned a certain day, time and place for this meeting. At the assigned day Ramon played cards with one of his friends. Later his friends left him and went home to do his <span class=\"from_vocabulary\">undertakings</span>. Ramon was watching news and concert at the tv until the time when his alarm sounded. When the time had come Ramon switched off the tv, dressed, comped, left his living place, sat in his car and set off to event with his new friends."]},
               {"Carl" : ["Brother! You are here! I am glad to see you, my dear!"]},
               {"Ramon": ["Me too, to see you."]},
               {"Carl" : ["I would like to show you the whole house and we will stop in the main place where we are going to talk all together. Lets go."]},
