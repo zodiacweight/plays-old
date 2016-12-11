@@ -628,6 +628,7 @@ function changePart(PartNumber, index_of_part, chosenPlay, addedHTMLToContainPar
     for (var index=0; index < replics.length; index++) {
         var arrayElementObject = chosenPlay["Parts"][index_of_part]["replics"][index];
         var subjectName = Object.keys(arrayElementObject)[0], className;
+        counterAddReplics++;
         if (subjectName == "image") {
             addedHTMLToContainPart.content_of_play.innerHTML += arrayElementObject[subjectName];
         }
@@ -659,7 +660,6 @@ function changePart(PartNumber, index_of_part, chosenPlay, addedHTMLToContainPar
                                 presRoles.Array.push(nameInCheck);
                         }
                 }
-
             if (subjectName == "Author's words") {
                 className = 'authorwords';
             } else {
@@ -667,9 +667,8 @@ function changePart(PartNumber, index_of_part, chosenPlay, addedHTMLToContainPar
             }
             var replics = chosenPlay["Parts"][index_of_part]["replics"];
             innerContent = setContents(replics_of_choicedpart, arrayElementObject[subjectName], subjectName, className);
+            addDivsWithReplics(addedHTMLToContainPart.content_of_play, innerContent, counterAddReplics, replics);
         }
-        counterAddReplics++;
-        addDivsWithReplics(addedHTMLToContainPart.content_of_play, innerContent, counterAddReplics, replics);
     }
 }
 function defineNameInCheckbox (name) {
@@ -709,8 +708,8 @@ addDivsWithReplics = function (html, innerContent, counterAddReplics, replics) {
     html.innerHTML += "<div class='" + innerContent.class + "'> <h4>" + innerContent.h4 +
         "</h4><p>" + innerContent.contents[0] + "</p></div>";
     if(counterAddReplics==replics.length) {
-      var getting = html.getElementsByTagName("Div")[counterAddReplics-1];
-        getting.style.marginBottom="8%";
+      var getting = html.getElementsByTagName("Div"), len = getting.length, lastReplic = getting[len-1];
+        lastReplic.style.marginBottom="8%";
     }
     if (innerContent.contents.length>1) {
         counterAddParagraphsOfReplic=1;
@@ -721,4 +720,6 @@ addDivsWithReplics = function (html, innerContent, counterAddReplics, replics) {
             counterAddParagraphsOfReplic++;
         }
     }
+    console.log(counterAddReplics);
+    console.log(replics.length);
 };
