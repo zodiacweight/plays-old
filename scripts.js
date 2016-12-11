@@ -1,8 +1,9 @@
 /**
  * Created by User on 23.11.2016.
+ * Эта функция осуществляет получение данных из jsons и сохраняет их в поля key объекта window
  */
-function getData(key) {
-    var path = 'jsons/' + key + '.json';
+function getData(key, path) {
+    if (!path) path = 'jsons/' + key + '.json';
     //console.log('%cpath', 'backgroun-color: lightskyblue', path);
     // 1. Создаём новый объект XMLHttpRequest
     var xhr = new XMLHttpRequest();
@@ -18,8 +19,8 @@ function getData(key) {
         } else {
             var data = JSON.parse(xhr.responseText);
             //console.log('%cGot file contents!', 'background-color:lightgreen', data);
-            //return data;
             window[key] = data[key];
+            return data;
             //console.log(key); // определено
             //handleJson[key].handle(data);
             //buildHtmlInPrimary(key);
@@ -29,10 +30,44 @@ function getData(key) {
         console.log(event);
     };
 }
+/**
+ * @param file_dir      String
+ * @param template_name String
+ * @return promise
+ * Предположительно: достает шаблон, распарсивает и заполняет нужными данными вместо переменных.
+ */
+
+function getTemplate(file_dir, template_name) {
+    var defer = $.Deferred(); // установка статуса за дачи
+    // ... 
+    $.get('templates/' + file_dir + '/' + template_name + '.html', // путь к файлу
+        function (template_file) { // все содержимое файла по данному запросу в одну строку
+            // преобразует строку в html-элемент
+            var tmplHTML = $.parseHTML(template_file), // все содержимое тегов script в файле
+                tmplContents = $(tmplHTML).html();
+            /*console.log('getTemplate','background-color: lightskyblue',{
+                //template_file:template_file,
+                //tmplHTML:tmplHTML,
+                //tmplContents:tmplContents,
+                templateResult: _.template(tmplContents)({data: 'Anything we want to place'})
+            });*/
+            defer.resolve(tmplContents);
+        });
+    return defer.promise();
+}
+/**
+ * 
+ * @returns Array
+ * Эта функция создает массив fileContents из данных - каждый элемент - все, что есть в onTheBeginning 
+ * одного из 2-х json.
+ */
 function retrieveData(viewName, viewField, windowField) {
     if (!viewField) viewField = "file_names";
     if (!windowField) windowField = "onTheBeginning";
-    var titleOFPlay = config[viewName][viewField], fileContents = [];
+    var /** 
+        config = { viewInit: { file_names: ['Black_parody', 'Xmarine'] } }*/
+        titleOFPlay = config[viewName][viewField],  // 'Black_parody', 'Xmarine'
+        fileContents = [];
     for (var i = 0, j = titleOFPlay.length; i < j; i++) {
         // 1. Разрешаются ли цифры?
         fileContents.push(window[titleOFPlay[i]][windowField]);
@@ -44,34 +79,58 @@ function retrieveData(viewName, viewField, windowField) {
     // $("#myBody").html(); // ПЕРЕНЕСТИ!
     return fileContents;
 }
+/**
+ * В этой функции периодически выполняется проверка, что model[key] имеет значение, отличное от
+ * undefined.
+ * 
+ */
+function checkModelData(model, key){
+    var cnt=0,  intrvl = setInterval(
+        function () {
+            if(!key) key = 'play_object';
+            cnt++;
+            if (model[key]) {
+                clearInterval(intrvl);
+                cnt=0;
+                console.log('model['+key+']=>',model[key]);
+            }
+            if(cnt>50){
+                cnt=0;
+                clearInterval(intrvl);
+            }
+        }, 100);
+}
+// 
 var config = {
-    BuildHtmlPrimary: {
+    viewInit: {
         file_names: ['Black_parody', 'Xmarine']
     }
 };
-var BuildHtmlPrimary = Backbone.View.extend(
+
+
+var viewInit = Backbone.View.extend(
     {
         initialize: function () {
             this.render();
         },
         render: function () {
-            var dataPrimeTemplates = retrieveData('BuildHtmlPrimary'),
-                len = dataPrimeTemplates.length, blueDiv,
-                templateHTML = $("#primeTemplate").html(),
+            var dataprime_wrappers = retrieveData('viewInit'),
+                len = dataprime_wrappers.length, blueDiv,
+                templateHTML = $("#prime_wrapper").html(),
                 makeTemplate = _.template(templateHTML);
-            console.log('BuildHtmlPrimary', {
-                dataPrimeTemplates: dataPrimeTemplates,
-                primeTemplate:$("#primeTemplate"),
-                templateHTML:templateHTML,
+            console.log('viewInit', {
+                dataprime_wrappers: dataprime_wrappers,
+                prime_wrapper: $("#prime_wrapper"),
+                templateHTML: templateHTML,
                 makeTemplate: makeTemplate
             });
-            for (var countData=0; countData < len; countData++) {
+            for (var countData = 0; countData < len; countData++) {
                 // 1. определяется каждый из двух похожих шаблонов с данными:
-                var primeTemplate =makeTemplate(dataPrimeTemplates[countData]);
-                console.log('primeTemplate', primeTemplate);
-               // console.log($(".primeTemplate")[countData]); // undefined
+                var prime_wrapper = makeTemplate(dataprime_wrappers[countData]);
+                console.log('prime_wrapper', prime_wrapper);
+                // console.log($(".prime_wrapper")[countData]); // undefined
                 //2. В div с id="divInPrimary" добавляется этот шаблон.
-                //primeTemplate.appendTo($("#divInPrimary"));
+                //prime_wrapper.appendTo($("#divInPrimary"));
             }
             /* var primary = $("#blueDiv");
             // 3. Шаблон с id="blueDiv" вставляется в div-обертку (wrapper)
@@ -84,15 +143,25 @@ var BuildHtmlPrimary = Backbone.View.extend(
     }
 );
 
-var Plays = Backbone.Model.extend(
+var playsModel = Backbone.Model.extend(
     {
         initialize: function (key) { // Xmarine, black_parody
             // получить файл
             // проверить сохранённый скачанный файл в window[key]
+            this.render(key);
+        },
+        render: function (key) {
+            // getData - универсальный глобальный метод, у getFileContents область видимости в playsModel
             getData(key);
             // console.log(window[key]);
             this.getFileContents(key);  // setInterval
         },
+        /**
+         * Эта функция каждые 100 милисекунд проверяет, имеет ли window[key] значение, отличное от
+         * undefined. Если есть, то текущий экземпляр playsModel получает поле play_object с таким
+         * значением, как window[key] (определенным объектом), и проверка прекращается.
+         * Если cnt = 50, то проверка так же прерывается.
+         */
         getFileContents: function (key) {
             // setTimeout start
             var _this = this, cnt = 0;
@@ -125,21 +194,39 @@ var Plays = Backbone.Model.extend(
 
 var AppRouter = Backbone.Router.extend({
     routes: {
-        "": "buildPrimary",
+        "": "initView",
         "enter_to_secondary": "buildSecondary",
         "enter_to_plays": "enterToPlays"
     },
-    buildPrimary: function () {
+    initView: function () {
         console.log("Функция вызвана!");
-        var xmarine = new Plays("Xmarine");
-        var black_parody = new Plays("Black_parody");
-        var val = setInterval(
-            function () {
-                if ("Xmarine" in window) {
-                    clearInterval(val);
-                    var primary = new BuildHtmlPrimary();
-                }
-            }, 300);
+        // сохраняет полученный JSON-файл в window и 
+        // размещает ссылку на него в модели, т.о.
+        // мы можем обращаться к ней за данными 
+        var xmarineModel = new playsModel("Xmarine"),
+            black_parodyModel = new playsModel("Black_parody"),
+            resultingHTML;
+        getTemplate('primary', 'prime_wrapper').then(function (tmpl) {
+                // getPromise().then(function('contents'){ // run code below  }, function(error){ console.log('Error: ', error) })
+                resultingHTML = _.template(tmpl)({data:'<div>First block</div><div>Second block</div>'});
+                console.log('Got data',{tmpl:tmpl, resultingHTML: resultingHTML});
+                // получили HTML шаблона
+                console.log('tmplatize!', {
+                    tmpl: tmpl, xmarineModel:
+                    xmarineModel,
+                    black_parodyModel: black_parodyModel,
+                    resultingHTML:resultingHTML
+                });
+                // извлекаем данные модели
+                checkModelData(xmarineModel);
+                checkModelData(black_parodyModel);
+                var $dynamicContent = $('#dynamicContent');
+                $dynamicContent.append(resultingHTML)
+                    .find('>div').eq(0).slideDown(5000); //
+                //console.log('inner div', $dynamicContent.find('>div').eq(0));
+            }, function () {
+
+        });
         //  // Здесь тоже должен быть доступен ключ
     },
     buildSecondary: function () {
