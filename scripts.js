@@ -37,6 +37,10 @@ function getData(key, path) {
  * Предположительно: достает шаблон, распарсивает и заполняет нужными данными вместо переменных.
  */
 
+function getPromise() {
+    getTemplate("primary", "prime_input.html");
+}
+
 function getTemplate(file_dir, template_name) {
     var defer = $.Deferred(); // установка статуса за дачи
     // ... 
@@ -206,8 +210,22 @@ var AppRouter = Backbone.Router.extend({
         var xmarineModel = new playsModel("Xmarine"),
             black_parodyModel = new playsModel("Black_parody"),
             resultingHTML;
-        getTemplate('primary', 'prime_wrapper').then(function (tmpl) {
-                // getPromise().then(function('contents'){ // run code below  }, function(error){ console.log('Error: ', error) })
+                getTemplate('primary', 'prime_wrapper').then(function (tmpl) {
+                    getPromise().then(
+                        function(){ /* run code below */
+                        },
+                        function(error){
+                            console.log('Error: ', error)
+                        }
+                );
+                /*getPromise().then(
+                    function('contents'){
+                    //run code below
+                    },
+                    function(error){
+                        console.log('Error: ', error)
+                    }
+                ); */
                 resultingHTML = _.template(tmpl)({data:'<div>First block</div><div>Second block</div>'});
                 console.log('Got data',{tmpl:tmpl, resultingHTML: resultingHTML});
                 // получили HTML шаблона
