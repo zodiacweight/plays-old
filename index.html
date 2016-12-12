@@ -4,66 +4,20 @@
     <meta charset=UTF-8>
     <title>Title</title>
     <link rel="stylesheet" href="node_modules/bootstrap-grid-only/bootstrap.css"/>
-    <!-- <link rel="stylesheet" href="tables_of_styles/styletable.css"> -->
+    <link rel="stylesheet" href="tables_of_styles/styletable.css">
     <link rel="stylesheet" href="tables_of_styles/switchedStyles.css">
     <script src="node_modules/underscore/underscore-min.js"></script>
     <script src="node_modules/jquery/dist/jquery.min.js"></script>
     <script src="node_modules/backbone/backbone-min.js"></script>
 </head>
 <body>
-   
-    <!-- Для Secondary: -->
-    <script type="text/template" id="secondary">
-        <div>
-            <div id="leftInSecond"></div>
-            <div id="middleInSecond">
-                <h2 id="header">English plays</h2>
-                <div id="bigImage"></div>
-            </div>
-            <div id="rightInSecond">
-                <div id="preview">
-                    <p id="main_in_preview"></p>
-                </div>
-                <div id="enterSection">
-                    
-                    <img src="images/on_the_beginning/closed_gate.jpg" id="gate">
-                </div>
-            </div>
-        </div>
-    </script>
-    <script type="text/template" id="entered">
-        <div>
-            <!-- -->
-            <div id="left">
-                <button>Change plays on<span></span></button>
-                <div id="listOfParts"></div>
-            </div>
-            <div id="right">
-                <div id="headerLogotip"></div>
-                <div id="mainArea"></div>
-            </div>
-        </div>
-    </script>
-    <script type="text/template" id="about_characters">
-        <div>
-            <h1>About Characters</h1>
-            <div id="paragraphs_about_characters"></div> <!-- Для каждых пьес может быть по разному количеству абзацсев. Правилен ли подход, при котором
-            в шаблон ставятся теги div, в которых может быть произвольное количество параграфов? -->
-        </div>
-    </script>
-    <script type="text/template" id="part_loaded">
-        <div id="choose_roles">
-            <h4>There are the following characters in this part:</h4>
-            
-            <input id='paint_by_term' type='button' value="paint by term">
-        </div>
-        <div id="sharing_roles"></div>
-        <div id="top_of_play">
-            
-        </div>
-        <div id="content_of_play"></div>
-    </script>
-    <script src="scripts.js"></script>
-    <script src="templates/test.js"></script>
+<div id="dynamicContent">
+    <!--<div class="hidden">
+        <p>Для того, чтобы открыть пьесы, следует нажать на вход в одной из ячеек:</p>
+        Somer HTML
+    </div>-->
+
+</div>
+<script src="scripts.js"></script>
 </body>
 </html>
