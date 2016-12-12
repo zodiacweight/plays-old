@@ -30,6 +30,10 @@ function getData(key, path) {
         console.log(event);
     };
 }
+
+function getPromise() {
+    getTemplate('primary', 'prime_input');
+}
 /**
  * @param file_dir      String
  * @param template_name String
@@ -45,12 +49,12 @@ function getTemplate(file_dir, template_name) {
             // преобразует строку в html-элемент
             var tmplHTML = $.parseHTML(template_file), // все содержимое тегов script в файле
                 tmplContents = $(tmplHTML).html();
-            /*console.log('getTemplate','background-color: lightskyblue',{
-                //template_file:template_file,
-                //tmplHTML:tmplHTML,
-                //tmplContents:tmplContents,
+            /**/console.log('getTemplate','background-color: lightskyblue',{
+                template_file:template_file,
+                tmplHTML:tmplHTML,
+                tmplContents:tmplContents,
                 templateResult: _.template(tmplContents)({data: 'Anything we want to place'})
-            });*/
+            });
             defer.resolve(tmplContents);
         });
     return defer.promise();
@@ -208,7 +212,31 @@ var AppRouter = Backbone.Router.extend({
             resultingHTML;
         getTemplate('primary', 'prime_wrapper').then(function (tmpl) {
                 // getPromise().then(function('contents'){ // run code below  }, function(error){ console.log('Error: ', error) })
-                resultingHTML = _.template(tmpl)({data:'<div>First block</div><div>Second block</div>'});
+                getPromise().then(
+                    function(resolve){ //
+                        resultingHTML = _.template(tmpl)({data:'<div>First block</div><div>Second block</div>'});
+                        console.log('Got data',{tmpl:tmpl, resultingHTML: resultingHTML});
+                        // получили HTML шаблона
+                        console.log('tmplatize!', {
+                            tmpl: tmpl, xmarineModel:
+                            xmarineModel,
+                            black_parodyModel: black_parodyModel,
+                            resultingHTML:resultingHTML
+                        });
+                        // извлекаем данные модели
+                        checkModelData(xmarineModel);
+                        checkModelData(black_parodyModel);
+                        var $dynamicContent = $('#dynamicContent');
+                        $dynamicContent.append(resultingHTML)
+                            .find('>div').eq(0).slideDown(5000);
+                    },
+                    function(error){
+                        console.log('Error: ', error)
+                    }
+                );
+            /**
+            * Перенесенный код:
+            resultingHTML = _.template(tmpl)({data:'<div>First block</div><div>Second block</div>'});
                 console.log('Got data',{tmpl:tmpl, resultingHTML: resultingHTML});
                 // получили HTML шаблона
                 console.log('tmplatize!', {
@@ -222,7 +250,7 @@ var AppRouter = Backbone.Router.extend({
                 checkModelData(black_parodyModel);
                 var $dynamicContent = $('#dynamicContent');
                 $dynamicContent.append(resultingHTML)
-                    .find('>div').eq(0).slideDown(5000); //
+                    .find('>div').eq(0).slideDown(5000); */
                 //console.log('inner div', $dynamicContent.find('>div').eq(0));
             }, function () {
 
