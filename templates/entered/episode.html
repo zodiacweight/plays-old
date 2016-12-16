@@ -1,14 +1,15 @@
 <script type="text/template" id="episode">
         <div>
              <div id="sharing_roles">
-                // текст из объекта json
+                 <p>Здесь можно получить информацию о рациональных способах разделения ролей между игроками.</p>
+                 <input type="button" value="показать информацию">
+                 <p><%=allocation_roles%></p>
              </div>
              <div id="chooseReplics">
                   <a href="#">Paint by roles</a>
                   <a href="#">Paint by term</a> 
-                  <div id="divForForm">
-                    // загружается одна или другая форма
-                  </div>  
+                  <div id="divForForm"></div>
+                  <p id="resultMessage"></p>
              </div>
              <div id="top_of_part">
                     <div>

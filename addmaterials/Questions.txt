@@ -1,4 +1,7 @@
-1. откуда template_file?
-2. Что значит resolve?
-3. Что значит return defer.promise()?
-4. Разница между getData и getFileContents.
+1. Сначала идет prime_wrapper, потом prime_block. Можно в такой последовательности:
+	Получить шаблон prime_wrapper;
+	Получить и заполнить данными prime_block;
+	Вставить prime_block в prime_wrapper.
+?
+2. Можно ли обойтись без if (проверки удачности) в getTemplate?
+3. Насчет переменной tmpl2.
