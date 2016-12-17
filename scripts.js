@@ -162,20 +162,22 @@ var AppRouter = Backbone.Router.extend({
     initView: function () {
         var xmarineModel = new playsModel("Xmarine"),
             black_parodyModel = new playsModel("Black_parody"),
-            resultingHTML;
-            $.when( getTemplate("templates/primary/prime_block.html"), 
-                    getTemplate("templates//primary/prime_wrapper.html")
+            resultingHTML,
+            file_path = 'templates/primary/';
+            $.when( getTemplate(file_path+"prime_block.html"), 
+                    getTemplate(file_path+"prime_wrapper.html")
             ).done(function(prime_block, prime_wrapper){
                 // Код для заполнения шаблонов данными
-                for (var i=0; i<config.viewInit.file_names.length; i++) {
+                var beginData, ready_prime_block;
+                for (var i=0, j=config.viewInit.file_names.length; i<j; i++) {
                     // В цикле вызывается retrieveData, передается i, из этой функции берется то,
                     // что функция возвращает: onTheBeginning, один из двух.
-                      var beginData = retrieveData("viewInit", i);
-                    //console.log(beginData);
-                      prime_block = _.template(prime_block)(beginData);  
-                      console.log(prime_block);
-                }
-               
+                      beginData = retrieveData("viewInit", i);
+                      console.log(beginData); // Xmarine и Black_parody
+                      ready_prime_block = _.template(prime_block)(beginData);
+                      //temp[i] = ready_prime_block;
+                      console.log(ready_prime_block); 
+                }                 
             });
 
         /*getTemplate('primary', 'prime_block').then(function (prime_block_raw) {
