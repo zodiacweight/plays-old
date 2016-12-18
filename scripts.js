@@ -18,7 +18,6 @@ function getData(key, path) {
         } else {
             var data = JSON.parse(xhr.responseText);
             window[key] = data[key]; // определены оба объекта
-            console.log(window[key]);
             return data;
         }
     };
@@ -40,13 +39,8 @@ function getTemplate(fileWay) {
         // преобразует строку в html-элемент
         var tmplHTML = $.parseHTML(template_file), // все содержимое тегов script в файле
             tmplContents = $(tmplHTML).html();
-        //console.groupCollapsed('Got template');
-        //console.log({ template_file: template_file,
-        //  tmplHTML: tmplHTML, tmplContents: tmplContents });
-        //console.groupEnd();
         defer.resolve(tmplContents);
     });
-    //console.log(defer.promise());    
     return defer.promise();
 }
 /**
@@ -56,57 +50,11 @@ function getTemplate(fileWay) {
  * одного из 2-х json.
  */
 
-/**
- * В этой функции периодически выполняется проверка, что model[key] имеет значение, отличное от
- * undefined.
- *
- */
-function checkModelData(model, key) {
-    var cnt = 0, intrvl = setInterval(
-        function () {
-            if (!key) key = 'play_object';
-            cnt++;
-            if (model[key]) {
-                clearInterval(intrvl);
-                cnt = 0;
-            }
-            if (cnt > 50) {
-                cnt = 0;
-                clearInterval(intrvl);
-            }
-        }, 100);
-}
 var config = {
     viewInit: {
         file_names: ['Black_parody', 'Xmarine']
     }
 };
-
-
-/*var viewInit = Backbone.View.extend(
-    {
-        initialize: function () {
-            this.render();
-        },
-        render: function () {
-            var dataprime_wrappers = retrieveData('viewInit'),
-                len = dataprime_wrappers.length, blueDiv,
-                templateHTML = $("#prime_wrapper").html(),
-                makeTemplate = _.template(templateHTML);
-            console.log('viewInit', {
-                dataprime_wrappers: dataprime_wrappers,
-                prime_wrapper: $("#prime_wrapper"),
-                templateHTML: templateHTML,
-                makeTemplate: makeTemplate
-            });
-            for (var countData = 0; countData < len; countData++) {
-                var prime_wrapper = makeTemplate(dataprime_wrappers[countData]);
-                console.log('prime_wrapper', prime_wrapper);
-                //prime_wrapper.appendTo($("#divInPrimary"));
-            }
-        }
-    }
-); */
 
 var playsModel = Backbone.Model.extend(
     {
@@ -125,14 +73,15 @@ var playsModel = Backbone.Model.extend(
          */
         getFileContents: function (key) {
             // setTimeout start
-            var _this = this, cnt = 0;
+             var defer = $.Deferred(), _this = this, cnt = 0;
             // вызывается многократно
             var sttm = setInterval(function () {
                 ++cnt;
                 if (window[key]) {
                     _this.play_object = window[key];
+                    //console.log(_this.play_object);
                     clearInterval(sttm);
-                    console.log(_this);
+
                 }
                 if (cnt >= 50) {
                     console.warn('Cannot get file');
@@ -151,16 +100,16 @@ var AppRouter = Backbone.Router.extend({
         "enter_to_plays": "enterToPlays"
     },
     initView: function () {
-        var xmarineModel = new playsModel("Xmarine"),
-            black_parodyModel = new playsModel("Black_parody"),
+        var xmarineModel = new playsModel("Xmarine"), // getFileContents runs asynchronously
+            black_parodyModel = new playsModel("Black_parody"),  // getFileContents runs asynchronously
             resultingHTML,
             file_path = 'templates/primary/';
+        console.log(window["Xmarine"]);
+        console.log(window["Black_parody"]); 
+        // getFileContents start here
         $.when(getTemplate(file_path + "prime_block.html"),
             getTemplate(file_path + "prime_wrapper.html")
         ).done(function (prime_block, prime_wrapper) {
-            // 
-            console.log(window["Xmarine"]); // Здесь объекты должны быть определены.
-            console.log(window["Black_parody"]); // Пока что все определяется великолепно.
             var beginData, ready_prime_block, ready_prime_blocks = [];
             /*for (var i = 0, j = config.viewInit.file_names.length; i < j; i++) {
                 // В цикле вызывается retrieveData, передается i, из этой функции берется то,
