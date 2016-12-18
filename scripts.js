@@ -17,7 +17,8 @@ function getData(key, path) {
             // обработать ошибку
         } else {
             var data = JSON.parse(xhr.responseText);
-            window[key] = data[key];
+            window[key] = data[key]; // определены оба объекта
+            console.log(window[key]);
             return data;
         }
     };
@@ -36,15 +37,15 @@ function getTemplate(fileWay) {
     var defer = $.Deferred();
     // ... 
     $.get(fileWay, function (template_file) { // все содержимое файла по данному запросу в одну строку
-            // преобразует строку в html-элемент
-            var tmplHTML = $.parseHTML(template_file), // все содержимое тегов script в файле
-                tmplContents = $(tmplHTML).html();
-            //console.groupCollapsed('Got template');
-            //console.log({ template_file: template_file,
-                          //  tmplHTML: tmplHTML, tmplContents: tmplContents });
-            //console.groupEnd();
-            defer.resolve(tmplContents);
-        });
+        // преобразует строку в html-элемент
+        var tmplHTML = $.parseHTML(template_file), // все содержимое тегов script в файле
+            tmplContents = $(tmplHTML).html();
+        //console.groupCollapsed('Got template');
+        //console.log({ template_file: template_file,
+        //  tmplHTML: tmplHTML, tmplContents: tmplContents });
+        //console.groupEnd();
+        defer.resolve(tmplContents);
+    });
     //console.log(defer.promise());    
     return defer.promise();
 }
@@ -54,18 +55,7 @@ function getTemplate(fileWay) {
  * Эта функция создает массив fileContents из данных - каждый элемент - все, что есть в onTheBeginning
  * одного из 2-х json.
  */
-function retrieveData(viewName, i, viewField, windowField) {
-    if (!viewField) viewField = "file_names";
-    if (!windowField) windowField = "onTheBeginning";
-        var titleOFPlay = config[viewName][viewField];  // 'Black_parody', 'Xmarine'
-        console.log("Black_parody" in window);
-        console.log("i: ", i, "titleOFPlay[i]: ", titleOFPlay[i]);
-        var beginData = window[titleOFPlay[i]][windowField];
-    /*for (var i = 0, j = titleOFPlay.length; i < j; i++) {
-        fileContents.push(window[titleOFPlay[i]][windowField]);
-    }*/
-    return beginData; 
-}
+
 /**
  * В этой функции периодически выполняется проверка, что model[key] имеет значение, отличное от
  * undefined.
@@ -142,6 +132,7 @@ var playsModel = Backbone.Model.extend(
                 if (window[key]) {
                     _this.play_object = window[key];
                     clearInterval(sttm);
+                    console.log(_this);
                 }
                 if (cnt >= 50) {
                     console.warn('Cannot get file');
@@ -164,21 +155,34 @@ var AppRouter = Backbone.Router.extend({
             black_parodyModel = new playsModel("Black_parody"),
             resultingHTML,
             file_path = 'templates/primary/';
-            $.when( getTemplate(file_path+"prime_block.html"), 
-                    getTemplate(file_path+"prime_wrapper.html")
-            ).done(function(prime_block, prime_wrapper){
-                // Код для заполнения шаблонов данными
-                var beginData, ready_prime_block;
-                for (var i=0, j=config.viewInit.file_names.length; i<j; i++) {
-                    // В цикле вызывается retrieveData, передается i, из этой функции берется то,
-                    // что функция возвращает: onTheBeginning, один из двух.
-                      beginData = retrieveData("viewInit", i);
-                      console.log(beginData); // Xmarine и Black_parody
-                      ready_prime_block = _.template(prime_block)(beginData);
-                      //temp[i] = ready_prime_block;
-                      console.log(ready_prime_block); 
-                }                 
-            });
+        $.when(getTemplate(file_path + "prime_block.html"),
+            getTemplate(file_path + "prime_wrapper.html")
+        ).done(function (prime_block, prime_wrapper) {
+            // 
+            console.log(window["Xmarine"]); // Здесь объекты должны быть определены.
+            console.log(window["Black_parody"]); // Пока что все определяется великолепно.
+            var beginData, ready_prime_block, ready_prime_blocks = [];
+            /*for (var i = 0, j = config.viewInit.file_names.length; i < j; i++) {
+                // В цикле вызывается retrieveData, передается i, из этой функции берется то,
+                // что функция возвращает: onTheBeginning, один из двух.
+                beginData = retrieveData("viewInit", i);
+                if (!viewField) viewField = "file_names"; 
+                
+                // if (!windowField) windowField = "onTheBeginning";
+                // var titleOFPlay = config[viewName][viewField];  // 'Black_parody', 'Xmarine'
+                // console.log("Black_parody" in window); // true
+                // console.log("Xmarine" in window); // false
+                // // console.log("i: ", i, "titleOFPlay[i]: ", titleOFPlay[i]);
+                // var beginData = window[titleOFPlay[i]][windowField];
+                
+                //console.log(beginData); // Xmarine и Black_parody
+                ready_prime_block = _.template(prime_block)(beginData);
+                ready_prime_blocks.push(ready_prime_block);
+                //temp[i] = ready_prime_block;
+                //console.log(ready_prime_block); 
+            }
+            var ready_prime_wrapper = _.template(prime_wrapper)({ "prime_blocks": ready_prime_blocks }); */
+        });
 
         /*getTemplate('primary', 'prime_block').then(function (prime_block_raw) {
             console.groupCollapsed('getTemplate');
