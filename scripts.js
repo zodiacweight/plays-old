@@ -43,12 +43,48 @@ function getTemplate(fileWay) {
     });
     return defer.promise();
 }
-/**
- *
- * @returns Array
- * Эта функция создает массив fileContents из данных - каждый элемент - все, что есть в onTheBeginning
- * одного из 2-х json.
- */
+
+function getFileContents (key) {
+    // setTimeout start
+    var defer = $.Deferred(),
+        cnt = 0;
+    // вызывается многократно
+    var sttm = setInterval(function () {
+        ++cnt;
+        if (window[key]) {
+            // this передан через .bind
+            console.log('this', this);
+            //_this.play_object = window[key];
+            this.play_object = window[key]; // (xmarineModel | black_parodyModel).play_object
+            //console.log(_this.play_object);
+            //defer.resolve(_this.play_object);
+            defer.resolve(this.play_object);
+            clearInterval(sttm);
+        }
+        if (cnt >= 50) {
+            console.warn('Cannot get file');
+            defer.reject("The content is not here yet.");
+            clearInterval(sttm);
+        }
+    }.bind(this), 100);
+    return defer.promise();
+}
+
+function makeReadyTemplates (xmarineModel, black_parodyModel) {
+    var prime_block1, prime_block2,
+        searchData = setInterval(
+        function() {
+            prime_block1 = xmarineModel.defaults.tmpl.prime_block;
+            prime_block2 = black_parodyModel.defaults.tmpl.prime_block;
+            if((prime_block1!=="")&&(prime_block2!=="")) {
+                console.log(prime_block1, ", ", prime_block2);
+                clearInterval(searchData);
+            }
+        },
+        50
+    );
+
+}
 
 var config = {
     viewInit: {
@@ -58,37 +94,67 @@ var config = {
 
 var playsModel = Backbone.Model.extend(
     {
+        defaults: {
+            tmpl: {
+                "prime_block": "",
+                "prime_wrapper": ""
+            } //<model_instance>.get(tmpl[key])
+        },
         initialize: function (key) {
-            this.render(key);
+            this.getTemplatesContents(key);
         },
-        render: function (key) {
+        getTemplatesContents: function (key) {
+            var _this = this;
+            // Получает данные из json (асинхронно) и сохраняет в window[key]
             getData(key);
-            this.getFileContents(key);
-        },
+            // Проверяет, сохранены ли данные в window[key] и возвращает их
+            getFileContents(key).then(
+                function () {
+                    var file_path = "templates/primary/", prime_data = [], beginData, ready_prime_block;
+                    $.when( getTemplate(file_path + "prime_block.html"),
+                            getTemplate(file_path + "prime_wrapper.html")
+                        ).done(function (prime_block, prime_wrapper) {
+                            _this.defaults.tmpl.prime_block = prime_block;
+                            _this.defaults.tmpl.prime_wrapper = prime_wrapper;
+                                //beginData = playsObject["onTheBeginning"];
+                                //ready_prime_block = _.template(prime_block)(beginData);
+                                //console.log(ready_prime_block);
+                        // Заполнить prime_block, далее - вставить prime_block в prime_wrapper
+                            /*  var beginData, ready_prime_block, ready_prime_blocks = [];
+                            for (var i = 0, j = config.viewInit.file_names.length; i < j; i++) {
+                                // В цикле вызывается retrieveData, передается i, из этой функции берется то,
+                                // что функция возвращает: onTheBeginning, один из двух.
+                                beginData = retrieveData("viewInit", i);
+                                if (!viewField) viewField = "file_names"; 
+                                
+                                // if (!windowField) windowField = "onTheBeginning";
+                                // var titleOFPlay = config[viewName][viewField];  // 'Black_parody', 'Xmarine'
+                                // console.log("Black_parody" in window); // true
+                                // console.log("Xmarine" in window); // false
+                                // // console.log("i: ", i, "titleOFPlay[i]: ", titleOFPlay[i]);
+                                // var beginData = window[titleOFPlay[i]][windowField];
+                                
+                                //console.log(beginData); // Xmarine и Black_parody
+                                ready_prime_block = _.template(prime_block)(beginData);
+                                ready_prime_blocks.push(ready_prime_block);
+                                //temp[i] = ready_prime_block;
+                                //console.log(ready_prime_block); 
+                            }
+                            var ready_prime_wrapper = _.template(prime_wrapper)({ "prime_blocks": ready_prime_blocks }); */
+                        });
+                },
+                function (mes) {
+                    console.log(mes);
+                }
+            );
+        }
         /**
          * Эта функция каждые 100 милисекунд проверяет, имеет ли window[key] значение, отличное от
          * undefined. Если есть, то текущий экземпляр playsModel получает поле play_object с таким
          * значением, как window[key] (определенным объектом), и проверка прекращается.
          * Если cnt = 50, то проверка так же прерывается.
          */
-        getFileContents: function (key) {
-            // setTimeout start
-             var defer = $.Deferred(), _this = this, cnt = 0;
-            // вызывается многократно
-            var sttm = setInterval(function () {
-                ++cnt;
-                if (window[key]) {
-                    _this.play_object = window[key];
-                    //console.log(_this.play_object);
-                    clearInterval(sttm);
 
-                }
-                if (cnt >= 50) {
-                    console.warn('Cannot get file');
-                    clearInterval(sttm);
-                }
-            }, 100);
-        }
     }
 );
 
@@ -104,51 +170,9 @@ var AppRouter = Backbone.Router.extend({
             black_parodyModel = new playsModel("Black_parody"),  // getFileContents runs asynchronously
             resultingHTML,
             file_path = 'templates/primary/';
-        console.log(window["Xmarine"]);
-        console.log(window["Black_parody"]); 
-        // getFileContents start here
-        $.when(getTemplate(file_path + "prime_block.html"),
-            getTemplate(file_path + "prime_wrapper.html")
-        ).done(function (prime_block, prime_wrapper) {
-            var beginData, ready_prime_block, ready_prime_blocks = [];
-            /*for (var i = 0, j = config.viewInit.file_names.length; i < j; i++) {
-                // В цикле вызывается retrieveData, передается i, из этой функции берется то,
-                // что функция возвращает: onTheBeginning, один из двух.
-                beginData = retrieveData("viewInit", i);
-                if (!viewField) viewField = "file_names"; 
-                
-                // if (!windowField) windowField = "onTheBeginning";
-                // var titleOFPlay = config[viewName][viewField];  // 'Black_parody', 'Xmarine'
-                // console.log("Black_parody" in window); // true
-                // console.log("Xmarine" in window); // false
-                // // console.log("i: ", i, "titleOFPlay[i]: ", titleOFPlay[i]);
-                // var beginData = window[titleOFPlay[i]][windowField];
-                
-                //console.log(beginData); // Xmarine и Black_parody
-                ready_prime_block = _.template(prime_block)(beginData);
-                ready_prime_blocks.push(ready_prime_block);
-                //temp[i] = ready_prime_block;
-                //console.log(ready_prime_block); 
-            }
-            var ready_prime_wrapper = _.template(prime_wrapper)({ "prime_blocks": ready_prime_blocks }); */
-        });
+            makeReadyTemplates(xmarineModel, black_parodyModel);
+            // Получить оба ready_prime_block через каждый из экземпляров, сложить их в массив и внести в prime_wrapper.
 
-        /*getTemplate('primary', 'prime_block').then(function (prime_block_raw) {
-            console.groupCollapsed('getTemplate');
-                console.log('%cthen prime_block', 'color:rebeccapurple', prime_block_raw);
-            console.groupEnd();
-            // получили HTML "сырого" шаблона
-            return '<div>First block</div><div>Second block</div>';  // Возвращение здесь и getTemplate.
-            }, function () {
-
-        }); 
-        //console.log('Look here, it says: ', data);
-        getTemplate('primary', 'prime_wrapper').then(function (prime_wrapper_raw) {
-            console.groupCollapsed('getTemplate');
-            console.log('%cthen prime_wrapper', 'color:orange', prime_wrapper_raw);
-            console.groupEnd();
-            return '<div>Third block</div><div>Fourth block</div>';
-        }); */
     },
     buildSecondary: function () {
 
