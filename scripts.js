@@ -165,7 +165,6 @@ var AppRouter = Backbone.Router.extend({
         $.when(getTemplate(file_path + "prime_block.html"),
             getTemplate(file_path + "prime_wrapper.html")
         ).done(function (prime_block, prime_wrapper) {
-
             var xmarineModel = new playsModel(), // checkJsonData runs asynchronously
                 black_parodyModel = new playsModel(),  // checkJsonData runs asynchronously
                 resultingHTML;
@@ -179,6 +178,20 @@ var AppRouter = Backbone.Router.extend({
                 console.groupCollapsed('XmarineTmpl,  Black_parodyTmpl');
                 console.log({XmarineTmpl:XmarineTmpl, Black_parodyTmpl:Black_parodyTmpl});
                 console.groupEnd();
+                var ready_prime_blocks = {ready_prime_blocks: [XmarineTmpl, Black_parodyTmpl]},
+                    ready_prime_wrapper = _.template(prime_wrapper)(ready_prime_blocks),
+                    $dynamicContent = $("#dynamicContent");
+                // Вложить prime_wrapper в область динамически генерируемого контента
+                $dynamicContent.html(ready_prime_wrapper);
+                // увеличить высотку prime_wrapper:
+                setTimeout(
+                    function () {
+                        $dynamicContent.find('>div').eq(0).slideDown(2000);
+                    },
+                    900
+                );
+
+
             });
             /*xmarineModel.getTemplatesContents("Xmarine", prime_block).then(function(tmpl){
                 console.groupCollapsed('Xmarine tmpl');
