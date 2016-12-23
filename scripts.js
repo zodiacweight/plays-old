@@ -154,13 +154,53 @@ var playsModel = Backbone.Model.extend(
 );
 
 
-var AppRouter = Backbone.Router.extend({
+var $dynamicContent = $("#dynamicContent"),
+    showLoading = function(){
+        $dynamicContent.html('<h2>Loading...</h2>');
+    },
+    AppRouter = Backbone.Router.extend({
     routes: {
         "": "initView",
         "enter_to_secondary": "buildSecondary",
         "enter_to_plays": "enterToPlays"
     },
     initView: function () {
+        var default_view = new (
+                Backbone.View.extend({
+                    initialize : function(){
+                        //console.log('defaultView');
+                        showLoading();
+                    },
+                    render : function(XmarineTmpl, Black_parodyTmpl, prime_wrapper){
+                        //console.log('Rendered!');
+                        var ready_prime_wrapper = _.template(prime_wrapper)({Xmarine_block: XmarineTmpl, Black_parody_block: Black_parodyTmpl});
+                       // console.log('ready_prime_wrapper',ready_prime_wrapper);
+                        // Вложить prime_wrapper в область динамически генерируемого контента
+                        // увеличить высотку prime_wrapper:
+                        $dynamicContent.html(ready_prime_wrapper);
+                        setTimeout(
+                            function () {
+                                $dynamicContent.find('>div').eq(0).slideDown(2000);
+                            },
+                            900
+                        );
+
+                    }
+                })
+            )();
+
+
+        /*var defaultView = Backbone.View.extend({
+                initialize : function(){
+                    console.log('defaultView');
+                    showLoading();
+                },
+                render : function(){
+                    console.log('Rendered!');
+                }
+            });
+        var default_view = new defaultView();*/
+
         var file_path = "templates/primary/", prime_blocks = {prime_blocks: []};
         $.when(getTemplate(file_path + "prime_block.html"),
             getTemplate(file_path + "prime_wrapper.html")
@@ -178,20 +218,7 @@ var AppRouter = Backbone.Router.extend({
                 console.groupCollapsed('XmarineTmpl,  Black_parodyTmpl');
                 console.log({XmarineTmpl:XmarineTmpl, Black_parodyTmpl:Black_parodyTmpl});
                 console.groupEnd();
-                var ready_prime_blocks = {ready_prime_blocks: [XmarineTmpl, Black_parodyTmpl]},
-                    ready_prime_wrapper = _.template(prime_wrapper)(ready_prime_blocks),
-                    $dynamicContent = $("#dynamicContent");
-                // Вложить prime_wrapper в область динамически генерируемого контента
-                $dynamicContent.html(ready_prime_wrapper);
-                // увеличить высотку prime_wrapper:
-                setTimeout(
-                    function () {
-                        $dynamicContent.find('>div').eq(0).slideDown(2000);
-                    },
-                    900
-                );
-
-
+               default_view.render(XmarineTmpl, Black_parodyTmpl, prime_wrapper);
             });
             /*xmarineModel.getTemplatesContents("Xmarine", prime_block).then(function(tmpl){
                 console.groupCollapsed('Xmarine tmpl');
