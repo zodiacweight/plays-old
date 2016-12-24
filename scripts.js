@@ -158,49 +158,49 @@ var $dynamicContent = $("#dynamicContent"),
     showLoading = function(){
         $dynamicContent.html('<h2>Loading...</h2>');
     },
+    defaultView = Backbone.View.extend({
+       /*  events:{
+           "click #dynamicContent": function(){
+                console.log('Body clicked');
+            "entersToSecondary"
+            "click": function(){
+                console.log('Body clicked');
+            }
+        },
+        el: '#main',*/ 
+        entersToSecondary : function(event){
+            console.log('entersToSecondary', event);
+        },
+        initialize : function(){
+            //console.log('defaultView');
+            showLoading();
+            /*$dynamicContent.on('click', '.entersToSecondary', function(event){
+                this.entersToSecondary(event);
+            }.bind(this));*/
+        },
+        render : function(XmarineTmpl, Black_parodyTmpl, prime_wrapper){
+            //console.log('Rendered!');
+            var ready_prime_wrapper = _.template(prime_wrapper)({Xmarine_block: XmarineTmpl, Black_parody_block: Black_parodyTmpl});
+            // console.log('ready_prime_wrapper',ready_prime_wrapper);
+            // Вложить prime_wrapper в область динамически генерируемого контента
+            // увеличить высотку prime_wrapper:
+            $dynamicContent.html(ready_prime_wrapper);
+            setTimeout(
+                function () {
+                    $dynamicContent.find('>div').eq(0).slideDown(2000);
+                },
+                900
+            );
+        }
+    }),
+    default_view = new defaultView(),
     AppRouter = Backbone.Router.extend({
     routes: {
         "": "initView",
-        "enter_to_secondary": "buildSecondary",
+        "enter_to_secondary/:urlTitle": "buildSecondary",
         "enter_to_plays": "enterToPlays"
     },
     initView: function () {
-        var default_view = new (
-                Backbone.View.extend({
-                    initialize : function(){
-                        //console.log('defaultView');
-                        showLoading();
-                    },
-                    render : function(XmarineTmpl, Black_parodyTmpl, prime_wrapper){
-                        //console.log('Rendered!');
-                        var ready_prime_wrapper = _.template(prime_wrapper)({Xmarine_block: XmarineTmpl, Black_parody_block: Black_parodyTmpl});
-                       // console.log('ready_prime_wrapper',ready_prime_wrapper);
-                        // Вложить prime_wrapper в область динамически генерируемого контента
-                        // увеличить высотку prime_wrapper:
-                        $dynamicContent.html(ready_prime_wrapper);
-                        setTimeout(
-                            function () {
-                                $dynamicContent.find('>div').eq(0).slideDown(2000);
-                            },
-                            900
-                        );
-
-                    }
-                })
-            )();
-
-
-        /*var defaultView = Backbone.View.extend({
-                initialize : function(){
-                    console.log('defaultView');
-                    showLoading();
-                },
-                render : function(){
-                    console.log('Rendered!');
-                }
-            });
-        var default_view = new defaultView();*/
-
         var file_path = "templates/primary/", prime_blocks = {prime_blocks: []};
         $.when(getTemplate(file_path + "prime_block.html"),
             getTemplate(file_path + "prime_wrapper.html")
@@ -220,38 +220,16 @@ var $dynamicContent = $("#dynamicContent"),
                 console.groupEnd();
                default_view.render(XmarineTmpl, Black_parodyTmpl, prime_wrapper);
             });
-            /*xmarineModel.getTemplatesContents("Xmarine", prime_block).then(function(tmpl){
-                console.groupCollapsed('Xmarine tmpl');
-                console.log(tmpl);
-                console.groupEnd();
-            });
-            black_parodyModel.getTemplatesContents("Black_parody", prime_block).then(function(tmpl){
-                console.groupCollapsed('Black_parody tmpl');
-                console.log(tmpl);
-                console.groupEnd();
-            });*/
-            /*checkReadyPrimeBlocks(xmarineModel, black_parodyModel).then(
-                function(result) {
-                    //console.log("Попали.");
-                    console.groupCollapsed('xmarineModel');
-                    console.log(xmarineModel.defaults.ready_prime_block);
-                    console.groupEnd();
-                    console.groupCollapsed('black_parody');
-                    console.log(black_parodyModel.defaults.ready_prime_block);
-                    console.groupEnd();
-
-                },
-                function (reject) {
-                    console.log("Пока не попали.");
-                }
-            );*/
-            /*var ready_prime_wrapper = _.template(prime_wrapper)({ "prime_blocks": ready_prime_blocks }); */
+           
         });
         // Получить оба ready_prime_block через каждый из экземпляров, сложить их в массив и внести в prime_wrapper.
 
     },
-    buildSecondary: function () {
-
+    buildSecondary: function (urlTitle) {
+        console.log(urlTitle);
+        console.log("Xmarine" in window);
+        console.log("black_parody" in window);
+        // Пробег по ключам. Если нет в window, вызвать getData и checkJsonData и определить window[key].
     },
     enterToPlays: function () {
 
