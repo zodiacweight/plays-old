@@ -198,6 +198,9 @@ var $dynamicContent = $("#dynamicContent"),
     routes: {
         "": "initView",
         "enter_to_secondary/black_parody": "enterSecondary",
+=======
+        "enter_to_secondary/black_parody": "buildSecondary",
+
         "enter_to_plays": "enterToPlays"
     },
     initView: function () {
@@ -225,6 +228,7 @@ var $dynamicContent = $("#dynamicContent"),
         // Получить оба ready_prime_block через каждый из экземпляров, сложить их в массив и внести в prime_wrapper.
 
     },
+<<<<<<< Updated upstream
     enterSecondary: function () {
         //console.log(urlTitle);
         //console.log(window["Xmarine"]);
@@ -234,6 +238,8 @@ var $dynamicContent = $("#dynamicContent"),
         // 3. Вставить secondary в область динамически-генерируемого контента;
         // 4. Обеспечивать переворачивание изображений.
     },
+=======
+>>>>>>> Stashed changes
     buildSecondary: function () {
         //console.log(urlTitle);
         console.log("Xmarine" in window);
