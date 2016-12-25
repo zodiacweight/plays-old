@@ -545,6 +545,12 @@ function defineNameInClass (nameInCheck,  currentReplic, whatToDo, nameInPlay) {
             case "Christian's grandma":
                 nameInClass="MrsJakins";
                 break;
+            case "Snake":
+                nameInClass="WomanDevil";
+                break;
+            case "Voice on the terminal":
+                nameInClass = "Terminal";
+                break;
             default:
                 if (nameInCheck.indexOf(" ")==-1) {
                     nameInClass=nameInCheck;
@@ -624,11 +630,10 @@ function changePart(PartNumber, index_of_part, chosenPlay, addedHTMLToContainPar
             addedHTMLToContainPart.sharing_roles.classList.remove("visible_sharing_roles");
         }
     }
-    var counterAddReplics= 0, replics = chosenPlay["Parts"][index_of_part]["replics"];
-    for (var index=0; index < replics.length; index++) {
-        var arrayElementObject = chosenPlay["Parts"][index_of_part]["replics"][index];
+    var counterAddReplics= 0, elementsOfPart = chosenPlay["Parts"][index_of_part]["replics"]; replics = [];
+    for (var index=0; index < elementsOfPart.length; index++) { // пробег по репликам
+        var arrayElementObject = chosenPlay["Parts"][index_of_part]["replics"][index]; // конкретная реплика
         var subjectName = Object.keys(arrayElementObject)[0], className;
-        counterAddReplics++;
         if (subjectName == "image") {
             addedHTMLToContainPart.content_of_play.innerHTML += arrayElementObject[subjectName];
         }
@@ -665,9 +670,11 @@ function changePart(PartNumber, index_of_part, chosenPlay, addedHTMLToContainPar
             } else {
                 className = 'words_of_char';
             }
-            var replics = chosenPlay["Parts"][index_of_part]["replics"];
+
             innerContent = setContents(replics_of_choicedpart, arrayElementObject[subjectName], subjectName, className);
-            addDivsWithReplics(addedHTMLToContainPart.content_of_play, innerContent, counterAddReplics, replics);
+            replics.push(elementsOfPart[counterAddReplics]);
+            addDivsWithReplics(addedHTMLToContainPart.content_of_play, elementsOfPart, innerContent, counterAddReplics, replics);
+            counterAddReplics++;
         }
     }
 }
@@ -703,23 +710,28 @@ setContents = function (replics_of_choicedpart, contents, subjectName, className
     }
     return innerContent;
 };
-addDivsWithReplics = function (html, innerContent, counterAddReplics, replics) {
-    var counterAddParagraphsOfReplic=0;
+addDivsWithReplics = function (html, elementsOfPart, innerContent, counterAddReplics, replics) {
+    var counterAddParagraphsOfReplic=0; // counterAddReplics от 0 и больше
     html.innerHTML += "<div class='" + innerContent.class + "'> <h4>" + innerContent.h4 +
         "</h4><p>" + innerContent.contents[0] + "</p></div>";
-    if(counterAddReplics==replics.length) {
-      var getting = html.getElementsByTagName("Div"), len = getting.length, lastReplic = getting[len-1];
+    var divsWithReplics = html.getElementsByTagName("Div"),
+        numberOfLastRep = elementsOfPart.length- 1,
+        lastReplic = elementsOfPart[numberOfLastRep],
+        keyRole = Object.keys(lastReplic)[0],
+        wordsInLastRep = lastReplic[keyRole][0];
+
+    if( innerContent.contents[0] == lastReplic[keyRole][0]) {
+       var len = divsWithReplics.length, lastReplic = divsWithReplics[len-1];
         lastReplic.style.marginBottom="8%";
     }
     if (innerContent.contents.length>1) {
         counterAddParagraphsOfReplic=1;
-        var replics = html.getElementsByTagName("Div");
-        var replicToAddParagraphs = replics[counterAddReplics-1];
+        var replicToAddParagraphs = divsWithReplics[counterAddReplics];
         while (counterAddParagraphsOfReplic<innerContent.contents.length) {
             replicToAddParagraphs.innerHTML +="<p>"+innerContent.contents[counterAddParagraphsOfReplic]+"</p>";
             counterAddParagraphsOfReplic++;
         }
     }
     console.log(counterAddReplics);
-    console.log(replics.length);
+    console.log(divsWithReplics.length);
 };
