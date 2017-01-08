@@ -123,7 +123,7 @@
 .paintedReplicsOfMrsJakins {
     background-image: url("../../images/textures/pink_paper.jpg");
     border: 3px solid darkblue; !important;
-    color: darkviolet;
+    color: darkblue;
 }
 .paintedReplicsOfMrJakins {
     background-color: darkblue;
@@ -156,9 +156,9 @@
     color: lightskyblue;
 }
 .paintedReplicsOfTimothy {
-    background-image: url("../../images/textures/buket2.jpg");
+    background-color: lightsteelblue;
     border: 3px solid seagreen; !important;
-    color: lightyellow;
+    color: mediumblue;
 }
 .paintedReplicsOfGloria {
     background-image: url("../../images/textures/gold.jpg");
