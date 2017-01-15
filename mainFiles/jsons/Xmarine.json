@@ -6389,7 +6389,7 @@
         },
         {"number": 2.5, "header": "",
           "replics": [
-            {"Beatrix": [""]},
+            {"Beatrix": ["..."]},
             {"Ramon": [""]},
             {"Beatrix": [""]}
           ]
