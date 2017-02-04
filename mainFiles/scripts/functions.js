@@ -547,6 +547,9 @@ function defineNameInClass(nameInCheck, currentReplic, whatToDo, nameInPlay) {
             case "Snake":
                 nameInClass = "WomanDevil";
                 break;
+            case "Fake Jessie":
+                nameInClass = "WomanDevil";
+                break;
             case "Voice on the terminal":
                 nameInClass = "Terminal";
                 break;
