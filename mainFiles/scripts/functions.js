@@ -404,6 +404,7 @@ function setClickToLoadPart(nameOfPlay) {
                         var namesInConjuction = name_in_h4.split(" & "),
                             numberOfCheckedRolesInConjuction = 0, delPaintingClass,
                             h4 = divsWithReplics[runDivs].getElementsByTagName("H4")[0];
+                        console.log("names in conjuction: ", namesInConjuction);
                         for (var runNamesInConjuction = 0; runNamesInConjuction < namesInConjuction.length; runNamesInConjuction++) {
                             if (namesInConjuction[runNamesInConjuction] in checkedRoles) {
                                 numberOfCheckedRolesInConjuction++;
@@ -451,6 +452,7 @@ function setClickToLoadPart(nameOfPlay) {
                                 if (spans[runRoles].innerText !== " & ") {
                                     nameInCheck = spans[runRoles].innerText;
                                     if ((nameInCheck in checkedRoles) && (spans[runRoles].classList.length == 0)) {
+                                        console.log("name in check: ", nameInCheck);
                                         spans[runRoles].classList.add("highlightedOf" + nameInCheck);
                                     }
                                     else {

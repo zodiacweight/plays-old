@@ -65,12 +65,8 @@
     border: 3px solid mediumblue; !important;
     color: darkblue;
 }
-.highlightedOfCassandra {
-    background-color: darkorchid;
-    color: beige;
-    padding: 6px;
-    text-decoration: underline;
-}
+
+
 .paintedReplicsOfCassandra > p {
     color: whitesmoke;
 }
@@ -182,7 +178,7 @@
 }
 .paintedReplicsOfTraves {
     background-color: darkseagreen;
-    color: green;
+    color: darkslategrey;
     border: 3px solid green;  !important;
 }
 .paintedReplicsOfMolly {
@@ -237,4 +233,38 @@
     background-image: url("../../images/textures/commonPaint.jpg");
     color: deeppink;
     border: 3px solid darkslateblue;
+}
+.highlightedOfCassandra {
+    background-color: darkorchid;
+    color: beige;
+    padding: 6px;
+    text-decoration: underline;
+}
+
+.highlightedOfMartin {
+    background-color: darkgreen;
+    color: beige;
+    padding: 6px;
+    text-decoration: underline;
+}
+
+.highlightedOfJoe {
+    background-color: lightskyblue;
+    color: lightyellow;
+    padding: 6px;
+    text-decoration: underline;
+}
+
+.highlightedOfCarl {
+    background-color: lightsteelblue;
+    color: darkblue;
+    padding: 6px;
+    text-decoration: underline;
+}
+
+.highlightedOfTraves {
+    background-color: darkviolet;
+    color: lightyellow;
+    padding: 6px;
+    text-decoration: underline;
 }
