@@ -1,4 +1,3 @@
-require([], function(){
-    console.log('Required=>', { $, _, Backbone });
-      
+require(['/scripts/modules/views/default.js'], function (defaultView) {
+   console.log('defaultView=>',defaultView); 
 });
