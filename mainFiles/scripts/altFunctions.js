@@ -104,8 +104,19 @@ function changeBigImageWithHeader() {
 }
 // Устанавливаются кнопки для открытия ворот и входа
 function setButtonsToChoicePlay(PartOfIdOfDivForButtons, nameOfPlay) {
-    console.trace('setButtonsToChoicePlay, arguments: ', arguments);
-    var btn, btnText, objectOfButtons = {}, divForButtons=document.getElementById("DivFor"+PartOfIdOfDivForButtons);
+    console.groupCollapsed('%csetButtonsToChoicePlay', 'color:orange');
+        console.log({
+            // ButtonsToEnter
+            //
+            PartOfIdOfDivForButtons:PartOfIdOfDivForButtons,
+            // Extradecomposers
+            //
+            nameOfPlay:nameOfPlay
+        });
+    var btn,
+        btnText,
+        objectOfButtons = {},
+        divForButtons = document.getElementById("DivFor"+PartOfIdOfDivForButtons);
     objectOfButtons[PartOfIdOfDivForButtons] = [];
     /*
      *
@@ -123,26 +134,41 @@ function setButtonsToChoicePlay(PartOfIdOfDivForButtons, nameOfPlay) {
             btn.classList.add("unclickedButton_"+nameOfPlay+"_choiced");
         }
         btn.onclick = function () {
-            console.log('this bnt:', this);
+            console.log({
+                this: this, // button
+                objectOfButtons: objectOfButtons
+                /* {
+                        ButtonsToEnter: [
+                            button.disabledButton,
+                            button.unclickedButton_Extradecomposers_choiced
+                        ]
+                 }
+                 */
+            });
             moveActive(this, PartOfIdOfDivForButtons, objectOfButtons);
         };
-        objectOfButtons[PartOfIdOfDivForButtons].push(btn);
         /*
-         objectOfButtons = {
-            PartOfIdOfDivForButtons: btn
-         }
-        */
+          1. objectOfButtons = {
+                ButtonsToEnter: [
+                    button.unclickedButton_Extradecomposers_choiced,
+                    button.unclickedButton_Extradecomposers_choiced
+                ]
+             }
+         */
+        objectOfButtons[PartOfIdOfDivForButtons].push(btn);
         divForButtons.appendChild(btn);
     }
-    console.log('objectOfButtons', objectOfButtons);
+        console.log('objectOfButtons', objectOfButtons);
+    console.groupEnd();
     //alert("В теле функции setButtons PartOfIdOfDivForButtons = "+PartOfIdOfDivForButtons);
 }
 function moveActive(clickedButton, PartOfIdOfDivForButtons, objectOfButtons) { // вызывается при клике на каждую из кнопок
-    console.trace('arguments', {
-        '1 clickedButton' : clickedButton,
-        '2 PartOfIdOfDivForButtons' : PartOfIdOfDivForButtons,
-        '3 objectOfButtons': objectOfButtons
-    });
+    console.groupCollapsed('%cmoveActive', 'color:violet');
+        console.trace('arguments', {
+            '1 clickedButton' : clickedButton,
+            '2 PartOfIdOfDivForButtons' : PartOfIdOfDivForButtons,
+            '3 objectOfButtons': objectOfButtons
+        });
     //alert("В теле функции moveActive PartOfIdOfDivForButtons = "+PartOfIdOfDivForButtons);
     var nameOfPlay = clickedButton.getAttribute('data-source'); // nameOfPlay == "Extradecomposers" или "Black_agent"
     // в зависимости от того, какая кнопка была кликнута
@@ -170,6 +196,8 @@ function moveActive(clickedButton, PartOfIdOfDivForButtons, objectOfButtons) { /
         setComponentsOfBeginning(chosenPlay);
         openGates(); // В этой функции beginning получает значение "none".
         var DivForButtonsToRechoice = document.getElementById("DivForButtonsToRechoice");
+        // buttons block
+        // вызывается только один раз
         if (DivForButtonsToRechoice.innerHTML=="") {
             setButtonsToChoicePlay("ButtonsToRechoice", nameOfPlay); // 2-й вызов. При нем создаются кнопки в contentList
             //alert("После 2-го вызова setButtons PartOfIdOfDivForButtons = "+PartOfIdOfDivForButtons);
@@ -182,8 +210,7 @@ function moveActive(clickedButton, PartOfIdOfDivForButtons, objectOfButtons) { /
                 // кнопка в contentList, имеющая data-source соответствующий nameOfButtons.
                 if(objectOfButtons["ButtonsToRechoice"][runBtns].getAttribute("data-source")==nameOfPlay) {
                     clickedButton=objectOfButtons["ButtonsToRechoice"][runBtns];
-                }
-                else {
+                } else {
                     otherButton=objectOfButtons["ButtonsToRechoice"][runBtns];
                 }
             }
@@ -202,6 +229,7 @@ function moveActive(clickedButton, PartOfIdOfDivForButtons, objectOfButtons) { /
     loadAboutCharacters(chosenPlay);
     setColors(chosenPlay, nameOfPlay);
     headerLogotip.innerHTML = chosenPlay["headerLogotip"];
+    console.groupEnd();
 }
 function openGates() {
     setTimeout(function () {

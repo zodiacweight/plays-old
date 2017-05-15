@@ -27,7 +27,7 @@ how_to_open_plays.onclick = function () {
             "<div id='DivForButtonsToEnter'></div><img id='gate' src='images/on_the_beginning/closed_gate.jpg'>";
         document.getElementById("instruction").style.color = "#0101DF";
         var DivForButtonsToEnter = document.getElementById("DivForButtonsToEnter");
-        console.log('Goto setButtonsToChoicePlay');
+        //console.log('Goto setButtonsToChoicePlay');
         setButtonsToChoicePlay("ButtonsToEnter", "Extradecomposers"); // функция делает кнопки на заставке
     }
 };
