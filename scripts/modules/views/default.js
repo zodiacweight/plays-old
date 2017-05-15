@@ -9,9 +9,10 @@ define(function () {
         },
         template: _.template('Hello!'),
         render: function (html) {
-            console.log('html=>', html);
+            //console.log('html=>', html);
             this.$el.html(_.template(html)({ 
                 greeting: "Hello, you, Dude!",
+                subheader: "Look, what wonderful stories wait for you here!",
                 header1: "Black Agent",
                 header2: "Special Scavengers"
             }));
