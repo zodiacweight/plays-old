@@ -1,0 +1,33 @@
+{
+  "name": "plays",
+  "version": "1.0.0",
+  "description": "funny stories",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zodiacweight/plays.git"
+  },
+  "keywords": [
+    "plot",
+    "story",
+    "narrative",
+    "English",
+    "action",
+    "thriller",
+    "fantasy"
+  ],
+  "author": "Liz Beauty",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zodiacweight/plays/issues"
+  },
+  "homepage": "https://github.com/zodiacweight/plays#readme",
+  "dependencies": {
+    "bootstrap-grid-only": "^1.0.0",
+    "jquery": "^3.2.1"
+  }
+}

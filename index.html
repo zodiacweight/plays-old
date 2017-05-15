@@ -3,38 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-    <link href="mainFiles/styles/styletable.css" rel="stylesheet" type="text/css">
-    <link href="mainFiles/styles/switchedStyles.css" rel="stylesheet" type="text/css">
-    <script type="text/javascript" src="mainFiles/scripts/jquery-3.1.0.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="node_modules/bootstrap-grid-only/bootstrap.css">
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="bower_components/requirejs/require.js"></script>
+    <script src="scripts/app.js" data-main="app"></script>
 </head>
 <body>
-    <div id="beginning" class="hidden">
-     <div id="littleImages"></div>
-     <div id="bigImageWithHeader">
-         <h2 id="header">Текст по умолчанию</h2>
-         <div id="bigImage"></div>
-     </div>
-     <div id="preview_and_enter">
-            <div id="preview">
-                <p id="main_in_preview"></p>
-                <p id="how_to_open_plays">Как открыть пьесы?</p>
-            </div>
-            <div id="enter"></div>
-     </div>
-    </div>
-    <div id="contentlist">
-        <div id="DivForButtonsToRechoice"></div>
-        <div id="listOfParts"></div>
-        <!--<h2 onclick="showPlay(0, Extradecomposers)">Extra-decomposers</h2>
-        todo: генерировать меню динамически и сделать так, чтобы у элементы с классом items-paragraphs появлялись и
-        исчезали не за счет регулирования display между block и none, а через свойство innerHTML при клике по тем
-         элементам, в которые они вложены. -->
-    </div>
-    <div id="rightHalf">
-        <div id="headerLogotip"></div>
-        <div id="mainArea"></div>
-    </div>
-    <script src="mainFiles/scripts/altFunctions.js"></script>
-    <script src="mainFiles/scripts/scripts.js"></script>
+    
+    <!--<script src="mainFiles/scripts/altFunctions.js"></script>
+    <script src="mainFiles/scripts/scripts.js"></script>-->
 </body>
 </html>
