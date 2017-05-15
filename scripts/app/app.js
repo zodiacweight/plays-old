@@ -1,3 +1,4 @@
 require([], function(){
-    console.log('Required=>', { $, _, Backbone });    
+    console.log('Required=>', { $, _, Backbone });
+      
 });
