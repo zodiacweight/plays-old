@@ -3,11 +3,11 @@ define(() => {
     return new (Backbone.View.extend({
         getData: function(){
             return {
-                path: '/tmpl/cabalistic_bewitching_hero.html',
+                path: '/tmpl/404.html',
                 self: this,
-                selector: '#cabalistic_bewitching_hero',
+                selector: '#not_found',
                 data: {
-                    part: "cabalistic_bewitching_hero"
+                    part: "Not found, error 404"
                 }
             };
         }
