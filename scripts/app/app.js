@@ -1,4 +1,9 @@
-require(['/scripts/modules/views/default.js'], function (defaultView) {
+const path = '/scripts/modules/views/';
+
+require([   path+'default.js',
+            path+'black_parody.js',
+            path+'cabalistic_bewitching_hero.js'
+    ], function (defaultView, blackParodyView, cabalisticBewitchingHeroView) {
     
     var viewInstance = defaultView.getData(),
         $container = $('main');
