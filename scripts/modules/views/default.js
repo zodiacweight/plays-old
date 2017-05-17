@@ -1,7 +1,7 @@
-define(function () {
+define(() => {
     //
     return new (Backbone.View.extend({
-        getData: function(){
+        getData: ()=>{
             return {
                 path: '/tmpl/default.html',
                 self: this,

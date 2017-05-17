@@ -3,21 +3,21 @@ const path = '/scripts/modules/views/';
 require([   path+'default.js',
             path+'black_parody.js',
             path+'cabalistic_bewitching_hero.js'
-    ], function (defaultView, blackParodyView, cabalisticBewitchingHeroView) {
+    ], (defaultView, blackParodyView, cabalisticBewitchingHeroView) => {
     
-    var viewInstance = defaultView.getData(),
-        $container = $('main');
+    
+    const   viewInstance = defaultView.getData(),
+            $container = $('main');
     // 
-    function render(View, contents) {
+    render = (View, contents) => {
         //
-        var $viewElement = $(View.self.$el),
+        const $viewElement = $(View.self.$el),
             compiled = _.template(contents)(View.data); 
+        
         $viewElement.html(compiled);
         //
         $container.html($viewElement.find(View.selector).html());
     }
     //
-    $.get(viewInstance.path, function (contents) {
-        render(viewInstance, contents);
-    });
+    $.get(viewInstance.path, (contents) => render(viewInstance, contents));
 });
