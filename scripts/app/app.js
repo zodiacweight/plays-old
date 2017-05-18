@@ -6,14 +6,15 @@ require([   path + 'default.js',
             path + 'not_found.js'            
 ], (defaultView, blackParodyView, cabalisticBewitchingHeroView, notFoundView) => {
 
-    const $container = $('main');
     // views instances
     var viewDefault,
         viewBlackParody,
         viewCabalisticBewitchingHero,
         view404;
+    //
+    const $container = $('main');
     // 
-    render = (View, contents) => {
+    const render = (View, contents) => {
         //
         var $viewElement = $(View.self.$el),
             compiled = _.template(contents)(View.data);
@@ -21,7 +22,13 @@ require([   path + 'default.js',
         $viewElement.html(compiled);
         //
         $container.html($viewElement.find(View.selector).html());
-    }
+    };
+    //
+    const setView = (view, objectView) =>{
+        if (!view) view = objectView['getData']();
+        $.get(view.path, (contents) => render(view, contents));
+        return true;
+    };
     //
     const AppRouter = Backbone.Router.extend({
         routes: {
@@ -30,22 +37,10 @@ require([   path + 'default.js',
             'cabalistic_bewitching_hero': 'run_cabalistic_bewitching_hero',
             '*other': 'not_found'
         },
-        go_home: () => {
-            if (!viewDefault) viewDefault = defaultView.getData();
-            $.get(viewDefault.path, (contents) => render(viewDefault, contents));
-        },
-        run_black_parody: () => {
-            if (!viewBlackParody) viewBlackParody = blackParodyView.getData();
-            $.get(viewBlackParody.path, (contents) => render(viewBlackParody, contents));
-        },
-        run_cabalistic_bewitching_hero: () => {
-            if (!viewCabalisticBewitchingHero) viewCabalisticBewitchingHero = cabalisticBewitchingHeroView.getData();
-            $.get(viewCabalisticBewitchingHero.path, (contents) => render(viewCabalisticBewitchingHero, contents));
-        },
-        not_found: () => {
-            if (!view404) view404 = notFoundView.getData();
-            $.get(view404.path, (contents) => render(view404, contents));
-        }
+        go_home: () => setView(viewDefault, defaultView),
+        run_black_parody: () => setView(viewBlackParody, blackParodyView),
+        run_cabalistic_bewitching_hero: () => setView(viewCabalisticBewitchingHero, cabalisticBewitchingHeroView),
+        not_found: () => setView(view404, notFoundView)
     });
 
     const appRouter = new AppRouter();
