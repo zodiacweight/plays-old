@@ -1,0 +1,18 @@
+#asides{
+    display: flex;
+    justify-content: space-between;
+    aside{
+        $path: '/contents/images/';
+        background-size: cover;
+        border: solid 4px #ddd;
+        height: 0;
+        padding-bottom: 50%;
+        width: calc(50% - 10px);
+        &:nth-child(1){
+            background-image: url($path + 'devil.jpg');
+        }
+        &:nth-child(2){
+            background-image: url($path + 'lighthouse.jpg');
+        }
+    }
+}

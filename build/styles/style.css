@@ -1,5 +1,44 @@
-body {
-  background-color: #eee; }
+* {
+  box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  padding: 0; }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: 'Times New Roman', serif; }
+
+main, footer {
+  max-width: 960px; }
+  @media (min-width: 748px) {
+    main, footer {
+      margin: auto; } }
+
+footer {
+  background: #ccc;
+  height: 80px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  padding-top: 20px; }
+
+main {
+  overflow: hidden;
+  min-height: calc(100% - 80px); }
+  @media (max-width: 747px) {
+    main {
+      padding: 0 20px; } }
+
+#asides {
+  display: flex;
+  justify-content: space-between; }
+  #asides aside {
+    background-size: cover;
+    border: solid 4px #ddd;
+    height: 0;
+    padding-bottom: 50%;
+    width: calc(50% - 10px); }
+    #asides aside:nth-child(1) {
+      background-image: url("/contents/images/devil.jpg"); }
+    #asides aside:nth-child(2) {
+      background-image: url("/contents/images/lighthouse.jpg"); }

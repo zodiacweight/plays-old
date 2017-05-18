@@ -1,7 +1,36 @@
-body{
-    background-color: #eee;
+
+*{
+    box-sizing: border-box;
+}
+html, body{
+    height: 100%;
+    padding: 0;
 }
 
 h1, h2, h3, h4, h5, h6{
     font-family: 'Times New Roman', serif;
+}
+
+main, footer{
+    max-width: $max-width-main;
+    @media (min-width: $width-mobile){
+        margin: auto;
+    }
+}
+
+footer{
+    background: #ccc;
+    height: $height-footer;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+}
+
+main{
+    overflow: hidden;
+    min-height: calc(100% - #{$height-footer});
+    @media(max-width: ($width-mobile - 1px)){
+        padding: 0 20px;
+    }
 }
