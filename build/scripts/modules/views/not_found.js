@@ -3,7 +3,7 @@ define(() => {
     return new (Backbone.View.extend({
         getData: function(){
             return {
-                path: '/tmpl/404.html',
+                path: '/contents/views/404.html',
                 self: this,
                 selector: '#not_found',
                 data: {

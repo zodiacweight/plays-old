@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "css": "node-sass source/sass/main.scss styles/style.css",
-    "html": "pug source/pug -o tmpl -P"
+    "css": "node-sass source/sass/main.scss build/styles/style.css",
+    "html": "pug source/pug -o build/contents/views -P"
   },
   "repository": {
     "type": "git",
