@@ -13,6 +13,10 @@ main, footer {
   @media (min-width: 748px) {
     main, footer {
       margin: auto; } }
+  @media (max-width: 1023px) {
+    main, footer {
+      padding-left: 20px;
+      padding-right: 20px; } }
 
 footer {
   background: #ccc;
@@ -25,20 +29,23 @@ footer {
 main {
   overflow: hidden;
   min-height: calc(100% - 80px); }
-  @media (max-width: 747px) {
-    main {
-      padding: 0 20px; } }
 
 #asides {
-  display: flex;
   justify-content: space-between; }
+  @media (min-width: 748px) {
+    #asides {
+      display: flex; }
+      #asides aside {
+        width: calc(50% - 10px); } }
   #asides aside {
     background-size: cover;
     border: solid 4px #ddd;
     height: 0;
-    padding-bottom: 50%;
-    width: calc(50% - 10px); }
+    padding-bottom: 50%; }
     #asides aside:nth-child(1) {
       background-image: url("/contents/images/devil.jpg"); }
     #asides aside:nth-child(2) {
       background-image: url("/contents/images/lighthouse.jpg"); }
+    @media (max-width: 747px) {
+      #asides aside {
+        margin-bottom: 20px; } }
