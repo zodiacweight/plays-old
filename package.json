@@ -7,7 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
     "css": "node-sass source/sass/main.scss build/styles/style.css",
-    "html": "pug source/pug -o build/contents/views -P"
+    "html": "pug source/pug/views -o build/contents/views -P",
+    "index": "pug source/pug/index.pug -o build/ -P"
   },
   "repository": {
     "type": "git",
