@@ -30,6 +30,14 @@ main {
   overflow: hidden;
   min-height: calc(100% - 80px); }
 
+@keyframes grow {
+  from {
+    transform: scale(0.25);
+    opacity: 0; }
+  to {
+    transform: scale(1);
+    opacity: 1; } }
+
 #asides {
   justify-content: space-between; }
   @media (min-width: 748px) {
@@ -43,8 +51,16 @@ main {
     height: 0;
     padding-bottom: 50%; }
     #asides aside:nth-child(1) {
+      animation-name: grow;
+      animation-duration: 1s;
+      animation-delay: 0.4s;
+      animation-fill-mode: both;
       background-image: url("/contents/images/devil.jpg"); }
     #asides aside:nth-child(2) {
+      animation-name: grow;
+      animation-duration: 1s;
+      animation-delay: 1s;
+      animation-fill-mode: both;
       background-image: url("/contents/images/lighthouse.jpg"); }
     @media (max-width: 747px) {
       #asides aside {

@@ -12,10 +12,18 @@
         border: solid 4px #ddd;
         height: 0;
         padding-bottom: 50%;
+        @mixin goGrow($delay){
+            animation-name: grow;
+            animation-duration: 1s;
+            animation-delay: $delay;
+            animation-fill-mode: both;
+        }
         &:nth-child(1){
+            @include goGrow(0.4s);
             background-image: url($path + 'devil.jpg');
         }
         &:nth-child(2){
+            @include goGrow(1s);
             background-image: url($path + 'lighthouse.jpg');
         }
         @media(max-width: ($width-mobile - 1)){
