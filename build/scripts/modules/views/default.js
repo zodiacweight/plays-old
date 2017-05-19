@@ -7,7 +7,7 @@ define(() => {
                 self: this,
                 selector: '#default',
                 data: {
-                    greeting: "Hello, you, Dude!",
+                    greeting: "Hello, Beautiful Stranger!",
                     subheader: "Look, what wonderful stories wait for you here!",
                     header1: "Black Agent",
                     header2: "Special Scavengers"

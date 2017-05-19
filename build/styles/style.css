@@ -22,8 +22,6 @@ footer {
   background: #ccc;
   height: 80px;
   text-align: center;
-  display: flex;
-  justify-content: center;
   padding-top: 20px; }
 
 main {
@@ -65,3 +63,6 @@ main {
     @media (max-width: 747px) {
       #asides aside {
         margin-bottom: 20px; } }
+
+footer a + a {
+  padding-left: 4px; }

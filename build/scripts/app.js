@@ -19,15 +19,13 @@ require([   path + 'default.js',
         var $viewElement = $(View.self.$el),
             compiled = _.template(contents)(View.data);
 
-        $viewElement.html(compiled);
-        //
+        $viewElement.html(compiled); 
         $container.html($viewElement.find(View.selector).html());
     };
     //
     const setView = (view, objectView) =>{
-        if (!view) view = objectView['getData']();
-        $.get(view.path, (contents) => render(view, contents));
-        return true;
+        if (!view) view = objectView['getData'](); 
+        $.get(view.path, (contents) => render(view, contents))
     };
     //
     const AppRouter = Backbone.Router.extend({
