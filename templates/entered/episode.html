@@ -1,0 +1,32 @@
+<script type="text/template" id="episode">
+        <div>
+             <div id="sharing_roles">
+                 <p>Здесь можно получить информацию о рациональных способах разделения ролей между игроками.</p>
+                 <input type="button" value="показать информацию">
+                 <p><%=allocation_roles%></p>
+             </div>
+             <div id="chooseReplics">
+                  <a href="#">Paint by roles</a>
+                  <a href="#">Paint by term</a> 
+                  <div id="divForForm"></div>
+                  <p id="resultMessage"></p>
+             </div>
+             <div id="top_of_part">
+                    <div>
+                        <h2 id='headerForPart'>
+                            <span>Part </span> 
+                            <span><%=number%></span>
+                            <span><%=header%></span>
+                        </h2>
+                    </div>
+                    <div id='buttons'>
+                        <button type='button' value='◄' id='scrollBack'></button>
+                        <button type='button' value='►' id='fscrollFront'></button>
+                        <button type='button' id='paintWordsFromVocab'></button>
+                    </div>  
+             </div>
+             <div id="content_of_part">
+                // Совокупность дивов с репликами
+             </div>
+        </div>
+</script>
