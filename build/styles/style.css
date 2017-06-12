@@ -44,7 +44,8 @@ main {
       #asides aside {
         width: calc(50% - 10px); } }
   #asides aside {
-    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
     border: solid 4px #ddd;
     height: 0;
     padding-bottom: 50%; }
@@ -53,13 +54,21 @@ main {
       animation-duration: 1s;
       animation-delay: 0.4s;
       animation-fill-mode: both;
-      background-image: url("/contents/images/devil.jpg"); }
+      background-image: url("/contents/images/devil.jpg");
+      background-size: cover; }
+      @media (max-width: 747px) {
+        #asides aside:nth-child(1) {
+          padding-bottom: 96.92%; } }
     #asides aside:nth-child(2) {
       animation-name: grow;
       animation-duration: 1s;
       animation-delay: 1s;
       animation-fill-mode: both;
-      background-image: url("/contents/images/lighthouse.jpg"); }
+      background-image: url("/contents/images/scavenger-1.png");
+      background-size: contain; }
+      @media (max-width: 747px) {
+        #asides aside:nth-child(2) {
+          padding-bottom: 100%; } }
     @media (max-width: 747px) {
       #asides aside {
         margin-bottom: 20px; } }
