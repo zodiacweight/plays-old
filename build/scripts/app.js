@@ -1,12 +1,10 @@
-const path = 'scripts/modules/views/';
+const common_path = 'scripts/modules/views/';
+const path = (location.href.indexOf('/build') === -1) ? common_path : 'build/' + common_path;
 const chapters = {
     black_parody: 'black_parody'
     , cabalistic_bewitching_hero: 'cabalistic_bewitching_hero'
     , joshua_world: 'joshua_world'
     , junbalanced: 'unbalanced'
-    //, secret_agent: 'secret_agent',
-    //, special_scavangers: 'special_scavangers',
-    //, xmarine: 'xmarine'
 };
 
 require([   path + 'default.js',
