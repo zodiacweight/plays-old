@@ -1,5 +1,5 @@
 const common_path = 'scripts/modules/views/';
-const build_path = (location.href.indexOf('/build') != -1) ? 'build/' : false;
+const build_path = (location.href.indexOf('/build') != -1) ? '/plays/build/' : false;
 const path = build_path ? build_path + common_path : common_path;
 
 console.log('path=>', path);
