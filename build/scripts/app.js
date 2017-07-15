@@ -39,7 +39,7 @@ require([   path + 'default.js',
         //
         var $viewElement = $(View.self.$el),
             compiled = _.template(contents)(View.data);
-        // console.log('Data=>', {'View.data':View.data, View:View, $viewElement:$viewElement});
+        console.log('Data=>', {'View.data':View.data, View:View, $viewElement:$viewElement});
         $viewElement.html(compiled); 
         $container.html($viewElement.find(View.selector).html());
     };
