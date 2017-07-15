@@ -1,6 +1,6 @@
 const common_path = 'scripts/modules/views/';
-const build_path = (location.href.indexOf('/build') === -1) ? '' : 'build/';
-const path = build_path + common_path;
+//const build_path = (location.href.indexOf('/build') === -1) ? '' : 'build/';
+const path = common_path;
 
 console.log('path=>', path);
 
@@ -43,7 +43,7 @@ require([   path + 'default.js',
         $viewElement.html(compiled); 
         $container.html($viewElement.find(View.selector).html());
     };
-    const views_path = build_path + 'contents/views/';
+    const views_path = /* build_path + */ 'contents/views/';
     console.log('views_path=>', views_path);
     // set page content
     const setView = (view, objectView) =>{
