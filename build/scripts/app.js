@@ -1,6 +1,6 @@
 const common_path = 'scripts/modules/views/';
-//const build_path = (location.href.indexOf('/build') === -1) ? '' : 'build/';
-const path = common_path;
+const build_path = (location.href.indexOf('/build') != -1) ? 'build/' : false;
+const path = build_path ? build_path + common_path : common_path;
 
 console.log('path=>', path);
 
@@ -43,12 +43,12 @@ require([   path + 'default.js',
         $viewElement.html(compiled); 
         $container.html($viewElement.find(View.selector).html());
     };
-    const views_path = /* build_path + */ 'contents/views/';
+    const vpath = 'contents/views/';
+    const views_path = build_path ? build_path + vpath : vpath; 
     console.log('views_path=>', views_path);
     // set page content
     const setView = (view, objectView) =>{
-        if (!view) view = objectView['getData'](); 
-        console.log('get=>', views_path + view.path + '.html');
+        if (!view) view = objectView['getData'](); console.log('get=>', views_path + view.path + '.html');
         $.get(views_path + view.path + '.html', (contents) => render(view, contents));
     };
     //
