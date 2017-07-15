@@ -95,7 +95,7 @@ main {
       animation-duration: 1s;
       animation-delay: 0.4s;
       animation-fill-mode: both;
-      background-image: url("/contents/images/cabalistic_bewitching_hero.jpg");
+      background-image: url("../contents/images/cabalistic_bewitching_hero.jpg");
       background-size: cover; }
       @media (max-width: 747px) {
         #asides aside:nth-child(1) {
@@ -107,7 +107,7 @@ main {
       animation-duration: 1s;
       animation-delay: 1s;
       animation-fill-mode: both;
-      background-image: url("/contents/images/black_parody.jpg");
+      background-image: url("../contents/images/black_parody.jpg");
       background-size: cover; }
       @media (max-width: 747px) {
         #asides aside:nth-child(2) {
@@ -119,7 +119,7 @@ main {
       animation-duration: 1s;
       animation-delay: 1.6s;
       animation-fill-mode: both;
-      background-image: url("/contents/images/joshua_world.jpg");
+      background-image: url("../contents/images/joshua_world.jpg");
       background-size: cover; }
       @media (max-width: 747px) {
         #asides aside:nth-child(3) {
@@ -131,7 +131,7 @@ main {
       animation-duration: 1s;
       animation-delay: 2s;
       animation-fill-mode: both;
-      background-image: url("/contents/images/unbalanced.jpg");
+      background-image: url("../contents/images/unbalanced.jpg");
       background-size: cover; }
       @media (max-width: 747px) {
         #asides aside:nth-child(4) {
