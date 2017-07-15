@@ -4,9 +4,13 @@ require([   path + 'default.js',
             path + 'black_parody.js',
             path + 'cabalistic_bewitching_hero.js',
             path + 'not_found.js'            
-], (defaultView, blackParodyView, cabalisticBewitchingHeroView, notFoundView) => {
+    ], (    defaultView, 
+            blackParodyView, 
+            cabalisticBewitchingHeroView, 
+            notFoundView    ) => {
 
-    // views instances
+    // views instances. Values to be set after. 
+    // (Look carefully: not the same as params above)
     var viewDefault,
         viewBlackParody,
         viewCabalisticBewitchingHero,
@@ -35,10 +39,10 @@ require([   path + 'default.js',
             'cabalistic_bewitching_hero': 'run_cabalistic_bewitching_hero',
             '*other': 'not_found'
         },
-        go_home: () => setView(viewDefault, defaultView),
-        run_black_parody: () => setView(viewBlackParody, blackParodyView),
+        go_home:            () => setView(viewDefault, defaultView),
+        run_black_parody:   () => setView(viewBlackParody, blackParodyView),
         run_cabalistic_bewitching_hero: () => setView(viewCabalisticBewitchingHero, cabalisticBewitchingHeroView),
-        not_found: () => setView(view404, notFoundView)
+        not_found:          () => setView(view404, notFoundView)
     });
 
     const appRouter = new AppRouter();
