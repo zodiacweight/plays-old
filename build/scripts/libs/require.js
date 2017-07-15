@@ -269,13 +269,13 @@ var requirejs, require, define;
         function normalize(name, baseName, applyMap) {
             var pkgMain, mapValue, nameParts, i, j, nameSegment, lastIndex,
                 foundMap, foundI, foundStarMap, starI, normalizedBaseParts,
-                baseParts = (baseName && baseName.split('')),
+                baseParts = (baseName && baseName.split('/')),
                 map = config.map,
                 starMap = map && map['*'];
 
             //Adjust any relative paths.
             if (name) {
-                name = name.split('');
+                name = name.split('/');
                 lastIndex = name.length - 1;
 
                 // If wanting node ID compatibility, strip .js from end
@@ -298,21 +298,21 @@ var requirejs, require, define;
                 }
 
                 trimDots(name);
-                name = name.join('');
+                name = name.join('/');
             }
 
             //Apply map config if available.
             if (applyMap && map && (baseParts || starMap)) {
-                nameParts = name.split('');
+                nameParts = name.split('/');
 
                 outerLoop: for (i = nameParts.length; i > 0; i -= 1) {
-                    nameSegment = nameParts.slice(0, i).join('');
+                    nameSegment = nameParts.slice(0, i).join('/');
 
                     if (baseParts) {
                         //Find the longest baseName segment match in the config.
                         //So, do joins on the biggest to smallest lengths of baseParts.
                         for (j = baseParts.length; j > 0; j -= 1) {
-                            mapValue = getOwn(map, baseParts.slice(0, j).join(''));
+                            mapValue = getOwn(map, baseParts.slice(0, j).join('/'));
 
                             //baseName segment has config, find if it has one for
                             //this name.
@@ -344,7 +344,7 @@ var requirejs, require, define;
 
                 if (foundMap) {
                     nameParts.splice(0, foundI, foundMap);
-                    name = nameParts.join('');
+                    name = nameParts.join('/');
                 }
             }
 
@@ -1282,8 +1282,8 @@ var requirejs, require, define;
             configure: function (cfg) {
                 //Make sure the baseUrl ends in a slash.
                 if (cfg.baseUrl) {
-                    if (cfg.baseUrl.charAt(cfg.baseUrl.length - 1) !== '') {
-                        cfg.baseUrl += '';
+                    if (cfg.baseUrl.charAt(cfg.baseUrl.length - 1) !== '/') {
+                        cfg.baseUrl += '/';
                     }
                 }
 
@@ -1362,7 +1362,7 @@ var requirejs, require, define;
                         //and remove any trailing .js, since different package
                         //envs have different conventions: some use a module name,
                         //some use a file name.
-                        config.pkgs[name] = pkgObj.name + '' + (pkgObj.main || 'main')
+                        config.pkgs[name] = pkgObj.name + '/' + (pkgObj.main || 'main')
                                      .replace(currDirRegExp, '')
                                      .replace(jsSuffixRegExp, '');
                     });
@@ -1478,7 +1478,7 @@ var requirejs, require, define;
                     toUrl: function (moduleNamePlusExt) {
                         var ext,
                             index = moduleNamePlusExt.lastIndexOf('.'),
-                            segment = moduleNamePlusExt.split('')[0],
+                            segment = moduleNamePlusExt.split('/')[0],
                             isRelative = segment === '.' || segment === '..';
 
                         //Have a file extension alias, and it is not the
@@ -1650,12 +1650,12 @@ var requirejs, require, define;
                     //A module that needs to be converted to a path.
                     paths = config.paths;
 
-                    syms = moduleName.split('');
+                    syms = moduleName.split('/');
                     //For each module name segment, see if there is a path
                     //registered for it. Start with most specific name
                     //and work up from it.
                     for (i = syms.length; i > 0; i -= 1) {
-                        parentModule = syms.slice(0, i).join('');
+                        parentModule = syms.slice(0, i).join('/');
 
                         parentPath = getOwn(paths, parentModule);
                         if (parentPath) {
@@ -1670,9 +1670,9 @@ var requirejs, require, define;
                     }
 
                     //Join the path parts together, then figure out if baseUrl is needed.
-                    url = syms.join('');
+                    url = syms.join('/');
                     url += (ext || (/^data\:|^blob\:|\?/.test(url) || skipExt ? '' : '.js'));
-                    url = (url.charAt(0) === '' || url.match(/^[\w\+\.\-]+:/) ? '' : config.baseUrl) + url;
+                    url = (url.charAt(0) === '/' || url.match(/^[\w\+\.\-]+:/) ? '' : config.baseUrl) + url;
                 }
 
                 return config.urlArgs && !/^blob\:/.test(url) ?
@@ -2027,9 +2027,9 @@ var requirejs, require, define;
                 if (!cfg.baseUrl && mainScript.indexOf('!') === -1) {
                     //Pull off the directory of data-main for use as the
                     //baseUrl.
-                    src = mainScript.split('');
+                    src = mainScript.split('/');
                     mainScript = src.pop();
-                    subPath = src.length ? src.join('')  + '' : './';
+                    subPath = src.length ? src.join('/')  + '/' : './';
 
                     cfg.baseUrl = subPath;
                 }
