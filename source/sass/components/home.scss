@@ -1,12 +1,20 @@
 #home{
-    margin: auto;
-    max-width: 690px;
+    margin: auto -20%;
+    //max-width: 690px;
+    margin-top: -$height-footer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
     h1{
         color: rgba(255,255,255,0.95);
+        margin-bottom: 36px;
         text-align: center;
+        text-shadow: 0 0 5px rgba(0,0,0,1);
     }
     h4{
         color: lightgoldenrodyellow;
+        margin-bottom: 70px;
         text-align: center;
+        text-shadow: 0 0 4px rgba(0,0,0,1);
     }
 }

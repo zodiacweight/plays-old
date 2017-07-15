@@ -15,16 +15,20 @@ $opacity-translucent: 0.75;
 @keyframes fadeIn {
   from {
     opacity: $opacity-translucent; 
+    transform: scale(1);
   }
   to {
     opacity: $opacity-solid;
+    transform: scale(1.5);
   }
 }
 @keyframes fadeOut {
   from {
-    opacity: $opacity-solid; 
+    opacity: $opacity-solid;
+    transform: scale(1.5);
   }
   to {
     opacity: $opacity-translucent;
+    transform: scale(1);
   }
 }
