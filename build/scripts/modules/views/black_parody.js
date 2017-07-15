@@ -3,7 +3,7 @@ define(() => {
     return new (Backbone.View.extend({
         getData: function(){
             return {
-                path: 'black_parody',
+                path: 'contents/views/black_parody.html',
                 self: this,
                 selector: '#black_parody',
                 data: {

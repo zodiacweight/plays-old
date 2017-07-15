@@ -3,7 +3,7 @@ define(() => {
     return new (Backbone.View.extend({
         getData: function(){
             return {
-                path: 'unbalanced',
+                path: 'contents/views/unbalanced.html',
                 self: this,
                 selector: '#unbalanced',
                 data: {

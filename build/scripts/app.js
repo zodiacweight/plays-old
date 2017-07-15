@@ -1,14 +1,12 @@
-const common_path = 'scripts/modules/views/';
-const build_path = (location.href.indexOf('/build') != -1) ? '/plays/build/' : false;
-const path = build_path ? build_path + common_path : common_path;
-
-console.log('path=>', path);
-
+const path = 'scripts/modules/views/';
 const chapters = {
     black_parody: 'black_parody'
     , cabalistic_bewitching_hero: 'cabalistic_bewitching_hero'
     , joshua_world: 'joshua_world'
     , junbalanced: 'unbalanced'
+    //, secret_agent: 'secret_agent',
+    //, special_scavangers: 'special_scavangers',
+    //, xmarine: 'xmarine'
 };
 
 require([   path + 'default.js',
@@ -39,17 +37,14 @@ require([   path + 'default.js',
         //
         var $viewElement = $(View.self.$el),
             compiled = _.template(contents)(View.data);
-        console.log('Data=>', {'View.data':View.data, View:View, $viewElement:$viewElement});
+        // console.log('Data=>', {'View.data':View.data, View:View, $viewElement:$viewElement});
         $viewElement.html(compiled); 
         $container.html($viewElement.find(View.selector).html());
     };
-    const vpath = 'contents/views/';
-    const views_path = build_path ? build_path + vpath : vpath; 
-    console.log('views_path=>', views_path);
     // set page content
     const setView = (view, objectView) =>{
-        if (!view) view = objectView['getData'](); console.log('get=>', views_path + view.path + '.html');
-        $.get(views_path + view.path + '.html', (contents) => render(view, contents));
+        if (!view) view = objectView['getData'](); 
+        $.get(view.path, (contents) => render(view, contents))
     };
     //
     const AppRouter = Backbone.Router.extend({
