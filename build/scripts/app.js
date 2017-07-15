@@ -1,4 +1,4 @@
-const path = '/scripts/modules/views/';
+const path = 'scripts/modules/views/';
 const chapters = {
     black_parody: 'black_parody'
     , cabalistic_bewitching_hero: 'cabalistic_bewitching_hero'
