@@ -20,22 +20,45 @@
             animation-fill-mode: both;
         }
 
-        @mixin child($image, $delay, $padding-bottom){
+        @mixin child($image, $delay, $padding-bottom: 100%, $background-size: cover){
             @include goGrow($delay);
             background-image: url('/contents/images/' + $image);
+            background-size: $background-size;
             @media(max-width: ($width-mobile - 1)){
                 padding-bottom: $padding-bottom;
             }
         }
 
         &:nth-child(1){
-            @include child('devil.jpg', 0.4s, 96.92%);
-            background-size: cover;
+            @include child('cabalistic_bewitching_hero.jpg', 0.4s);
         }
         &:nth-child(2){
-            @include child('scavenger-1.png', 1s, 100%);
-            background-size: contain;
+            @include child('black_parody.jpg', 1s);
         }
+
+        h4{
+            background-color: rgba(0,0,0,0.5);
+            bottom: 0;
+            color: white;
+            cursor: default;
+            font-size: x-large;
+            // todo: fix it:
+            height: 39%;
+            margin: auto;
+            opacity: 0.5;
+            padding: 17% 0;
+            position: absolute;
+            text-align: center;
+            transition: all ease 0.5s;
+            width: 100%;
+            &:hover{
+                background-color: #000;
+                cursor: pointer;
+                height: 100%;
+                opacity: 0.75;
+            }
+        }
+
         @media(max-width: ($width-mobile - 1)){
             margin-bottom: $common-offset;
         }

@@ -1,4 +1,11 @@
 const path = '/scripts/modules/views/';
+const chapters = {
+    black_parody: 'black_parody'
+    , cabalistic_bewitching_hero: 'cabalistic_bewitching_hero'
+    //, secret_agent: 'secret_agent',
+    //, special_scavangers: 'special_scavangers',
+    //, xmarine: 'xmarine'
+};
 
 require([   path + 'default.js',
             path + 'black_parody.js',
@@ -26,7 +33,7 @@ require([   path + 'default.js',
         $viewElement.html(compiled); 
         $container.html($viewElement.find(View.selector).html());
     };
-    //
+    // set page content
     const setView = (view, objectView) =>{
         if (!view) view = objectView['getData'](); 
         $.get(view.path, (contents) => render(view, contents))

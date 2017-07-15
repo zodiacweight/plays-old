@@ -9,8 +9,8 @@ define(() => {
                 data: {
                     greeting: "Hello, Beautiful Stranger!",
                     subheader: "Look, what wonderful stories wait for you here!",
-                    header1: "Black Agent",
-                    header2: "Special Scavengers"
+                    header1: "Cabalistic Bewitching Hero",
+                    header2: "Black Parody"
                 }
             };
         }

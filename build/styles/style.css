@@ -6,7 +6,7 @@ html, body {
   padding: 0; }
 
 h1, h2, h3, h4, h5, h6 {
-  font-family: 'Times New Roman', serif; }
+  font-family: Verdana, Geneva, Tahoma, sans-serif; }
 
 main, footer {
   max-width: 960px; }
@@ -54,21 +54,40 @@ main {
       animation-duration: 1s;
       animation-delay: 0.4s;
       animation-fill-mode: both;
-      background-image: url("/contents/images/devil.jpg");
+      background-image: url("/contents/images/cabalistic_bewitching_hero.jpg");
       background-size: cover; }
       @media (max-width: 747px) {
         #asides aside:nth-child(1) {
-          padding-bottom: 96.92%; } }
+          padding-bottom: 100%; } }
     #asides aside:nth-child(2) {
       animation-name: grow;
       animation-duration: 1s;
       animation-delay: 1s;
       animation-fill-mode: both;
-      background-image: url("/contents/images/scavenger-1.png");
-      background-size: contain; }
+      background-image: url("/contents/images/black_parody.jpg");
+      background-size: cover; }
       @media (max-width: 747px) {
         #asides aside:nth-child(2) {
           padding-bottom: 100%; } }
+    #asides aside h4 {
+      background-color: rgba(0, 0, 0, 0.5);
+      bottom: 0;
+      color: white;
+      cursor: default;
+      font-size: x-large;
+      height: 39%;
+      margin: auto;
+      opacity: 0.5;
+      padding: 17% 0;
+      position: absolute;
+      text-align: center;
+      transition: all ease 0.5s;
+      width: 100%; }
+      #asides aside h4:hover {
+        background-color: #000;
+        cursor: pointer;
+        height: 100%;
+        opacity: 0.75; }
     @media (max-width: 747px) {
       #asides aside {
         margin-bottom: 20px; } }
