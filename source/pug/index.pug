@@ -12,9 +12,14 @@ html(lang='en')
   body
     main
     footer
-      a(href='#') Home 
-      . | 
-      a(href='#black_parody') black_parody
-      . | 
-      a(href='#cabalistic_bewitching_hero') cabalistic_bewitching_hero
+      mixin links(hash, text, stop)
+        a(href=hash) #{text} 
+        if ! stop
+          . 
+            &nbsp;
+            | 
+      +links('#', 'Home')
+      +links('#black_parody', 'Black Parody')
+      +links('#cabalistic_bewitching_hero', 'Cabalistic Bewitching Hero')
+      +links('#joshua_world', 'Joshua Wold', 'stop')
     script(src='scripts/app.js', data-main='app')

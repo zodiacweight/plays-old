@@ -40,7 +40,9 @@ main {
   justify-content: space-between; }
   @media (min-width: 748px) {
     #asides {
-      display: flex; }
+      display: flex;
+      flex-wrap: wrap;
+      margin-bottom: 20px; }
       #asides aside {
         width: calc(50% - 10px); } }
   #asides aside {
@@ -74,6 +76,18 @@ main {
           padding-bottom: 100%; } }
       #asides aside:nth-child(2) p {
         background-color: rgba(200, 0, 0, 0.5); }
+    #asides aside:nth-child(3) {
+      animation-name: grow;
+      animation-duration: 1s;
+      animation-delay: 1.6s;
+      animation-fill-mode: both;
+      background-image: url("/contents/images/joshua_world.jpg");
+      background-size: cover; }
+      @media (max-width: 747px) {
+        #asides aside:nth-child(3) {
+          padding-bottom: 100%; } }
+      #asides aside:nth-child(3) p {
+        background-color: rgba(0, 200, 0, 0.5); }
     #asides aside h4 {
       background-color: rgba(0, 0, 0, 0.5);
       bottom: 0;
@@ -108,9 +122,6 @@ main {
       pointer-events: none;
       position: relative;
       padding: 30px; }
-    @media (max-width: 747px) {
-      #asides aside {
-        margin-bottom: 20px; } }
 
 footer a + a {
   padding-left: 4px; }

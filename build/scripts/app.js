@@ -2,6 +2,7 @@ const path = '/scripts/modules/views/';
 const chapters = {
     black_parody: 'black_parody'
     , cabalistic_bewitching_hero: 'cabalistic_bewitching_hero'
+    , joshua_world: 'joshua_world'
     //, secret_agent: 'secret_agent',
     //, special_scavangers: 'special_scavangers',
     //, xmarine: 'xmarine'
@@ -10,10 +11,12 @@ const chapters = {
 require([   path + 'default.js',
             path + 'black_parody.js',
             path + 'cabalistic_bewitching_hero.js',
+            path + 'joshua_world.js',
             path + 'not_found.js'            
     ], (    defaultView, 
             blackParodyView, 
             cabalisticBewitchingHeroView, 
+            joshuaWorldView,
             notFoundView    ) => {
 
     // views instances. Values to be set after. 
@@ -21,6 +24,7 @@ require([   path + 'default.js',
     var viewDefault,
         viewBlackParody,
         viewCabalisticBewitchingHero,
+        viewJoshuaWorld,
         view404;
     //
     const $container = $('main');
@@ -29,7 +33,7 @@ require([   path + 'default.js',
         //
         var $viewElement = $(View.self.$el),
             compiled = _.template(contents)(View.data);
-
+        // console.log('Data=>', {'View.data':View.data, View:View, $viewElement:$viewElement});
         $viewElement.html(compiled); 
         $container.html($viewElement.find(View.selector).html());
     };
@@ -44,11 +48,13 @@ require([   path + 'default.js',
             '': 'go_home',
             'black_parody': 'run_black_parody',
             'cabalistic_bewitching_hero': 'run_cabalistic_bewitching_hero',
+            'joshua_world': 'run_joshua_world',
             '*other': 'not_found'
         },
         go_home:            () => setView(viewDefault, defaultView),
         run_black_parody:   () => setView(viewBlackParody, blackParodyView),
         run_cabalistic_bewitching_hero: () => setView(viewCabalisticBewitchingHero, cabalisticBewitchingHeroView),
+        run_joshua_world: () => setView(viewJoshuaWorld, joshuaWorldView),
         not_found:          () => setView(view404, notFoundView)
     });
 

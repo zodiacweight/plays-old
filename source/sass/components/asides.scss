@@ -1,8 +1,11 @@
 #asides{
     @media(min-width: $width-mobile){
         display: flex;
+        flex-wrap: wrap;
+        margin-bottom: $common-offset;
+        $calcOffset: $common-offset / 2;
         aside{
-            width: calc(50% - 10px);
+            width: calc(50% - #{$calcOffset});
         }
     }
     justify-content: space-between;
@@ -41,6 +44,7 @@
 
         @include setParagraphParams(1, 0.4s, 'cabalistic_bewitching_hero.jpg', rgba(0,0,200,0.5));
         @include setParagraphParams(2, 1s, 'black_parody.jpg', rgba(200,0,0,0.5));
+        @include setParagraphParams(3, 1.6s, 'joshua_world.jpg', rgba(0,200,0,0.5));
 
         h4{
             background-color: rgba(0,0,0,0.5);
@@ -82,10 +86,6 @@
             pointer-events: none;
             position: relative;
             padding: 30px;
-        }
-
-        @media(max-width: ($width-mobile - 1)){
-            margin-bottom: $common-offset;
         }
     }
 }
