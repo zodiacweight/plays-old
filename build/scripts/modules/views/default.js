@@ -3,7 +3,7 @@ define(() => {
     return new (Backbone.View.extend({
         getData: function(){
             return {
-                path: 'default.html',
+                path: 'default',
                 self: this,
                 selector: '#default',
                 data: {

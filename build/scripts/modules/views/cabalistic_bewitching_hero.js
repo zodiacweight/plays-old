@@ -3,7 +3,7 @@ define(() => {
     return new (Backbone.View.extend({
         getData: function(){
             return {
-                path: 'cabalistic_bewitching_hero.html',
+                path: 'cabalistic_bewitching_hero',
                 self: this,
                 selector: '#cabalistic_bewitching_hero',
                 data: {

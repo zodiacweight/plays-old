@@ -44,10 +44,12 @@ require([   path + 'default.js',
         $container.html($viewElement.find(View.selector).html());
     };
     const views_path = build_path + 'contents/views/';
+    console.log('views_path=>', views_path);
     // set page content
     const setView = (view, objectView) =>{
         if (!view) view = objectView['getData'](); 
-        $.get(views_path + view.path, (contents) => render(view, contents))
+        console.log('get=>', views_path + view.path + '.html');
+        $.get(views_path + view.path + '.html', (contents) => render(view, contents));
     };
     //
     const AppRouter = Backbone.Router.extend({
