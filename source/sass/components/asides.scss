@@ -12,6 +12,7 @@
         border: solid 4px #ddd;
         height: 0;
         padding-bottom: 50%;
+        position: relative;
         
         @mixin goGrow($delay){
             animation-name: grow;
@@ -29,12 +30,17 @@
             }
         }
 
-        &:nth-child(1){
-            @include child('cabalistic_bewitching_hero.jpg', 0.4s);
+        @mixin setParagraphParams($num, $delay, $image, $background-color){
+            &:nth-child(#{$num}){
+                @include child($image, $delay);
+                p {
+                    background-color: $background-color;
+                }
+            }
         }
-        &:nth-child(2){
-            @include child('black_parody.jpg', 1s);
-        }
+
+        @include setParagraphParams(1, 0.4s, 'cabalistic_bewitching_hero.jpg', rgba(0,0,200,0.5));
+        @include setParagraphParams(2, 1s, 'black_parody.jpg', rgba(200,0,0,0.5));
 
         h4{
             background-color: rgba(0,0,0,0.5);
@@ -56,7 +62,26 @@
                 cursor: pointer;
                 height: 100%;
                 opacity: 0.75;
+                & +p{
+                    margin-top: 30%;
+                    opacity: 1;
+                    // todo: fix this!
+                    padding-bottom: 67%;
+                    transition: all ease 0.5s;
+                }
             }
+        }
+
+        p{
+            color: white;
+            font-size: 19px;
+            font-family: Verdana;
+            height: 0;
+            margin: 0;
+            opacity: 0;
+            pointer-events: none;
+            position: relative;
+            padding: 30px;
         }
 
         @media(max-width: ($width-mobile - 1)){

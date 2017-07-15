@@ -6,7 +6,9 @@ block contents
     h1 <%= greeting  %>
     h4 <%= subheader %>
     section#asides
-      aside
-        h4 <%= header1 %>
-      aside
-        h4 <%= header2 %>
+      mixin aside(num)
+        aside
+          h4 <%= header#{num} %>
+          p <%= text#{num} %>
+      +aside(1)
+      +aside(2)
