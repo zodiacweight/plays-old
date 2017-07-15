@@ -8,7 +8,7 @@ define(() => {
                 selector: '#default',
                 data: {
                     greeting: "Hello, Beautiful Stranger!",
-                    subheader: "Look, what wonderful stories are waiting for you right here!",
+                    subheader: "Look, what the wonderful stories are waiting for you right here!",
                     header1: "Cabalistic Bewitching Hero",
                     header2: "Black Parody",
                     header3: "Joshua's Universe",
