@@ -1,5 +1,9 @@
 const common_path = 'scripts/modules/views/';
-const path = (location.href.indexOf('/build') === -1) ? common_path : 'build/' + common_path;
+const build_path = (location.href.indexOf('/build') === -1) ? '' : 'build/';
+const path = build_path + common_path;
+
+console.log('path=>', path);
+
 const chapters = {
     black_parody: 'black_parody'
     , cabalistic_bewitching_hero: 'cabalistic_bewitching_hero'
@@ -39,10 +43,11 @@ require([   path + 'default.js',
         $viewElement.html(compiled); 
         $container.html($viewElement.find(View.selector).html());
     };
+    const views_path = build_path + 'contents/views/';
     // set page content
     const setView = (view, objectView) =>{
         if (!view) view = objectView['getData'](); 
-        $.get(view.path, (contents) => render(view, contents))
+        $.get(views_path + view.path, (contents) => render(view, contents))
     };
     //
     const AppRouter = Backbone.Router.extend({
