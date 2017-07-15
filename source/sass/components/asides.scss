@@ -28,7 +28,7 @@
 
         @mixin child($image, $delay, $padding-bottom: 100%, $background-size: cover){
             @include goGrow($delay);
-            background-image: url('/contents/images/' + $image);
+            background-image: url('../contents/images/' + $image);
             background-size: $background-size;
             @media(max-width: ($width-mobile - 1)){
                 padding-bottom: $padding-bottom;
