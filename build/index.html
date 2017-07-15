@@ -4,17 +4,17 @@
     <meta charset="UTF-8">
     <title>English: Amazing adventures of misterious creatures existed ever</title>
     <script>
-      const path_play = 'plays';
+      const path_plays = 'plays';
       const path_build = 'build';
       var full_path = '';
-      if (location.href.indexOf('/'+path_play)!==-1){
-        full_path += '/' + path_play; // /play
+      if (location.href.indexOf('/'+path_plays)!==-1){
+        full_path += '/' + path_plays; // /plays
       }
       if (location.href.indexOf('/'+path_build)!==-1){
-        full_path += '/' + path_build; // /play/build
+        full_path += '/' + path_build; // /plays/build
       }
       if (full_path) {
-        // /play/build/
+        // /plays/build/
         document.write('<base href="'+full_path+'/" />');
       }
     </script>
