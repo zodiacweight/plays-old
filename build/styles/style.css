@@ -48,7 +48,19 @@ main {
     opacity: 0; }
   to {
     transform: scale(1);
+    opacity: 0.75; } }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0.75; }
+  to {
     opacity: 1; } }
+
+@keyframes fadeOut {
+  from {
+    opacity: 1; }
+  to {
+    opacity: 0.75; } }
 
 #home {
   margin: auto;
@@ -67,21 +79,23 @@ main {
       display: flex;
       flex-wrap: wrap; }
       #asides aside {
-        margin-bottom: 20px;
-        width: calc(50% - 10px); } }
+        margin-bottom: 24px;
+        width: calc(50% - 12px); } }
   #asides aside {
     background-position: center;
     background-repeat: no-repeat;
-    border: solid 4px #ddd;
+    box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.25);
+    outline: solid 6px rgba(0, 0, 0, 0.15);
     height: 0;
     padding-bottom: 45%;
-    position: relative; }
+    position: relative;
+    transition: all ease 0.4s; }
     #asides aside:nth-child(1) {
       animation-name: grow;
       animation-duration: 1s;
       animation-delay: 0.4s;
       animation-fill-mode: both;
-      background-image: url("../contents/images/cabalistic_bewitching_hero.jpg");
+      background-image: url("/contents/images/cabalistic_bewitching_hero.jpg");
       background-size: cover; }
       @media (max-width: 747px) {
         #asides aside:nth-child(1) {
@@ -93,7 +107,7 @@ main {
       animation-duration: 1s;
       animation-delay: 1s;
       animation-fill-mode: both;
-      background-image: url("../contents/images/black_parody.jpg");
+      background-image: url("/contents/images/black_parody.jpg");
       background-size: cover; }
       @media (max-width: 747px) {
         #asides aside:nth-child(2) {
@@ -105,7 +119,7 @@ main {
       animation-duration: 1s;
       animation-delay: 1.6s;
       animation-fill-mode: both;
-      background-image: url("../contents/images/joshua_world.jpg");
+      background-image: url("/contents/images/joshua_world.jpg");
       background-size: cover; }
       @media (max-width: 747px) {
         #asides aside:nth-child(3) {
@@ -117,7 +131,7 @@ main {
       animation-duration: 1s;
       animation-delay: 2s;
       animation-fill-mode: both;
-      background-image: url("../contents/images/unbalanced.jpg");
+      background-image: url("/contents/images/unbalanced.jpg");
       background-size: cover; }
       @media (max-width: 747px) {
         #asides aside:nth-child(4) {
@@ -147,7 +161,7 @@ main {
         #asides aside h4:hover + p {
           margin-top: 30%;
           opacity: 1;
-          padding-bottom: 59%;
+          padding-bottom: 57.5%;
           transition: all ease 0.5s; }
     #asides aside p {
       color: white;
@@ -158,6 +172,12 @@ main {
       pointer-events: none;
       position: relative;
       padding: 20px; }
+    #asides aside.fade {
+      animation-name: fadeIn;
+      animation-duration: 0.2s;
+      animation-delay: initial !important; }
+      #asides aside.fade.fade-out {
+        animation-name: fadeOut; }
 
 footer {
   line-height: 80px; }

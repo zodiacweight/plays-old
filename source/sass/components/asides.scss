@@ -2,20 +2,22 @@
     @media(min-width: $width-mobile){
         display: flex;
         flex-wrap: wrap;
-        $calcOffset: $common-offset / 2;
+        //$calcOffset: $common-offset / 2;
         aside{
-            margin-bottom: $common-offset;
-            width: calc(50% - #{$calcOffset});
+            margin-bottom: 24px;
+            width: calc(50% - 12px);
         }
     }
     justify-content: space-between;
     aside{
         background-position: center;
         background-repeat: no-repeat;
-        border: solid 4px #ddd;
+        box-shadow: 0 0 20px 2px rgba(0,0,0,0.25);
+        outline: solid 6px rgba(0,0,0,0.15);
         height: 0;
         padding-bottom: 45%;
         position: relative;
+        transition: all ease 0.4s;
         
         @mixin goGrow($delay){
             animation-name: grow;
@@ -72,7 +74,7 @@
                     margin-top: 30%;
                     opacity: 1;
                     // todo: fix this!
-                    padding-bottom: 59%;
+                    padding-bottom: 57.5%;
                     transition: all ease 0.5s;
                 }
             }
@@ -88,5 +90,14 @@
             position: relative;
             padding: 20px;
         }
+        &.fade{
+            animation-name: fadeIn;
+            animation-duration: 0.2s;
+            animation-delay: initial !important;
+            &.fade-out{
+                animation-name: fadeOut;
+            }        
+        }
+
     }
 }
