@@ -1,5 +1,9 @@
 footer{
-    a +a{
-        padding-left: 4px;
+    line-height: $height-footer;
+    a {
+        color: white;
+        +a{
+            padding-left: 4px;
+        }
     }
 }

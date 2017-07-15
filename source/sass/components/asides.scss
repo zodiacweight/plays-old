@@ -2,9 +2,9 @@
     @media(min-width: $width-mobile){
         display: flex;
         flex-wrap: wrap;
-        margin-bottom: $common-offset;
         $calcOffset: $common-offset / 2;
         aside{
+            margin-bottom: $common-offset;
             width: calc(50% - #{$calcOffset});
         }
     }
@@ -14,7 +14,7 @@
         background-repeat: no-repeat;
         border: solid 4px #ddd;
         height: 0;
-        padding-bottom: 50%;
+        padding-bottom: 45%;
         position: relative;
         
         @mixin goGrow($delay){
@@ -45,13 +45,14 @@
         @include setParagraphParams(1, 0.4s, 'cabalistic_bewitching_hero.jpg', rgba(0,0,200,0.5));
         @include setParagraphParams(2, 1s, 'black_parody.jpg', rgba(200,0,0,0.5));
         @include setParagraphParams(3, 1.6s, 'joshua_world.jpg', rgba(0,200,0,0.5));
+        @include setParagraphParams(4, 2s, 'unbalanced.jpg', rgba(200,0,200,0.5));
 
         h4{
             background-color: rgba(0,0,0,0.5);
             bottom: 0;
             color: white;
             cursor: default;
-            font-size: x-large;
+            font-size: large;
             // todo: fix it:
             height: 39%;
             margin: auto;
@@ -66,11 +67,12 @@
                 cursor: pointer;
                 height: 100%;
                 opacity: 0.75;
+                padding-top: 40px;
                 & +p{
                     margin-top: 30%;
                     opacity: 1;
                     // todo: fix this!
-                    padding-bottom: 67%;
+                    padding-bottom: 59%;
                     transition: all ease 0.5s;
                 }
             }
@@ -78,14 +80,13 @@
 
         p{
             color: white;
-            font-size: 19px;
             font-family: Verdana;
             height: 0;
             margin: 0;
             opacity: 0;
             pointer-events: none;
             position: relative;
-            padding: 30px;
+            padding: 20px;
         }
     }
 }

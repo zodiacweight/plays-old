@@ -3,13 +3,15 @@ block vars
     - var header_text = 'Home'
     - var template_id = 'default'
 block contents
-    h1 <%= greeting  %>
-    h4 <%= subheader %>
-    section#asides
-      mixin aside(num)
-        aside
-          h4 <%= header#{num} %>
-          p <%= text#{num} %>
-      +aside(1)
-      +aside(2)
-      +aside(3)
+    #home
+        h1 <%= greeting  %>
+        h4 <%= subheader %>
+        section#asides
+            mixin aside(num)
+                aside
+                    h4 <%= header#{num} %>
+                    p <%= text#{num} %>
+            +aside(1)
+            +aside(2)
+            +aside(3)
+            +aside(4)

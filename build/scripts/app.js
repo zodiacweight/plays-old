@@ -3,6 +3,7 @@ const chapters = {
     black_parody: 'black_parody'
     , cabalistic_bewitching_hero: 'cabalistic_bewitching_hero'
     , joshua_world: 'joshua_world'
+    , junbalanced: 'unbalanced'
     //, secret_agent: 'secret_agent',
     //, special_scavangers: 'special_scavangers',
     //, xmarine: 'xmarine'
@@ -12,11 +13,13 @@ require([   path + 'default.js',
             path + 'black_parody.js',
             path + 'cabalistic_bewitching_hero.js',
             path + 'joshua_world.js',
+            path + 'unbalanced.js',
             path + 'not_found.js'            
     ], (    defaultView, 
             blackParodyView, 
             cabalisticBewitchingHeroView, 
             joshuaWorldView,
+            unbalancedView,
             notFoundView    ) => {
 
     // views instances. Values to be set after. 
@@ -25,6 +28,7 @@ require([   path + 'default.js',
         viewBlackParody,
         viewCabalisticBewitchingHero,
         viewJoshuaWorld,
+        viewUnbalanced,
         view404;
     //
     const $container = $('main');
@@ -49,12 +53,14 @@ require([   path + 'default.js',
             'black_parody': 'run_black_parody',
             'cabalistic_bewitching_hero': 'run_cabalistic_bewitching_hero',
             'joshua_world': 'run_joshua_world',
+            'unbalanced': 'run_unbalanced',
             '*other': 'not_found'
         },
         go_home:            () => setView(viewDefault, defaultView),
         run_black_parody:   () => setView(viewBlackParody, blackParodyView),
         run_cabalistic_bewitching_hero: () => setView(viewCabalisticBewitchingHero, cabalisticBewitchingHeroView),
         run_joshua_world: () => setView(viewJoshuaWorld, joshuaWorldView),
+        run_unbalanced: () => setView(viewUnbalanced, unbalancedView),
         not_found:          () => setView(view404, notFoundView)
     });
 
