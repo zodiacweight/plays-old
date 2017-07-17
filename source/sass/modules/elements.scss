@@ -28,7 +28,6 @@ h1, h2, h3, h4, h5, h6{
 }
 
 main, footer{
-    //max-width: $max-width-main;
     position: relative;
     @media (min-width: $width-mobile){
         margin: auto;
@@ -45,8 +44,8 @@ footer{
     color: white;
     height: $height-footer;
     text-align: center;
-    // padding-top: $common-offset;
 }
 main{
+    display: flex;
     min-height: calc(100% - #{$height-footer});
 }
