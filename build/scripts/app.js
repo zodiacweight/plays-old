@@ -1,70 +1,67 @@
-const path = 'scripts/modules/views/';
-const chapters = {
-    black_parody: 'black_parody'
-    , cabalistic_bewitching_hero: 'cabalistic_bewitching_hero'
-    , joshua_world: 'joshua_world'
-    , junbalanced: 'unbalanced'
-    //, secret_agent: 'secret_agent',
-    //, special_scavangers: 'special_scavangers',
-    //, xmarine: 'xmarine'
-};
+const scripts_path = 'scripts/';
+const contents_path = 'contents/';
+const path = scripts_path + 'modules/views/';
 
-require([   path + 'default.js',
-            path + 'black_parody.js',
-            path + 'cabalistic_bewitching_hero.js',
-            path + 'joshua_world.js',
-            path + 'unbalanced.js',
-            path + 'not_found.js'            
-    ], (    defaultView, 
-            blackParodyView, 
-            cabalisticBewitchingHeroView, 
-            joshuaWorldView,
-            unbalancedView,
-            notFoundView    ) => {
+require([scripts_path + 'common.js'], (jqueryResponse) => {
 
-    // views instances. Values to be set after. 
-    // (Look carefully: not the same as params above)
-    var viewDefault,
-        viewBlackParody,
-        viewCabalisticBewitchingHero,
-        viewJoshuaWorld,
-        viewUnbalanced,
-        view404;
+    var Views = {};
     //
     const $container = $('main');
     // 
-    const render = (View, contents) => {
+    const render = (View) => {
         //
-        var $viewElement = $(View.self.$el),
-            compiled = _.template(contents)(View.data);
-        // console.log('Data=>', {'View.data':View.data, View:View, $viewElement:$viewElement});
+        var $viewElement = $(View.$el), // Backbone.View instance
+            compiled = _.template(View.tmpl)(View.data);
         $viewElement.html(compiled); 
+        console.log('Data=>', {
+            compiled:compiled, 
+            'View.data':View.data,
+            '$viewElement.html':$viewElement.html(),
+            View:View, 
+            $viewElement:$viewElement
+        });
         $container.html($viewElement.find(View.selector).html());
     };
-    // set page content
-    const setView = (view, objectView) =>{
-        if (!view) view = objectView['getData'](); 
-        $.get(view.path, (contents) => render(view, contents))
+
+    const setView = (view) => {
+        /* if undefined (i.e. ─ at a first run), store a reference to object 
+        from <view>.js in the local variable */
+        if (!Views[view]){
+            // get template and json
+            $.when( $.get(contents_path + 'views/' + view + '.html'), // template
+                    $.get(contents_path + 'data/jsons/' + view + '.json') // data
+            ).then((tmpl, contents) => {
+                    // console.log('Done=>', {tmpl:tmpl, contents:contents});
+                    // store View instance for futher using
+                    Views[view] =  new (Backbone.View.extend({
+                        selector: '#' + view,
+                        data: contents[0],
+                        tmpl: tmpl[0]
+                    })); // console.log('check View', {view: view, 'Views[view]': Views[view]});
+                    render(Views[view]);
+            }, (mess) => {
+                console.warn('Something went wrong...');
+            });
+        } else {
+            render(Views[view]);
+        }
+        console.log('view=>', view);
     };
+
     //
     const AppRouter = Backbone.Router.extend({
         routes: {
-            '': 'go_home',
-            'black_parody': 'run_black_parody',
-            'cabalistic_bewitching_hero': 'run_cabalistic_bewitching_hero',
-            'joshua_world': 'run_joshua_world',
-            'unbalanced': 'run_unbalanced',
-            '*other': 'not_found'
-        },
-        go_home:            () => setView(viewDefault, defaultView),
-        run_black_parody:   () => setView(viewBlackParody, blackParodyView),
-        run_cabalistic_bewitching_hero: () => setView(viewCabalisticBewitchingHero, cabalisticBewitchingHeroView),
-        run_joshua_world: () => setView(viewJoshuaWorld, joshuaWorldView),
-        run_unbalanced: () => setView(viewUnbalanced, unbalancedView),
-        not_found:          () => setView(view404, notFoundView)
+            '':                             () => setView('default'),
+            'black_parody':                 () => setView('black_parody'),
+            'cabalistic_bewitching_hero':   () => setView('cabalistic_bewitching_hero'),
+            'joshua_world':                 () => setView('joshua_world'),
+            'unbalanced':                   () => setView('unbalanced'),
+            '*other':                       () => setView('not_found')
+        }
     });
 
     const appRouter = new AppRouter();
     Backbone.history.start();
 
+    console.log(jqueryResponse);
 });

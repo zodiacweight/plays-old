@@ -9,7 +9,7 @@ block contents
         section#asides
             mixin aside(num, link)
                 aside
-                    a(href='/#'+link)
+                    a(href='#'+link)
                         h4 <%= header#{num} %>
                         p <%= text#{num} %>
             +aside(1, 'cabalistic_bewitching_hero')
