@@ -13,8 +13,8 @@
         background-position: center;
         background-repeat: no-repeat;
         box-shadow: 0 0 20px 2px rgba(0,0,0,0.25);
-        outline: solid 16px rgba(0,0,0,0.12);
         height: 0;
+        outline: solid 16px rgba(0,0,0,0.12);
         padding-bottom: 18%;
         position: relative;
         transition: all ease 0.4s;
@@ -49,12 +49,18 @@
         @include setParagraphParams(3, 1.6s, 'joshua_world.jpg', rgba(0,200,0,0.5));
         @include setParagraphParams(4, 2s, 'unbalanced.jpg', rgba(200,0,200,0.5));
 
+        a{
+            height: 100%;
+            position: absolute;
+            width: 100%;
+        }
+
         h4{
             background-color: rgba(0,0,0,0.5);
             bottom: 0;
             color: white;
             cursor: default;
-            font-size: large;
+            font-size: 1.13vw;
             // todo: fix it:
             height: 39%;
             margin: auto;
@@ -72,6 +78,7 @@
                 padding-top: 40px;
                 & +p{
                     bottom: 0;
+                    font-size: 0.7vw;
                     height: auto;
                     opacity: 1;
                     transition: all ease 0.5s;

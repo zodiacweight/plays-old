@@ -7,11 +7,12 @@ block contents
         h1 <%= greeting  %>
         h4 <%= subheader %>
         section#asides
-            mixin aside(num)
+            mixin aside(num, link)
                 aside
-                    h4 <%= header#{num} %>
-                    p <%= text#{num} %>
-            +aside(1)
-            +aside(2)
-            +aside(3)
-            +aside(4)
+                    a(href='/#'+link)
+                        h4 <%= header#{num} %>
+                        p <%= text#{num} %>
+            +aside(1, 'cabalistic_bewitching_hero')
+            +aside(2, 'black_parody')
+            +aside(3, 'joshua_world')
+            +aside(4, 'unbalanced')
