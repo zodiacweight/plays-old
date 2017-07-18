@@ -23,12 +23,14 @@ require([scripts_path + 'common.js'], (jqueryResponse) => {
         $container.html($viewElement.find(View.selector).html());
     };
 
-    const setView = (view) => {
+    const setView = (view, tmpl) => {
         /* if undefined (i.e. ─ at a first run), store a reference to object 
         from <view>.js in the local variable */
         if (!Views[view]){
+            var template = tmpl ? view : 'text';
             // get template and json
-            $.when( $.get(contents_path + 'views/' + view + '.html'), // template
+            // *** We need only 3 templates! ─ home (default), text and 404
+            $.when( $.get(contents_path + 'templates/' + template + '.html'), // template
                     $.get(contents_path + 'data/jsons/' + view + '.json') // data
             ).then((tmpl, contents) => {
                     // console.log('Done=>', {tmpl:tmpl, contents:contents});
@@ -51,12 +53,12 @@ require([scripts_path + 'common.js'], (jqueryResponse) => {
     //
     const AppRouter = Backbone.Router.extend({
         routes: {
-            '':                             () => setView('default'),
+            '':                             () => setView('default', true),
             'black_parody':                 () => setView('black_parody'),
             'cabalistic_bewitching_hero':   () => setView('cabalistic_bewitching_hero'),
             'joshua_world':                 () => setView('joshua_world'),
             'unbalanced':                   () => setView('unbalanced'),
-            '*other':                       () => setView('not_found')
+            '*other':                       () => setView('404', true)
         }
     });
 
