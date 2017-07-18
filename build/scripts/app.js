@@ -20,24 +20,32 @@ require([scripts_path + 'common.js'], (jqueryResponse) => {
             View:View, 
             $viewElement:$viewElement
         });
-        $container.html($viewElement.find(View.selector).html());
+        $container.html($viewElement.find('script[type="text/template"]').html());
     };
 
-    const setView = (view, tmpl) => {
+    const setView = (view, no_text) => {
         /* if undefined (i.e. ─ at a first run), store a reference to object 
         from <view>.js in the local variable */
         if (!Views[view]){
-            var template = tmpl ? view : 'text';
+            var template = no_text ? view : 'text';
             // get template and json
             // *** We need only 3 templates! ─ home (default), text and 404
             $.when( $.get(contents_path + 'templates/' + template + '.html'), // template
                     $.get(contents_path + 'data/jsons/' + view + '.json') // data
             ).then((tmpl, contents) => {
-                    // console.log('Done=>', {tmpl:tmpl, contents:contents});
-                    // store View instance for futher using
+                    var data;
+                    console.log('Done=>', {tmpl:tmpl, contents:contents});
+                    if (no_text) {
+                        data = contents[0];
+                        console.log('data tmpl=>', data);
+                    } else {
+                        data = { text: contents[0] };
+                        console.log('data no tmpl=>', data);
+                    }   
+                    // store View instance for further using
                     Views[view] =  new (Backbone.View.extend({
-                        selector: '#' + view,
-                        data: contents[0],
+                        // selector: '#' + view,
+                        data: data,
                         tmpl: tmpl[0]
                     })); // console.log('check View', {view: view, 'Views[view]': Views[view]});
                     render(Views[view]);
