@@ -14,7 +14,7 @@ require([   modules_path + 'common.js',
     const render = (View) => {
         //
         var $viewElement = $(View.$el), // Backbone.View instance
-            contents = "text" in View.data ? {text:"some text"} : View.data,
+            contents = "text" in View.data ? {text:jsonParser.parse(View.data.text)} : View.data,
             compiled = _.template(View.tmpl)(contents);
         $viewElement.html(compiled); 
         console.log('Data=>', {
