@@ -14,7 +14,7 @@ require([   modules_path + 'common.js',
     const render = (View) => {
         //
         var $viewElement = $(View.$el), // Backbone.View instance
-            contents = "text" in View.data ? {text:jsonParser.parse(View.data.text)} : View.data,
+            contents = "chapter" in View.data ? {chapter:jsonParser.parse(View.data.chapter)} : View.data,
             compiled = _.template(View.tmpl)(contents);
         $viewElement.html(compiled); 
         console.log('Data=>', {
@@ -30,16 +30,16 @@ require([   modules_path + 'common.js',
         /* if undefined (i.e. ─ at a first run), store a reference to object 
         from <view>.js in the local variable */
         if (!Views[view]){
-            var template = no_text ? view : 'text';
+            var template = no_text ? view : 'chapter';
             // get template and json
-            // *** We need only 3 templates! ─ home (default), text and 404
+            // *** We need only 3 templates! ─ home (default), chapter and 404
             $.when( $.get(contents_path + 'templates/' + template + '.html'), // template
                     $.get(contents_path + 'data/jsons/' + view + '.json') // data
             ).then((tmpl, contents) => {
                     //console.log('Done=>', {tmpl:tmpl, contents:contents});
                     // store View instance for further using
                     Views[view] =  new (Backbone.View.extend({
-                        data: no_text ? contents[0] : { text: contents[0] },
+                        data: no_text ? contents[0] : { chapter: contents[0] },
                         tmpl: tmpl[0]
                     })); // console.log('check View', {view: view, 'Views[view]': Views[view]});
                     render(Views[view]);
