@@ -1,8 +1,11 @@
-const scripts_path = 'scripts/';
+const modules_path = 'scripts/modules/';
 const contents_path = 'contents/';
-const path = scripts_path + 'modules/views/';
+// const path = modules_path + 'modules/views/';
 
-require([scripts_path + 'common.js'], (jqueryResponse) => {
+require([   modules_path + 'common.js', 
+            modules_path + 'json_parser.js'], 
+            (   jqueryResponse, 
+                jsonParser  ) => {
 
     var Views = {};
     //
@@ -11,14 +14,14 @@ require([scripts_path + 'common.js'], (jqueryResponse) => {
     const render = (View) => {
         //
         var $viewElement = $(View.$el), // Backbone.View instance
-            compiled = _.template(View.tmpl)(View.data);
+            contents = "text" in View.data ? {text:"some text"} : View.data,
+            compiled = _.template(View.tmpl)(contents);
         $viewElement.html(compiled); 
         console.log('Data=>', {
-            compiled:compiled, 
-            'View.data':View.data,
-            '$viewElement.html':$viewElement.html(),
-            View:View, 
-            $viewElement:$viewElement
+            compiled:compiled, View:View, contents:contents
+            //'$viewElement.html':$viewElement.html(),
+            //$viewElement:$viewElement,
+            //'View.data':View.data,            
         });
         $container.html($viewElement.find('script[type="text/template"]').html());
     };
@@ -33,19 +36,10 @@ require([scripts_path + 'common.js'], (jqueryResponse) => {
             $.when( $.get(contents_path + 'templates/' + template + '.html'), // template
                     $.get(contents_path + 'data/jsons/' + view + '.json') // data
             ).then((tmpl, contents) => {
-                    var data;
-                    console.log('Done=>', {tmpl:tmpl, contents:contents});
-                    if (no_text) {
-                        data = contents[0];
-                        console.log('data tmpl=>', data);
-                    } else {
-                        data = { text: contents[0] };
-                        console.log('data no tmpl=>', data);
-                    }   
+                    //console.log('Done=>', {tmpl:tmpl, contents:contents});
                     // store View instance for further using
                     Views[view] =  new (Backbone.View.extend({
-                        // selector: '#' + view,
-                        data: data,
+                        data: no_text ? contents[0] : { text: contents[0] },
                         tmpl: tmpl[0]
                     })); // console.log('check View', {view: view, 'Views[view]': Views[view]});
                     render(Views[view]);
