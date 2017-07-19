@@ -1,9 +1,26 @@
 <script type="text/template">
     <aside id="chapters">
-      CHAPTERS
+      <%= aside %>
     </aside>
     <div id="chapter-contents">
-        <header>HEADER</header>
-        <article><%= chapter %></article>
+        <header>
+            <h1>
+                <%= header %>
+            </h1>
+            <section>
+                <%= preview %>
+            </section>
+            <section>
+                <%= about_characters %>
+            </section>
+            <section id="heroes-filter">
+                <h4>Check out heroes which roles you want to read of:</h4>
+                <%= chapters_filter %>
+            </section>
+        </header>
+        <article><%= article %></article>
     </div>
+    <aside id="parts">
+      parts
+    </aside>
 </script>

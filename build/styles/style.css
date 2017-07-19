@@ -7,7 +7,6 @@ html, body {
   padding: 0; }
 
 body:after {
-  background-image: url("../contents/images/bg-storm-nature.jpg");
   background-size: cover;
   content: '';
   opacity: 0.85;
@@ -26,10 +25,6 @@ main, footer {
   @media (min-width: 748px) {
     main, footer {
       margin: auto; } }
-  @media (max-width: 1023px) {
-    main, footer {
-      padding-left: 20px;
-      padding-right: 20px; } }
 
 footer {
   background: rgba(102, 102, 102, 0.4);
@@ -37,6 +32,10 @@ footer {
   color: white;
   height: 80px;
   text-align: center; }
+  @media (max-width: 1023px) {
+    footer {
+      padding-left: 20px;
+      padding-right: 20px; } }
 
 main {
   display: flex;
@@ -68,7 +67,9 @@ main {
 
 #home {
   margin: auto;
+  padding-right: 20px;
   padding-bottom: 90px;
+  padding-left: 20px;
   width: 90%; }
   #home h1 {
     color: rgba(255, 255, 255, 0.95);
@@ -205,16 +206,40 @@ footer {
       padding-left: 4px; }
 
 #chapters {
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
   background: rgba(255, 255, 255, 0.35);
   padding: 20px;
   width: 20%;
   min-width: 200px; }
 
 #chapter-contents {
-  float: left;
-  margin-left: 20%;
+  background-color: rgba(255, 255, 255, 0.75);
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  margin: 20px 20px 40px 40px;
+  padding: 20px 40px 40px 40px;
+  width: 60%; }
+  #chapter-contents article, #chapter-contents section {
+    font-size: 1.2em; }
+
+#parts {
+  padding: 20px;
+  width: 20%; }
+
+#heroes-filter {
+  background-color: rgba(255, 255, 255, 0.65);
   padding: 20px; }
+  #heroes-filter h4 {
+    margin-top: 4px; }
+  #heroes-filter label {
+    display: inline-block;
+    margin-right: 10px;
+    white-space: nowrap; }
+
+body.default:after {
+  background-image: url(../contents/images/backgrounds/bg-storm-nature.jpg); }
+
+body.black_parody:after {
+  background-image: url(../contents/images/backgrounds/psy-1.jpg); }
+
+body.cabalistic_bewitching_hero:after {
+  background-image: url(../contents/images/backgrounds/witch-2.jpg); }

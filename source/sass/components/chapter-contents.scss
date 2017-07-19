@@ -1,5 +1,11 @@
 #chapter-contents{
-    float: left;
-    margin-left: 20%;
-    padding: 20px;
+    background-color: rgba(255,255,255,0.75);
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    margin: 20px 20px 40px 40px;
+    padding: $common-offset 40px 40px 40px;
+    width: 60%;
+    article, section{
+        font-size: 1.2em;
+    }
 }

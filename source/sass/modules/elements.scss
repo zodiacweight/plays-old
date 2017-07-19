@@ -10,7 +10,6 @@ html, body{
 
 body{
     &:after{
-        background-image: url('../contents/images/bg-storm-nature.jpg');
         background-size: cover;
         content: '';
         opacity: 0.85;
@@ -32,10 +31,6 @@ main, footer{
     @media (min-width: $width-mobile){
         margin: auto;
     }
-    @media (max-width: ($width-tablet - 1)){
-        padding-left: $common-offset;
-        padding-right: $common-offset;
-    }
 }
 
 footer{
@@ -44,6 +39,10 @@ footer{
     color: white;
     height: $height-footer;
     text-align: center;
+    @media (max-width: ($width-tablet - 1)){
+        padding-left: $common-offset;
+        padding-right: $common-offset;
+    }
 }
 main{
     display: flex;
