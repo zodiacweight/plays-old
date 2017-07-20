@@ -3,9 +3,9 @@ define($(function(){
     const classFadeOut = 'fade-out';
     $('main').on('mouseenter mouseleave', '#asides aside', (event) => {
         if (event.type === 'mouseenter'){
-            $(this).addClass(classFade).removeClass(classFadeOut);
+            $(event.currentTarget).addClass(classFade).removeClass(classFadeOut);
         } else {
-            $(this).addClass(classFadeOut);
+            $(event.currentTarget).addClass(classFadeOut);
         }
     });
 }));
