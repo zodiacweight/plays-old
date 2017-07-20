@@ -5,6 +5,11 @@
     margin: 20px 20px 40px 40px;
     padding: $common-offset 40px 40px 40px;
     width: 60%;
+    h4{
+        span{
+            @include sign;
+        }
+    }
     article, section{
         font-size: 1.2em;
     }
