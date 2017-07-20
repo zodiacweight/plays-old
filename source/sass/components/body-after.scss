@@ -1,5 +1,5 @@
 body{
-    @each $bg-class, $bg-image in (default, 'bg-storm-nature.jpg'), (black_parody, 'psy-1.jpg'), (cabalistic_bewitching_hero, 'witch-2.jpg') {
+    @each $bg-class, $bg-image in (default, 'bg-storm-nature.jpg'), (black_parody, 'psychopaths.jpg'), (cabalistic_bewitching_hero, 'witch-2.jpg') {
         &.#{$bg-class} {
             &:after{
                 background-image: url(../contents/images/backgrounds/#{$bg-image});
