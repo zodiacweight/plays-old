@@ -184,7 +184,6 @@ main {
           transition: all ease 0.5s; }
     #asides aside p {
       color: white;
-      font-family: Verdana;
       font-size: 10px;
       height: 0;
       margin: 0;
@@ -211,6 +210,13 @@ footer {
   padding: 20px;
   width: 20%;
   min-width: 200px; }
+  #chapters .menu {
+    bottom: 100px;
+    left: 0;
+    min-width: 200px;
+    position: fixed;
+    top: 20px;
+    width: calc(20% - 20px); }
 
 #chapter-contents {
   background-color: rgba(255, 255, 255, 0.75);
@@ -237,6 +243,15 @@ footer {
       background-color: #ccc; }
   #chapter-contents article, #chapter-contents section {
     font-size: 1.2em; }
+
+#chapters-list-menu {
+  padding: 20px; }
+  #chapters-list-menu a {
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-decoration: none; }
+    #chapters-list-menu a:hover {
+      text-decoration: underline; }
 
 #parts {
   padding: 20px;

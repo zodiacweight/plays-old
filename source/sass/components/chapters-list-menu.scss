@@ -1,0 +1,11 @@
+#chapters-list-menu{
+    padding: $common-offset;
+    a {
+        color: white;
+        font-family: $header-font-family;
+        text-decoration: none;
+        &:hover{
+            text-decoration: underline;
+        }
+    }
+}

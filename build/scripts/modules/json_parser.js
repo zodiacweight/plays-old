@@ -55,7 +55,6 @@ define({
                 }
             }
             templateData = {
-                aside: 'Something for aside',
                 header: data['header'],
                 preview: data['preview'],
                 about_characters: about_characters

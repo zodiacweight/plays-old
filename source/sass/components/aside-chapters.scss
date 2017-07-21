@@ -1,6 +1,16 @@
 #chapters{
+    $min-width: 200px;
     background: rgba(255,255,255,0.35);
-    padding: 20px;
+    padding: $common-offset;
     width: 20%;
-    min-width: 200px;
+    min-width: $min-width;
+    .menu{
+        bottom: 100px;
+        left: 0;
+        min-width: $min-width;
+        // outline: solid 1px yellow;
+        position: fixed;
+        top: $common-offset;
+        width: calc(20% - #{$common-offset});
+    }
 }
