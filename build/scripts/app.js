@@ -31,11 +31,17 @@ require([   modules_path + 'common.js' + temp_param,
         /* if undefined (i.e. ─ at a first run), store a reference to object 
         from <view>.js in the local variable */
         if (!Views[view]){
-            var template = no_text ? view : 'chapter';
+            var template, json_full_path = jsons_path;
+            if (no_text){
+                template = view;
+            } else {
+                template = 'chapter';
+                json_full_path += 'texts/';
+            }
             // get template and json
             // *** We need only 3 templates! ─ home (default), chapter and 404
             $.when( $.get(contents_path + 'templates/' + template + '.html' + temp_param), // template
-                    $.getJSON(contents_path + jsons_path + view + '.json' + temp_param) // data
+                    $.getJSON(contents_path + json_full_path + view + '.json' + temp_param) // data
             ).then((tmpl, contents) => {
                     console.log('Done=>', {tmpl:tmpl, contents:contents});
                     // store View instance for further using
@@ -46,12 +52,16 @@ require([   modules_path + 'common.js' + temp_param,
                     render(Views[view], no_text);
                     // get text
                     if (!no_text){
-                        $.getJSON(contents_path + jsons_path + 'texts/' + view + '.json' + temp_param, (text) => {
-                            var contents = jsonParser.parse(text, true);
-                            console.log('got text! =>', { text: text, contents: contents });
-                            $('#chapter_filters').html(contents.filters);
-                            $('#text').html(contents.html);
-                        });
+                        // check chapter
+                        if (/^\/[\d]{1,}(\.\d{1,})?$/g.test(location.href)){
+                            var chapterNumber = location.href.split('/').pop();
+                            $.getJSON(contents_path + json_full_path + 'texts/' + view + '/' + chapterNumber + '.json' + temp_param, (text) => {
+                                var contents = jsonParser.parse(text, true);
+                                console.log('got text! =>', { text: text, contents: contents });
+                                $('#chapter_filters').html(contents.filters);
+                                $('#text').html(contents.html);
+                            });                        
+                        }
                     }
             }, (mess) => {
                 console.warn('Something went wrong...');
