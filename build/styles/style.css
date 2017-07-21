@@ -121,7 +121,7 @@ main {
       animation-duration: 1s;
       animation-delay: 1s;
       animation-fill-mode: both;
-      background-image: url("../contents/images/black_parody.jpg");
+      background-image: url("../contents/images/nihilistic_parody.jpg");
       background-size: cover; }
       @media (max-width: 747px) {
         #asides aside:nth-child(2) {
@@ -255,7 +255,7 @@ footer {
 body.default:after {
   background-image: url(../contents/images/backgrounds/bg-storm-nature.jpg); }
 
-body.black_parody:after {
+body.nihilistic_parody:after {
   background-image: url(../contents/images/backgrounds/psychopaths.jpg); }
 
 body.cabalistic_bewitching_hero:after {

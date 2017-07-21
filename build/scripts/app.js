@@ -61,7 +61,7 @@ require([   modules_path + 'common.js' + temp_param,
     const AppRouter = Backbone.Router.extend({
         routes: {
             '':                             () => setView('default', true),
-            'black_parody':                 () => setView('black_parody'),
+            'nihilistic_parody':                 () => setView('nihilistic_parody'),
             'cabalistic_bewitching_hero':   () => setView('cabalistic_bewitching_hero'),
             'joshua_world':                 () => setView('joshua_world'),
             'unbalanced':                   () => setView('unbalanced'),

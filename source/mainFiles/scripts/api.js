@@ -107,12 +107,12 @@ var handleJson = {
         data:null,
         buttonText: 'Xmarine'
     },
-    Black_parody: {
-        path: 'mainFiles/jsons/black_parody.json',
+    nihilistic_parody: {
+        path: 'mainFiles/jsons/nihilistic_parody.json',
         handle: function (data) {
             this.data = data;
         },
         data:null,
-        buttonText: 'Black_parody'
+        buttonText: 'nihilistic_parody'
     }
 };
