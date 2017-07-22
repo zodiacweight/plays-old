@@ -1,5 +1,5 @@
 define({
-    parse: (data, isText) => {
+    parse: (data, contentsValue) => {
         console.groupCollapsed('data here');
         const setData =(dataArr, callback) => {
             dataArr.forEach((row) => {
@@ -7,8 +7,9 @@ define({
             });
         };
         var templateData;
-        if (isText){
-            templateData={
+        // got json with replics
+        if (contentsValue === true){
+            templateData = {
                 html: '',
                 filters: ''
             };
@@ -16,7 +17,7 @@ define({
                 personage,
                 personages = [];
             //
-            setData(data, (row) => {
+            setData(data, (row) => { console.log('row=>', row);
                 // array(Object, Object)
                 for(let prop in row){
                     contents = row[prop]
@@ -41,27 +42,38 @@ define({
                 }
             });
 
-        } else {
+        } else { // got description
             // 
             for(let prop in data){
                 console.log('get data=>', { prop:prop, data:data[prop]});
                 switch (prop) {
                     case 'about_characters':
                         var about_characters = '';
-                        setData(data[prop], (row) =>{
+                        setData(data[prop], (row) => {
                             about_characters += `<p>${row}</p>`;
                         });
+                        break;
+                    case 'chapters':
+                        console.log('go chapters, data['+prop+'] => '+data[prop]);
+                        var chapters = '<h4>Chapters:</h4>',
+                            num = 0;
+                        for(let number in data[prop]){
+                            ++num;
+                            chapters += `<p class="chapter-title"><a href="#${contentsValue}/${number}">${num}. ${data[prop][number]}</a></p>`;
+                            console.log('chapters: '+chapters);
+                        }
                         break;
                 }
             }
             templateData = {
                 header: data['header'],
                 preview: data['preview'],
-                about_characters: about_characters
+                about_characters: about_characters,
+                chapters: chapters
             };
-        }   
-        
-        console.groupCollapsed();
+        }
+        console.log('%ctemplateData', 'color: darkorange', templateData);
+        console.groupEnd();
 
         return templateData;
     }

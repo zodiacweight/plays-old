@@ -1,5 +1,6 @@
 [
-          {"number": 1,
+  {
+      "number": 1,
       "header": "In the Stevenson's family", 
       "replics":[
         {"Author's words": ["Now Nick Stevenson is sitting in his invalid armchair and listening the radio. He has been sitting so for a long time, but suddenly he listened that Sophie has come. Sophie entered in the room."]},
@@ -47,5 +48,6 @@
         {"Nick's second answer": ["Yes, Nick. You have to confess with this and with the fact that you cannot rewind time of your life back and see your wonderful Ophelia instead of this whore."]},
         {"Author's words": ["Sophie was unpleasantly surprised that Nick had cursed her with dirty words. She never expected it from him. She even did not span class=\"from_vocabulary\">contemplate</span> about such idea as the idea that Nick could get the idea that Sophie had gotten married hims only just to use his wealth and be <span class=\"from_vocabulary\">incensed</span> because of this circumstance. After this conversation she began to <span class=\"from_vocabulary\">reflect</span> her plans to get rid of Nick so as it would cost his life. She does not love and appreciate him. She just uses his money in marriage with him. It is not so matter whether he is alive or not. She was sitting in other room and <span class=\"from_vocabulary\">speculating</span> about her idea very deeply. She was not considered to pay her debt. Her opinion was that it was not necessary.", "After this empty conversation Sophie and Nick almost did not see each-other. Sometimes it happened so that Nick saw how Sophie went past him when she was going somewhere in the house. But Nick and Sophie lived their own life each-other separately.", "One day Sophie whispered so as Nick did not hear:"]},
         {"Sophie": ["Don't worry, dear. There only a few days are remaining, every day less and less until the term will be completed and then we will never see each-other again!"]}
-      ]}
+      ]
+  }
 ]

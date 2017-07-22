@@ -259,6 +259,7 @@ footer {
 
 #heroes-filter {
   background-color: rgba(255, 255, 255, 0.65);
+  display: none;
   padding: 20px; }
   #heroes-filter h4 {
     margin-top: 4px; }
@@ -266,6 +267,12 @@ footer {
     display: inline-block;
     margin-right: 10px;
     white-space: nowrap; }
+
+#about-characters {
+  display: none; }
+
+#stories-preview {
+  display: none; }
 
 body.default:after {
   background-image: url(../contents/images/backgrounds/bg-storm-nature.jpg); }

@@ -1,6 +1,8 @@
 [
-          {"number": 1.1, "header": "Story about a peculiar human",
-        "replics": [
+          {
+          "number": 1.1, 
+          "header": "Story about a peculiar human",
+          "replics": [
           {"Author's words": ["The scene of meeting between three personages, who talk about one unusual event. Helen meets her friends, Judy and Cassandra, and they expect her to share some sensational news."]},
           {"Helen": ["Cassandra, Judy, I am happy to meet you! How do you do?"]},
           {"Judy": ["We are bored. Frankly, we are already fed up with this study."]},

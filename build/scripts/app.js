@@ -30,7 +30,7 @@ require([   modules_path + 'common.js' + temp_param,
     const setView = (view, no_text) => {
         /* if undefined (i.e. ─ at a first run), store a reference to object 
         from <view>.js in the local variable */
-        if (!Views[view]){
+        //if (!Views[view]){
             var template, json_full_path = jsons_path;
             if (no_text){
                 template = view;
@@ -43,33 +43,53 @@ require([   modules_path + 'common.js' + temp_param,
             $.when( $.get(contents_path + 'templates/' + template + '.html' + temp_param), // template
                     $.getJSON(contents_path + json_full_path + view + '.json' + temp_param) // data
             ).then((tmpl, contents) => {
-                    console.log('Done=>', {tmpl:tmpl, contents:contents});
+                    console.log('%cDone=>', 'background-color: lightgreen', {tmpl:tmpl, contents:contents});
                     // store View instance for further using
                     Views[view] =  new (Backbone.View.extend({
                         data: contents[0],
                         tmpl: tmpl[0]
                     })); // console.log('check View', {view: view, 'Views[view]': Views[view]});
+                    // console.log('test no_text, location =>', { no_text: no_text, location: /\/[\d]{1,}(\.\d{1,})?$/g.test(location.href) });
                     render(Views[view], no_text);
                     // get text
+                    const $textBlock = $('#text');
                     if (!no_text){
+                        var templateData;
                         // check chapter
-                        if (/^\/[\d]{1,}(\.\d{1,})?$/g.test(location.href)){
+                        if (/\/[\d]{1,}(\.\d{1,})?$/g.test(location.href)){
                             var chapterNumber = location.href.split('/').pop();
-                            $.getJSON(contents_path + json_full_path + 'texts/' + view + '/' + chapterNumber + '.json' + temp_param, (text) => {
-                                var contents = jsonParser.parse(text, true);
-                                console.log('got text! =>', { text: text, contents: contents });
-                                $('#chapter_filters').html(contents.filters);
-                                $('#text').html(contents.html);
-                            });                        
+                            $.getJSON(contents_path + json_full_path + view + '/' + chapterNumber + '.json' + temp_param)
+                                .then((text) => {
+                                    templateData = jsonParser.parse(text, true);
+                                    console.log('got text! =>', { text: text, templateData: templateData });
+                                    $('#chapter_filters').html(templateData.filters);
+                                    $('#heroes-filter').fadeIn(500);
+                                    $textBlock.html(templateData.html);
+                                }, () => { // console.warn('Someting went terribly wrong...');
+                                    setView('404', true);
+                                });                        
+                        } else { // not a chapter, just a title page
+                            // check if the URL is correct...  
+                            var rgxp = new RegExp('\/#'+view+'$', 'g'); // \/#nihilistic_parody$
+                            if (rgxp.test(location.href)){
+                                templateData = jsonParser.parse(contents[0], view);
+                                // console.log('%cCheck article', 'pink', { templateData: templateData, chapters: templateData.chapters, box: $textBlock});
+                                $textBlock.html(templateData.chapters);
+                                $('#stories-preview').fadeIn(500, () => {
+                                    $('#about-characters').fadeIn(800);
+                                });
+                            } else {                                
+                                setView('404', true);
+                            }
                         }
                     }
             }, (mess) => {
                 console.warn('Something went wrong...');
             });
-        } else {
+        /* } else {
             console.log('Use Views[' + view + '] stored before=>', Views[view]);
             render(Views[view], no_text);
-        }
+        } */
         // set background image to body:after
         $body.removeClass().addClass(view);
 
@@ -79,17 +99,15 @@ require([   modules_path + 'common.js' + temp_param,
     //
     const AppRouter = Backbone.Router.extend({
         routes: {
-            '':                             () => setView('default', true),
-            'nihilistic_parody':                 () => setView('nihilistic_parody'),
-            'cabalistic_bewitching_hero':   () => setView('cabalistic_bewitching_hero'),
-            'joshua_world':                 () => setView('joshua_world'),
-            'unbalanced':                   () => setView('unbalanced'),
-            '*other':                       () => setView('404', true)
+            '': () => setView('default', true),
+            'nihilistic_parody(/:chapter)': () => setView('nihilistic_parody'),
+            'cabalistic_bewitching_hero(/:chapter)': () => setView('cabalistic_bewitching_hero'),
+            'joshua_world': () => setView('joshua_world'),
+            'unbalanced': () => setView('unbalanced'),
+            '*other': () => setView('404', true)
         }
     });
 
     const appRouter = new AppRouter();
     Backbone.history.start();
-
-    console.log(jqueryResponse);
 });
