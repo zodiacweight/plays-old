@@ -59,7 +59,7 @@ define({
                     case 'chapters':
                         console.log('go chapters, data['+prop+'] => '+data[prop]);
                         var chapters = `<h4 class="chapters-overview">Chapters:</h4>
-                                        <h5 class="chapters-go-home"><a href="/#">Home</a></h5>`,
+                                        <h5 class="chapters-go-home"><a href="#">Home</a></h5>`,
                             num = 0;
                         for(let number in data[prop]){
                             ++num;
