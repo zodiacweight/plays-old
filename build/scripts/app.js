@@ -43,7 +43,7 @@ require([   modules_path + 'common.js' + temp_param,
             $.when( $.get(contents_path + 'templates/' + template + '.html' + temp_param), // template
                     $.getJSON(contents_path + json_full_path + view + '.json' + temp_param) // data
             ).then((tmpl, contents) => {
-                    console.log('%cDone=>', 'background-color: lightgreen', {tmpl:tmpl, contents:contents});
+                    //console.log('%cDone=>', 'background-color: lightgreen', {tmpl:tmpl, contents:contents});
                     // store View instance for further using
                     Views[view] =  new (Backbone.View.extend({
                         data: contents[0],
@@ -97,7 +97,7 @@ require([   modules_path + 'common.js' + temp_param,
         // set background image to body:after
         $body.removeClass().addClass(view);
 
-        console.log('view=>', view);
+        // console.log('view=>', view);
     };
 
     //

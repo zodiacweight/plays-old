@@ -28,7 +28,7 @@ define({
                         case 'replics': // array(Object(line)=>paragraph)
                             setData(contents, (line) => {
                                 personage = Object.keys(line)[0];
-                                templateData.html += `<strong>${personage}</strong>`;
+                                templateData.html += `<strong data-person="${personage}">${personage}</strong>`;
                                 if (personages.indexOf(personage)===-1){
                                     personages.push(personage);
                                     templateData.filters += `<label><input type="checkbox" name="${personage}">${personage}</label>`;
