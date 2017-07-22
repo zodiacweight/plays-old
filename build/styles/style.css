@@ -1,3 +1,4 @@
+@charset "UTF-8";
 * {
   box-sizing: border-box; }
 
@@ -215,7 +216,7 @@ footer {
     left: 0;
     min-width: 200px;
     position: fixed;
-    top: 20px;
+    top: 0;
     width: calc(20% - 20px); }
 
 #chapter-contents {
@@ -245,7 +246,25 @@ footer {
     font-size: 1.2em; }
 
 #chapters-list-menu {
+  margin-top: 8px;
   padding: 20px; }
+  #chapters-list-menu h4.chapters-overview {
+    display: none; }
+  #chapters-list-menu .chapters-go-home {
+    font-size: 22px;
+    font-weight: normal;
+    margin-top: 0; }
+    #chapters-list-menu .chapters-go-home a:hover {
+      text-decoration: none; }
+    #chapters-list-menu .chapters-go-home a::before {
+      content: '🏡';
+      margin-right: 10px; }
+  #chapters-list-menu p {
+    line-height: 1.75;
+    margin: 0;
+    max-width: 100%;
+    overflow: hidden;
+    white-space: nowrap; }
   #chapters-list-menu a {
     color: white;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -272,6 +291,12 @@ footer {
   display: none; }
 
 #stories-preview {
+  display: none; }
+
+#text .chapter-title {
+  font-weight: bold; }
+
+#text .chapters-go-home {
   display: none; }
 
 body.default:after {

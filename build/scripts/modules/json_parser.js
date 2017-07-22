@@ -47,6 +47,9 @@ define({
             for(let prop in data){
                 console.log('get data=>', { prop:prop, data:data[prop]});
                 switch (prop) {
+                    case 'url':
+                        var header = `<a href="#${data[prop]}">${data['header']}</a>`;
+                        break;
                     case 'about_characters':
                         var about_characters = '';
                         setData(data[prop], (row) => {
@@ -55,18 +58,19 @@ define({
                         break;
                     case 'chapters':
                         console.log('go chapters, data['+prop+'] => '+data[prop]);
-                        var chapters = '<h4>Chapters:</h4>',
+                        var chapters = `<h4 class="chapters-overview">Chapters:</h4>
+                                        <h5 class="chapters-go-home"><a href="/#">Home</a></h5>`,
                             num = 0;
                         for(let number in data[prop]){
                             ++num;
-                            chapters += `<p class="chapter-title"><a href="#${contentsValue}/${number}">${num}. ${data[prop][number]}</a></p>`;
+                            chapters += `<p class="chapter-title"><a href="#${contentsValue}/${number}" title="${data[prop][number]}"><span>${num}. </span>${data[prop][number]}</a></p>`;
                             console.log('chapters: '+chapters);
                         }
                         break;
                 }
             }
             templateData = {
-                header: data['header'],
+                header: header,
                 preview: data['preview'],
                 about_characters: about_characters,
                 chapters: chapters

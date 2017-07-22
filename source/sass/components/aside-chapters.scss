@@ -10,7 +10,8 @@
         min-width: $min-width;
         // outline: solid 1px yellow;
         position: fixed;
-        top: $common-offset;
+        top: 0;
+        //$common-offset;
         width: calc(20% - #{$common-offset});
     }
 }

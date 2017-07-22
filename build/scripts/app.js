@@ -53,18 +53,19 @@ require([   modules_path + 'common.js' + temp_param,
                     render(Views[view], no_text);
                     // get text
                     const $textBlock = $('#text');
+                    
                     if (!no_text){
-                        var templateData;
+                        var templateData = jsonParser.parse(contents[0], view);
                         // check chapter
                         if (/\/[\d]{1,}(\.\d{1,})?$/g.test(location.href)){
                             var chapterNumber = location.href.split('/').pop();
                             $.getJSON(contents_path + json_full_path + view + '/' + chapterNumber + '.json' + temp_param)
                                 .then((text) => {
-                                    templateData = jsonParser.parse(text, true);
-                                    console.log('got text! =>', { text: text, templateData: templateData });
-                                    $('#chapter_filters').html(templateData.filters);
+                                    var templateDataText = jsonParser.parse(text, true);
+                                    console.log('got text! =>', { text: text, templateDataText: templateDataText });
+                                    $('#chapter_filters').html(templateDataText.filters);
                                     $('#heroes-filter').fadeIn(500);
-                                    $textBlock.html(templateData.html);
+                                    $textBlock.html(templateDataText.html);
                                 }, () => { // console.warn('Someting went terribly wrong...');
                                     setView('404', true);
                                 });                        
@@ -72,7 +73,6 @@ require([   modules_path + 'common.js' + temp_param,
                             // check if the URL is correct...  
                             var rgxp = new RegExp('\/#'+view+'$', 'g'); // \/#nihilistic_parody$
                             if (rgxp.test(location.href)){
-                                templateData = jsonParser.parse(contents[0], view);
                                 // console.log('%cCheck article', 'pink', { templateData: templateData, chapters: templateData.chapters, box: $textBlock});
                                 $textBlock.html(templateData.chapters);
                                 $('#stories-preview').fadeIn(500, () => {
@@ -81,6 +81,10 @@ require([   modules_path + 'common.js' + temp_param,
                             } else {                                
                                 setView('404', true);
                             }
+                        }
+                        const $chaptersListMenu = $('#chapters-list-menu');
+                        if ($chaptersListMenu.length) {
+                            $chaptersListMenu.html(templateData.chapters);
                         }
                     }
             }, (mess) => {
