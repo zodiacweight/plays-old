@@ -1,39 +1,39 @@
-define($(function(){
+define(function(){
     const classFade = 'fade';
     const classFadeOut = 'fade-out';
     const persons = [];
-    var $personsNames, person, $replica, classAlien = 'alien';
-    $('main').on('mouseenter mouseleave', '#asides aside', (event) => {
-        if (event.type === 'mouseenter'){
-            $(event.currentTarget).addClass(classFade).removeClass(classFadeOut);
-        } else {
-            $(event.currentTarget).addClass(classFadeOut);
-        }
-    }).on('click', '#chapter_filters input[type="checkbox"]', (event) => {
-        if (!$personsNames){
-            $personsNames = $('[data-person]');
-            $('#text p').addClass(classAlien);
-        }
-        let checkbox = event.currentTarget,
-            person = checkbox.name;
+    const contentsBlockId = 'chapter_filters';
+    const classAlien = 'alien';
+    const parentTagName = 'main';
+    const inputBox = 'input[type="checkbox"]';
+    let personName; 
 
-        console.log('person: ' + person, ' checkbox: ' + checkbox);
-
-        if (checkbox.checked){
-            console.log('checked');
-            persons.push(person);
-        } else {
-            console.log('unchecked');
-            persons.splice(persons.indexOf(person));
-        }
-        $personsNames.each(function(index){ 
-            person = this.dataset.person; // console.log('person=>', person);
-            $replica = $(this).next();
-            if (persons.indexOf(person)===-1){
-                $replica.addClass(classAlien);
-            } else {
-                $replica.removeClass(classAlien);
+    $(function(){
+        $(parentTagName).on('mouseenter mouseleave', '#asides aside', event => {
+            (event.type === 'mouseenter') ?
+                $(event.currentTarget).addClass(classFade).removeClass(classFadeOut)
+                : $(event.currentTarget).addClass(classFadeOut);
+        }).on('click', `#${contentsBlockId} ${inputBox}`, event => {
+            // if there are no checked boxes, make all unmarked
+            if (!$(`${parentTagName} #${contentsBlockId} ${inputBox}:checked`).length){
+                $(`.${classAlien}`).removeClass(classAlien);
+                return;
             }
+            personName = event.currentTarget.name;
+            //console.log('checked, event ', $(`${parentTagName} #${contentsBlockId} ${inputBox}:checked`).length, event);
+            // add or remove block
+            (event.currentTarget.checked) ? persons.push(personName) : persons.splice(persons.indexOf(personName));            
+            $('[data-person]').each((index, personTag) => {
+                /* console.log('each =>', {
+                    personName: personTag.dataset.person, action: (persons.indexOf(personTag.dataset.person) === -1) ? 'addClass' : 'removeClass'
+                }); */
+                let action = (persons.indexOf(personTag.dataset.person) === -1) ? 'addClass' : 'removeClass';
+                $(personTag)[action](classAlien);
+                $(personTag).next()[action](classAlien);
+            });
         });
     });
-}));
+    return {
+        contentsBlockId: contentsBlockId
+    };
+});
