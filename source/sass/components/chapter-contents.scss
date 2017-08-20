@@ -1,0 +1,24 @@
+#chapter-contents{
+    background-color: rgba(255,255,255,0.75);
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(0,0,0,0.2);
+    margin: 20px 20px 40px 40px;
+    padding: $common-offset 40px 40px 40px;
+    width: 60%;
+    h4{
+        span{
+            @include sign;
+        }
+    }
+    article, section{
+        font-size: 1.2em;
+    }
+    h1{
+        a {
+            text-decoration: none;
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+    }
+}

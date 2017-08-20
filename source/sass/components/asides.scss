@@ -1,0 +1,110 @@
+#asides{
+    @media(min-width: $width-mobile){
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        aside{
+            margin-bottom: 24px;
+            width: 15%;
+        }
+    }
+    justify-content: space-between;
+    aside{
+        background-position: center;
+        background-repeat: no-repeat;
+        box-shadow: 0 0 20px 2px rgba(0,0,0,0.25);
+        height: 0;
+        outline: solid 16px rgba(0,0,0,0.12);
+        padding-bottom: 18%;
+        position: relative;
+        transition: all ease 0.4s;
+        
+        @mixin goGrow($delay){
+            animation-name: grow;
+            animation-duration: 1s;
+            animation-delay: $delay;
+            animation-fill-mode: both;
+        }
+
+        @mixin child($image, $delay, $padding-bottom: 100%, $background-size: cover){
+            @include goGrow($delay);
+            background-image: url('../contents/images/' + $image);
+            background-size: $background-size;
+            @media(max-width: ($width-mobile - 1)){
+                padding-bottom: $padding-bottom;
+            }
+        }
+
+        @mixin setParagraphParams($num, $delay, $image, $background-color){
+            &:nth-child(#{$num}){
+                @include child($image, $delay);
+                p {
+                    background-color: $background-color;
+                }
+            }
+        }
+
+        @include setParagraphParams(1, 0.4s, 'cabalistic_bewitching_hero.jpg', rgba(0,0,200,0.5));
+        @include setParagraphParams(2, 1s, 'nihilistic_parody.jpg', rgba(200,0,0,0.5));
+        @include setParagraphParams(3, 1.6s, 'joshua_world.jpg', rgba(0,200,0,0.5));
+        @include setParagraphParams(4, 2s, 'unbalanced.jpg', rgba(200,0,200,0.5));
+
+        a{
+            height: 100%;
+            position: absolute;
+            width: 100%;
+        }
+
+        h4{
+            background-color: rgba(0,0,0,0.5);
+            bottom: 0;
+            color: white;
+            cursor: default;
+            font-size: 1.13vw;
+            // todo: fix it:
+            height: 39%;
+            margin: auto;
+            opacity: 0.5;
+            padding: 17% 0;
+            position: absolute;
+            text-align: center;
+            transition: all ease 0.5s;
+            width: 100%;
+            &:hover{
+                background-color: #000;
+                cursor: pointer;
+                height: 100.33%;
+                opacity: 0.75;
+                padding-top: 40px;
+                & +p{
+                    bottom: 0;
+                    font-size: 0.7vw;
+                    height: auto;
+                    opacity: 1;
+                    transition: all ease 0.5s;
+                }
+            }
+        }
+
+        p{
+            color: white;
+            font-size: 10px;
+            height: 0;
+            margin: 0;
+            opacity: 0;
+            pointer-events: none;
+            position: absolute;
+            padding: 20px;
+        }
+        
+        &.fade{
+            animation-name: fadeIn;
+            animation-duration: 0.3s;
+            animation-delay: initial !important;
+            &.fade-out{
+                animation-name: fadeOut;
+            }        
+        }
+
+    }
+}

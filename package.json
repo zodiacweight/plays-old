@@ -1,0 +1,40 @@
+{
+  "name": "plays",
+  "version": "1.0.0",
+  "description": "funny stories",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "css": "node-sass source/sass/main.scss build/styles/style.css",
+    "html": "pug source/pug/views -o build/contents/views -P",
+    "index": "pug source/pug/index.pug -o build/ -P"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zodiacweight/plays.git"
+  },
+  "keywords": [
+    "plot",
+    "story",
+    "narrative",
+    "English",
+    "action",
+    "thriller",
+    "fantasy"
+  ],
+  "author": "Liz Beauty",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zodiacweight/plays/issues"
+  },
+  "homepage": "https://github.com/zodiacweight/plays#readme",
+  "dependencies": {
+    "backbone": "^1.3.3",
+    "bootstrap-grid-only": "^1.0.0",
+    "jquery": "^3.2.1"
+  },
+  "devDependencies": {
+    "npm-sass": "^2.2.0"
+  }
+}

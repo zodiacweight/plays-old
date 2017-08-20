@@ -1,0 +1,21 @@
+#home{
+    margin: auto;
+    padding-right: $common-offset;
+    padding-bottom: 90px;
+    padding-left: $common-offset;
+    width: 90%;
+    h1{
+        color: rgba(255,255,255,0.95);
+        margin-bottom: 0;
+        margin-top: 20px;
+        text-align: center;
+        text-shadow: 0 0 5px rgba(0,0,0,1);
+    }
+    h4{
+        color: lightgoldenrodyellow;
+        margin-bottom: 90px;
+        margin-top: 30px;
+        text-align: center;
+        text-shadow: 0 0 4px rgba(0,0,0,1);
+    }
+}

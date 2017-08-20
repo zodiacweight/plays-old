@@ -1,0 +1,322 @@
+@charset "UTF-8";
+* {
+  box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  min-height: 100%;
+  padding: 0; }
+
+body:after {
+  background-size: cover;
+  background-position: center;
+  content: '';
+  opacity: 0.85;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1; }
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: Verdana, Geneva, Tahoma, sans-serif; }
+
+main, footer {
+  position: relative; }
+  @media (min-width: 748px) {
+    main, footer {
+      margin: auto; } }
+
+footer {
+  background: rgba(102, 102, 102, 0.4);
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  color: white;
+  height: 80px;
+  text-align: center; }
+  @media (max-width: 1023px) {
+    footer {
+      padding-left: 20px;
+      padding-right: 20px; } }
+
+main {
+  display: flex;
+  min-height: calc(100% - 80px); }
+
+@keyframes grow {
+  from {
+    transform: scale(0.25);
+    opacity: 0; }
+  to {
+    transform: scale(1);
+    opacity: 0.75; } }
+
+@keyframes fadeIn {
+  from {
+    opacity: 0.75;
+    transform: scale(1); }
+  to {
+    opacity: 1;
+    transform: scale(1.5) translateY(16%); } }
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+    transform: scale(1.5); }
+  to {
+    opacity: 0.75;
+    transform: scale(1) translateY(0); } }
+
+#home {
+  margin: auto;
+  padding-right: 20px;
+  padding-bottom: 90px;
+  padding-left: 20px;
+  width: 90%; }
+  #home h1 {
+    color: rgba(255, 255, 255, 0.95);
+    margin-bottom: 0;
+    margin-top: 20px;
+    text-align: center;
+    text-shadow: 0 0 5px black; }
+  #home h4 {
+    color: lightgoldenrodyellow;
+    margin-bottom: 90px;
+    margin-top: 30px;
+    text-align: center;
+    text-shadow: 0 0 4px black; }
+
+#asides {
+  justify-content: space-between; }
+  @media (min-width: 748px) {
+    #asides {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around; }
+      #asides aside {
+        margin-bottom: 24px;
+        width: 15%; } }
+  #asides aside {
+    background-position: center;
+    background-repeat: no-repeat;
+    box-shadow: 0 0 20px 2px rgba(0, 0, 0, 0.25);
+    height: 0;
+    outline: solid 16px rgba(0, 0, 0, 0.12);
+    padding-bottom: 18%;
+    position: relative;
+    transition: all ease 0.4s; }
+    #asides aside:nth-child(1) {
+      animation-name: grow;
+      animation-duration: 1s;
+      animation-delay: 0.4s;
+      animation-fill-mode: both;
+      background-image: url("../contents/images/cabalistic_bewitching_hero.jpg");
+      background-size: cover; }
+      @media (max-width: 747px) {
+        #asides aside:nth-child(1) {
+          padding-bottom: 100%; } }
+      #asides aside:nth-child(1) p {
+        background-color: rgba(0, 0, 200, 0.5); }
+    #asides aside:nth-child(2) {
+      animation-name: grow;
+      animation-duration: 1s;
+      animation-delay: 1s;
+      animation-fill-mode: both;
+      background-image: url("../contents/images/nihilistic_parody.jpg");
+      background-size: cover; }
+      @media (max-width: 747px) {
+        #asides aside:nth-child(2) {
+          padding-bottom: 100%; } }
+      #asides aside:nth-child(2) p {
+        background-color: rgba(200, 0, 0, 0.5); }
+    #asides aside:nth-child(3) {
+      animation-name: grow;
+      animation-duration: 1s;
+      animation-delay: 1.6s;
+      animation-fill-mode: both;
+      background-image: url("../contents/images/joshua_world.jpg");
+      background-size: cover; }
+      @media (max-width: 747px) {
+        #asides aside:nth-child(3) {
+          padding-bottom: 100%; } }
+      #asides aside:nth-child(3) p {
+        background-color: rgba(0, 200, 0, 0.5); }
+    #asides aside:nth-child(4) {
+      animation-name: grow;
+      animation-duration: 1s;
+      animation-delay: 2s;
+      animation-fill-mode: both;
+      background-image: url("../contents/images/unbalanced.jpg");
+      background-size: cover; }
+      @media (max-width: 747px) {
+        #asides aside:nth-child(4) {
+          padding-bottom: 100%; } }
+      #asides aside:nth-child(4) p {
+        background-color: rgba(200, 0, 200, 0.5); }
+    #asides aside a {
+      height: 100%;
+      position: absolute;
+      width: 100%; }
+    #asides aside h4 {
+      background-color: rgba(0, 0, 0, 0.5);
+      bottom: 0;
+      color: white;
+      cursor: default;
+      font-size: 1.13vw;
+      height: 39%;
+      margin: auto;
+      opacity: 0.5;
+      padding: 17% 0;
+      position: absolute;
+      text-align: center;
+      transition: all ease 0.5s;
+      width: 100%; }
+      #asides aside h4:hover {
+        background-color: #000;
+        cursor: pointer;
+        height: 100.33%;
+        opacity: 0.75;
+        padding-top: 40px; }
+        #asides aside h4:hover + p {
+          bottom: 0;
+          font-size: 0.7vw;
+          height: auto;
+          opacity: 1;
+          transition: all ease 0.5s; }
+    #asides aside p {
+      color: white;
+      font-size: 10px;
+      height: 0;
+      margin: 0;
+      opacity: 0;
+      pointer-events: none;
+      position: absolute;
+      padding: 20px; }
+    #asides aside.fade {
+      animation-name: fadeIn;
+      animation-duration: 0.3s;
+      animation-delay: initial !important; }
+      #asides aside.fade.fade-out {
+        animation-name: fadeOut; }
+
+footer {
+  line-height: 80px; }
+  footer a {
+    color: white; }
+    footer a + a {
+      padding-left: 4px; }
+
+#chapters {
+  background: rgba(255, 255, 255, 0.35);
+  padding: 20px;
+  width: 20%;
+  min-width: 200px; }
+  #chapters .menu {
+    bottom: 100px;
+    left: 0;
+    min-width: 200px;
+    position: fixed;
+    top: 0;
+    width: calc(20% - 20px); }
+
+#chapter-contents {
+  background-color: rgba(255, 255, 255, 0.75);
+  border-radius: 8px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  margin: 20px 20px 40px 40px;
+  padding: 20px 40px 40px 40px;
+  width: 60%; }
+  #chapter-contents h4 span {
+    background-color: darkred;
+    border-radius: 50%;
+    color: white;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 0.8em;
+    font-family: Arial, Helvetica, sans-serif;
+    height: 20px;
+    line-height: 20px;
+    text-align: center;
+    transform: translateY(-2px);
+    transition: all ease 0.3s;
+    width: 20px; }
+    #chapter-contents h4 span:hover {
+      background-color: #ccc; }
+  #chapter-contents article, #chapter-contents section {
+    font-size: 1.2em; }
+  #chapter-contents h1 a {
+    text-decoration: none; }
+    #chapter-contents h1 a:hover {
+      text-decoration: underline; }
+
+#chapters-list-menu {
+  margin-top: 8px;
+  padding: 20px; }
+  #chapters-list-menu h4.chapters-overview {
+    display: none; }
+  #chapters-list-menu .chapters-go-home {
+    font-size: 22px;
+    font-weight: normal;
+    margin-top: 0; }
+    #chapters-list-menu .chapters-go-home a:hover {
+      text-decoration: none; }
+    #chapters-list-menu .chapters-go-home a::before {
+      content: '🏡';
+      margin-right: 10px; }
+  #chapters-list-menu p {
+    line-height: 1.75;
+    margin: 0;
+    max-width: 100%;
+    overflow: hidden;
+    white-space: nowrap; }
+  #chapters-list-menu a {
+    color: white;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-decoration: none; }
+    #chapters-list-menu a:hover {
+      text-decoration: underline; }
+
+#parts {
+  padding: 20px;
+  width: 20%; }
+
+#heroes-filter {
+  background-color: rgba(255, 255, 255, 0.65);
+  display: none;
+  padding: 20px; }
+  #heroes-filter h4 {
+    margin-top: 4px; }
+  #heroes-filter label {
+    display: inline-block;
+    margin-right: 10px;
+    white-space: nowrap; }
+
+#about-characters {
+  display: none; }
+
+#stories-preview {
+  display: none; }
+
+#text .chapter-title {
+  font-weight: bold; }
+
+#text .chapters-go-home {
+  display: none; }
+
+#text p.alien {
+  background-color: rgba(0, 0, 0, 0.25);
+  margin: 10px -40px 10px -40px;
+  opacity: 0.75;
+  padding: 10px 0 10px 40px; }
+
+#text [data-person].alien {
+  color: #777; }
+
+body.default:after {
+  background-image: url(../contents/images/backgrounds/bg-storm-nature.jpg); }
+
+body.nihilistic_parody:after {
+  background-image: url(../contents/images/backgrounds/psychopaths.jpg); }
+
+body.cabalistic_bewitching_hero:after {
+  background-image: url(../contents/images/backgrounds/witch-2.jpg); }

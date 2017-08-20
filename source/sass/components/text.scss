@@ -1,0 +1,21 @@
+#text{
+    .chapter-title{
+        font-weight: bold;
+    }
+    .chapters-go-home{
+        display: none;
+    }
+    p{
+        &.alien{
+            background-color: rgba(0,0,0,0.25);
+            margin: 10px -40px 10px -40px;
+            opacity: 0.75;
+            padding: 10px 0 10px 40px;
+        }
+    }
+    [data-person]{
+        &.alien{
+            color: #777;
+        }
+    }
+}
