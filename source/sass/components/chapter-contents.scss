@@ -13,4 +13,12 @@
     article, section{
         font-size: 1.2em;
     }
+    h1{
+        a {
+            text-decoration: none;
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+    }
 }

@@ -244,6 +244,10 @@ footer {
       background-color: #ccc; }
   #chapter-contents article, #chapter-contents section {
     font-size: 1.2em; }
+  #chapter-contents h1 a {
+    text-decoration: none; }
+    #chapter-contents h1 a:hover {
+      text-decoration: underline; }
 
 #chapters-list-menu {
   margin-top: 8px;
