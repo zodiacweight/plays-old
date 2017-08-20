@@ -19,14 +19,11 @@ define(function(){
                 $(`.${classAlien}`).removeClass(classAlien);
                 return;
             }
-            personName = event.currentTarget.name;
-            //console.log('checked, event ', $(`${parentTagName} #${contentsBlockId} ${inputBox}:checked`).length, event);
+            personName = event.currentTarget.name; //console.log('checked, event ', $(`${parentTagName} #${contentsBlockId} ${inputBox}:checked`).length, event);
             // add or remove block
             (event.currentTarget.checked) ? persons.push(personName) : persons.splice(persons.indexOf(personName));            
             $('[data-person]').each((index, personTag) => {
-                /* console.log('each =>', {
-                    personName: personTag.dataset.person, action: (persons.indexOf(personTag.dataset.person) === -1) ? 'addClass' : 'removeClass'
-                }); */
+                //
                 let action = (persons.indexOf(personTag.dataset.person) === -1) ? 'addClass' : 'removeClass';
                 $(personTag)[action](classAlien);
                 $(personTag).next()[action](classAlien);
