@@ -1,0 +1,4 @@
+.vscode
+_temp
+bower_components
+node_modules
