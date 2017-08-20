@@ -17,13 +17,14 @@ require([   modules_path + 'common.js' + temp_param,
     const $container = $('main');
     //
     const render = (View, no_text) => {
+        console.log('View=>', View);
         //
         const $viewElement = $(View.$el), // Backbone.View instance
             // View.data = contents[0], json itself
             contents = no_text ? View.data : jsonParser.parse(View.data),
             compiled = _.template(View.tmpl)(contents);
         $viewElement.html(compiled); 
-        // console.log('Data=>', { compiled:compiled, View:View, contents:contents });
+        //console.log('Data=>', { compiled:compiled, View:View, contents:contents });
         $container.html($viewElement.find('script[type="text/template"]').html());
         return contents;
     };
@@ -47,12 +48,12 @@ require([   modules_path + 'common.js' + temp_param,
         $.when( $.get(contents_path + 'templates/' + template + '.html' + temp_param), // template
                 $.getJSON(contents_path + json_full_path + view + '.json' + temp_param) // data
         ).then((tmpl, contents) => {
-            //console.log('%cDone=>', 'background-color: lightgreen', {tmpl:tmpl, contents:contents});
             // store View instance for further using
             Views[view] =  new (Backbone.View.extend({
                 data: contents[0],
                 tmpl: tmpl[0]
             })); // console.log('check View', {view: view, 'Views[view]': Views[view]});
+            // console.log('%cDone=>', 'background-color: lightgreen', {tmpl: tmpl, view: view, 'Views[view]': Views[view], contents: contents});
             // console.log('test no_text, location =>', { no_text: no_text, location: /\/[\d]{1,}(\.\d{1,})?$/g.test(location.href) });
             const renderedContents = render(Views[view], no_text);
             // get text
@@ -60,7 +61,7 @@ require([   modules_path + 'common.js' + temp_param,
             // texts
             if (!no_text){
                 // get parsed json data
-                templateData = jsonParser.parse(contents[0], view);
+                templateData = jsonParser.parse(contents[0], view); // console.log('templateData=>', {templateData:templateData, contents:contents, view:view});
                 // parse URL, check chapter
                 if (/\/[\d]{1,}(\.\d{1,})?$/g.test(location.href)){ //console.log('!No text, jqueryResponse.tagName=>', jqueryResponse.tagName);
                     //
@@ -93,12 +94,12 @@ require([   modules_path + 'common.js' + temp_param,
                     $chaptersListMenu.html(templateData.chapters);
                 }
             } else if (view === default_name) { // default page
-                console.log('Handle default');
+                // store promises and texts
                 const textsPromises = [],
                     textsContents = [];
                 
                 function handleTexts() {
-                    console.dir(textsContents);
+                    // console.dir(textsContents);
                     let templateData = jsonParser.parse(textsContents, default_name);
                     // set html
                     $('#asides').html(templateData.html);

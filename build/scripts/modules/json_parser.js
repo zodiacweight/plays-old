@@ -47,7 +47,7 @@ define({
                 let html = '';
                 data.forEach(contents => { // storyData { 'file_name': {header:'', description:''}}
                     let link = Object.keys(contents)[0];
-                    let content = contents[link]; console.log('see it', {contents:contents, link:link, lnk:Object.keys(contents)[0], keys: Object.keys(contents), content:content});
+                    let content = contents[link]; //console.log('see it', {contents:contents, link:link, lnk:Object.keys(contents)[0], keys: Object.keys(contents), content:content});
                     html += `
         <aside>
             <a href='#${link}'>
@@ -63,17 +63,17 @@ define({
                     console.log('get data=>', { prop:prop, data:data[prop]});
                     switch (prop) {
                         case 'url':
-                            let header = `<a href="#${data[prop]}">${data['header']}</a>`;
+                            var header = `<a href="#${data[prop]}">${data['header']}</a>`;
                             break;
                         case 'about_characters':
-                            let about_characters = '';
+                            var about_characters = '';
                             setData(data[prop], (row) => {
                                 about_characters += `<p>${row}</p>`;
                             });
                             break;
                         case 'chapters':
                             console.log('go chapters, data['+prop+'] => '+data[prop]);
-                            let chapters = `<h4 class="chapters-overview">Chapters:</h4>
+                            var chapters = `<h4 class="chapters-overview">Chapters:</h4>
                                             <h5 class="chapters-go-home"><a href="#">Home</a></h5>`,
                                 num = 0;
                             for(let number in data[prop]){
@@ -85,7 +85,7 @@ define({
                     }
                 }
                 templateData = {
-                    header: header,
+                    header: header || "No header....",
                     preview: data['preview'],
                     about_characters: about_characters,
                     chapters: chapters
