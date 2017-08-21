@@ -29,7 +29,7 @@ const walk = (dir) => {
                         if (err3) {
                             return console.log(err3);
                         }
-                        console.log('contents=>\n'+contents);
+                        console.log('contents=>\n', JSON.parse(contents).description);
                     });
                     next();
                 }
