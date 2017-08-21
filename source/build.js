@@ -29,7 +29,9 @@ const walk = (dir) => {
                         if (err3) {
                             return console.log(err3);
                         }
-                        console.log('contents=>\n', JSON.parse(contents).description);
+                        let jsonParsed = JSON.parse(contents);
+                        let tmpl = `<h1>${jsonParsed.description}</h1>`;
+                        console.log('tmpl=>\n', tmpl);
                     });
                     next();
                 }
