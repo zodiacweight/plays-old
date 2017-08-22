@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>English: Amazing adventures of misterious creatures existed ever</title>
+    <script>
+        const path_plays = 'plays';
+        const path_build = 'build';
+        var full_path = '';
+        if (location.href.indexOf('/' + path_plays) !== -1) {
+            full_path += '/' + path_plays; // /plays
+        }
+        if (location.href.indexOf('/' + path_build) !== -1) {
+            full_path += '/' + path_build; // /plays/build
+        }
+        if (full_path) {
+            // /plays/build/
+            document.write('<base href="' + full_path + '/" />');
+        }
+    </script>
+    <script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="scripts/modules/common.js?param=1503384606067"
+        src="scripts/modules/common.js?param=1503384606067"></script>
+    <script type="text/javascript" charset="utf-8" async="" data-requirecontext="_" data-requiremodule="scripts/modules/json_parser.js?param=1503384606067"
+        src="scripts/modules/json_parser.js?param=1503384606067"></script>
+    <base href="/plays/build/">
+    <link rel="stylesheet" type="text/css" href="styles/libs/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="styles/style.css">
+    <script src="scripts/libs/jquery.min.js"></script>
+    <script src="scripts/libs/underscore-min.js"></script>
+    <script src="scripts/libs/backbone-min.js"></script>
+    <script src="scripts/libs/require.js"></script>
+</head>
+
+<body class="default">
+    <main>
+        <div id="home">
+            <h1>Hello, Beautiful Stranger!</h1>
+            <h4>Look, what the wonderful stories are waiting for you right here!</h4>
+            <section id="asides">
+                <aside class="fade fade-out">
+                    <a href="#joshua_world">
+                        <h4>Joshua's Universe</h4>
+                        <p>Sometimes you need some extra time to set up your mind if you feel out of balance.</p>
+                    </a>
+                </aside>
+                <aside class="fade fade-out">
+                    <a href="#nihilistic_parody">
+                        <h4>Nihilistic parody</h4>
+                        <p>There is one dangerous mad psychopath among the characters. Some of the episodes are parody to "Big
+                            Lebovsky", being inspired by that movie, but, perhaps, with much more serious outcomes for the
+                            personages.</p>
+                    </a>
+                </aside>
+                <aside class="fade fade-out">
+                    <a href="#cabalistic_bewitching_hero">
+                        <h4>Cabalistic Bewitching Hero</h4>
+                        <p>A story about a creature who had originated as a little cruise mermaid and later became a mysterious
+                            magic superhero. Also, there are 3 girls who were perceived as human being, but then it turned
+                            out that they are the girls-monsters and the omnipotent scientists.</p>
+                    </a>
+                </aside>
+            </section>
+        </div>
+    </main>
+    <footer><a href="#">Home </a> &nbsp; | <a href="#how_to_use">How to use </a> &nbsp; | <a href="#contacts">Contacts </a> &nbsp;
+        | <a href="#facebook">Facebook </a>
+    </footer>
+    <script src="scripts/app.js" data-main="app"></script>
+</body>
+</html>

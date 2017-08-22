@@ -1,0 +1,28 @@
+doctype html
+html(lang='en')
+    head
+        meta(charset='UTF-8')
+        title English: Amazing adventures of misterious creatures existed ever
+        script.
+            const path_plays = 'plays';
+            const path_build = 'build';
+            var full_path = '';
+            if (location.href.indexOf('/' + path_plays) !== -1) {
+            full_path += '/' + path_plays; // /plays
+            }
+            if (location.href.indexOf('/' + path_build) !== -1) {
+            full_path += '/' + path_build; // /plays/build
+            }
+            if (full_path) {
+            // /plays/build/
+            document.write('<base href="' + full_path + '/" />');
+            }
+        script(type='text/javascript', charset='utf-8', async='', data-requirecontext='_', data-requiremodule='scripts/modules/common.js?param=1503384606067', src='scripts/modules/common.js?param=1503384606067')
+        script(type='text/javascript', charset='utf-8', async='', data-requirecontext='_', data-requiremodule='scripts/modules/json_parser.js?param=1503384606067', src='scripts/modules/json_parser.js?param=1503384606067')
+        base(href='/plays/build/')
+        link(rel='stylesheet', type='text/css', href='styles/libs/bootstrap.css')
+        link(rel='stylesheet', type='text/css', href='styles/style.css')
+        script(src='scripts/libs/jquery.min.js')
+        script(src='scripts/libs/underscore-min.js')
+        script(src='scripts/libs/backbone-min.js')
+        script(src='scripts/libs/require.js')
