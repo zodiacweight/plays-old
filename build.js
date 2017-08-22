@@ -43,3 +43,4 @@ const walk = (dir) => {
 
 walk(`${path}default`);
 // walk(`${path}texts`);
+// walk(`${path}texts`);

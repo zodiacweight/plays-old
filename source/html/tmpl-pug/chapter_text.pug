@@ -1,0 +1,25 @@
+doctype html
+html(lang='en')
+    head
+        //
+        include _top-part
+        //
+    body.nihilistic_parody
+        main
+            // 
+            include _aside-chapters
+            //
+            #chapter-contents
+                //
+                include _chapter-header
+                    //
+                    include _chapter-text-heroes-filter
+                    //
+                article#text
+                    //
+                    include _chapter-text-article
+                    //
+            aside#parts
+                | parts
+        // 
+        include _footer
