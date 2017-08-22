@@ -1,6 +1,6 @@
 // console.log('build here');
 const fs = require('fs');
-const path = `${__dirname}/../build/contents/data/jsons/`;
+const path = `${__dirname}/static/jsons/`;
 const done = function(err) {
     console.log(err);
 }
