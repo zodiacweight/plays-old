@@ -45,18 +45,27 @@ function populateTemplate(main, body_class){
 </html>`;
 }
 
-const walk = (part) => {
+function walk(part, callback) {
     //
     const results = [];
-    const dir = `${path}${part}`;
-    fs.readdir(dir, (err, list) => {
+    //const dir = `${path}${part}`;
+    fs.readdir(part, (err, list) => {
         if (err) return done(err);
         var i = 0;
         (function next() {
-            var file = list[i++];
+            let file = list[i++];
+            
             if (!file) return done(null, results);
-            file = `${dir}/${file}`;
+            
+            file = `${part}/${file}`;
+            //
+            if (fs.exists(file)) {
+                console.log('Is file! => ', file);
+            } else {
+                console.log('No file there: ', file);
+            }
             fs.stat(file, (err1, stat) => {
+
                 if (stat && stat.isDirectory()) {
                     walk(file, (err2, res) => {
                         results = results.concat(res);
@@ -68,36 +77,48 @@ const walk = (part) => {
                         if (err3) {
                             return console.log(err3);
                         }
-                        let jsonParsed = JSON.parse(contents);
-                        let tmpl = `<h1>${jsonParsed.description}</h1>`;
-                        switch (part) {
-                            case home:
-                                
-                                break;
-                            case chapters_home:
-                                
-                                break;
-                            case chapter_text:
-                                
-                                break;
-                            default:
-                                break;
-                        }
-                        console.log('tmpl=>\n', tmpl);
+                        if (callback) {
+                            callback(part, contents);
+                        } 
                     });
                     next();
-                }
-                console.log('file=>', file);
+                } 
+                // console.log('file=>', file);
             });
         })();
     });
-};
+}
 
-walk(home);
+function getPagesContent(part_name, contents){
+    //let jsonParsed = JSON.parse(contents);
+    //let tmpl = `<h1>${jsonParsed.description}</h1>`;
+    //let json_contents;
+    //let json;
+    switch (part_name) {
+        case home:
+        /* json = `${path}${home}`;
+        json_contents = fs.readFile(`${json}.json`, 'utf8', (err4, json) => {
+            console.log('json=>', JSON.parse(json));
+                let json_content = walk(home, );
+            }); */
+            break;
+        case chapters_home:
+            
+            break;
+        case chapter_text:
+            
+            break;
+        default:
+            break;
+    }
+    console.log('contents=>\n', contents);
+}
+
+walk(path, getPagesContent);
 // walk(`${path}texts`);
 // walk(`${path}texts`);
 
-const template = populateTemplate('<h1>Hello, Dude</h1><p>Content comes here!</p>');
+/* const template = populateTemplate('<h1>Hello, Dude</h1><p>Content comes here!</p>');
 console.log(template);
 const file_to_save = `${__dirname}/static/index.html`;
 fs.writeFile(file_to_save, template, function(error) {
@@ -106,4 +127,4 @@ fs.writeFile(file_to_save, template, function(error) {
     } else {
       console.log(`Successful Write to ${file_to_save}`);
     }
-});
+}); */
