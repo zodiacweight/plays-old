@@ -1,6 +1,7 @@
-// console.log('build here');
+const test_node = require('./test_node');
+
 const fs = require('fs');
-const path = `${__dirname}/static/jsons/`;
+const path = `${__dirname}/static/jsons`;
 const done = function(err) {
     console.log(err);
 };
@@ -47,22 +48,22 @@ function populateTemplate(main, body_class){
 
 function walk(part, callback) {
     //
-    const results = [];
+    let results = [];
     //const dir = `${path}${part}`;
     fs.readdir(part, (err, list) => {
         if (err) return done(err);
         var i = 0;
         (function next() {
-            let file = list[i++];
+            let file_name = list[i++];
             
-            if (!file) return done(null, results);
+            if (!file_name) return done(null, results);
             
-            file = `${part}/${file}`;
+            file = `${part}/${file_name}`;
             //
-            if (fs.exists(file)) {
-                console.log('Is file! => ', file);
+            if (fs.existsSync(file)) {
+                //console.log('Is file! => ', file);
             } else {
-                console.log('No file there: ', file);
+                console.log(`No file there, skipped: ${file}`);
             }
             fs.stat(file, (err1, stat) => {
 
@@ -76,6 +77,12 @@ function walk(part, callback) {
                     fs.readFile(file, 'utf8', (err3, contents) => {
                         if (err3) {
                             return console.log(err3);
+                        } else {
+                            console.log(`directory: ${part}
+file_name: ${file_name}
+contents: ${contents}
+--------------------------------------------------------------
+`);
                         }
                         if (callback) {
                             callback(part, contents);
@@ -90,6 +97,7 @@ function walk(part, callback) {
 }
 
 function getPagesContent(part_name, contents){
+    console.log('getPagesContent=>', {part_name:part_name, contents:contents});
     //let jsonParsed = JSON.parse(contents);
     //let tmpl = `<h1>${jsonParsed.description}</h1>`;
     //let json_contents;
@@ -111,10 +119,17 @@ function getPagesContent(part_name, contents){
         default:
             break;
     }
-    console.log('contents=>\n', contents);
+    //console.log('contents=>\n', contents);
 }
 
-walk(path, getPagesContent);
+/* if ('file' in test_node['args']) {
+    //console.log('Want file!');
+    let file = `${__dirname}/${test_node.args.file}`;
+    console.log(`Check file ${file}`, fs.existsSync(file));
+} */
+
+
+walk(path/* , getPagesContent */);
 // walk(`${path}texts`);
 // walk(`${path}texts`);
 
