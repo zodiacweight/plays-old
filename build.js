@@ -45,7 +45,10 @@ function populateTemplate(main, body_class){
 </html>`;
 }
 
+let cnt = 0;
+
 function walk(part, callback) {
+    ++cnt;
     //
     let results = [];
     //const dir = `${path}${part}`;
@@ -68,25 +71,37 @@ full path:  ${part}${file}`); */
             file = `${part}${file}`;
             //
             if (fs.existsSync(file)) {
-                console.log('Is file! => ', file);
+                // console.log('Is file! => ', file);
             } else {
-                console.log('No file there: ', file);
+                return false;
+                // console.log('No file there: ', file);
             }
             fs.stat(file, (err1, stat) => {
 
                 if (stat && stat.isDirectory()) {
                     walk(file, (err2, res) => {
+                        console.log('isDirectory: ', file);
                         results = results.concat(res);
                         next();
                     });
                 } else {
+
+                    if (!fs.existsSync(file)) {
+                        console.warn(`No file exists: ${file}`);
+                    }
+
                     results.push(file);
                     fs.readFile(file, 'utf8', (err3, contents) => {
                         if (err3) {
                             return console.log(err3);
                         }
                         if (callback) {
-                            callback(part, contents);
+                            if (cnt<10){
+                                console.log(`
+cnt: ${cnt} Get file: ${file}
+`);
+                                callback(part, contents);
+                            }
                         } 
                     });
                     next();
@@ -98,17 +113,15 @@ full path:  ${part}${file}`); */
 }
 
 function getPagesContent(part_name, contents){
+    console.log('getPagesContent, part_name=>', part_name);
     //let jsonParsed = JSON.parse(contents);
     //let tmpl = `<h1>${jsonParsed.description}</h1>`;
     //let json_contents;
     //let json;
+    
     switch (part_name) {
         case home:
-        /* json = `${path}${home}`;
-        json_contents = fs.readFile(`${json}.json`, 'utf8', (err4, json) => {
-            console.log('json=>', JSON.parse(json));
-                let json_content = walk(home, );
-            }); */
+
             break;
         case chapters_home:
             
@@ -119,7 +132,6 @@ function getPagesContent(part_name, contents){
         default:
             break;
     }
-    console.log('contents=>\n', contents);
 }
 
 walk(path, getPagesContent);
