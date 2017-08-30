@@ -1,6 +1,7 @@
-// console.log('build here');
+const test_node = require('./test_node');
+
 const fs = require('fs');
-const path = `${__dirname}/static/jsons/`;
+const path = `${__dirname}/static/jsons`;
 const done = function(err) {
     console.log(err);
 };
@@ -45,10 +46,7 @@ function populateTemplate(main, body_class){
 </html>`;
 }
 
-let cnt = 0;
-
 function walk(part, callback) {
-    ++cnt;
     //
     let results = [];
     //const dir = `${path}${part}`;
@@ -56,52 +54,38 @@ function walk(part, callback) {
         if (err) return done(err);
         var i = 0;
         (function next() {
-            let file = list[i++];
+            let file_name = list[i++];
             
-            if (!file) return done(null, results);
-
-            if (part[part.length - 1].indexOf('/') === -1) part += '/';
+            if (!file_name) return done(null, results);
             
-            /* console.log(`check part and file=>
-part:       ${part}
-file:       ${file}
-dirname:    ${__dirname}
-full path:  ${part}${file}`); */
-
-            file = `${part}${file}`;
+            file = `${part}/${file_name}`;
             //
             if (fs.existsSync(file)) {
-                // console.log('Is file! => ', file);
+                //console.log('Is file! => ', file);
             } else {
-                return false;
-                // console.log('No file there: ', file);
+                console.log(`No file there, skipped: ${file}`);
             }
             fs.stat(file, (err1, stat) => {
 
                 if (stat && stat.isDirectory()) {
                     walk(file, (err2, res) => {
-                        console.log('isDirectory: ', file);
                         results = results.concat(res);
                         next();
                     });
                 } else {
-
-                    if (!fs.existsSync(file)) {
-                        console.warn(`No file exists: ${file}`);
-                    }
-
                     results.push(file);
                     fs.readFile(file, 'utf8', (err3, contents) => {
                         if (err3) {
                             return console.log(err3);
+                        } else {
+                            console.log(`directory: ${part}
+file_name: ${file_name}
+contents: ${contents}
+--------------------------------------------------------------
+`);
                         }
                         if (callback) {
-                            if (cnt<10){
-                                console.log(`
-cnt: ${cnt} Get file: ${file}
-`);
-                                callback(part, contents);
-                            }
+                            callback(part, contents);
                         } 
                     });
                     next();
@@ -113,15 +97,18 @@ cnt: ${cnt} Get file: ${file}
 }
 
 function getPagesContent(part_name, contents){
-    console.log('getPagesContent, part_name=>', part_name);
+    console.log('getPagesContent=>', {part_name:part_name, contents:contents});
     //let jsonParsed = JSON.parse(contents);
     //let tmpl = `<h1>${jsonParsed.description}</h1>`;
     //let json_contents;
     //let json;
-    
     switch (part_name) {
         case home:
-
+        /* json = `${path}${home}`;
+        json_contents = fs.readFile(`${json}.json`, 'utf8', (err4, json) => {
+            console.log('json=>', JSON.parse(json));
+                let json_content = walk(home, );
+            }); */
             break;
         case chapters_home:
             
@@ -132,9 +119,17 @@ function getPagesContent(part_name, contents){
         default:
             break;
     }
+    //console.log('contents=>\n', contents);
 }
 
-walk(path, getPagesContent);
+/* if ('file' in test_node['args']) {
+    //console.log('Want file!');
+    let file = `${__dirname}/${test_node.args.file}`;
+    console.log(`Check file ${file}`, fs.existsSync(file));
+} */
+
+
+walk(path/* , getPagesContent */);
 // walk(`${path}texts`);
 // walk(`${path}texts`);
 
