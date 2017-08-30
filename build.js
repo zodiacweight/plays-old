@@ -47,7 +47,7 @@ function populateTemplate(main, body_class){
 
 function walk(part, callback) {
     //
-    const results = [];
+    let results = [];
     //const dir = `${path}${part}`;
     fs.readdir(part, (err, list) => {
         if (err) return done(err);
@@ -56,8 +56,15 @@ function walk(part, callback) {
             let file = list[i++];
             
             if (!file) return done(null, results);
+
+            if (part[part.length - 1].indexOf('/') === -1) part += '/';
             
-            file = `${part}/${file}`;
+            console.log(`check part and file=>
+part:       ${part}
+file:       ${file}
+full path:  ${part}${file}`);
+
+            file = `${part}${file}`;
             //
             if (fs.exists(file)) {
                 console.log('Is file! => ', file);
