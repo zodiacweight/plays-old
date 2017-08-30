@@ -59,14 +59,15 @@ function walk(part, callback) {
 
             if (part[part.length - 1].indexOf('/') === -1) part += '/';
             
-            console.log(`check part and file=>
+            /* console.log(`check part and file=>
 part:       ${part}
 file:       ${file}
-full path:  ${part}${file}`);
+dirname:    ${__dirname}
+full path:  ${part}${file}`); */
 
             file = `${part}${file}`;
             //
-            if (fs.exists(file)) {
+            if (fs.existsSync(file)) {
                 console.log('Is file! => ', file);
             } else {
                 console.log('No file there: ', file);
