@@ -3,7 +3,10 @@ const test_node = require('./test_node');
 const fs = require('fs');
 const path = `${__dirname}/static/jsons`;
 const done = function(err) {
-    console.log(err);
+    if (err !== null)
+        console.log(`
+done, return
+got err =>`, err);
 };
 
 const script_path = './source/scripts/';
@@ -66,28 +69,52 @@ function walk(part, callback) {
                 console.log(`No file there, skipped: ${file}`);
             }
             fs.stat(file, (err1, stat) => {
-
+                // console.log('got stat=>', stat);
+                if(err1) {
+                    console.log(`err1: ${err1}`);
+                }
                 if (stat && stat.isDirectory()) {
+                    //console.log('stat && stat.isDirectory()');
                     walk(file, (err2, res) => {
+                        console.log(`err2: ${err2}, 
+file: ${file}
+isDirectory: `, stat.isDirectory(), `
+isFile: `, stat.isFile(), `
+`);
                         results = results.concat(res);
                         next();
                     });
                 } else {
+                    //console.log('stat && stat.isDirectory()');
                     results.push(file);
-                    fs.readFile(file, 'utf8', (err3, contents) => {
+                    /* fs.readFileSync(file, 'utf8', (err3, contents) => {
                         if (err3) {
-                            return console.log(err3);
+                            return console.log(`
+readFile: ${file}
+err3: ${err3}
+contents: ${contents}`);
                         } else {
-                            console.log(`directory: ${part}
+                            console.log(`
+directory: ${part}
 file_name: ${file_name}
-contents: ${contents}
---------------------------------------------------------------
-`);
+--------------------------------------------------------------`);
+// contents: ${contents}
                         }
                         if (callback) {
                             callback(part, contents);
                         } 
+                    }); */
+                    let file_contents = fs.readFileSync(file, 'utf8', (file_error) => {
+                        console.log('file_error=>', file_error);
+                        return false;
                     });
+
+                    if (file_contents) {
+                        if (callback) {
+                            callback(part, file_contents);
+                        }
+                    }
+                    console.log('file_contents=>', file_contents);                    
                     next();
                 } 
                 // console.log('file=>', file);
@@ -97,7 +124,7 @@ contents: ${contents}
 }
 
 function getPagesContent(part_name, contents){
-    console.log('getPagesContent=>', {part_name:part_name, contents:contents});
+    console.log('getPagesContent=>', {part_name:part_name});
     //let jsonParsed = JSON.parse(contents);
     //let tmpl = `<h1>${jsonParsed.description}</h1>`;
     //let json_contents;
@@ -129,7 +156,7 @@ function getPagesContent(part_name, contents){
 } */
 
 
-walk(path/* , getPagesContent */);
+walk(path, getPagesContent);
 // walk(`${path}texts`);
 // walk(`${path}texts`);
 
