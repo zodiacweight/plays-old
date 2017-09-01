@@ -2,7 +2,10 @@ const test_node = require('./test_node');
 
 const fs = require('fs');
 const path = `${__dirname}/static/jsons`;
-const done = function(err) {
+const done = function(err, results) {
+    if (results) {
+        
+    }
     if (err !== null)
         console.log(`
 done, return
