@@ -1,8 +1,8 @@
 const test_node = require('./source/scripts/test_node');
 const html = require('./source/scripts/html');
 const populateTemplate = html.populateTemplate;
-const getPagesContent = html.getPagesContent;
-// console.log('Check functions=>', {populateTemplate:populateTemplate, getPagesContent:getPagesContent});
+const setPagesContent = html.setPagesContent;
+// console.log('Check functions=>', {populateTemplate:populateTemplate, setPagesContent:setPagesContent});
 const fs = require('fs');
 const path = `${__dirname}/static/jsons`;
 const done = function(err, results) {
@@ -50,7 +50,9 @@ function walk(part, callback) {
                     console.log('NOT a file: ', file);
                 } else {
                     // console.log('IS A FILE: ', file);
-                    getPagesContent(file, fs.readFileSync(file, 'utf8'));
+                    // object or string
+                    const html = setPagesContent(file, fs.readFileSync(file, 'utf8'));
+                    console.log(html);
                 }
             }
         }
