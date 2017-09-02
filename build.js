@@ -40,16 +40,17 @@ function walk(part, callback) {
         if (!fs.existsSync(file)) {
             console.log(`No file there, skipped: ${file}`);            
         } else {
-            console.log(`Exists: ${file}`);
+            // console.log(`Exists: ${file}`);
             const stat = fs.statSync(file);
             if (stat && stat.isDirectory()) {
-                console.log('Is a dir: ', file);
+                // console.log('Is a dir: ', file);
                 walk(file);
             } else {
                 if (!stat.isFile()){
                     console.log('NOT a file: ', file);
                 } else {
-                    console.log('IS A FILE: ', file);
+                    // console.log('IS A FILE: ', file);
+                    getPagesContent(file, fs.readFileSync(file, 'utf8'));
                 }
             }
         }
@@ -63,7 +64,7 @@ function walk(part, callback) {
 } */
 
 
-walk(path, getPagesContent);
+walk(path);
 // walk(`${path}texts`);
 // walk(`${path}texts`);
 

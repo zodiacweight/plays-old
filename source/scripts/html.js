@@ -32,8 +32,10 @@ module.exports = {
 </body>
 </html>`;
     },   
-    getPagesContent: (part_name, contents) => {
-        console.log('getPagesContent=>', {part_name:part_name});
+    getPagesContent: (part_name, file_contents) => {
+        console.log(`getPagesContent
+${part_name}
+`, file_contents);
         //let jsonParsed = JSON.parse(contents);
         //let tmpl = `<h1>${jsonParsed.description}</h1>`;
         //let json_contents;
@@ -55,6 +57,5 @@ module.exports = {
             default:
                 break;
         }
-        //console.log('contents=>\n', contents);
     }
 }
