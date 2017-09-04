@@ -5,20 +5,6 @@ const getPagesContent = html.getPagesContent;
 // console.log('Check functions=>', {populateTemplate:populateTemplate, getPagesContent:getPagesContent});
 const fs = require('fs');
 const path = `${__dirname}/static/jsons`;
-const done = function(err, results) {
-    if (err !== null){
-
-        console.log(`
-done, return
-got err =>`, err, `
------------------`);
-        if (results) {
-            console.log(`results=>
-`, results, `
------------------`);
-        } 
-    }
-};
 
 const script_path = './source/scripts/';
 [home, chapters_home, chapter_text] = ['default', 'chapters_home', 'chapter_text'];
@@ -38,7 +24,7 @@ function walk(part, callback) {
         const file = `${part}/${file_name}`;
         //
         if (!fs.existsSync(file)) {
-            console.log(`No file there, skipped: ${file}`);            
+            console.log(`No file there, skipped: ${file}`);
         } else {
             console.log(`Exists: ${file}`);
             const stat = fs.statSync(file);
