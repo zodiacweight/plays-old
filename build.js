@@ -2,6 +2,7 @@ const test_node = require('./source/scripts/test_node');
 const html = require('./source/scripts/html');
 const populateTemplate = html.populateTemplate;
 const setPagesContent = html.setPagesContent;
+const htmlContents = html.htmlContents;
 // console.log('Check functions=>', {populateTemplate:populateTemplate, setPagesContent:setPagesContent});
 const fs = require('fs');
 const path = `${__dirname}/static/jsons`;
@@ -31,7 +32,7 @@ const script_path = './source/scripts/';
 function walk(part, callback) {
     //
     const files = fs.readdirSync(part);
-    console.log('files=>', files);
+    // console.log('files=>', files);
     
     for(let i in files){
         let file_name = files[i];
@@ -52,7 +53,12 @@ function walk(part, callback) {
                     // console.log('IS A FILE: ', file);
                     // object or string
                     const html = setPagesContent(file, fs.readFileSync(file, 'utf8'));
-                    console.log(html);
+                    if (!html) {
+                        console.log('Aggregating default, htmlContents => ', htmlContents);
+                    } else {
+                        // 
+                        // console.log('html=>', html);
+                    }
                 }
             }
         }

@@ -29,10 +29,10 @@ function populateTemplate (main, body_class) {
 }
 
 function setPagesContent (part_name, file_contents) {
-    console.log(`
+    /* console.log(`
 getPagesContent
 ${part_name}
-`);
+`); */
     //
     let main, body_class, 
         segments = part_name.split('/'), 
@@ -41,7 +41,7 @@ ${part_name}
         case 'default':
             // then it will return in another iteration
             // get contents for h1, h4
-            htmlContents['default'] = 'HOME';
+            htmlContents['default'] = file_contents;
             return; 
             break;
         case '404':
@@ -53,15 +53,23 @@ ${part_name}
         // texts/cabalistic_bewitching_hero 
         // texts/nihilistic_parody 
         default:
+            const dir_name = segments.pop();
+            console.log(`
+Not home, not 404.
+Dir name: ${dir_name}, 
+File name: ${file_name}
+File contents: ${file_contents}
+`);
             // get file from directory
-            switch (segments.pop()) {
+            switch (dir_name) {
                 case 'default':
-                    
+                    console.log('Directory default');
                     break;
-            
+                    
                 case 'texts':
-                        // case chapters_home:
-                        // main = 'CHAPTERS_HOME';
+                    console.log('Directory texts');
+                    // case chapters_home:
+                    // main = 'CHAPTERS_HOME';
                         // body_class = 'chapters_home';
                         // break;
                         // case chapter_text:
@@ -69,11 +77,14 @@ ${part_name}
                         // body_class = 'chapter_text';
                         // break;
                     break;
+                default:
+                    console.log(`Directory under texts(?): ${dir_name}`);
             }
     }
     return populateTemplate(main, body_class);
 }
 module.exports = {
+    htmlContents: htmlContents,
     populateTemplate: populateTemplate,
     setPagesContent: setPagesContent
 }
