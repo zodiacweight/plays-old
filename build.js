@@ -23,12 +23,9 @@ got err =>`, err, `
 
 const script_path = './source/scripts/';
 [home, chapters_home, chapter_text] = ['default', 'chapters_home', 'chapter_text'];
-
 // const chaptersMod = require(`${script_path}chapters`);
 // console.log('build', {__dirname: __dirname, chaptersMod:chaptersMod});
 // chaptersMod.testData();
-
-
 function walk(part, callback) {
     //
     const files = fs.readdirSync(part);
@@ -76,9 +73,9 @@ walk(path);
 
 if (htmlContents) {
     const htmlInnerContents = html.populateHomeTemplate(htmlContents.default);
-    //const htmlCompiled = html.populateTemplate(htmlInnerContents, 'default');
+    const htmlCompiled = html.populateTemplate(htmlInnerContents, 'default');
     //console.log('html output=>', {htmlInnerContents:htmlInnerContents, htmlCompiled:htmlCompiled});
-    console.log('html output=>', htmlInnerContents);
+    console.log('output htmlContents=>', { htmlContents:htmlContents, htmlCompiled:htmlCompiled });
 }
 // walk(`${path}texts`);
 // walk(`${path}texts`);

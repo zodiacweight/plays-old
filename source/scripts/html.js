@@ -28,6 +28,7 @@ function populateTemplate(main, body_class) {
 }
 
 function populateHomeTemplate(asides) {
+    console.log('populateHomeTemplate=>', asides);
     /*
         // default:
         {
@@ -53,11 +54,13 @@ function populateHomeTemplate(asides) {
                 "texts": [ "cabalistic_bewitching_hero", "nihilistic_parody", "joshua_world" ] }"
         }
     */
-    let home = Object.assign({}, asides.home);
-    delete asides.home;
-    let html = '',
+    let home = Object.assign({}, asides.home),
+        html = '',
         link;
-    Object.keys(asides).forEach(function(book_link){
+    console.log('home=>', home);
+    delete asides.home;
+
+    Object.keys(asides).forEach(function (book_link) {
         //link = Object.keys(item)[0];
         html += `
         <aside class="fade fade-out">
@@ -67,8 +70,7 @@ function populateHomeTemplate(asides) {
             </a>
         </aside>`;
     });
-    return `<div id="home">
-    <h1>${home.greeting}</h1>
+    return `<div id="home"><h1>${home.greeting}</h1>
     <h4>${home.subheader}</h4>
     <section id="asides">
         ${html}
@@ -80,7 +82,9 @@ function createContentsBox(name, subName, contents) {
     if (!htmlContents[name]) {
         htmlContents[name] = {};
     }
-    return htmlContents[name][subName] = contents;
+    htmlContents[name][subName] = JSON.parse(contents);
+    console.log('createContentsBox=>', { htmlContents:htmlContents, contents:contents });
+    return htmlContents[name][subName];
 }
 
 function setPagesContent(part_name, file_contents) {
@@ -98,15 +102,15 @@ ${part_name}
             // get contents for h1, h4
             return createContentsBox('default', 'home', file_contents);
             break;
-            case '404':
+        case '404':
             main = 'Error 404';
             break;
-            // what inside dirs 
-            // default, 
-            // texts, 
-            // texts/cabalistic_bewitching_hero 
-            // texts/nihilistic_parody 
-            default:
+        // what inside dirs 
+        // default, 
+        // texts, 
+        // texts/cabalistic_bewitching_hero 
+        // texts/nihilistic_parody 
+        default:
             const dir_name = segments.pop();
             console.log(`
             Not home, not 404.
@@ -140,14 +144,14 @@ ${part_name}
 
 function parseJsonSource(data, contentsValue) {
     //console.groupCollapsed('data here'); console.log(data);
-    const setData =(dataArr, callback) => {
+    const setData = (dataArr, callback) => {
         dataArr.forEach((row) => {
             callback(row);
         });
     };
     let templateData;
     // got json with replics
-    if (contentsValue === true){
+    if (contentsValue === true) {
         templateData = {
             html: '',
             filters: ''
@@ -156,9 +160,10 @@ function parseJsonSource(data, contentsValue) {
             personage,
             personages = [];
         //
-        setData(data, (row) => { console.log('row=>', row);
+        setData(data, (row) => {
+            console.log('row=>', row);
             // array(Object, Object)
-            for(let prop in row){
+            for (let prop in row) {
                 contents = row[prop]
                 switch (prop) {
                     case 'header': // string
@@ -168,7 +173,7 @@ function parseJsonSource(data, contentsValue) {
                         setData(contents, (line) => {
                             personage = Object.keys(line)[0];
                             templateData.html += `<strong data-person="${personage}">${personage}</strong>`;
-                            if (personages.indexOf(personage)===-1){
+                            if (personages.indexOf(personage) === -1) {
                                 personages.push(personage);
                                 templateData.filters += `<label><input type="checkbox" name="${personage}">${personage}</label>`;
                             }
@@ -198,8 +203,8 @@ function parseJsonSource(data, contentsValue) {
             templateData = { html: html };
         } else {
             //
-            for(let prop in data){
-                console.log('get data=>', { prop:prop, data:data[prop]});
+            for (let prop in data) {
+                console.log('get data=>', { prop: prop, data: data[prop] });
                 switch (prop) {
                     case 'url':
                         var header = `<a href="#${data[prop]}">${data['header']}</a>`;
@@ -211,14 +216,14 @@ function parseJsonSource(data, contentsValue) {
                         });
                         break;
                     case 'chapters':
-                        console.log('go chapters, data['+prop+'] => '+data[prop]);
+                        console.log('go chapters, data[' + prop + '] => ' + data[prop]);
                         var chapters = `<h4 class="chapters-overview">Chapters:</h4>
                                         <h5 class="chapters-go-home"><a href="#">Home</a></h5>`,
                             num = 0;
-                        for(let number in data[prop]){
+                        for (let number in data[prop]) {
                             ++num;
                             chapters += `<p class="chapter-title"><a href="#${contentsValue}/${number}" title="${data[prop][number]}"><span>${num}. </span>${data[prop][number]}</a></p>`;
-                            console.log('chapters: '+chapters);
+                            console.log('chapters: ' + chapters);
                         }
                         break;
                 }
