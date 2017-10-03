@@ -52,9 +52,9 @@ function walk(part, callback) {
                 } else {
                     // console.log('IS A FILE: ', file);
                     // object or string
-                    const html = setPagesContent(file, fs.readFileSync(file, 'utf8'));
-                    if (!html) {
-                        console.log('Aggregating default, htmlContents => ', htmlContents);
+                    const page_html = setPagesContent(file, fs.readFileSync(file, 'utf8'));
+                    if (!page_html) {
+                        // console.log('Aggregating default, htmlContents => ', htmlContents);
                     } else {
                         // 
                         // console.log('html=>', html);
@@ -73,6 +73,13 @@ function walk(part, callback) {
 
 
 walk(path);
+
+if (htmlContents) {
+    const htmlInnerContents = html.populateHomeTemplate(htmlContents.default);
+    //const htmlCompiled = html.populateTemplate(htmlInnerContents, 'default');
+    //console.log('html output=>', {htmlInnerContents:htmlInnerContents, htmlCompiled:htmlCompiled});
+    console.log('html output=>', htmlInnerContents);
+}
 // walk(`${path}texts`);
 // walk(`${path}texts`);
 
