@@ -88,10 +88,6 @@ function createContentsBox(name, subName, contents) {
 }
 
 function setPagesContent(part_name, file_contents) {
-    /* console.log(`
-getPagesContent
-${part_name}
-`); */
     //
     let main, body_class,
         segments = part_name.split('/'),
@@ -105,11 +101,11 @@ ${part_name}
         case '404':
             main = 'Error 404';
             break;
-        // what inside dirs 
-        // default, 
-        // texts, 
-        // texts/cabalistic_bewitching_hero 
-        // texts/nihilistic_parody 
+        /*  what inside dirs 
+            default, 
+            texts, 
+            texts/cabalistic_bewitching_hero 
+            texts/nihilistic_parody */
         default:
             const dir_name = segments.pop();
             console.log(`
@@ -126,14 +122,14 @@ ${part_name}
 
                 case 'texts':
                     console.log('Directory texts');
-                    // case chapters_home:
-                    // main = 'CHAPTERS_HOME';
-                    // body_class = 'chapters_home';
-                    // break;
-                    // case chapter_text:
-                    // main = 'CHAPTER';
-                    // body_class = 'chapter_text';
-                    // break;
+                    /*  case chapters_home:
+                        main = 'CHAPTERS_HOME';
+                        body_class = 'chapters_home';
+                        break;
+                        case chapter_text:
+                        main = 'CHAPTER';
+                        body_class = 'chapter_text';
+                        break; */
                     break;
                 default:
                     console.log(`Directory under texts(?): ${dir_name}`);
