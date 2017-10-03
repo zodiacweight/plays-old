@@ -75,7 +75,7 @@ if (htmlContents) {
     const htmlCompiled = html.populateTemplate(htmlInnerContents, 'default');
     //console.log('html output=>', {htmlInnerContents:htmlInnerContents, htmlCompiled:htmlCompiled});
     console.log('output htmlContents=>', { htmlContents:htmlContents, htmlCompiled:htmlCompiled });
-    fs.writeFileSync('./build/html/index.html', htmlCompiled);
+    fs.writeFileSync('./build/index.html', htmlCompiled);
 }
 // walk(`${path}texts`);
 // walk(`${path}texts`);
