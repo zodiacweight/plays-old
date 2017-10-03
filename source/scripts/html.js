@@ -1,8 +1,9 @@
+const fs = require('fs');
 const htmlContents = {
 };
 
 function populateTemplate(main, body_class) {
-    return `<!DOCTYPE html>
+    const html = `<!DOCTYPE html>
 <html lang="en">
     <head>
     <meta charset="UTF-8">
@@ -10,8 +11,8 @@ function populateTemplate(main, body_class) {
     <script src="js/base_path.js"></script>
     <link rel="stylesheet" type="text/css" href="styles/libs/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="styles/style.css">
-    <script src="scripts/modules/common.js"></script>
-    <script src="scripts/libs/jquery.min.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/libs/jquery.min.js"></script>
 </head>
 <body class="${body_class}">
     <main>
@@ -25,10 +26,12 @@ function populateTemplate(main, body_class) {
     </footer>
 </body>
 </html>`;
+    console.log('html=>', html);
+    return html;
 }
 
 function populateHomeTemplate(asides) {
-    console.log('populateHomeTemplate=>', asides);
+    //console.log('populateHomeTemplate=>', asides);
     /*
         // default:
         {
@@ -57,7 +60,7 @@ function populateHomeTemplate(asides) {
     let home = Object.assign({}, asides.home),
         html = '',
         link;
-    console.log('home=>', home);
+    //console.log('home=>', home);
     delete asides.home;
 
     Object.keys(asides).forEach(function (book_link) {
@@ -83,7 +86,7 @@ function createContentsBox(name, subName, contents) {
         htmlContents[name] = {};
     }
     htmlContents[name][subName] = JSON.parse(contents);
-    console.log('createContentsBox=>', { htmlContents:htmlContents, contents:contents });
+    //console.log('createContentsBox=>', { htmlContents:htmlContents, contents:contents });
     return htmlContents[name][subName];
 }
 
@@ -100,6 +103,7 @@ function setPagesContent(part_name, file_contents) {
             break;
         case '404':
             main = 'Error 404';
+            body_class = file_name;
             break;
         /*  what inside dirs 
             default, 
@@ -108,23 +112,24 @@ function setPagesContent(part_name, file_contents) {
             texts/nihilistic_parody */
         default:
             const dir_name = segments.pop();
-            console.log(`
+            /*console.log(`
             Not home, not 404.
             path: ${dir_name}/${file_name}
-            `);
+            `);*/
             //File contents: ${file_contents}
             // get file from directory
             switch (dir_name) {
                 case 'default':
-                    console.log('Directory default');
+                    // fill object with data to handle it later
+                    //console.log('Directory default');
                     return createContentsBox('default', file_name, file_contents);
                     break;
 
                 case 'texts':
-                    console.log('Directory texts');
+                    console.log('Directory texts=>', { file_name: file_name, file_contents:file_contents });
+                    //body_class = 'chapters_home';
                     /*  case chapters_home:
                         main = 'CHAPTERS_HOME';
-                        body_class = 'chapters_home';
                         break;
                         case chapter_text:
                         main = 'CHAPTER';
@@ -133,9 +138,16 @@ function setPagesContent(part_name, file_contents) {
                     break;
                 default:
                     console.log(`Directory under texts(?): ${dir_name}`);
+                    
             }
     }
-    return populateTemplate(main, body_class);
+    // may not reach this point as there are returns by conditions
+    if (main) {
+        fs.writeFileSync(`./build/${file_name}.html`, populateTemplate(main, body_class));
+        return true;
+    } else {
+        return false;
+    }
 }
 
 function parseJsonSource(data, contentsValue) {
@@ -157,7 +169,7 @@ function parseJsonSource(data, contentsValue) {
             personages = [];
         //
         setData(data, (row) => {
-            console.log('row=>', row);
+            //console.log('row=>', row);
             // array(Object, Object)
             for (let prop in row) {
                 contents = row[prop]
@@ -200,7 +212,7 @@ function parseJsonSource(data, contentsValue) {
         } else {
             //
             for (let prop in data) {
-                console.log('get data=>', { prop: prop, data: data[prop] });
+                //console.log('get data=>', { prop: prop, data: data[prop] });
                 switch (prop) {
                     case 'url':
                         var header = `<a href="#${data[prop]}">${data['header']}</a>`;
@@ -212,14 +224,14 @@ function parseJsonSource(data, contentsValue) {
                         });
                         break;
                     case 'chapters':
-                        console.log('go chapters, data[' + prop + '] => ' + data[prop]);
+                        //console.log('go chapters, data[' + prop + '] => ' + data[prop]);
                         var chapters = `<h4 class="chapters-overview">Chapters:</h4>
                                         <h5 class="chapters-go-home"><a href="#">Home</a></h5>`,
                             num = 0;
                         for (let number in data[prop]) {
                             ++num;
                             chapters += `<p class="chapter-title"><a href="#${contentsValue}/${number}" title="${data[prop][number]}"><span>${num}. </span>${data[prop][number]}</a></p>`;
-                            console.log('chapters: ' + chapters);
+                            //console.log('chapters: ' + chapters);
                         }
                         break;
                 }
@@ -232,7 +244,7 @@ function parseJsonSource(data, contentsValue) {
             };
         }
     }
-    console.log('%ctemplateData', 'color: darkorange', templateData);
+    // console.log('%ctemplateData', 'color: darkorange', templateData);
     //console.groupEnd();
 
     return templateData;

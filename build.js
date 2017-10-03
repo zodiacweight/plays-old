@@ -36,7 +36,7 @@ function walk(part, callback) {
         const file = `${part}/${file_name}`;
         //
         if (!fs.existsSync(file)) {
-            console.log(`No file there, skipped: ${file}`);            
+            console.log(`No file there, skipped: ${file}`);
         } else {
             // console.log(`Exists: ${file}`);
             const stat = fs.statSync(file);
@@ -45,7 +45,7 @@ function walk(part, callback) {
                 walk(file);
             } else {
                 if (!stat.isFile()){
-                    console.log('NOT a file: ', file);
+                    // console.log('NOT a file: ', file);
                 } else {
                     // console.log('IS A FILE: ', file);
                     // object or string
@@ -62,31 +62,14 @@ function walk(part, callback) {
     }
 }
 
-/* if ('file' in test_node['args']) {
-    //console.log('Want file!');
-    let file = `${__dirname}/${test_node.args.file}`;
-    console.log(`Check file ${file}`, fs.existsSync(file));
-} */
 
 walk(path);
 
 if (htmlContents) {
     const htmlInnerContents = html.populateHomeTemplate(htmlContents.default);
     const htmlCompiled = html.populateTemplate(htmlInnerContents, 'default');
-    //console.log('html output=>', {htmlInnerContents:htmlInnerContents, htmlCompiled:htmlCompiled});
-    console.log('output htmlContents=>', { htmlContents:htmlContents, htmlCompiled:htmlCompiled });
+    console.log('output htmlCompiled=>', htmlCompiled);
     fs.writeFileSync('./build/index.html', htmlCompiled);
 }
-// walk(`${path}texts`);
-// walk(`${path}texts`);
 
-/* const template = populateTemplate('<h1>Hello, Dude</h1><p>Content comes here!</p>');
-console.log(template);
-const file_to_save = `${__dirname}/static/index.html`;
-fs.writeFile(file_to_save, template, function(error) {
-    if (error) {
-      console.error(`write error: ${error.message}`);
-    } else {
-      console.log(`Successful Write to ${file_to_save}`);
-    }
-}); */
+
