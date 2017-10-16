@@ -1,15 +1,21 @@
+// todo: convert to import
 const fs = require('fs');
-const htmlContents = {
+// container for template variables. Is used for default page yet
+const homepageContents = {
 };
-
-function populateTemplate(main, body_class) {
+/**
+ * Create layout html
+ * @param {*} main 
+ * @param {*} body_class 
+ */
+function populateLayout(main, body_class, title="English: Amazing adventures of misterious creatures existed ever") {
     const path_plays = 'plays';
     const path_build = 'build';
     const html = `<!DOCTYPE html>
-    <html lang="en">
-    <head>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
-    <title>English: Amazing adventures of misterious creatures existed ever</title>
+    <title>${title}</title>
     <script>
         var full_path = '';
         if (location.href.indexOf("/${path_plays}") !== -1) {
@@ -33,17 +39,20 @@ function populateTemplate(main, body_class) {
         ${main}
     </main>
     <footer>
-        <a href="#">Home </a> &nbsp; | 
+        <a href="#">Home</a> &nbsp; | 
         <a href="#how_to_use">How to use </a> &nbsp; | 
         <a href="#contacts">Contacts </a> &nbsp; | 
         <a href="#facebook">Facebook </a>
     </footer>
 </body>
 </html>`;
-    console.log('html=>', html);
+    // console.log('html=>', html);
     return html;
 }
-
+/**
+ * Create hompage template
+ * @param {*} asides 
+ */
 function populateHomeTemplate(asides) {
     //console.log('populateHomeTemplate=>', asides);
     /*
@@ -94,29 +103,39 @@ function populateHomeTemplate(asides) {
     </section>
   </div>`;
 }
-
-function createContentsBox(name, subName, contents) {
-    if (!htmlContents[name]) {
-        htmlContents[name] = {};
+/**
+ * 
+ * @param {*} name 
+ * @param {*} subName 
+ * @param {*} contents 
+ */
+function storeHomepageData(name, subName, contents) {
+    if (!homepageContents[name]) {
+        homepageContents[name] = {};
     }
-    htmlContents[name][subName] = JSON.parse(contents);
-    //console.log('createContentsBox=>', { htmlContents:htmlContents, contents:contents });
-    return htmlContents[name][subName];
+    homepageContents[name][subName] = JSON.parse(contents);
+    //console.log('storeHomepageData=>', { homepageContents:homepageContents, contents:contents });
+    return homepageContents[name][subName];
 }
-
+/**
+ * Returns data to populate homepage or creates other files. 
+ * In the latter case you need to store HTML in mainHTML variable
+ * @param {*} part_name 
+ * @param {*} file_contents 
+ */
 function setPagesContent(part_name, file_contents) {
     //
-    let main, body_class,
+    let mainHTML, body_class,
         segments = part_name.split('/'),
         file_name = segments.pop().split('.json').shift();
     switch (file_name) {
         case 'default':
             // then it will return in another iteration
             // get contents for h1, h4
-            return createContentsBox('default', 'home', file_contents);
+            return storeHomepageData('default', 'home', file_contents);
             break;
         case '404':
-            main = 'Error 404';
+            mainHTML = 'Error 404';
             body_class = file_name;
             break;
         /*  what inside dirs 
@@ -136,17 +155,17 @@ function setPagesContent(part_name, file_contents) {
                 case 'default':
                     // fill object with data to handle it later
                     //console.log('Directory default');
-                    return createContentsBox('default', file_name, file_contents);
+                    return storeHomepageData('default', file_name, file_contents);
                     break;
 
                 case 'texts':
                     console.log('Directory texts=>', { file_name: file_name, file_contents:file_contents });
                     //body_class = 'chapters_home';
                     /*  case chapters_home:
-                        main = 'CHAPTERS_HOME';
+                        mainHTML = 'CHAPTERS_HOME';
                         break;
                         case chapter_text:
-                        main = 'CHAPTER';
+                        mainHTML = 'CHAPTER';
                         body_class = 'chapter_text';
                         break; */
                     break;
@@ -156,14 +175,18 @@ function setPagesContent(part_name, file_contents) {
             }
     }
     // may not reach this point as there are returns by conditions
-    if (main) {
-        fs.writeFileSync(`./build/${file_name}.html`, populateTemplate(main, body_class));
+    if (mainHTML) {
+        fs.writeFileSync(`./build/${file_name}.html`, populateLayout(mainHTML, body_class));
         return true;
     } else {
         return false;
     }
 }
-
+/**
+ * 
+ * @param {*} data 
+ * @param {*} contentsValue 
+ */
 function parseJsonSource(data, contentsValue) {
     //console.groupCollapsed('data here'); console.log(data);
     const setData = (dataArr, callback) => {
@@ -265,9 +288,9 @@ function parseJsonSource(data, contentsValue) {
 }
 
 module.exports = {
-    htmlContents: htmlContents,
+    homepageContents: homepageContents,
     parseJsonSource: parseJsonSource,
     populateHomeTemplate: populateHomeTemplate,
-    populateTemplate: populateTemplate,
+    populateLayout: populateLayout,
     setPagesContent: setPagesContent
 }

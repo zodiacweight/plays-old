@@ -1,9 +1,15 @@
+/**
+ * The functions call to build html-files:
+ * walk => setPagesContent
+ */
 const test_node = require('./source/scripts/test_node');
+// get templates
+// populateLayout, populateHomeTemplate, 
 const html = require('./source/scripts/html');
-const populateTemplate = html.populateTemplate;
+const populateLayout = html.populateLayout;
 const setPagesContent = html.setPagesContent;
-const htmlContents = html.htmlContents;
-// console.log('Check functions=>', {populateTemplate:populateTemplate, setPagesContent:setPagesContent});
+const homepageContents = html.homepageContents;
+// console.log('Check functions=>', {populateLayout:populateLayout, setPagesContent:setPagesContent});
 const fs = require('fs');
 const path = `${__dirname}/static/jsons`;
 const done = function(err, results) {
@@ -22,6 +28,7 @@ got err =>`, err, `
 };
 
 const script_path = './source/scripts/';
+// versions of templates
 [home, chapters_home, chapter_text] = ['default', 'chapters_home', 'chapter_text'];
 // const chaptersMod = require(`${script_path}chapters`);
 // console.log('build', {__dirname: __dirname, chaptersMod:chaptersMod});
@@ -30,7 +37,6 @@ function walk(part, callback) {
     //
     const files = fs.readdirSync(part);
     // console.log('files=>', files);
-    
     for(let i in files){
         let file_name = files[i];
         const file = `${part}/${file_name}`;
@@ -40,8 +46,7 @@ function walk(part, callback) {
         } else {
             // console.log(`Exists: ${file}`);
             const stat = fs.statSync(file);
-            if (stat && stat.isDirectory()) {
-                // console.log('Is a dir: ', file);
+            if (stat && stat.isDirectory()) { // console.log('Is a dir: ', file);
                 walk(file);
             } else {
                 if (!stat.isFile()){
@@ -51,10 +56,9 @@ function walk(part, callback) {
                     // object or string
                     const page_html = setPagesContent(file, fs.readFileSync(file, 'utf8'));
                     if (!page_html) {
-                        // console.log('Aggregating default, htmlContents => ', htmlContents);
+                        // console.log('Aggregating default, homepageContents => ', homepageContents);
                     } else {
-                        // 
-                        // console.log('html=>', html);
+                        console.log('get compiled html');
                     }
                 }
             }
@@ -62,14 +66,15 @@ function walk(part, callback) {
     }
 }
 
-
 walk(path);
-
-if (htmlContents) {
-    const htmlInnerContents = html.populateHomeTemplate(htmlContents.default);
-    const htmlCompiled = html.populateTemplate(htmlInnerContents, 'default');
+// create homepage
+if (homepageContents) {
+    const htmlInnerContents = html.populateHomeTemplate(homepageContents.default);
+    const htmlCompiled = html.populateLayout(htmlInnerContents, 'default');
     console.log('output htmlCompiled=>', htmlCompiled);
     fs.writeFileSync('./build/index.html', htmlCompiled);
 }
+// create other pages
+console.log('Compile other contents...');
 
 
