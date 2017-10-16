@@ -110,7 +110,7 @@ main {
       animation-duration: 1s;
       animation-delay: 0.4s;
       animation-fill-mode: both;
-      background-image: url("../contents/images/cabalistic_bewitching_hero.jpg");
+      background-image: url("../images/cabalistic_bewitching_hero.jpg");
       background-size: cover; }
       @media (max-width: 747px) {
         #asides aside:nth-child(1) {
@@ -122,7 +122,7 @@ main {
       animation-duration: 1s;
       animation-delay: 1s;
       animation-fill-mode: both;
-      background-image: url("../contents/images/nihilistic_parody.jpg");
+      background-image: url("../images/nihilistic_parody.jpg");
       background-size: cover; }
       @media (max-width: 747px) {
         #asides aside:nth-child(2) {
@@ -134,7 +134,7 @@ main {
       animation-duration: 1s;
       animation-delay: 1.6s;
       animation-fill-mode: both;
-      background-image: url("../contents/images/joshua_world.jpg");
+      background-image: url("../images/joshua_world.jpg");
       background-size: cover; }
       @media (max-width: 747px) {
         #asides aside:nth-child(3) {
@@ -146,7 +146,7 @@ main {
       animation-duration: 1s;
       animation-delay: 2s;
       animation-fill-mode: both;
-      background-image: url("../contents/images/unbalanced.jpg");
+      background-image: url("../images/unbalanced.jpg");
       background-size: cover; }
       @media (max-width: 747px) {
         #asides aside:nth-child(4) {
@@ -313,10 +313,10 @@ footer {
   color: #777; }
 
 body.default:after {
-  background-image: url(../contents/images/backgrounds/bg-storm-nature.jpg); }
+  background-image: url(../images/backgrounds/bg-storm-nature.jpg); }
 
 body.nihilistic_parody:after {
-  background-image: url(../contents/images/backgrounds/psychopaths.jpg); }
+  background-image: url(../images/backgrounds/psychopaths.jpg); }
 
 body.cabalistic_bewitching_hero:after {
-  background-image: url(../contents/images/backgrounds/witch-2.jpg); }
+  background-image: url(../images/backgrounds/witch-2.jpg); }

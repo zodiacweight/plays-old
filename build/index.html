@@ -1,13 +1,25 @@
 <!DOCTYPE html>
-<html lang="en">
+    <html lang="en">
     <head>
     <meta charset="UTF-8">
     <title>English: Amazing adventures of misterious creatures existed ever</title>
-    <script src="js/base_path.js"></script>
+    <script>
+        var full_path = '';
+        if (location.href.indexOf("/plays") !== -1) {
+            full_path += "/plays"; // /plays
+        }
+        if (location.href.indexOf("/build") !== -1) {
+            full_path += "/build"; // /plays/build
+        }    
+        if (full_path) {
+            // /plays/build/
+            document.write('<base href="'+ full_path + '" />');
+        }
+    </script>
     <link rel="stylesheet" type="text/css" href="styles/libs/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="styles/style.css">
-    <script src="scripts/modules/common.js"></script>
-    <script src="scripts/libs/jquery.min.js"></script>
+    <script src="js/common.js"></script>
+    <script src="js/libs/jquery.min.js"></script>
 </head>
 <body class="default">
     <main>

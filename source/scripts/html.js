@@ -3,12 +3,26 @@ const htmlContents = {
 };
 
 function populateTemplate(main, body_class) {
+    const path_plays = 'plays';
+    const path_build = 'build';
     const html = `<!DOCTYPE html>
-<html lang="en">
+    <html lang="en">
     <head>
     <meta charset="UTF-8">
     <title>English: Amazing adventures of misterious creatures existed ever</title>
-    <script src="js/base_path.js"></script>
+    <script>
+        var full_path = '';
+        if (location.href.indexOf("/${path_plays}") !== -1) {
+            full_path += "/${path_plays}"; // /plays
+        }
+        if (location.href.indexOf("/${path_build}") !== -1) {
+            full_path += "/${path_build}"; // /plays/build
+        }    
+        if (full_path) {
+            // /plays/build/
+            document.write('<base href="'+ full_path + '" />');
+        }
+    </script>
     <link rel="stylesheet" type="text/css" href="styles/libs/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="styles/style.css">
     <script src="js/common.js"></script>
