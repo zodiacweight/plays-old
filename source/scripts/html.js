@@ -2,13 +2,15 @@
 const fs = require('fs');
 // container for template variables. Is used for default page yet
 const homepageContents = {
-};
+    },
+    chaptersContents = {
+    };
 /**
  * Create layout html
  * @param {*} main 
  * @param {*} body_class 
  */
-function populateLayout(main, body_class, title="English: Amazing adventures of misterious creatures existed ever") {
+function populateLayout(main, body_class, title = "English: Amazing adventures of misterious creatures existed ever") {
     const path_plays = 'plays';
     const path_build = 'build';
     const html = `<!DOCTYPE html>
@@ -105,6 +107,42 @@ function populateHomeTemplate(asides) {
 }
 /**
  * 
+ */
+function populateChaptersTemplate(chapters){
+    const aside = `<aside id="chapters">
+    <div class="menu" id="chapters-list-menu">
+        <h4 class="chapters-overview">Chapters:</h4>
+        <h5 class="chapters-go-home"><a href="#">Home</a></h5>
+        ${chapters}
+    </div>
+</aside>`,
+        chapters_content = `<div id="chapter-contents">
+        <header>
+            <h1>
+                <a href="#cabalistic_bewitching_hero">Cabalistic bewitching hero</a>
+            </h1>
+            <section id="stories-preview" style="display: block;">
+                ${stories_preview}
+            </section>
+            <section id="about-characters" style="display: block;">
+                ${about_characters}
+            </section>
+            <section id="heroes-filter">
+                <h4>Check out heroes which roles you want to read of <span>?</span></h4>
+                <div id="chapter_filters">
+                    <!-- place for filters -->
+                </div>
+            </section>
+        </header>
+        <article id="text">
+            <h4 class="chapters-overview">Chapters:</h4>
+            <h5 class="chapters-go-home"><a href="#">Home</a></h5>
+            ${chapters}
+        </article>
+    </div>`;
+}
+/**
+ * 
  * @param {*} name 
  * @param {*} subName 
  * @param {*} contents 
@@ -158,9 +196,9 @@ function setPagesContent(part_name, file_contents) {
                     return storeHomepageData('default', file_name, file_contents);
                     break;
 
-                case 'texts':
-                    console.log('Directory texts=>', { file_name: file_name, file_contents:file_contents });
-                    //body_class = 'chapters_home';
+                case 'texts': // get chapters home, see files jsons/texts/(cabalistic_bewitching_hero|nihilistic_parody).json 
+                    // console.log('Directory texts=>', { file_name: file_name, file_contents:file_contents });
+                    body_class = 'chapters_home';
                     /*  case chapters_home:
                         mainHTML = 'CHAPTERS_HOME';
                         break;
@@ -169,9 +207,10 @@ function setPagesContent(part_name, file_contents) {
                         body_class = 'chapter_text';
                         break; */
                     break;
-                default:
-                    console.log(`Directory under texts(?): ${dir_name}`);
-                    
+                default: // get chapter contents, just chapter number and replics
+                    console.log(`Directory under texts(?): ${dir_name}`, { file_name: file_name, file_contents: file_contents });
+
+
             }
     }
     // may not reach this point as there are returns by conditions
