@@ -6,10 +6,10 @@ const test_node = require('./source/scripts/test_node');
 // get templates
 // populateLayout, populateHomeTemplate, 
 const html = require('./source/scripts/html');
-const populateLayout = html.populateLayout;
-const setPagesContent = html.setPagesContent;
-const homepageContents = html.homepageContents;
-const chaptersContents = html.chaptersContents;
+//const populateLayout = html.populateLayout;
+//const setPagesContent = html.setPagesContent;
+//const homepageContents = html.homepageContents;
+//const chaptersContents = html.chaptersContents;
 // console.log('Check functions=>', {populateLayout:populateLayout, setPagesContent:setPagesContent});
 const fs = require('fs');
 const path = `${__dirname}/static/jsons`;
@@ -55,7 +55,7 @@ function walk(part, callback) {
                 } else {
                     // console.log('IS A FILE: ', file);
                     // object or string
-                    const page_html = setPagesContent(file, fs.readFileSync(file, 'utf8'));
+                    const page_html = html.setPagesContent(file, fs.readFileSync(file, 'utf8'));
                     if (!page_html) {
                         // console.log('Aggregating default, homepageContents => ', homepageContents);
                     } else {
@@ -69,24 +69,22 @@ function walk(part, callback) {
 
 walk(path);
 // create homepage
-if (homepageContents) {
-    const htmlCompiled = html.populateLayout(html.populateHomeTemplate(homepageContents.default), 'default');
+if (html.homepageContents) {
+    const htmlCompiled = html.populateLayout(html.populateHomeTemplate(html.homepageContents.default), 'default');
     // console.log('output htmlCompiled=>', htmlCompiled);
     fs.writeFileSync('./build/index.html', htmlCompiled);
 }
 // create chapters
-if (chaptersContents) {
+if (html.chaptersContents) {
     // console.log('chaptersContents.keys=>', Object.keys(chaptersContents));
-    Object.keys(chaptersContents).forEach((chapter) => {
-        console.log(chapter, '******************');
-        Object.keys(chaptersContents[chapter]).forEach((header) => {
-            console.log(header, ' => ', chaptersContents[chapter][header]);
-        });
+    Object.keys(html.chaptersContents).forEach((chapter) => {
+        // 
+        let htmlChapterCompiled = html.populateChaptersTemplate(html.chaptersContents[chapter]);
+        const chapterHTML = html.populateLayout(htmlChapterCompiled, chapter, html.chaptersContents[chapter].header);
+        console.log(chapter,`******************
+        chapterHTML=>
+`, chapterHTML);
     });
-    // const htmlInnerChapterContents = html.populateChaptersTemplate(chapters);
-    // const htmlCompiledChapters = html.populateLayout(htmlInnerChapterContents, '');
-    // console.log('output htmlCompiled=>', htmlCompiled);
-    // fs.writeFileSync('./build/index.html', htmlCompiled);
 }
 // create other pages
 console.log('Compile other contents...');

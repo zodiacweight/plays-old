@@ -41,10 +41,10 @@ function populateLayout(main, body_class, title = "English: Amazing adventures o
         ${main}
     </main>
     <footer>
-        <a href="#">Home</a> &nbsp; | 
-        <a href="#how_to_use">How to use </a> &nbsp; | 
-        <a href="#contacts">Contacts </a> &nbsp; | 
-        <a href="#facebook">Facebook </a>
+        <a href="index.html">Home</a> &nbsp; | 
+        <a href="how_to_use.html">How to use</a> &nbsp; | 
+        <a href="contacts.html">Contacts</a> &nbsp; | 
+        <a href="https://www.facebook.com">Facebook </a>
     </footer>
 </body>
 </html>`;
@@ -92,7 +92,7 @@ function populateHomeTemplate(asides) {
         //link = Object.keys(item)[0];
         html += `
         <aside class="fade fade-out">
-            <a href="#${book_link}">
+            <a href="${book_link}.html">
                 <h4>${asides[book_link].header}</h4>
                 <p>${asides[book_link].description}</p>
             </a>
@@ -108,38 +108,45 @@ function populateHomeTemplate(asides) {
 /**
  * 
  */
-function populateChaptersTemplate(chapters){
-    const aside = `<aside id="chapters">
+function populateChaptersTemplate(contents){
+    if (!contents.chapters) {
+        return false;
+    }
+    let chapters = '';
+    Object.keys(contents.chapters).forEach(num => {
+        chapters += `<div><a href="${contents['url']}-${num}.html">${num}. ${contents.chapters[num]}</div>`;
+    });
+    return `<aside id="chapters">
     <div class="menu" id="chapters-list-menu">
         <h4 class="chapters-overview">Chapters:</h4>
-        <h5 class="chapters-go-home"><a href="#">Home</a></h5>
+        <h5 class="chapters-go-home"><a href="index.html">Home</a></h5>
         ${chapters}
     </div>
-</aside>`,
-        chapters_content = `<div id="chapter-contents">
-        <header>
-            <h1>
-                <a href="#cabalistic_bewitching_hero">Cabalistic bewitching hero</a>
-            </h1>
-            <section id="stories-preview" style="display: block;">
-                ${stories_preview}
-            </section>
-            <section id="about-characters" style="display: block;">
-                ${about_characters}
-            </section>
-            <section id="heroes-filter">
-                <h4>Check out heroes which roles you want to read of <span>?</span></h4>
-                <div id="chapter_filters">
-                    <!-- place for filters -->
-                </div>
-            </section>
-        </header>
-        <article id="text">
-            <h4 class="chapters-overview">Chapters:</h4>
-            <h5 class="chapters-go-home"><a href="#">Home</a></h5>
-            ${chapters}
-        </article>
-    </div>`;
+</aside>
+<div id="chapter-contents">
+    <header>
+        <h1>
+            <a href="${contents['url']}.html">${contents['header']}</a>
+        </h1>
+        <section id="stories-preview" style="display: block;">
+            ${contents['preview']}
+        </section>
+        <section id="about-characters" style="display: block;">
+            ${contents['about_characters']}
+        </section>
+        <section id="heroes-filter">
+            <h4>Check out heroes which roles you want to read of <span>?</span></h4>
+            <div id="chapter_filters">
+            ${contents['filters']}
+            </div>
+        </section>
+    </header>
+    <article id="text">
+        <h4 class="chapters-overview">Chapters:</h4>
+        <h5 class="chapters-go-home"><a href="index.html">Home</a></h5>
+        ${chapters}
+    </article>
+</div>`;
 }
 /**
  * 
@@ -235,116 +242,11 @@ function setPagesContent(part_name, file_contents) {
     }
 }
 
-/**
- * 
- * @param {*} data 
- * @param {*} contentsValue 
- */
-function parseJsonSource(data, contentsValue) {
-    //console.groupCollapsed('data here'); console.log(data);
-    const setData = (dataArr, callback) => {
-        dataArr.forEach((row) => {
-            callback(row);
-        });
-    };
-    let templateData;
-    // got json with replics
-    if (contentsValue === true) {
-        templateData = {
-            html: '',
-            filters: ''
-        };
-        let contents = '',
-            personage,
-            personages = [];
-        //
-        setData(data, (row) => {
-            //console.log('row=>', row);
-            // array(Object, Object)
-            for (let prop in row) {
-                contents = row[prop]
-                switch (prop) {
-                    case 'header': // string
-                        templateData.html += `<h4>${contents}</h4>`;
-                        break;
-                    case 'replics': // array(Object(line)=>paragraph)
-                        setData(contents, (line) => {
-                            personage = Object.keys(line)[0];
-                            templateData.html += `<strong data-person="${personage}">${personage}</strong>`;
-                            if (personages.indexOf(personage) === -1) {
-                                personages.push(personage);
-                                templateData.filters += `<label><input type="checkbox" name="${personage}">${personage}</label>`;
-                            }
-                            setData(line[personage], (paragraph) => {
-                                templateData.html += `<p>${paragraph}</p>`;
-                            });
-                        });
-                        break;
-                }
-            }
-        });
-
-    } else { // got description
-        if (contentsValue === 'default') {
-            let html = '';
-            data.forEach(contents => { // storyData { 'file_name': {header:'', description:''}}
-                let link = Object.keys(contents)[0];
-                let content = contents[link]; //console.log('see it', {contents:contents, link:link, lnk:Object.keys(contents)[0], keys: Object.keys(contents), content:content});
-                html += `
-    <aside>
-        <a href='#${link}'>
-            <h4>${content['header']}</h4>
-            <p>${content['description']}</p>
-        </a>
-    </aside>`;
-            });
-            templateData = { html: html };
-        } else {
-            //
-            for (let prop in data) {
-                //console.log('get data=>', { prop: prop, data: data[prop] });
-                switch (prop) {
-                    case 'url':
-                        var header = `<a href="#${data[prop]}">${data['header']}</a>`;
-                        break;
-                    case 'about_characters':
-                        var about_characters = '';
-                        setData(data[prop], (row) => {
-                            about_characters += `<p>${row}</p>`;
-                        });
-                        break;
-                    case 'chapters':
-                        //console.log('go chapters, data[' + prop + '] => ' + data[prop]);
-                        var chapters = `<h4 class="chapters-overview">Chapters:</h4>
-                                        <h5 class="chapters-go-home"><a href="#">Home</a></h5>`,
-                            num = 0;
-                        for (let number in data[prop]) {
-                            ++num;
-                            chapters += `<p class="chapter-title"><a href="#${contentsValue}/${number}" title="${data[prop][number]}"><span>${num}. </span>${data[prop][number]}</a></p>`;
-                            //console.log('chapters: ' + chapters);
-                        }
-                        break;
-                }
-            }
-            templateData = {
-                header: header || "No header....",
-                preview: data['preview'],
-                about_characters: about_characters,
-                chapters: chapters
-            };
-        }
-    }
-    // console.log('%ctemplateData', 'color: darkorange', templateData);
-    //console.groupEnd();
-
-    return templateData;
-}
-
 module.exports = {
     homepageContents: homepageContents,
     chaptersContents: chaptersContents,
-    parseJsonSource: parseJsonSource,
     populateHomeTemplate: populateHomeTemplate,
+    populateChaptersTemplate: populateChaptersTemplate,
     populateLayout: populateLayout,
     setPagesContent: setPagesContent
 }
