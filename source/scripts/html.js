@@ -156,6 +156,17 @@ function storeHomepageData(name, subName, contents) {
     return homepageContents[name][subName];
 }
 /**
+ * 
+ */
+function storeChapterHomeData(chapter_name, contents){
+    if (!chaptersContents[chapter_name]) {
+        chaptersContents[chapter_name] = {};
+    }
+    chaptersContents[chapter_name] = JSON.parse(contents);
+    //console.log('storeHomepageData=>', { homepageContents:homepageContents, contents:contents });
+    return chaptersContents[chapter_name];
+}
+/**
  * Returns data to populate homepage or creates other files. 
  * In the latter case you need to store HTML in mainHTML variable
  * @param {*} part_name 
@@ -196,8 +207,10 @@ function setPagesContent(part_name, file_contents) {
                     return storeHomepageData('default', file_name, file_contents);
                     break;
 
-                case 'texts': // get chapters home, see files jsons/texts/(cabalistic_bewitching_hero|nihilistic_parody).json 
+                case 'texts': 
+                    // get chapters home, see files jsons/texts/(cabalistic_bewitching_hero|nihilistic_parody).json 
                     // console.log('Directory texts=>', { file_name: file_name, file_contents:file_contents });
+                    return storeChapterHomeData(file_name, file_contents);
                     body_class = 'chapters_home';
                     /*  case chapters_home:
                         mainHTML = 'CHAPTERS_HOME';
@@ -208,7 +221,7 @@ function setPagesContent(part_name, file_contents) {
                         break; */
                     break;
                 default: // get chapter contents, just chapter number and replics
-                    console.log(`Directory under texts(?): ${dir_name}`, { file_name: file_name, file_contents: file_contents });
+                    // console.log(`Directory under texts(?): ${dir_name}`, { file_name: file_name, file_contents: file_contents });
 
 
             }
@@ -221,6 +234,7 @@ function setPagesContent(part_name, file_contents) {
         return false;
     }
 }
+
 /**
  * 
  * @param {*} data 
@@ -328,6 +342,7 @@ function parseJsonSource(data, contentsValue) {
 
 module.exports = {
     homepageContents: homepageContents,
+    chaptersContents: chaptersContents,
     parseJsonSource: parseJsonSource,
     populateHomeTemplate: populateHomeTemplate,
     populateLayout: populateLayout,

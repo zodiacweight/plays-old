@@ -9,6 +9,7 @@ const html = require('./source/scripts/html');
 const populateLayout = html.populateLayout;
 const setPagesContent = html.setPagesContent;
 const homepageContents = html.homepageContents;
+const chaptersContents = html.chaptersContents;
 // console.log('Check functions=>', {populateLayout:populateLayout, setPagesContent:setPagesContent});
 const fs = require('fs');
 const path = `${__dirname}/static/jsons`;
@@ -69,10 +70,23 @@ function walk(part, callback) {
 walk(path);
 // create homepage
 if (homepageContents) {
-    const htmlInnerContents = html.populateHomeTemplate(homepageContents.default);
-    const htmlCompiled = html.populateLayout(htmlInnerContents, 'default');
-    console.log('output htmlCompiled=>', htmlCompiled);
+    const htmlCompiled = html.populateLayout(html.populateHomeTemplate(homepageContents.default), 'default');
+    // console.log('output htmlCompiled=>', htmlCompiled);
     fs.writeFileSync('./build/index.html', htmlCompiled);
+}
+// create chapters
+if (chaptersContents) {
+    // console.log('chaptersContents.keys=>', Object.keys(chaptersContents));
+    Object.keys(chaptersContents).forEach((chapter) => {
+        console.log(chapter, '******************');
+        Object.keys(chaptersContents[chapter]).forEach((header) => {
+            console.log(header, ' => ', chaptersContents[chapter][header]);
+        });
+    });
+    // const htmlInnerChapterContents = html.populateChaptersTemplate(chapters);
+    // const htmlCompiledChapters = html.populateLayout(htmlInnerChapterContents, '');
+    // console.log('output htmlCompiled=>', htmlCompiled);
+    // fs.writeFileSync('./build/index.html', htmlCompiled);
 }
 // create other pages
 console.log('Compile other contents...');
