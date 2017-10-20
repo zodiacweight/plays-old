@@ -57,31 +57,6 @@ function populateLayout(main, body_class, title = "English: Amazing adventures o
  */
 function populateHomeTemplate(asides) {
     //console.log('populateHomeTemplate=>', asides);
-    /*
-        // default:
-        {
-            cabalistic_bewitching_hero : "{ 
-                "header": "Cabalistic Bewitching Hero", 
-                "description": "A story about a creature who had originated as a little cruise mermaid and later became a mysterious magic superhero. Also, there are 3 girls who were perceived as human being, but then it turned out that they are the girls-monsters and the omnipotent scientists." }"
-
-            joshua_world : "{ 
-                "header": "Unbalanced", 
-                "description": "There is the story of one guy, Joshua by name, a young scientist, who adored Universe and all the stuff like this. He wanted to go to other worlds. And actually, he did." }"
-
-            nihilistic_parody : "{ 
-                "header": "Nihilistic parody", 
-                "description": "There is one dangerous mad psychopath among the characters. Some of the episodes are parody to \"Big Lebovsky\", being inspired by that movie, but, perhaps, with much more serious outcomes for the personages." }"
-
-            unbalanced : "{ 
-                "header": "Joshua's Universe", 
-                "description": "Sometimes you need some extra time to set up your mind if you feel out of balance." }"
-
-            home : " { 
-                "greeting": "Hello, Beautiful Stranger!", 
-                "subheader": "Look, what the wonderful stories are waiting for you right here!", 
-                "texts": [ "cabalistic_bewitching_hero", "nihilistic_parody", "joshua_world" ] }"
-        }
-    */
     let home = Object.assign({}, asides.home),
         html = '',
         link;
@@ -116,7 +91,42 @@ function setFileName(segment1,segment2){
 /**
  * 
  */
-function populateChaptersTemplate(contents){
+const populateChapterContents = {
+    chapterHome: function (contents, chapters){
+        return `
+        <header>
+            <h1>
+                <a href="${contents['url']}.html">${contents['header']}</a>
+            </h1>
+            <section id="stories-preview" style="display: block;">
+                ${contents['preview']}
+            </section>
+            <section id="about-characters" style="display: block;">
+                ${contents['about_characters']}
+            </section>
+            <section id="heroes-filter">
+                <h4>Check out heroes which roles you want to read of <span>?</span></h4>
+                <div id="chapter_filters">
+                ${contents['filters']}
+                </div>
+            </section>
+        </header>
+        <article id="text">
+            <h4 class="chapters-overview">Chapters:</h4>
+            <h5 class="chapters-go-home"><a href="index.html">Home</a></h5>
+            ${chapters}
+    </article>`;
+        },
+    chapterText: function (contents){
+        return `Text`;
+    }
+}
+/**
+ * 
+ * @param {*} contents 
+ * @param {*} templateName 
+ */
+function populateChaptersTemplate(contents, templateName){
     if (!contents.chapters) {
         return false;
     }
@@ -124,9 +134,10 @@ function populateChaptersTemplate(contents){
         path;
     Object.keys(contents.chapters).forEach(num => {
         path = setFileName(contents['url'], num);
-        chapters += `<div><a href="${path}">${num}. ${contents.chapters[num]}</div>`;
+        chapters += `       <div><a href="${path}">${num}. ${contents.chapters[num]}</div>
+`;
     });
-    return `<aside id="chapters">
+    let htmlContents = `<aside id="chapters">
     <div class="menu" id="chapters-list-menu">
         <h4 class="chapters-overview">Chapters:</h4>
         <h5 class="chapters-go-home"><a href="index.html">Home</a></h5>
@@ -134,29 +145,9 @@ function populateChaptersTemplate(contents){
     </div>
 </aside>
 <div id="chapter-contents">
-    <header>
-        <h1>
-            <a href="${contents['url']}.html">${contents['header']}</a>
-        </h1>
-        <section id="stories-preview" style="display: block;">
-            ${contents['preview']}
-        </section>
-        <section id="about-characters" style="display: block;">
-            ${contents['about_characters']}
-        </section>
-        <section id="heroes-filter">
-            <h4>Check out heroes which roles you want to read of <span>?</span></h4>
-            <div id="chapter_filters">
-            ${contents['filters']}
-            </div>
-        </section>
-    </header>
-    <article id="text">
-        <h4 class="chapters-overview">Chapters:</h4>
-        <h5 class="chapters-go-home"><a href="index.html">Home</a></h5>
-        ${chapters}
-    </article>
+    ${populateChapterContents[templateName](contents, chapters)}
 </div>`;
+    return htmlContents;
 }
 /**
  * 
@@ -239,8 +230,6 @@ function setPagesContent(part_name, file_contents) {
                     break;
                 default: // get chapter contents, just chapter number and replics
                     // console.log(`Directory under texts(?): ${dir_name}`, { file_name: file_name, file_contents: file_contents });
-
-
             }
     }
     // may not reach this point as there are returns by conditions
@@ -257,6 +246,8 @@ module.exports = {
     chaptersContents: chaptersContents,
     populateHomeTemplate: populateHomeTemplate,
     populateChaptersTemplate: populateChaptersTemplate,
+    populateChapterHome: 'chapterHome',
+    populateChapterText: 'chapterText',
     populateLayout: populateLayout,
     setFileName: setFileName,
     setPagesContent: setPagesContent

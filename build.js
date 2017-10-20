@@ -75,16 +75,24 @@ if (html.homepageContents) {
     fs.writeFileSync('./build/index.html', htmlCompiled);
 }
 // create chapters
-if (html.chaptersContents) {
+if (html.chaptersContents) { // got fullfilled object after loop being finished
     // console.log('chaptersContents.keys=>', Object.keys(chaptersContents));
     Object.keys(html.chaptersContents).forEach((chapter) => {
         // 
-        let htmlChapterCompiled = html.populateChaptersTemplate(html.chaptersContents[chapter]);
+        let htmlChapterCompiled = html.populateChaptersTemplate(html.chaptersContents[chapter], html.populateChapterHome);
         const chapterHTML = html.populateLayout(htmlChapterCompiled, chapter, html.chaptersContents[chapter].header);
-        console.log(chapter,`******************
+        console.log(`******************CHAPTER PAGE******************
+        ${chapter}
         chapterHTML=>
-`, chapterHTML);
+`);//, chapterHTML
         fs.writeFileSync(`./build/${chapter}.html`, chapterHTML);
+        if (html.chaptersContents[chapter] && html.chaptersContents[chapter].chapters) {
+            Object.keys(html.chaptersContents[chapter].chapters).forEach(chapter => {
+                console.log('chapter=>', chapter);
+            })
+        } else {
+            console.log(`Has no contents for the chapter ${chapter}`);
+        }
     });
 }
 // setFileName
