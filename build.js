@@ -75,23 +75,24 @@ if (html.homepageContents) {
     fs.writeFileSync('./build/index.html', htmlCompiled);
 }
 // create chapters
-if (html.chaptersContents) { // got fullfilled object after loop being finished
+if (html.chaptersContents.home) { // got fullfilled object after loop being finished
     // console.log('chaptersContents.keys=>', Object.keys(chaptersContents));
-    Object.keys(html.chaptersContents).forEach((chapter) => {
+    Object.keys(html.chaptersContents.home).forEach((chapter) => {
         // 
-        let htmlChapterCompiled = html.populateChaptersTemplate(html.chaptersContents[chapter], html.populateChapterHome);
-        const chapterHTML = html.populateLayout(htmlChapterCompiled, chapter, html.chaptersContents[chapter].header);
+        let htmlChapterCompiled = html.populateChaptersTemplate(html.chaptersContents.home[chapter], html.populateChapterHome);
+        const chapterHTML = html.populateLayout(htmlChapterCompiled, chapter, html.chaptersContents.home[chapter].header);
         console.log(`******************CHAPTER PAGE******************
         ${chapter}
         chapterHTML=>
 `);//, chapterHTML
         fs.writeFileSync(`./build/${chapter}.html`, chapterHTML);
-        if (html.chaptersContents[chapter] && html.chaptersContents[chapter].chapters) {
-            let chapters = html.chaptersContents[chapter].chapters;
+        if (html.chaptersContents.home[chapter] && html.chaptersContents.home[chapter].chapters) {
+            
+            let chapters = html.chaptersContents.home[chapter].chapters;
             Object.keys(chapters).forEach(chapterNum => {
                 console.log('chapter=>', `${chapterNum}. ${chapters[chapterNum]}`);
-                const chapterText = html.populateChaptersTemplate(html.chaptersContents[chapter], html.populateChapterText);
-                //
+                const chapterText = html.populateChaptersTemplate(html.chaptersContents.home[chapter], html.populateChapterText, chapterNum);
+                // number, header, replics
                 fs.writeFileSync(`./build/${html.setFileName(chapter,chapterNum)}`, chapterText);
             })
         } else {
@@ -101,6 +102,6 @@ if (html.chaptersContents) { // got fullfilled object after loop being finished
 }
 // setFileName
 // create other pages
-console.log('Compile other contents...');
+// console.log('Compile other contents...');
 
 

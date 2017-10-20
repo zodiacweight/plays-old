@@ -4,6 +4,8 @@ const fs = require('fs');
 const homepageContents = {
     },
     chaptersContents = {
+        home: {},
+        texts: {}
     };
 /**
  * Create layout html
@@ -132,7 +134,7 @@ const populateChapterContents = {
                 </div>
             </section>`,
             `<h4>${content.header}</h4>
-            ${content.text}`);
+            ${content.replics}`);
     }
 }
 /**
@@ -140,29 +142,40 @@ const populateChapterContents = {
  * @param {*} contents -- from chapter home, mostly chapters names
  * @param {*} templateName 
  */
-function populateChaptersTemplate(contents, templateName){
+function populateChaptersTemplate(contents, templateName, chapterNum){
     if (!contents.chapters) {
         return false;
     }
-    let chapters = '',
+    
+    let content = '',
+        links = '',
         path;
     Object.keys(contents.chapters).forEach(num => {
         path = setFileName(contents['url'], num);
-        chapters += `
-       <div><a href="${path}">${num}. ${contents.chapters[num]}</div>`;
+        links += `
+    <div><a href="${path}">${num}. ${contents.chapters[num]}</div>`;
     });
-    
-    let content;
     switch (templateName) {
         case 'chapterHome':
-            content = chapters;
+            content = links;
             break;
     
         case 'chapterText':
-            content = {
-                header: 'Such a header',
-                text: 'Such a text'
-            }
+            //
+            content = chaptersContents.texts[chapterNum][0];
+            let replix = '';
+            content.replics.forEach(replica => {
+                const name = Object.keys(replica)[0];
+                replix +=`
+    <strong>
+        ${name}
+    </strong>
+    <p>
+        ${replica[name]}
+    </p>`;
+            });
+            content.replics = replix;
+            console.log('check content=>', {chapterNum:chapterNum, content:content});
             break;
     }
 
@@ -171,7 +184,7 @@ function populateChaptersTemplate(contents, templateName){
     <div class="menu" id="chapters-list-menu">
         <h4 class="chapters-overview">Chapters:</h4>
         <h5 class="chapters-go-home"><a href="index.html">Home</a></h5>
-        ${chapters}
+        ${links}
     </div>
 </aside>
 <div id="chapter-contents">
@@ -196,13 +209,13 @@ function storeHomepageData(name, subName, contents) {
 /**
  * 
  */
-function storeChapterHomeData(chapter_name, contents){
-    if (!chaptersContents[chapter_name]) {
-        chaptersContents[chapter_name] = {};
+function storeChaptersData(subfield, chapter_name, contents){
+    if (!chaptersContents[subfield][chapter_name]) {
+        chaptersContents[subfield][chapter_name] = {};
     }
-    chaptersContents[chapter_name] = JSON.parse(contents);
+    chaptersContents[subfield][chapter_name] = JSON.parse(contents);
     //console.log('storeHomepageData=>', { homepageContents:homepageContents, contents:contents });
-    return chaptersContents[chapter_name];
+    return chaptersContents[subfield][chapter_name];
 }
 /**
  * Returns data to populate homepage or creates other files. 
@@ -225,17 +238,8 @@ function setPagesContent(part_name, file_contents) {
             mainHTML = 'Error 404';
             body_class = file_name;
             break;
-        /*  what inside dirs 
-            default, 
-            texts, 
-            texts/cabalistic_bewitching_hero 
-            texts/nihilistic_parody */
         default:
             const dir_name = segments.pop();
-            /*console.log(`
-            Not home, not 404.
-            path: ${dir_name}/${file_name}
-            `);*/
             //File contents: ${file_contents}
             // get file from directory
             switch (dir_name) {
@@ -248,18 +252,25 @@ function setPagesContent(part_name, file_contents) {
                 case 'texts': 
                     // get chapters home, see files jsons/texts/(cabalistic_bewitching_hero|nihilistic_parody).json 
                     // console.log('Directory texts=>', { file_name: file_name, file_contents:file_contents });
-                    return storeChapterHomeData(file_name, file_contents);
-                    body_class = 'chapters_home';
-                    /*  case chapters_home:
-                        mainHTML = 'CHAPTERS_HOME';
-                        break;
-                        case chapter_text:
-                        mainHTML = 'CHAPTER';
-                        body_class = 'chapter_text';
-                        break; */
+                    let chapter;
+                    try {
+                        chapter = storeChaptersData('home', file_name, file_contents);
+                    } catch (error) {
+                        console.log(error.message, `file_name=> ${file_name}`);
+                    }
+                    return chapter;
+                    //body_class = 'chapters_home';
                     break;
                 default: // get chapter contents, just chapter number and replics
                     // console.log(`Directory under texts(?): ${dir_name}`, { file_name: file_name, file_contents: file_contents });
+                    let text;
+                    try {
+                        text = storeChaptersData('texts', file_name, file_contents);
+                    } catch (error) {
+                        console.log(error.message, `file_name=> ${file_name}`);
+                    }
+                    return text;
+                    //body_class = 'chapters_home';
             }
     }
     // may not reach this point as there are returns by conditions
