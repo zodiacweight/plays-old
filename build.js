@@ -84,8 +84,10 @@ if (html.chaptersContents) {
         console.log(chapter,`******************
         chapterHTML=>
 `, chapterHTML);
+        fs.writeFileSync(`./build/${chapter}.html`, chapterHTML);
     });
 }
+// setFileName
 // create other pages
 console.log('Compile other contents...');
 

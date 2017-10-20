@@ -33,8 +33,8 @@ function populateLayout(main, body_class, title = "English: Amazing adventures o
     </script>
     <link rel="stylesheet" type="text/css" href="styles/libs/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="styles/style.css">
-    <script src="js/common.js"></script>
     <script src="js/libs/jquery.min.js"></script>
+    <script src="js/common.js"></script>
 </head>
 <body class="${body_class}">
     <main>
@@ -107,14 +107,24 @@ function populateHomeTemplate(asides) {
 }
 /**
  * 
+ * @param {*} segment1 
+ * @param {*} segment2 
+ */
+function setFileName(segment1,segment2){
+   return `${segment1}-${segment2}.html`; 
+}
+/**
+ * 
  */
 function populateChaptersTemplate(contents){
     if (!contents.chapters) {
         return false;
     }
-    let chapters = '';
+    let chapters = '',
+        path;
     Object.keys(contents.chapters).forEach(num => {
-        chapters += `<div><a href="${contents['url']}-${num}.html">${num}. ${contents.chapters[num]}</div>`;
+        path = setFileName(contents['url'], num);
+        chapters += `<div><a href="${path}">${num}. ${contents.chapters[num]}</div>`;
     });
     return `<aside id="chapters">
     <div class="menu" id="chapters-list-menu">
@@ -248,5 +258,6 @@ module.exports = {
     populateHomeTemplate: populateHomeTemplate,
     populateChaptersTemplate: populateChaptersTemplate,
     populateLayout: populateLayout,
+    setFileName: setFileName,
     setPagesContent: setPagesContent
 }
