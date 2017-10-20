@@ -88,17 +88,26 @@ function populateHomeTemplate(asides) {
 function setFileName(segment1,segment2){
    return `${segment1}-${segment2}.html`; 
 }
+function setChapterCommon(contents, contentsHeader, contentsArticle){
+    return `
+    <header>
+        <h1>
+            <a href="${contents['url']}.html">${contents['header']}</a>
+        </h1>
+        ${contentsHeader}
+    </header>
+    <article id="text">
+        ${contentsArticle}
+    </article>`;
+}
 /**
  * 
  */
 const populateChapterContents = {
     chapterHome: function (contents, chapters){
-        return `
-        <header>
-            <h1>
-                <a href="${contents['url']}.html">${contents['header']}</a>
-            </h1>
-            <section id="stories-preview" style="display: block;">
+        //
+        return setChapterCommon(contents, 
+            `<section id="stories-preview" style="display: block;">
                 ${contents['preview']}
             </section>
             <section id="about-characters" style="display: block;">
@@ -109,13 +118,10 @@ const populateChapterContents = {
                 <div id="chapter_filters">
                 ${contents['filters']}
                 </div>
-            </section>
-        </header>
-        <article id="text">
-            <h4 class="chapters-overview">Chapters:</h4>
+            </section>`, 
+            `<h4 class="chapters-overview">Chapters:</h4>
             <h5 class="chapters-go-home"><a href="index.html">Home</a></h5>
-            ${chapters}
-    </article>`;
+            ${chapters}`);
         },
     chapterText: function (contents){
         return `Text`;
