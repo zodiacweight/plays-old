@@ -88,6 +88,12 @@ function populateHomeTemplate(asides) {
 function setFileName(segment1,segment2){
    return `${segment1}-${segment2}.html`; 
 }
+/**
+ * 
+ * @param {*} contents 
+ * @param {*} contentsHeader 
+ * @param {*} contentsArticle 
+ */
 function setChapterCommon(contents, contentsHeader, contentsArticle){
     return `
     <header>
@@ -104,7 +110,7 @@ function setChapterCommon(contents, contentsHeader, contentsArticle){
  * 
  */
 const populateChapterContents = {
-    chapterHome: function (contents, chapters){
+    chapterHome: function (contents, content){
         //
         return setChapterCommon(contents, 
             `<section id="stories-preview" style="display: block;">
@@ -112,24 +118,26 @@ const populateChapterContents = {
             </section>
             <section id="about-characters" style="display: block;">
                 ${contents['about_characters']}
-            </section>
-            <section id="heroes-filter">
+            </section>`, 
+            `<h4 class="chapters-overview">Chapters:</h4>
+            <h5 class="chapters-go-home"><a href="index.html">Home</a></h5>
+            ${content}`);
+        },
+    chapterText: function (contents, content){
+        return setChapterCommon(contents,
+            `<section id="heroes-filter">
                 <h4>Check out heroes which roles you want to read of <span>?</span></h4>
                 <div id="chapter_filters">
                 ${contents['filters']}
                 </div>
-            </section>`, 
-            `<h4 class="chapters-overview">Chapters:</h4>
-            <h5 class="chapters-go-home"><a href="index.html">Home</a></h5>
-            ${chapters}`);
-        },
-    chapterText: function (contents){
-        return `Text`;
+            </section>`,
+            `<h4>${content.header}</h4>
+            ${content.text}`);
     }
 }
 /**
  * 
- * @param {*} contents 
+ * @param {*} contents -- from chapter home, mostly chapters names
  * @param {*} templateName 
  */
 function populateChaptersTemplate(contents, templateName){
@@ -140,10 +148,26 @@ function populateChaptersTemplate(contents, templateName){
         path;
     Object.keys(contents.chapters).forEach(num => {
         path = setFileName(contents['url'], num);
-        chapters += `       <div><a href="${path}">${num}. ${contents.chapters[num]}</div>
-`;
+        chapters += `
+       <div><a href="${path}">${num}. ${contents.chapters[num]}</div>`;
     });
-    let htmlContents = `<aside id="chapters">
+    
+    let content;
+    switch (templateName) {
+        case 'chapterHome':
+            content = chapters;
+            break;
+    
+        case 'chapterText':
+            content = {
+                header: 'Such a header',
+                text: 'Such a text'
+            }
+            break;
+    }
+
+    let htmlContents = `
+<aside id="chapters">
     <div class="menu" id="chapters-list-menu">
         <h4 class="chapters-overview">Chapters:</h4>
         <h5 class="chapters-go-home"><a href="index.html">Home</a></h5>
@@ -151,7 +175,7 @@ function populateChaptersTemplate(contents, templateName){
     </div>
 </aside>
 <div id="chapter-contents">
-    ${populateChapterContents[templateName](contents, chapters)}
+    ${populateChapterContents[templateName](contents, content)}
 </div>`;
     return htmlContents;
 }
