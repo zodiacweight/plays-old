@@ -92,8 +92,10 @@ if (html.chaptersContents.home) { // got fullfilled object after loop being fini
             Object.keys(chapters).forEach(chapterNum => {
                 console.log('chapter=>', `${chapterNum}. ${chapters[chapterNum]}`);
                 const chapterText = html.populateChaptersTemplate(html.chaptersContents.home[chapter], html.populateChapterText, chapterNum);
+                // fixme: title, check bodyclass
+                const chapterTextHTML = html.populateLayout(chapterText, chapter, html.chaptersContents.home[chapter].header);
                 // number, header, replics
-                fs.writeFileSync(`./build/${html.setFileName(chapter,chapterNum)}`, chapterText);
+                fs.writeFileSync(`./build/${html.setFileName(chapter,chapterNum)}`, chapterTextHTML);
             })
         } else {
             console.log(`Has no contents for the chapter ${chapter}`);
