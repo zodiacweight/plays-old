@@ -55,29 +55,29 @@ if (html.StoryContents.home) { // got fullfilled object after loop being finishe
                 html.StoryContents.home[storyName], 
                 html.populateStoryHome
             );
-        const chapterHTML = html.populateLayout(
+        const storyHomeHTML = html.populateLayout(
                 htmlStoryHomeCompiled, storyName,
                 html.StoryContents.home[storyName].header
             );
         console.log(`******************storyName: ${storyName} ******************
 `);
-        fs.writeFileSync(`./build/${storyName}.html`, chapterHTML);
+        fs.writeFileSync(`./build/${storyName}.html`, storyHomeHTML);
         if (html.StoryContents.home[storyName] && html.StoryContents.home[storyName].chapters) {
             //
-            const chapters = html.StoryContents.home[storyName].chapters;
-            Object.keys(chapters).forEach(chapterNum => { // console.log('storyName=>', `${chapterNum}. ${chapters[chapterNum]}`);
-                
-                const storyChapter = html.populateStoryTemplate(
-                        html.StoryContents.home[storyName], 
+            const storyChapters = html.StoryContents.home[storyName].chapters;
+            Object.keys(storyChapters).forEach(chapterNum => { // console.log('storyName=>', `${chapterNum}. ${storyChapters[chapterNum]}`);
+                // set story 
+                const storyHomeHTML = html.populateStoryTemplate(
+                        html.StoryContents.home[storyName],
                         html.populateStoryText, chapterNum
                     );
                 // fixme: title, check bodyclass
-                const chapterTextHTML = html.populateLayout(
-                        storyChapter, storyName,
+                const storyChapterHTML = html.populateLayout(
+                        storyHomeHTML, storyName,
                         html.StoryContents.home[storyName].header
                     );
                 // number, header, replics
-                fs.writeFileSync(`./build/${html.setFileName(storyName,chapterNum)}`, chapterTextHTML);
+                fs.writeFileSync(`./build/${html.setFileName(storyName,chapterNum)}`, storyChapterHTML);
             })
         } else {
             console.log(`Has no contents for the storyName ${storyName}`);

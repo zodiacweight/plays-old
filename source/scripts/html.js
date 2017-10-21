@@ -1,12 +1,17 @@
 // todo: convert to import
 const fs = require('fs');
+// set story object structure names
+const storyHome = 'storyHome',
+    storyChapter = 'storyChapter';
 // container for template variables. Is used for default page yet
 const homepageContents = {
     },
     StoryContents = {
-        home: {},
-        texts: {}
+
     };
+// configure story object
+StoryContents[storyHome] = {};
+StoryContents[storyChapter] = {};
 /**
  * Create layout html
  * @param {*} main 
@@ -139,7 +144,7 @@ const populateStoryContents = {
 }
 /**
  * Set html for chapters both home and texts
- * @param {*} contents -- from chapter home, mostly chapters names
+ * @param {*} contents -- from story home, mostly chapters names
  * @param {*} templateName 
  */
 function populateStoryTemplate(contents, templateName, chapterNum){
@@ -207,7 +212,7 @@ function storeHomepageData(name, subName, contents) {
     return homepageContents[name][subName];
 }
 /**
- * Store chapter homepage | text contents
+ * Store story homepage | text contents
  * @param {*} subfield 
  * @param {*} chapter_name 
  * @param {*} contents 
@@ -241,7 +246,7 @@ function setPagesContent(part_name, file_contents) {
         case 'default':
             // then it will return in another iteration
             // get contents for h1, h4
-            return storeHomepageData('default', 'home', file_contents);
+            return storeHomepageData(file_name, 'home', file_contents);
             break;
         case '404':
             // create error page
@@ -255,17 +260,17 @@ function setPagesContent(part_name, file_contents) {
                 //
                 case 'default': // fill object with data to handle it later
                     //console.log('Directory default');
-                    return storeHomepageData('default', file_name, file_contents);
+                    return storeHomepageData(dir_name, file_name, file_contents);
                     break;
                 //
                 case 'texts': 
                     // get chapters home, see files jsons/texts/(cabalistic_bewitching_hero|nihilistic_parody).json 
                     // console.log('Directory texts=>', { file_name: file_name, file_contents:file_contents });
-                    return storeStoryData('home', file_name, file_contents);
+                    return storeStoryData(storyHome, file_name, file_contents);
                     break;
                 default: // get chapter contents, just chapter number and replics
                     // console.log(`Directory under texts(?): ${dir_name}`, { file_name: file_name, file_contents: file_contents });
-                    return storeStoryData('texts', file_name, file_contents);
+                    return storeStoryData(storyChapter, file_name, file_contents);
             }
     }
     return false;
@@ -276,8 +281,8 @@ module.exports = {
     StoryContents: StoryContents,
     populateHomeTemplate: populateHomeTemplate,
     populateStoryTemplate: populateStoryTemplate,
-    populateStoryHome: 'storyHome',
-    populateStoryText: 'storyChapter',
+    populateStoryHome: storyHome,
+    populateStoryText: storyChapter,
     populateLayout: populateLayout,
     setFileName: setFileName,
     setPagesContent: setPagesContent
