@@ -264,14 +264,32 @@ footer {
       content: '🏡';
       margin-right: 10px; }
   #chapters-list-menu p {
+    color: white;
+    font-weight: bold;
     line-height: 1.75;
     margin: 0;
     max-width: 100%;
     overflow: hidden;
+    position: relative;
+    text-overflow: ellipsis;
     white-space: nowrap; }
+    #chapters-list-menu p > span.title {
+      background-color: rgba(50, 50, 50, 0.75);
+      cursor: pointer;
+      color: white;
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      display: inline-block;
+      font-weight: normal;
+      margin-left: -4px;
+      margin-top: 4px;
+      padding: 4px;
+      padding-right: 10px;
+      z-index: 2; }
   #chapters-list-menu a {
     color: white;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
+    display: inline-block;
+    font-weight: normal;
     text-decoration: none; }
     #chapters-list-menu a:hover {
       text-decoration: underline; }

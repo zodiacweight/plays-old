@@ -154,7 +154,7 @@ function populateStoryTemplate(contents, templateName, chapterNum){
     Object.keys(contents.chapters).forEach(num => {
         path = setFileName(contents['url'], num);
         links += `
-    <div><a href="${path}">${num}. ${contents.chapters[num]}</div>`;
+    <p><a href="${path}">${num}. ${contents.chapters[num]}</a></p>`;
     });
     switch (templateName) {
         case storyHome:

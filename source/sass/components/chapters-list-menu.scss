@@ -1,4 +1,10 @@
 #chapters-list-menu{
+    @mixin menuLink{
+        color: white;
+        font-family: $header-font-family;
+        display: inline-block;
+        font-weight: normal;
+    }
     margin-top: 8px;
     padding: $common-offset;
     h4{
@@ -21,15 +27,31 @@
         }
     }
     p{
+        color: white;
+        font-weight: bold;
         line-height: 1.75;
         margin: 0;
         max-width: 100%;
         overflow: hidden;
+        position: relative;
+        text-overflow: ellipsis;
         white-space: nowrap;
+        >span{
+            &.title{
+                $offset: 4px;
+                background-color: rgba(50, 50, 50, 0.75);
+                cursor: pointer;
+                @include menuLink;
+                margin-left: -$offset;
+                margin-top: $offset;
+                padding: $offset;
+                padding-right: 10px;
+                z-index: 2;
+            }
+        }
     }
     a {
-        color: white;
-        font-family: $header-font-family;
+        @include menuLink;
         text-decoration: none;
         &:hover{
             text-decoration: underline;

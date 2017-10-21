@@ -15,9 +15,10 @@ $(function(){
             $(event.currentTarget).addClass(classFade).removeClass(classFadeOut)
             : $(event.currentTarget).addClass(classFadeOut);
     }).on('click', `#${contentsBlockId} ${inputBox}`, event => {
-        console.log('event=>', event);
         // if there are no checked boxes, make all unmarked
+        // main chapter_filters input[type="checkbox"]:checked
         if (!$(`${parentTagName} #${contentsBlockId} ${inputBox}:checked`).length){
+            // .alien
             $(`.${classAlien}`).removeClass(classAlien);
             return;
         }
@@ -31,4 +32,31 @@ $(function(){
             $(personTag).next()[action](classAlien);
         });
     });
+    const titleTagName = "span";
+    $("#chapters p").on('mouseenter mouseleave', function(event){
+        const $p = $(this);
+        //
+        if (event.type === "mouseenter"){ //console.log('check');
+            const $pA = $p.find("a");
+            if (parseInt($p.css("width")) < parseInt($pA.css("width"))){
+                const offsetLeft = $p.offset().left,
+                    offsetTop = $p.position().top,
+                    title = $(`<${titleTagName}></${titleTagName}>`)
+                        .text($pA.text())
+                        .addClass("title")
+                        .css({
+                            position: "fixed",
+                            left: `${offsetLeft}px`,
+                            top: `${offsetTop}px`
+                        });
+                $p.append(title);
+            }
+        } else {
+            $p.find(titleTagName).remove();
+        }
+    });
+    $('p').on('click', titleTagName, function(){
+        // either trigger nor triggerHandler don't work :( https://stackoverflow.com/questions/20928915/jquery-triggerclick-not-working
+        $(this).parent('p').find('a')[0].click();
+     });
 });
