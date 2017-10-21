@@ -46,35 +46,37 @@ if (html.homepageContents) {
         );  // console.log('output htmlCompiled=>', htmlCompiled);
     fs.writeFileSync('./build/index.html', htmlCompiled);
 }
+// make reference to the story objects for story homepage
+const storyContentsHome = html.StoryContents[html.storyHome];
 // create story home and contents
-if (html.StoryContents.home) { // got fullfilled object after loop being finished
+if (storyContentsHome) { // got fullfilled object after loop being finished
     // console.log('StoryContents.keys=>', Object.keys(StoryContents));
-    Object.keys(html.StoryContents.home).forEach((storyName) => {
+    Object.keys(storyContentsHome).forEach((storyName) => {
         //
         const htmlStoryHomeCompiled = html.populateStoryTemplate(
-                html.StoryContents.home[storyName], 
-                html.populateStoryHome
+                storyContentsHome[storyName], 
+                html.storyHome
             );
         const storyHomeHTML = html.populateLayout(
                 htmlStoryHomeCompiled, storyName,
-                html.StoryContents.home[storyName].header
+                storyContentsHome[storyName].header
             );
         console.log(`******************storyName: ${storyName} ******************
 `);
         fs.writeFileSync(`./build/${storyName}.html`, storyHomeHTML);
-        if (html.StoryContents.home[storyName] && html.StoryContents.home[storyName].chapters) {
+        if (storyContentsHome[storyName] && storyContentsHome[storyName].chapters) {
             //
-            const storyChapters = html.StoryContents.home[storyName].chapters;
+            const storyChapters = storyContentsHome[storyName].chapters;
             Object.keys(storyChapters).forEach(chapterNum => { // console.log('storyName=>', `${chapterNum}. ${storyChapters[chapterNum]}`);
                 // set story 
                 const storyHomeHTML = html.populateStoryTemplate(
-                        html.StoryContents.home[storyName],
-                        html.populateStoryText, chapterNum
+                        storyContentsHome[storyName],
+                        html.storyChapter, chapterNum
                     );
                 // fixme: title, check bodyclass
                 const storyChapterHTML = html.populateLayout(
                         storyHomeHTML, storyName,
-                        html.StoryContents.home[storyName].header
+                        storyContentsHome[storyName].header
                     );
                 // number, header, replics
                 fs.writeFileSync(`./build/${html.setFileName(storyName,chapterNum)}`, storyChapterHTML);

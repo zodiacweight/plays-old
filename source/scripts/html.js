@@ -4,11 +4,8 @@ const fs = require('fs');
 const storyHome = 'storyHome',
     storyChapter = 'storyChapter';
 // container for template variables. Is used for default page yet
-const homepageContents = {
-    },
-    StoryContents = {
-
-    };
+const homepageContents = {},
+    StoryContents = {};
 // configure story object
 StoryContents[storyHome] = {};
 StoryContents[storyChapter] = {};
@@ -167,7 +164,7 @@ function populateStoryTemplate(contents, templateName, chapterNum){
     
         case 'storyChapter':
             //
-            content = StoryContents.texts[chapterNum][0];
+            content = StoryContents[storyChapter][chapterNum][0];
             let replix = '';
             content.replics.forEach(replica => {
                 const name = Object.keys(replica)[0];
@@ -281,8 +278,8 @@ module.exports = {
     StoryContents: StoryContents,
     populateHomeTemplate: populateHomeTemplate,
     populateStoryTemplate: populateStoryTemplate,
-    populateStoryHome: storyHome,
-    populateStoryText: storyChapter,
+    storyHome: storyHome,
+    storyChapter: storyChapter,
     populateLayout: populateLayout,
     setFileName: setFileName,
     setPagesContent: setPagesContent
