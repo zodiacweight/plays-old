@@ -282,7 +282,6 @@ footer {
 
 #heroes-filter {
   background-color: rgba(255, 255, 255, 0.65);
-  display: none;
   padding: 20px; }
   #heroes-filter h4 {
     margin-top: 4px; }

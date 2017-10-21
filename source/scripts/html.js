@@ -85,7 +85,7 @@ function populateHomeTemplate(asides) {
   </div>`;
 }
 /**
- * 
+ * Set name for file which is going to be stored
  * @param {*} segment1 
  * @param {*} segment2 
  */
@@ -93,7 +93,7 @@ function setFileName(segment1,segment2){
    return `${segment1}-${segment2}.html`; 
 }
 /**
- * 
+ * Set wrapper for header and article blocks
  * @param {*} contents 
  * @param {*} contentsHeader 
  * @param {*} contentsArticle 
@@ -131,8 +131,7 @@ const populateStoryContents = {
         return setChapterCommon(contents,
             `<section id="heroes-filter">
                 <h4>Check out heroes which roles you want to read of <span>?</span></h4>
-                <div id="chapter_filters">
-                ${contents["filters"]}
+                <div id="chapter_filters">${content.filters}
                 </div>
             </section>`,
             `<h4>${content.header}</h4>
@@ -158,26 +157,37 @@ function populateStoryTemplate(contents, templateName, chapterNum){
     <div><a href="${path}">${num}. ${contents.chapters[num]}</div>`;
     });
     switch (templateName) {
-        case 'storyHome':
+        case storyHome:
             content = links;
             break;
     
-        case 'storyChapter':
-            //
+        case storyChapter:
+            // fixme: remove "filters" field from .jsons
             content = StoryContents[storyChapter][chapterNum][0];
-            let replix = '';
+            let replix = "",
+                filter = "",
+                characters = [];
             content.replics.forEach(replica => {
                 const name = Object.keys(replica)[0];
                 replix +=`
-    <strong>
+    <strong data-person="${name}">
         ${name}
     </strong>
     <p>
         ${replica[name]}
     </p>`;
+                if (characters.indexOf(name) === -1){
+                    filter += `
+<label>
+    <input type="checkbox" name="${name}">${name}
+</label>`;
+                    characters.push(name);
+                }
             });
+            // filter, header, replix
             content.replics = replix;
-            console.log('check content=>', {chapterNum:chapterNum, content:content});
+            content.filters = filter;
+            console.log("check content=>", {chapterNum:chapterNum, content:content});
             break;
     }
     //
