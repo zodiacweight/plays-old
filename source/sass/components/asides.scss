@@ -45,8 +45,8 @@
         }
 
         @include setParagraphParams(1, 0.4s, 'cabalistic_bewitching_hero.jpg', rgba(0,0,200,0.5));
-        @include setParagraphParams(2, 1s, 'nihilistic_parody.jpg', rgba(200,0,0,0.5));
-        @include setParagraphParams(3, 1.6s, 'joshua_world.jpg', rgba(0,200,0,0.5));
+        @include setParagraphParams(2, 1s, 'joshua_world.jpg', rgba(0,200,0,0.5));
+        @include setParagraphParams(3, 1.6s, 'nihilistic_parody.jpg', rgba(200,0,0,0.5));
         @include setParagraphParams(4, 2s, 'unbalanced.jpg', rgba(200,0,200,0.5));
 
         a{

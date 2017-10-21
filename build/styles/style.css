@@ -122,25 +122,25 @@ main {
       animation-duration: 1s;
       animation-delay: 1s;
       animation-fill-mode: both;
-      background-image: url("../images/nihilistic_parody.jpg");
+      background-image: url("../images/joshua_world.jpg");
       background-size: cover; }
       @media (max-width: 747px) {
         #asides aside:nth-child(2) {
           padding-bottom: 100%; } }
       #asides aside:nth-child(2) p {
-        background-color: rgba(200, 0, 0, 0.5); }
+        background-color: rgba(0, 200, 0, 0.5); }
     #asides aside:nth-child(3) {
       animation-name: grow;
       animation-duration: 1s;
       animation-delay: 1.6s;
       animation-fill-mode: both;
-      background-image: url("../images/joshua_world.jpg");
+      background-image: url("../images/nihilistic_parody.jpg");
       background-size: cover; }
       @media (max-width: 747px) {
         #asides aside:nth-child(3) {
           padding-bottom: 100%; } }
       #asides aside:nth-child(3) p {
-        background-color: rgba(0, 200, 0, 0.5); }
+        background-color: rgba(200, 0, 0, 0.5); }
     #asides aside:nth-child(4) {
       animation-name: grow;
       animation-duration: 1s;
