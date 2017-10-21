@@ -3,7 +3,7 @@ const fs = require('fs');
 // container for template variables. Is used for default page yet
 const homepageContents = {
     },
-    chaptersContents = {
+    StoryContents = {
         home: {},
         texts: {}
     };
@@ -60,7 +60,7 @@ function populateLayout(main, body_class, title = "English: Amazing adventures o
 function populateHomeTemplate(asides) {
     //console.log('populateHomeTemplate=>', asides);
     let home = Object.assign({}, asides.home),
-        html = '',
+        html = "",
         link;
     //console.log('home=>', home);
     delete asides.home;
@@ -109,10 +109,10 @@ function setChapterCommon(contents, contentsHeader, contentsArticle){
     </article>`;
 }
 /**
- * 
+ * Store templates for story -- homepage and texts
  */
-const populateChapterContents = {
-    chapterHome: function (contents, content){
+const populateStoryContents = {
+    storyHome: function (contents, content){
         //
         return setChapterCommon(contents, 
             `<section id="stories-preview" style="display: block;">
@@ -125,12 +125,12 @@ const populateChapterContents = {
             <h5 class="chapters-go-home"><a href="index.html">Home</a></h5>
             ${content}`);
         },
-    chapterText: function (contents, content){
+    storyChapter: function (contents, content){
         return setChapterCommon(contents,
             `<section id="heroes-filter">
                 <h4>Check out heroes which roles you want to read of <span>?</span></h4>
                 <div id="chapter_filters">
-                ${contents['filters']}
+                ${contents["filters"]}
                 </div>
             </section>`,
             `<h4>${content.header}</h4>
@@ -138,15 +138,15 @@ const populateChapterContents = {
     }
 }
 /**
- * 
+ * Set html for chapters both home and texts
  * @param {*} contents -- from chapter home, mostly chapters names
  * @param {*} templateName 
  */
-function populateChaptersTemplate(contents, templateName, chapterNum){
+function populateStoryTemplate(contents, templateName, chapterNum){
     if (!contents.chapters) {
         return false;
     }
-    
+    // set chapters links
     let content = '',
         links = '',
         path;
@@ -156,13 +156,13 @@ function populateChaptersTemplate(contents, templateName, chapterNum){
     <div><a href="${path}">${num}. ${contents.chapters[num]}</div>`;
     });
     switch (templateName) {
-        case 'chapterHome':
+        case 'storyHome':
             content = links;
             break;
     
-        case 'chapterText':
+        case 'storyChapter':
             //
-            content = chaptersContents.texts[chapterNum][0];
+            content = StoryContents.texts[chapterNum][0];
             let replix = '';
             content.replics.forEach(replica => {
                 const name = Object.keys(replica)[0];
@@ -178,7 +178,7 @@ function populateChaptersTemplate(contents, templateName, chapterNum){
             console.log('check content=>', {chapterNum:chapterNum, content:content});
             break;
     }
-
+    //
     let htmlContents = `
 <aside id="chapters">
     <div class="menu" id="chapters-list-menu">
@@ -188,12 +188,12 @@ function populateChaptersTemplate(contents, templateName, chapterNum){
     </div>
 </aside>
 <div id="chapter-contents">
-    ${populateChapterContents[templateName](contents, content)}
+    ${populateStoryContents[templateName](contents, content)}
 </div>`;
     return htmlContents;
 }
 /**
- * 
+ * Store site homepage contents
  * @param {*} name 
  * @param {*} subName 
  * @param {*} contents 
@@ -207,15 +207,23 @@ function storeHomepageData(name, subName, contents) {
     return homepageContents[name][subName];
 }
 /**
- * 
+ * Store chapter homepage | text contents
+ * @param {*} subfield 
+ * @param {*} chapter_name 
+ * @param {*} contents 
  */
-function storeChaptersData(subfield, chapter_name, contents){
-    if (!chaptersContents[subfield][chapter_name]) {
-        chaptersContents[subfield][chapter_name] = {};
+function storeStoryData(subfield, chapter_name, contents){
+    try {
+        if (!StoryContents[subfield][chapter_name]) {
+            StoryContents[subfield][chapter_name] = {};
+        }
+        StoryContents[subfield][chapter_name] = JSON.parse(contents);
+        //console.log('storeStoryData=>', StoryContents[subfield][chapter_name]);
+        return StoryContents[subfield][chapter_name];        
+    } catch (error) {
+        console.log(error.message, `file_name=> ${chapter_name}`);
+        return false;
     }
-    chaptersContents[subfield][chapter_name] = JSON.parse(contents);
-    //console.log('storeHomepageData=>', { homepageContents:homepageContents, contents:contents });
-    return chaptersContents[subfield][chapter_name];
 }
 /**
  * Returns data to populate homepage or creates other files. 
@@ -225,7 +233,8 @@ function storeChaptersData(subfield, chapter_name, contents){
  */
 function setPagesContent(part_name, file_contents) {
     //
-    let mainHTML, body_class,
+    let mainHTML, 
+        body_class,
         segments = part_name.split('/'),
         file_name = segments.pop().split('.json').shift();
     switch (file_name) {
@@ -235,60 +244,40 @@ function setPagesContent(part_name, file_contents) {
             return storeHomepageData('default', 'home', file_contents);
             break;
         case '404':
-            mainHTML = 'Error 404';
-            body_class = file_name;
+            // create error page
+            fs.writeFileSync(`./build/${file_name}.html`, populateLayout('Error 404', file_name));
+            return true;
             break;
         default:
-            const dir_name = segments.pop();
-            //File contents: ${file_contents}
+            const dir_name = segments.pop(); //File contents: ${file_contents}
             // get file from directory
             switch (dir_name) {
-                case 'default':
-                    // fill object with data to handle it later
+                //
+                case 'default': // fill object with data to handle it later
                     //console.log('Directory default');
                     return storeHomepageData('default', file_name, file_contents);
                     break;
-
+                //
                 case 'texts': 
                     // get chapters home, see files jsons/texts/(cabalistic_bewitching_hero|nihilistic_parody).json 
                     // console.log('Directory texts=>', { file_name: file_name, file_contents:file_contents });
-                    let chapter;
-                    try {
-                        chapter = storeChaptersData('home', file_name, file_contents);
-                    } catch (error) {
-                        console.log(error.message, `file_name=> ${file_name}`);
-                    }
-                    return chapter;
-                    //body_class = 'chapters_home';
+                    return storeStoryData('home', file_name, file_contents);
                     break;
                 default: // get chapter contents, just chapter number and replics
                     // console.log(`Directory under texts(?): ${dir_name}`, { file_name: file_name, file_contents: file_contents });
-                    let text;
-                    try {
-                        text = storeChaptersData('texts', file_name, file_contents);
-                    } catch (error) {
-                        console.log(error.message, `file_name=> ${file_name}`);
-                    }
-                    return text;
-                    //body_class = 'chapters_home';
+                    return storeStoryData('texts', file_name, file_contents);
             }
     }
-    // may not reach this point as there are returns by conditions
-    if (mainHTML) {
-        fs.writeFileSync(`./build/${file_name}.html`, populateLayout(mainHTML, body_class));
-        return true;
-    } else {
-        return false;
-    }
+    return false;
 }
 
 module.exports = {
     homepageContents: homepageContents,
-    chaptersContents: chaptersContents,
+    StoryContents: StoryContents,
     populateHomeTemplate: populateHomeTemplate,
-    populateChaptersTemplate: populateChaptersTemplate,
-    populateChapterHome: 'chapterHome',
-    populateChapterText: 'chapterText',
+    populateStoryTemplate: populateStoryTemplate,
+    populateStoryHome: 'storyHome',
+    populateStoryText: 'storyChapter',
     populateLayout: populateLayout,
     setFileName: setFileName,
     setPagesContent: setPagesContent

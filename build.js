@@ -2,38 +2,18 @@
  * The functions call to build html-files:
  * walk => setPagesContent
  */
-const test_node = require('./source/scripts/test_node');
-// get templates
-// populateLayout, populateHomeTemplate, 
-const html = require('./source/scripts/html');
-//const populateLayout = html.populateLayout;
-//const setPagesContent = html.setPagesContent;
-//const homepageContents = html.homepageContents;
-//const chaptersContents = html.chaptersContents;
-// console.log('Check functions=>', {populateLayout:populateLayout, setPagesContent:setPagesContent});
-const fs = require('fs');
-const path = `${__dirname}/static/jsons`;
-const done = function(err, results) {
-    if (err !== null){
-
-        console.log(`
-done, return
-got err =>`, err, `
------------------`);
-        if (results) {
-            console.log(`results=>
-`, results, `
------------------`);
-        } 
-    }
-};
-
-const script_path = './source/scripts/';
+const fs = require('fs'),
+    test_node = require('./source/scripts/test_node'),
+    html = require('./source/scripts/html'),
+    path = `${__dirname}/static/jsons`,
+    script_path = './source/scripts/';
 // versions of templates
 [home, chapters_home, chapter_text] = ['default', 'chapters_home', 'chapter_text'];
-// const chaptersMod = require(`${script_path}chapters`);
-// console.log('build', {__dirname: __dirname, chaptersMod:chaptersMod});
-// chaptersMod.testData();
+/**
+ * 
+ * @param {*} part 
+ * @param {*} callback 
+ */
 function walk(part, callback) {
     //
     const files = fs.readdirSync(part);
@@ -49,19 +29,9 @@ function walk(part, callback) {
             const stat = fs.statSync(file);
             if (stat && stat.isDirectory()) { // console.log('Is a dir: ', file);
                 walk(file);
-            } else {
-                if (!stat.isFile()){
-                    // console.log('NOT a file: ', file);
-                } else {
-                    // console.log('IS A FILE: ', file);
-                    // object or string
-                    const page_html = html.setPagesContent(file, fs.readFileSync(file, 'utf8'));
-                    if (!page_html) {
-                        // console.log('Aggregating default, homepageContents => ', homepageContents);
-                    } else {
-                        console.log('get compiled html');
-                    }
-                }
+            } else if (stat.isFile()){
+                // object or string
+                const page_html = html.setPagesContent(file, fs.readFileSync(file, 'utf8'));
             }
         }
     }
@@ -70,40 +40,49 @@ function walk(part, callback) {
 walk(path);
 // create homepage
 if (html.homepageContents) {
-    const htmlCompiled = html.populateLayout(html.populateHomeTemplate(html.homepageContents.default), 'default');
-    // console.log('output htmlCompiled=>', htmlCompiled);
+    const htmlCompiled = html.populateLayout(
+            html.populateHomeTemplate(html.homepageContents.default), 
+            'default'
+        );  // console.log('output htmlCompiled=>', htmlCompiled);
     fs.writeFileSync('./build/index.html', htmlCompiled);
 }
-// create chapters
-if (html.chaptersContents.home) { // got fullfilled object after loop being finished
-    // console.log('chaptersContents.keys=>', Object.keys(chaptersContents));
-    Object.keys(html.chaptersContents.home).forEach((chapter) => {
-        // 
-        let htmlChapterCompiled = html.populateChaptersTemplate(html.chaptersContents.home[chapter], html.populateChapterHome);
-        const chapterHTML = html.populateLayout(htmlChapterCompiled, chapter, html.chaptersContents.home[chapter].header);
-        console.log(`******************CHAPTER PAGE******************
-        ${chapter}
-        chapterHTML=>
-`);//, chapterHTML
-        fs.writeFileSync(`./build/${chapter}.html`, chapterHTML);
-        if (html.chaptersContents.home[chapter] && html.chaptersContents.home[chapter].chapters) {
-            
-            let chapters = html.chaptersContents.home[chapter].chapters;
-            Object.keys(chapters).forEach(chapterNum => {
-                console.log('chapter=>', `${chapterNum}. ${chapters[chapterNum]}`);
-                const chapterText = html.populateChaptersTemplate(html.chaptersContents.home[chapter], html.populateChapterText, chapterNum);
+// create story home and contents
+if (html.StoryContents.home) { // got fullfilled object after loop being finished
+    // console.log('StoryContents.keys=>', Object.keys(StoryContents));
+    Object.keys(html.StoryContents.home).forEach((storyName) => {
+        //
+        const htmlStoryHomeCompiled = html.populateStoryTemplate(
+                html.StoryContents.home[storyName], 
+                html.populateStoryHome
+            );
+        const chapterHTML = html.populateLayout(
+                htmlStoryHomeCompiled, storyName,
+                html.StoryContents.home[storyName].header
+            );
+        console.log(`******************storyName: ${storyName} ******************
+`);
+        fs.writeFileSync(`./build/${storyName}.html`, chapterHTML);
+        if (html.StoryContents.home[storyName] && html.StoryContents.home[storyName].chapters) {
+            //
+            const chapters = html.StoryContents.home[storyName].chapters;
+            Object.keys(chapters).forEach(chapterNum => { // console.log('storyName=>', `${chapterNum}. ${chapters[chapterNum]}`);
+                
+                const storyChapter = html.populateStoryTemplate(
+                        html.StoryContents.home[storyName], 
+                        html.populateStoryText, chapterNum
+                    );
                 // fixme: title, check bodyclass
-                const chapterTextHTML = html.populateLayout(chapterText, chapter, html.chaptersContents.home[chapter].header);
+                const chapterTextHTML = html.populateLayout(
+                        storyChapter, storyName,
+                        html.StoryContents.home[storyName].header
+                    );
                 // number, header, replics
-                fs.writeFileSync(`./build/${html.setFileName(chapter,chapterNum)}`, chapterTextHTML);
+                fs.writeFileSync(`./build/${html.setFileName(storyName,chapterNum)}`, chapterTextHTML);
             })
         } else {
-            console.log(`Has no contents for the chapter ${chapter}`);
+            console.log(`Has no contents for the storyName ${storyName}`);
         }
     });
 }
-// setFileName
-// create other pages
-// console.log('Compile other contents...');
 
 
