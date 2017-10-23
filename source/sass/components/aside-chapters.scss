@@ -1,17 +1,17 @@
 #chapters{
     $min-width: 200px;
+    $menu-width: 20%;
     background: rgba(255,255,255,0.35);
     padding: $common-offset;
-    width: 20%;
+    width: $menu-width;
     min-width: $min-width;
     .menu{
-        bottom: 100px;
+        bottom: 0;
         left: 0;
         min-width: $min-width;
-        // outline: solid 1px yellow;
+        overflow: auto;
         position: fixed;
         top: 0;
-        //$common-offset;
-        width: calc(20% - #{$common-offset});
+        width: $menu-width;
     }
 }
