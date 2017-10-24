@@ -35,6 +35,13 @@ function populateLayout(main, body_class, title = "English: Amazing adventures o
             document.write('<base href="'+ full_path + '" />');
         }
     </script>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-3648547989072463",
+        enable_page_level_ads: true
+      });
+    </script>
     <link rel="stylesheet" type="text/css" href="styles/libs/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="styles/style.css">
     <script src="js/libs/jquery.min.js"></script>
