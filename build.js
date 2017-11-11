@@ -37,94 +37,99 @@ function walk(part, callback) {
     }
 }
 
-// Handle contents: make 404.html page, fulfill object with data to populate templates
-walk(path);
-
 // -- GENERATION --
 // create homepage
-if (html.homepageJsonParsed) {
-    const htmlCompiled = html.populateLayout(
-            html.populateHomeTemplate(html.homepageJsonParsed.default), 
-            'default'
-        );  // console.log('output htmlCompiled=>', htmlCompiled);
-    fs.writeFileSync('./build/index.html', htmlCompiled);
-}
-// contents 
-const storyContentObject = html.storyJsonParsed[html.storyHome];
-console.log('storyContentObject=>', storyContentObject);
+(() => {
 
-    /*
-    {
-        cabalistic_bewitching_hero: Object,
-        joshua_world: Object,
-        nihilistic_parody: Object,
-        unbalanced: Object
+    // Handle contents: make 404.html page, fulfill object with data to populate templates
+    walk(path);
+
+    // console.log('I am going to stop it!');
+    // return false;
+    
+        if (html.homepageJsonParsed) {
+        const htmlCompiled = html.populateLayout(
+                html.populateHomeTemplate(html.homepageJsonParsed.default), 
+                'default'
+            );  // console.log('output htmlCompiled=>', htmlCompiled);
+        fs.writeFileSync('./build/index.html', htmlCompiled);
     }
-        Object: {
-            header: String,
-            url: <file_name>,
-            preview: String,
-            about_characters: [ String, String, ... ],
-            chapters: { Number: String, Number: String, ... }
-        }
- */
-// console.log('storyContentObject=>',storyContentObject);
-// create story home and contents
-if (storyContentObject) { // got fullfilled object after loop being finished
-    //console.log('storyContentObject.keys=>', Object.keys(storyContentObject));
-    Object.keys(storyContentObject).forEach(storyName => { // aliases for stories like 'cabalistic_bewitching_hero'
-        console.log(`storyName => ${storyName}`);
-        // create Story Home contents to pass it to the next function
-        const htmlStoryHomeCompiled = html.populateStoryTemplate(
-                storyContentObject[storyName], 
-                html.storyHome
-            );
-        const storyHomeHTML = html.populateLayout(
-                htmlStoryHomeCompiled, storyName,
-                storyContentObject[storyName].header
-            );
-        /* console.log(`
-* storyName: ${storyName}`); */
-        // create the story page
-        fs.writeFileSync(`./build/${storyName}.html`, storyHomeHTML);
-        // 
-        if ( storyContentObject[storyName] // like Object.cabalistic_bewitching_hero
-             && storyContentObject[storyName].chapters) // like { 1: 'Joshua Ancient World', 2: 'Joshua gonna Europa' }
+    // contents 
+    const storyContentObject = html.storyJsonParsed[html.storyHome];
+    //console.log('storyContentObject=>', storyContentObject);
+        /*
         {
-            // { joshua_world: { chapters: Number: String, Number: String, ...} }
-            const storyChapters = storyContentObject[storyName].chapters; // { Number: String, Number: String... }
-            // extract keys from { Number: String, Number: String... }, so, get numbers
-            Object.keys(storyChapters).forEach(chapter_number => { // like 1, 2 etc
-                console.log(`storyName: ${storyName}, chapter_number: ${chapter_number}`);
-                // set story 
-                const file_name = `${storyName}-${chapter_number}`,
-                    storyHomeHTML = html.populateStoryTemplate(
-                        storyContentObject[storyName], /* 
-                        data container like
-                        { 
-                                header:String, url:String, preview:String,
-                                about_characters:[ String, String, ... ], 
-                                chapters: { Number: String, Number: String, ... }
-                        } */
-                        html.storyChapter, // literal, 'storyChapter'
-                        file_name // like joshua-1, joshua-2 etc
-                    );
-                // fixme: title, check bodyclass
-                const storyChapterHTML = html.populateLayout(
-                        storyHomeHTML, 
-                        storyName,
-                        storyContentObject[storyName].header
-                    );
-                // number, header, replics
-                // fs.writeFileSync(`./build/${html.setFileName(storyName,chapterNum)}`, storyChapterHTML);
-                fs.writeFileSync(`./build/${file_name}.html`, storyChapterHTML);
-            })
-        } else {
-            if (false) console.log(`! has no contents for the story, 
-  check the structure of the file: 
-  /static/jsons/texts/${storyName}.json`);
+            cabalistic_bewitching_hero: Object,
+            joshua_world: Object,
+            nihilistic_parody: Object,
+            unbalanced: Object
         }
-    });
-}
+            Object: {
+                header: String,
+                url: <file_name>,
+                preview: String,
+                about_characters: [ String, String, ... ],
+                chapters: { Number: String, Number: String, ... }
+            }
+     */
+    // console.log('storyContentObject=>',storyContentObject);
+    // create story home and contents
+    if (storyContentObject) { // got fullfilled object after loop being finished
+        //console.log('storyContentObject.keys=>', Object.keys(storyContentObject));
+        Object.keys(storyContentObject).forEach(storyName => { // aliases for stories like 'cabalistic_bewitching_hero'
+            console.log(`storyName => ${storyName}`);
+            // create Story Home contents to pass it to the next function
+            const htmlStoryHomeCompiled = html.populateStoryTemplate(
+                    storyContentObject[storyName], 
+                    html.storyHome
+                );
+            const storyHomeHTML = html.populateLayout(
+                    htmlStoryHomeCompiled, storyName,
+                    storyContentObject[storyName].header
+                );
+            /* console.log(`
+    * storyName: ${storyName}`); */
+            // create the story page
+            fs.writeFileSync(`./build/${storyName}.html`, storyHomeHTML);
+            // 
+            if ( storyContentObject[storyName] // like Object.cabalistic_bewitching_hero
+                 && storyContentObject[storyName].chapters) // like { 1: 'Joshua Ancient World', 2: 'Joshua gonna Europa' }
+            {
+                // { joshua_world: { chapters: Number: String, Number: String, ...} }
+                const storyChapters = storyContentObject[storyName].chapters; // { Number: String, Number: String... }
+                // extract keys from { Number: String, Number: String... }, so, get numbers
+                Object.keys(storyChapters).forEach(chapter_number => { // like 1, 2 etc
+                    console.log(`storyName: ${storyName}, chapter_number: ${chapter_number}`);
+                    // set story 
+                    const file_name = `${storyName}-${chapter_number}`,
+                        storyHomeHTML = html.populateStoryTemplate(
+                            storyContentObject[storyName], /* 
+                            data container like
+                            { 
+                                    header:String, url:String, preview:String,
+                                    about_characters:[ String, String, ... ], 
+                                    chapters: { Number: String, Number: String, ... }
+                            } */
+                            html.storyChapter, // literal, 'storyChapter'
+                            file_name // like joshua-1, joshua-2 etc
+                        );
+                    // fixme: title, check bodyclass
+                    const storyChapterHTML = html.populateLayout(
+                            storyHomeHTML, 
+                            storyName,
+                            storyContentObject[storyName].header
+                        );
+                    // number, header, replics
+                    // fs.writeFileSync(`./build/${html.setFileName(storyName,chapterNum)}`, storyChapterHTML);
+                    fs.writeFileSync(`./build/${file_name}.html`, storyChapterHTML);
+                })
+            } else {
+                if (false) console.log(`! has no contents for the story, 
+      check the structure of the file: 
+      /static/jsons/texts/${storyName}.json`);
+            }
+        });
+    }    
+})();
 
 

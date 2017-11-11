@@ -251,7 +251,7 @@ chapter [storyChapter][chapterNum]: [${storyChapter}][${file_name}]`);
  */
 function storeHomepageDataObject(name, subName, contents) {
     if (!homepageJsonParsed[name]) {
-        homepageJsonParsed[name] = "";
+        homepageJsonParsed[name] = {};
     }
     homepageJsonParsed[name][subName] = JSON.parse(contents); //console.log('storeHomepageData=>', { homepageJsonParsed:homepageJsonParsed, contents:contents });
     return homepageJsonParsed[name][subName];
@@ -294,7 +294,7 @@ function setPagesContent(part_name, file_contents) { // console.log(`part_name: 
         file_name = segments.pop().split('.json').shift();
     if (/^[\d]{1,}(\.?\d)*$/.test(file_name)) {
         var file_alias = segments[segments.length - 1];
-        console.log('file_alias=>', file_alias);
+        // console.log('file_alias=>', file_alias);
     }
     switch (file_name) {
         case 'default':
@@ -315,12 +315,6 @@ function setPagesContent(part_name, file_contents) { // console.log(`part_name: 
                 : (dir_name == 'texts') ?
                     storeStoryContentdObject(storyHome, file_name, file_contents)
                     : storeStoryContentdObject(storyChapter, `${file_alias}-${file_name}`, file_contents);
-                
-                /* storeStoryContentdObject(
-                    (dir_name == 'texts') ? 
-                        storyHome 
-                        : storyChapter, 
-                        `${file_alias}-${file_name}`, file_contents); */
     }
     return false;
 }

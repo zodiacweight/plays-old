@@ -60,7 +60,7 @@
             bottom: 0;
             color: white;
             cursor: default;
-            font-size: 1.13vw;
+            font-size: 26px;
             // todo: fix it:
             height: 39%;
             margin: auto;
@@ -83,6 +83,9 @@
                     opacity: 1;
                     transition: all ease 0.5s;
                 }
+            }
+            @media(min-width: $width-mobile){
+                font-size: 1.13vw;
             }
         }
 

@@ -162,7 +162,7 @@ main {
       bottom: 0;
       color: white;
       cursor: default;
-      font-size: 1.13vw;
+      font-size: 26px;
       height: 39%;
       margin: auto;
       opacity: 0.5;
@@ -183,6 +183,9 @@ main {
           height: auto;
           opacity: 1;
           transition: all ease 0.5s; }
+      @media (min-width: 748px) {
+        #asides aside h4 {
+          font-size: 1.13vw; } }
     #asides aside p {
       color: white;
       font-size: 10px;
