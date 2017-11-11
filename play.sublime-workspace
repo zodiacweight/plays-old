@@ -1,0 +1,428 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"class",
+				"classList"
+			],
+			[
+				"wr",
+				"wrapper-outer"
+			],
+			[
+				"fun",
+				"function"
+			],
+			[
+				"a",
+				"afterAction"
+			],
+			[
+				"fu",
+				"function"
+			],
+			[
+				"w",
+				"width"
+			],
+			[
+				"r",
+				"right"
+			],
+			[
+				"tr",
+				"translateY"
+			]
+		]
+	},
+	"buffers":
+	[
+	],
+	"build_system": "",
+	"build_system_choices":
+	[
+	],
+	"build_varint": "",
+	"command_palette":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"console":
+	{
+		"height": 0.0,
+		"history":
+		[
+		]
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"expanded_folders":
+	[
+		"/C/Users/sergei.klevtsov/Projects/-Private/plays"
+	],
+	"file_history":
+	[
+		"/C/Users/sergei.klevtsov/Projects/-Private/plays/build/nihilistic_parody-2.html",
+		"/C/Users/sergei.klevtsov/Projects/-Private/plays/build/joshua_world.html",
+		"/C/Users/sergei.klevtsov/Projects/-Private/plays/build/cabalistic_bewitching_hero.html",
+		"/C/Users/sergei.klevtsov/Projects/-Private/english-comics/joshua_world.html",
+		"/C/Users/sergei.klevtsov/Projects/-Private/english-comics/nihilistic_parody.html",
+		"/C/Users/sergei.klevtsov/Projects/-Private/homosapiens-as-a-problem/css/menu.css",
+		"/C/Users/sergei.klevtsov/OneDrive/Документы/Tickets/Sweden/address.txt",
+		"/C/Users/sergei.klevtsov/OneDrive - Accenture/Projects/Elkjöp/roles.txt",
+		"/C/Users/sergei.klevtsov/Projects/-Private/homosapiens-as-a-problem/index.html",
+		"/C/Users/sergei.klevtsov/Projects/-Private/homosapiens-as-a-problem/css/article.css",
+		"/C/Users/sergei.klevtsov/Projects/-Private/homosapiens-as-a-problem/css/elements.css",
+		"/C/Users/sergei.klevtsov/AppData/Local/Microsoft/Windows/INetCache/IE/U0XFFJ6C/css.css",
+		"/C/Users/sergei.klevtsov/Projects/-Private/homosapiens-as-a-problem/css/combined.css",
+		"/C/Users/sergei.klevtsov/Projects/-Private/homosapiens-as-a-problem/.git/config",
+		"/C/Users/sergei.klevtsov/Projects/-Private/homosapiens-as-a-problem/.gitignore",
+		"/C/Users/sergei.klevtsov/OneDrive/Документы/common.txt",
+		"/C/Users/sergei.klevtsov/OneDrive/Документы/Modern Times, Camille Paglia and Jordan B. Peterson.txt",
+		"/C/Users/sergei.klevtsov/OneDrive/address.txt",
+		"/C/Users/sergei.klevtsov/OneDrive/Документы/Modern Times, Camille Paglia and Jordan B. Peterson-en.txt",
+		"/C/Users/sergei.klevtsov/OneDrive - Accenture/Projects/Elkjöp/temp/16472/index.html",
+		"/C/Users/sergei.klevtsov/Projects/plays/source/scripts/html.js",
+		"/C/Users/sergei.klevtsov/Projects/1507712324175.log",
+		"/C/Users/sergei.klevtsov/AppData/Local/Microsoft/Windows/INetCache/Content.Outlook/OUFM226U/1507712324175.log",
+		"/C/Users/sergei.klevtsov/Projects/Volvo.ccs.temp/sources/css/css-comon-templates/@media-margin-bottom.scss",
+		"/C/Users/sergei.klevtsov/Projects/Volvo.ccs.temp/sources/css/_settings.scss",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/frontend-new/config/js/projects/storytelling.js",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/frontend-new/source/css/projects/ccs/components/_linksList.scss",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/Projects/CCS/Volvo.CCS/Volvo.CCS.csproj",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/.git/config",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81.pass",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/frontend-new/source/css/projects/ccs/components/_multiColumn.scss",
+		"/C/Users/sergei.klevtsov/OneDrive - Accenture/Dev/CodeBase/gists/setObjectStructure.js",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/frontend-new/package.json",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/frontend-new/node_modules/eslint-plugin-import/config/errors.js",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/frontend-new/node_modules/eslint-plugin-import/README.md",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/frontend-new/config.js",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/frontend-new/config/paths.js",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/frontend/build-scripts/car-locator/config.js",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/frontend-new/config/js/vendor/vendor.js",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/frontend-new/source/js/legacy/vendor/owlCarousel/owlcarousel.min.js",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/frontend-new/source/js/legacy/vendor/owlCarousel/owlCarousel.js",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/frontend-new/source/js/legacy/car-locator/views/details/accordion.js",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/frontend-new/source/js/projects/spi/libs.js",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/frontend-new/source/js/projects/lxp/base/collection.js",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/frontend-new/source/js/projects/lxp/views/main.js",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/frontend-new/source/js/projects/lxp/views/carouselOverlay.js",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/frontend-new/source/js/projects/lxp/main.js",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/frontend-new/source/js/projects/lxp/templates.js",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/frontend-new/source/js/projects/lxp/libs.js",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/frontend-new/source/js/projects/lxp/base/carouselItemCollection.js",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/frontend-new/source/js/projects/lxp/base/carouselItem.js",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/frontend-new/static/js/app.js",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/frontend-new/source/js/projects/ccs/helpers/common.js",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/frontend-new/node_modules/eslint-plugin-import/lib/importDeclaration.js",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/frontend-new/log/js.ccs.js.errors.html",
+		"/C/inetpub/wwwroot/ccs/Website/App_Config/Include/MyVolvo/MyVolvo.Pipelines.config",
+		"/C/inetpub/wwwroot/ccs/Website/App_Config/Include/MyVolvo/MyVolvo.Commands.config",
+		"/C/inetpub/wwwroot/ccs/Website/App_Config/Include/dotcom/Volvo.Analytics.config",
+		"/C/Program Files (x86)/Microsoft SDKs/NuGetPackages/NuGet.Configuration/3.5.0-beta2-1484/NuGet.Configuration.3.5.0-beta2-1484.nupkg",
+		"/C/Program Files (x86)/Microsoft SDKs/NuGetPackages/NuGet.Configuration/3.5.0-beta2-1484/NuGet.Configuration.nuspec",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/Projects/CCS/Volvo.CCS/Views/TopNavigation/Index.cshtml",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/frontend-new/source/js/projects/ccs/components/share.js",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/frontend-new/config/js/vendor/vendor-baidu.js",
+		"/C/Users/sergei.klevtsov/Projects/mediaelement-plugins/demo/index.html",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/frontend-new/source/js/vendor/vendor/custom-videoplayer/CustomVideoPlayer.js",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/frontend-new/source/js/vendor/vendor/mediaelement/mediaelement-and-player_custom.js",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/frontend-new/source/css/projects/ccs/components/_dedicatedQuotes.scss",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/frontend-new/config/js/vendor/vendor-google.js",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/Projects/CCS/Volvo.CCS/Views/DedicatedQuotes/Index.cshtml",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/Projects/CCS/Volvo.CCS/Views/Layouts/CCSLayout.cshtml",
+		"/C/inetpub/wwwroot/ccs/Website/App_Config/ConnectionStrings.config",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/frontend-new/source/css/projects/ccs/components/_quote.scss",
+		"/C/Users/sergei.klevtsov/Projects/Volvo.ccs.temp/bash.cmd",
+		"/C/inetpub/wwwroot/ccs/Website/App_Config/Include/dotcom/Volvo.Unicorn.DEV.config",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/frontend-new/source/css/projects/ccs/tools/_mixins.scss",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/frontend-new/source/css/projects/ccs/components/_fonts.scss",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/DigitalHub/sass/shared/modules/_features-crop.scss",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/Volvo.Web/App_Config/Include/dotcom/Volvo.Sites.config",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/frontend-new/source/css/legacy/main/DigitalCommerceSPA/css/sass/modules/_summary.scss",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/frontend-new/source/css/legacy/main/DigitalCommerceSPA/css/sass/modules/_modals.scss",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/frontend-new/source/css/core/core/variables/_fonts.scss",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/frontend-new/source/css/projects/ccs/variables/_settings.scss",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/Comparison/sass/shared/modules/_carousel.scss",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/frontend-new/source/css/projects/ccs/components/_layout.scss",
+		"/C/SQLServer2016Media/Developer/SETUP.EXE.CONFIG",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/frontend-new/source/css/projects/ccs/variables/_fonts.scss",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/frontend-new/source/css/core/core/components/_header.scss",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/frontend-new/source/css/core/core/components/_font.scss",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/frontend/styles/site/base/_typography.scss",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/frontend-new/source/css/legacy/main/site/base/_typography.scss",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/frontend-new/source/css/legacy/main/styleguide/base/_typography.scss",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/frontend-new/source/js/projects/ccs/main.js",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/frontend-new/source/css/projects/ccs/components/_legend.scss",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/Projects/CCS/Volvo.CCS/Views/Legend/Index.cshtml",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/frontend-new/source/js/projects/ccs/components/legend.js",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/.gitignore",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/frontend-new/gulp/tasks/css.js",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/frontend-new/gulpfile.js",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/frontend-new/source/js/projects/ccs/components/accordion.js",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/Projects/CCS/Volvo.CCS/Controllers/LegendController.cs",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/Volvo.Web/Views/Quote/Index.cshtml",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/Volvo.Web/Views/Legend/index.cshtml",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/Projects/CCS/Volvo.CCS/Views/MultiColumn/Index.cshtml",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/Projects/CCS/Volvo.CCS/Views/Quote/Index.cshtml",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/Volvo.Web/Views/Storytelling/StoryTellingModule.cshtml",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/Volvo.Web/Views/Storytelling/StoryTellingContainer.cshtml",
+		"/C/Users/sergei.klevtsov/Projects/►search-results/grid-media.txt",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/frontend-new/source/css/projects/ccs/tools/_functions.scss",
+		"/C/Users/sergei.klevtsov/Projects/►search-results/_retrieve-neat-setting.txt",
+		"/C/Users/sergei.klevtsov/Projects/volvo_oxp_81/frontend-new/source/css/legacy/main/site/mixins/_grid.scss"
+	],
+	"find":
+	{
+		"height": 31.0
+	},
+	"find_in_files":
+	{
+		"height": 90.0,
+		"where_history":
+		[
+			"C:\\Users\\sergei.klevtsov\\Projects\\volvo_oxp_81",
+			"C:\\Users\\sergei.klevtsov\\Projects\\volvo_oxp_81\\frontend-new\\source\\css, *scss",
+			"C:\\Users\\sergei.klevtsov\\Projects\\volvo_oxp_81\\frontend-new\\source\\css, *.scss",
+			"C:\\Users\\sergei.klevtsov\\Projects\\volvo_oxp_81, *.scss",
+			"C:\\Users\\sergei.klevtsov\\Projects\\volvo_oxp_81\\frontend-new\\source\\css, *.scss",
+			"C:\\Users\\sergei.klevtsov\\Projects\\volvo_oxp_81\\frontend-new\\source\\css",
+			"C:\\Users\\sergei.klevtsov\\Projects\\volvo_oxp_81\\frontend-new\\source\\css, *.scss",
+			"C:\\Users\\sergei.klevtsov\\Projects\\volvo_oxp_81, *.scss",
+			"C:\\Users\\sergei.klevtsov\\Projects\\volvo_oxp_81\\frontend-new\\source\\css, *.scss",
+			"C:\\Users\\sergei.klevtsov\\Projects\\volvo_oxp_81\\frontend-new\\source\\css\\projects\\ccs",
+			"C:\\Users\\sergei.klevtsov\\Projects\\volvo_oxp_81,*.scss",
+			"C:\\Users\\sergei.klevtsov\\Projects\\volvo_oxp_81",
+			"C:\\Users\\sergei.klevtsov\\Projects\\volvo_oxp_81\\frontend-new\\source\\css\\projects\\ccs",
+			"C:\\Users\\sergei.klevtsov\\Projects\\volvo_oxp_81\\Volvo.Web\\Views\\Storytelling",
+			"C:\\Users\\sergei.klevtsov\\Projects\\volvo_oxp_81, *scss",
+			"C:\\Users\\sergei.klevtsov\\Projects\\volvo_oxp_81",
+			"C:\\Users\\sergei.klevtsov\\Projects\\volvo_oxp_81, *scss",
+			"C:\\Users\\sergei.klevtsov\\Projects\\volvo_oxp_81",
+			"C:\\Users\\sergei.klevtsov\\Projects\\volvo_oxp_81\\frontend-new\\source\\css\\projects\\ccs",
+			"C:\\Users\\sergei.klevtsov\\Projects\\volvo_oxp_81\\frontend-new\\source\\css\\projects\\ccs\\components",
+			"C:\\Users\\sergei.klevtsov\\Projects\\volvo_oxp_81\\frontend-new\\static, *scss"
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"^,",
+			"^\\s",
+			"^,,,",
+			"</font>",
+			"<font color=\"#CCCCCC\">",
+			"<font color=\"#E5E5E5\">",
+			"\\s\\d{1,}:?(\\d{1,})?:?(\\d{1,})?,?(\\d{1,})?( -->)?",
+			" ,",
+			"^\\s",
+			"\\s\\d{1,}:?(\\d{1,})?:?(\\d{1,})?,?(\\d{1,})?( -->)?",
+			"<font color=\"#CCCCCC\">",
+			"</font>",
+			"<font color=\"#E5E5E5\">",
+			"\\",
+			"}\"",
+			"\"{",
+			"KeyFig",
+			"249",
+			"vendor",
+			"owlCarousel",
+			"return",
+			"global",
+			"owl",
+			"srcVendorScriptsCarLocator",
+			"mediaelement-and-player_custom.js",
+			".icon--close",
+			"-webkit-media-controls",
+			"Quote",
+			"$margin-after-component-tablet",
+			"$font-size-mobile",
+			"@mixin font-size",
+			"$font-size-mobile",
+			"\\.title\\b",
+			"\\btitle\\b",
+			".title--normal",
+			"title--normal",
+			".title--normal",
+			"@media",
+			"\\btitle\\b",
+			"title",
+			"bodySmall",
+			"--bodySmall",
+			"ccs-text--bodySmall",
+			"--bodySmall",
+			".text--bodySmall {",
+			".ccs-col-6 {",
+			".ccs-col-8",
+			".ccs-col-3",
+			".ccs-col-3 {",
+			"dest",
+			"Volvo.Web.",
+			"\t",
+			"@media",
+			".ccs-",
+			"<video",
+			"$ccs-paragraph-line-height",
+			"@media all and (max-width: $mode-mobile)",
+			"grid-column[^s]",
+			"grid-column[^\\s]",
+			"grid-column(\\()?",
+			"grid-column",
+			"_retrieve-neat-setting",
+			"grid-media",
+			"grid-media:",
+			"background:",
+			"background-image",
+			"$icon"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": true,
+		"replace_history":
+		[
+			"",
+			" ",
+			"",
+			",",
+			"",
+			"/",
+			"}",
+			"{",
+			"  ",
+			"."
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"sheets":
+			[
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 31.0
+	},
+	"input":
+	{
+		"height": 38.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"output.find_results":
+	{
+		"height": 0.0
+	},
+	"pinned_build_system": "",
+	"project": "play.sublime-project",
+	"replace":
+	{
+		"height": 58.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+			[
+				"vendor",
+				"frontend-new\\config\\js\\vendor\\vendor.js"
+			],
+			[
+				"typography.scss",
+				"frontend\\styles\\site\\base\\_typography.scss"
+			],
+			[
+				"typography",
+				"frontend-new\\source\\css\\legacy\\main\\styleguide\\base\\_typography.scss"
+			],
+			[
+				"legend",
+				"frontend-new\\source\\js\\projects\\ccs\\components\\legend.js"
+			],
+			[
+				"tell",
+				"Volvo.Web\\Views\\Storytelling\\StoryTellingModule.cshtml"
+			]
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_symbol":
+	{
+		"height": 0.0,
+		"last_filter": "",
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"selected_group": 0,
+	"settings":
+	{
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 301.0,
+	"status_bar_visible": true,
+	"template_settings":
+	{
+	}
+}

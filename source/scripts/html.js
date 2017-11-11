@@ -4,11 +4,14 @@ const fs = require('fs');
 const storyHome = 'storyHome',
     storyChapter = 'storyChapter';
 // container for template variables. Is used for default page yet
-const homepageContents = {},
-    storyContents = {};
+const homepageJsonParsed = {},
+    storyJsonParsed = {};
 // configure story object
-storyContents[storyHome] = {};
-storyContents[storyChapter] = {};
+// will be fullfilled with files contents like
+// storyJsonParsed[storyHome]['joshua_world'] = <HTML>
+// storyJsonParsed[storyChapter]['joshua_world'] = <HTML>
+storyJsonParsed[storyHome] = {};
+storyJsonParsed[storyChapter] = {};
 /**
  * Create layout html
  * @param {*} main 
@@ -149,9 +152,9 @@ const populateStoryContents = {
  * Set html for chapters both home and texts
  * @param {object} contents -- from story home, mostly chapters names
  * @param {string} templateName
- * @param {string | number} chapterNum - optional
+ * @param {string | number} file_name 
  */
-function populateStoryTemplate(contents, templateName, chapterNum){
+function populateStoryTemplate(contents, templateName, file_name){
     if (!contents.chapters) {
         return false;
     }
@@ -167,7 +170,7 @@ function populateStoryTemplate(contents, templateName, chapterNum){
         });        
     } catch (error) {
         console.warn(`! ${error.message}
-chapter chapterNum: ${chapterNum}`);
+chapter chapterNum: ${file_name}`);
     }
 
     switch (templateName) {
@@ -177,13 +180,21 @@ chapter chapterNum: ${chapterNum}`);
     
         case storyChapter:
             // fixme: remove "filters" field from .jsons
-            // storyContents[storyChapter] = {};
-            content = storyContents[storyChapter][chapterNum][0];
+            // retrieve data from the global object
+            // storyJsonParsed[storyChapter][<json_file_number>] = {};
+            try {
+                content = storyJsonParsed[storyChapter][file_name][0];
+            } catch (error) {
+                console.warn(error.message, `file_name 188 => ${file_name} => `, 'storyJsonParsed[storyChapter]=> ',storyJsonParsed[storyChapter]);
+            } 
+            // console.log(storyJsonParsed);
             let replix = "",
                 filter = "",
                 characters = [];
             if (!Array.isArray(content.replics)){
-                // console.warn(`${templateName} content.replics is NOT array =>`, content.replics);
+                console.warn(`${templateName} content.replics is NOT array =>`, { 
+                    'storyJsonParsed[storyChapter]': storyJsonParsed[storyChapter]
+                });
                 return false;
             } else {
                 // console.log(`${templateName} content.replics IS array => `, content.replics);
@@ -210,7 +221,7 @@ chapter chapterNum: ${chapterNum}`);
                     
             } catch (error) {
                 console.warn(`! ${error.message}
-chapter [storyChapter][chapterNum]: [${storyChapter}][${chapterNum}]`);
+chapter [storyChapter][chapterNum]: [${storyChapter}][${file_name}]`);
             }
             // filter, header, replix
             content.replics = replix;
@@ -239,29 +250,34 @@ chapter [storyChapter][chapterNum]: [${storyChapter}][${chapterNum}]`);
  * @return {Object}
  */
 function storeHomepageDataObject(name, subName, contents) {
-    if (!homepageContents[name]) {
-        homepageContents[name] = {};
+    if (!homepageJsonParsed[name]) {
+        homepageJsonParsed[name] = "";
     }
-    homepageContents[name][subName] = JSON.parse(contents); //console.log('storeHomepageData=>', { homepageContents:homepageContents, contents:contents });
-    return homepageContents[name][subName];
+    homepageJsonParsed[name][subName] = JSON.parse(contents); //console.log('storeHomepageData=>', { homepageJsonParsed:homepageJsonParsed, contents:contents });
+    return homepageJsonParsed[name][subName];
 }
 /**
  * Store story homepage | text contents
- * @param {*} subfield 
- * @param {*} chapter_name 
+ * @param {*} subfield storyHome | storyChapter
+ * @param {*} file_name all names for all files 
  * @param {*} contents
  * @return {Object} or false
  */
-function storeStoryDataObject(subfield, chapter_name, contents){
+function storeStoryContentdObject(subfield, file_name, file_contents){
     try {
-        if (!storyContents[subfield][chapter_name]) {
-            storyContents[subfield][chapter_name] = {};
+        // see below
+        if (!storyJsonParsed[subfield]) {
+            // 
+            // storyJsonParsed[storyHome][joshua_world] = {};
+            // storyJsonParsed[storyChapter][joshua_world] = {};
+            storyJsonParsed[subfield] = {};
         }
-        storyContents[subfield][chapter_name] = JSON.parse(contents);
-        // console.log('storeStoryData=>', storyContents[subfield][chapter_name]);
-        return storyContents[subfield][chapter_name];        
+        storyJsonParsed[subfield][file_name] = JSON.parse(file_contents);
+        // got contents for all files, then will place them in the root
+        // console.log('storeStoryData=>', storyJsonParsed[subfield][chapter_name]);
+        return storyJsonParsed[subfield][file_name];
     } catch (error) {
-        console.log(error.message, `file_name=> ${chapter_name}`);
+        console.log(error.message, `file_name 280=> ${file_name}`);
         return false;
     }
 }
@@ -276,6 +292,10 @@ function setPagesContent(part_name, file_contents) { // console.log(`part_name: 
     //
     let segments = part_name.split('/'),
         file_name = segments.pop().split('.json').shift();
+    if (/^[\d]{1,}(\.?\d)*$/.test(file_name)) {
+        var file_alias = segments[segments.length - 1];
+        console.log('file_alias=>', file_alias);
+    }
     switch (file_name) {
         case 'default':
             // then it will return in another iteration
@@ -292,18 +312,22 @@ function setPagesContent(part_name, file_contents) { // console.log(`part_name: 
             // get file from directory
             return (dir_name == 'default') ? 
                 storeHomepageDataObject(dir_name, file_name, file_contents)
-                : storeStoryDataObject(
+                : (dir_name == 'texts') ?
+                    storeStoryContentdObject(storyHome, file_name, file_contents)
+                    : storeStoryContentdObject(storyChapter, `${file_alias}-${file_name}`, file_contents);
+                
+                /* storeStoryContentdObject(
                     (dir_name == 'texts') ? 
                         storyHome 
                         : storyChapter, 
-                    file_name, file_contents);
+                        `${file_alias}-${file_name}`, file_contents); */
     }
     return false;
 }
 
 module.exports = {
-    homepageContents: homepageContents,
-    storyContents: storyContents,
+    homepageJsonParsed: homepageJsonParsed,
+    storyJsonParsed: storyJsonParsed,
     populateHomeTemplate: populateHomeTemplate,
     populateStoryTemplate: populateStoryTemplate,
     storyHome: storyHome,
