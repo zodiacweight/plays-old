@@ -1,0 +1,1 @@
+1. Remove redundant fields from /static/jsons/texts/<story_name>, check a minimal fields set for joshua_world

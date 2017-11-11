@@ -5,10 +5,10 @@ const storyHome = 'storyHome',
     storyChapter = 'storyChapter';
 // container for template variables. Is used for default page yet
 const homepageContents = {},
-    StoryContents = {};
+    storyContents = {};
 // configure story object
-StoryContents[storyHome] = {};
-StoryContents[storyChapter] = {};
+storyContents[storyHome] = {};
+storyContents[storyChapter] = {};
 /**
  * Create layout html
  * @param {*} main 
@@ -147,8 +147,9 @@ const populateStoryContents = {
 }
 /**
  * Set html for chapters both home and texts
- * @param {*} contents -- from story home, mostly chapters names
- * @param {*} templateName 
+ * @param {object} contents -- from story home, mostly chapters names
+ * @param {string} templateName
+ * @param {string | number} chapterNum - optional
  */
 function populateStoryTemplate(contents, templateName, chapterNum){
     if (!contents.chapters) {
@@ -158,11 +159,17 @@ function populateStoryTemplate(contents, templateName, chapterNum){
     let content = '',
         links = '',
         path;
-    Object.keys(contents.chapters).forEach(num => {
-        path = setFileName(contents['url'], num);
-        links += `
-    <p><a href="${path}">${num}. ${contents.chapters[num]}</a></p>`;
-    });
+    try {
+        Object.keys(contents.chapters).forEach(num => {
+            path = setFileName(contents['url'], num);
+            links += `
+        <p><a href="${path}">${num}. ${contents.chapters[num]}</a></p>`;
+        });        
+    } catch (error) {
+        console.warn(`! ${error.message}
+chapter chapterNum: ${chapterNum}`);
+    }
+
     switch (templateName) {
         case storyHome:
             content = links;
@@ -170,31 +177,44 @@ function populateStoryTemplate(contents, templateName, chapterNum){
     
         case storyChapter:
             // fixme: remove "filters" field from .jsons
-            content = StoryContents[storyChapter][chapterNum][0];
+            // storyContents[storyChapter] = {};
+            content = storyContents[storyChapter][chapterNum][0];
             let replix = "",
                 filter = "",
                 characters = [];
-            content.replics.forEach(replica => {
-                const name = Object.keys(replica)[0];
-                replix +=`
-    <strong data-person="${name}">
-        ${name}
-    </strong>
-    <p>
-        ${replica[name]}
-    </p>`;
-                if (characters.indexOf(name) === -1){
-                    filter += `
-<label>
-    <input type="checkbox" name="${name}">${name}
-</label>`;
-                    characters.push(name);
-                }
-            });
+            if (!Array.isArray(content.replics)){
+                // console.warn(`${templateName} content.replics is NOT array =>`, content.replics);
+                return false;
+            } else {
+                // console.log(`${templateName} content.replics IS array => `, content.replics);
+            }
+            //
+            try {
+                content.replics.forEach(replica => {
+                    const name = Object.keys(replica)[0];
+                    replix +=`
+        <strong data-person="${name}">
+            ${name}
+        </strong>
+        <p>
+            ${replica[name]}
+        </p>`;
+                    if (characters.indexOf(name) === -1){
+                        filter += `
+    <label>
+        <input type="checkbox" name="${name}">${name}
+    </label>`;
+                        characters.push(name);
+                    }
+                });
+                    
+            } catch (error) {
+                console.warn(`! ${error.message}
+chapter [storyChapter][chapterNum]: [${storyChapter}][${chapterNum}]`);
+            }
             // filter, header, replix
             content.replics = replix;
-            content.filters = filter;
-            console.log("check content=>", {chapterNum:chapterNum, content:content});
+            content.filters = filter; // console.log("check content=>", {chapterNum:chapterNum, content:content});
             break;
     }
     //
@@ -215,84 +235,75 @@ function populateStoryTemplate(contents, templateName, chapterNum){
  * Store site homepage contents
  * @param {*} name 
  * @param {*} subName 
- * @param {*} contents 
+ * @param {*} contents
+ * @return {Object}
  */
-function storeHomepageData(name, subName, contents) {
+function storeHomepageDataObject(name, subName, contents) {
     if (!homepageContents[name]) {
         homepageContents[name] = {};
     }
-    homepageContents[name][subName] = JSON.parse(contents);
-    //console.log('storeHomepageData=>', { homepageContents:homepageContents, contents:contents });
+    homepageContents[name][subName] = JSON.parse(contents); //console.log('storeHomepageData=>', { homepageContents:homepageContents, contents:contents });
     return homepageContents[name][subName];
 }
 /**
  * Store story homepage | text contents
  * @param {*} subfield 
  * @param {*} chapter_name 
- * @param {*} contents 
+ * @param {*} contents
+ * @return {Object} or false
  */
-function storeStoryData(subfield, chapter_name, contents){
+function storeStoryDataObject(subfield, chapter_name, contents){
     try {
-        if (!StoryContents[subfield][chapter_name]) {
-            StoryContents[subfield][chapter_name] = {};
+        if (!storyContents[subfield][chapter_name]) {
+            storyContents[subfield][chapter_name] = {};
         }
-        StoryContents[subfield][chapter_name] = JSON.parse(contents);
-        //console.log('storeStoryData=>', StoryContents[subfield][chapter_name]);
-        return StoryContents[subfield][chapter_name];        
+        storyContents[subfield][chapter_name] = JSON.parse(contents);
+        // console.log('storeStoryData=>', storyContents[subfield][chapter_name]);
+        return storyContents[subfield][chapter_name];        
     } catch (error) {
         console.log(error.message, `file_name=> ${chapter_name}`);
         return false;
     }
 }
 /**
- * Returns data to populate homepage or creates other files. 
- * In the latter case you need to store HTML in mainHTML variable
- * @param {*} part_name 
- * @param {*} file_contents 
+ * Creates HTML file contents for the 404 page
+ * or 
+ * returns data as object to populate template later
+ * @param {string} part_name 
+ * @param {string} file_contents 
  */
-function setPagesContent(part_name, file_contents) {
+function setPagesContent(part_name, file_contents) { // console.log(`part_name: ${part_name}`);
     //
-    let mainHTML, 
-        body_class,
-        segments = part_name.split('/'),
+    let segments = part_name.split('/'),
         file_name = segments.pop().split('.json').shift();
     switch (file_name) {
         case 'default':
             // then it will return in another iteration
             // get contents for h1, h4
-            return storeHomepageData(file_name, 'home', file_contents);
+            return storeHomepageDataObject(file_name, 'home', file_contents);
             break;
         case '404':
-            // create error page
+            // create error page, ommiting storing data as this one is simple
             fs.writeFileSync(`./build/${file_name}.html`, populateLayout('Error 404', file_name));
             return true;
             break;
-        default:
-            const dir_name = segments.pop(); //File contents: ${file_contents}
+        default: // fulfill objects with data to create HTML later
+            const dir_name = segments.pop();
             // get file from directory
-            switch (dir_name) {
-                //
-                case 'default': // fill object with data to handle it later
-                    //console.log('Directory default');
-                    return storeHomepageData(dir_name, file_name, file_contents);
-                    break;
-                //
-                case 'texts': 
-                    // get chapters home, see files jsons/texts/(cabalistic_bewitching_hero|nihilistic_parody).json 
-                    // console.log('Directory texts=>', { file_name: file_name, file_contents:file_contents });
-                    return storeStoryData(storyHome, file_name, file_contents);
-                    break;
-                default: // get chapter contents, just chapter number and replics
-                    // console.log(`Directory under texts(?): ${dir_name}`, { file_name: file_name, file_contents: file_contents });
-                    return storeStoryData(storyChapter, file_name, file_contents);
-            }
+            return (dir_name == 'default') ? 
+                storeHomepageDataObject(dir_name, file_name, file_contents)
+                : storeStoryDataObject(
+                    (dir_name == 'texts') ? 
+                        storyHome 
+                        : storyChapter, 
+                    file_name, file_contents);
     }
     return false;
 }
 
 module.exports = {
     homepageContents: homepageContents,
-    StoryContents: StoryContents,
+    storyContents: storyContents,
     populateHomeTemplate: populateHomeTemplate,
     populateStoryTemplate: populateStoryTemplate,
     storyHome: storyHome,
