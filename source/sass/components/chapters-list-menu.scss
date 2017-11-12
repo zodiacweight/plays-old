@@ -1,4 +1,7 @@
 #chapters-list-menu{
+    &.no-overflow{
+        overflow: hidden;
+    }
     @mixin menuLink{
         color: white;
         font-family: $header-font-family;

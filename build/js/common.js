@@ -32,11 +32,15 @@ $(function(){
             $(personTag).next()[action](classAlien);
         });
     });
-    const titleTagName = "span";
-    $("#chapters p").on('mouseenter mouseleave', function(event){
+    const titleTagName = "span",
+        $chaptersContainer = $("#chapters"),
+        $chaptersListMenu = $chaptersContainer.find("#chapters-list-menu"),
+        $chaptersParagraphs = $chaptersContainer.find("p"),
+        noOverflowClass = "no-overflow";
+    $chaptersParagraphs.on('mouseenter mouseleave', function(event){
         const $p = $(this);
         //
-        if (event.type === "mouseenter"){ //console.log('check');
+        if (event.type === "mouseenter"){
             const $pA = $p.find("a");
             if (parseInt($p.css("width")) < parseInt($pA.css("width"))){
                 const offsetLeft = $p.offset().left,
@@ -50,9 +54,11 @@ $(function(){
                             top: `${offsetTop}px`
                         });
                 $p.append(title);
+                $chaptersListMenu.addClass(noOverflowClass);
             }
         } else {
             $p.find(titleTagName).remove();
+            $chaptersListMenu.removeClass(noOverflowClass);
         }
     });
     $('p').on('click', titleTagName, function(){

@@ -17,14 +17,14 @@ storyJsonParsed[storyChapter] = {};
  * @param {*} main 
  * @param {*} body_class 
  */
-function populateLayout(main, body_class, title = "English: Amazing adventures of misterious creatures existed ever") {
+function populateLayout(main, body_class, title = "Read about amazing adventures of wonderful heroes and mysterious creatures existed ever") {
     const path_plays = 'plays';
     const path_build = 'build';
     const html = `<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>${title}</title>
+    <title>Learn English! ${title}</title>
     <script>
         var full_path = '';
         if (location.href.indexOf("/${path_plays}") !== -1) {
@@ -306,7 +306,7 @@ function setPagesContent(part_name, file_contents) { // console.log(`part_name: 
             break;
         case '404':
             // create error page, ommiting storing data as this one is simple
-            fs.writeFileSync(`./build/${file_name}.html`, populateLayout('Error 404', file_name));
+            fs.writeFileSync(`./build/${file_name}.html`, populateLayout('Error 404', file_name, "There is way around, don't think otherwise! :)"));
             return true;
             break;
         default: // fulfill objects with data to create HTML later

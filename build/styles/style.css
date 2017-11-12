@@ -271,6 +271,8 @@ footer {
 #chapters-list-menu {
   margin-top: 8px;
   padding: 20px; }
+  #chapters-list-menu.no-overflow {
+    overflow: hidden; }
   #chapters-list-menu h4.chapters-overview {
     display: none; }
   #chapters-list-menu .chapters-go-home {

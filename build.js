@@ -44,7 +44,7 @@ function walk(part, callback) {
     // Handle contents: make 404.html page, fulfill object with data to populate templates
     walk(path);
 
-    // console.log('I am going to stop it!');
+    // console.log(`I am going to stop it!`, html.storyJsonParsed[html.storyHome]);
     // return false;
     
         if (html.homepageJsonParsed) {
@@ -53,7 +53,7 @@ function walk(part, callback) {
                 'default'
             );  // console.log('output htmlCompiled=>', htmlCompiled);
         fs.writeFileSync('./build/index.html', htmlCompiled);
-    }
+    } // storyContentObject[storyName].chapters[num];
     // contents 
     const storyContentObject = html.storyJsonParsed[html.storyHome];
     //console.log('storyContentObject=>', storyContentObject);
@@ -113,11 +113,11 @@ function walk(part, callback) {
                             html.storyChapter, // literal, 'storyChapter'
                             file_name // like joshua-1, joshua-2 etc
                         );
-                    // fixme: title, check bodyclass
+                    // fixme: check bodyclass
                     const storyChapterHTML = html.populateLayout(
                             storyHomeHTML, 
                             storyName,
-                            storyContentObject[storyName].header
+                            `The story: ${storyContentObject[storyName].chapters[chapter_number]}`
                         );
                     // number, header, replics
                     // fs.writeFileSync(`./build/${html.setFileName(storyName,chapterNum)}`, storyChapterHTML);
