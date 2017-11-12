@@ -4,6 +4,14 @@
 		"selected_items":
 		[
 			[
+				"co",
+				"console"
+			],
+			[
+				"file",
+				"file_alias"
+			],
+			[
 				"class",
 				"classList"
 			],
@@ -39,6 +47,40 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "source/scripts/html.js",
+			"settings":
+			{
+				"buffer_size": 11289,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "{ 'cabalistic_bewitching_hero-1.1':\n   [ \n{ \tnumber: 1.1,\n       \t\theader: 'Story about a peculiar human',\n       \t\treplics: \"Object\"\n} \n],\n  'cabalistic_bewitching_hero-1.10':\n   [ \n{\t number: '1.10',\n       \t\theader: 'Christian tells to the girls more',\n       \t\treplics: \"Object\"\n}\n ],\n  'cabalistic_bewitching_hero-1.11':\n   [ { number: 1.11,\n       sharing_roles: \"Object\",\n       header: 'A special new',\n       replics: \"Object\"} ],\n  'cabalistic_bewitching_hero-1.12':\n   [ { number: 1.12,\n       header: 'Meeting of Helen, Judy and Cassandra with Beatrix',\n       replics: \"Object\"} ],\n  'cabalistic_bewitching_hero-1.13':\n   [ { number: 1.13,\n       header: 'Christian gets Beatrix\\'s proposal',\n       replics: \"Object\"} ],\n  'cabalistic_bewitching_hero-1.14':\n   [ { number: 1.14,\n       sharing_roles: \"Object\",\n       header: 'Judy meets Woman-devil',\n       replics: \"Object\"} ],\n  'cabalistic_bewitching_hero-1.15':\n   [ { number: 1.15,\n       header: 'Woman-devil\\'s intention',\n       replics: \"Object\"} ],\n  'cabalistic_bewitching_hero-1.16':\n   [ { number: 1.16,\n       sharing_roles: \"Object\",\n       header: 'Conversation about Beatrix\\'s adoption',\n       replics: \"Object\"} ],\n  'cabalistic_bewitching_hero-1.17':\n   [ { number: 1.17,\n       header: 'Christian is going to San Salvador to continue his engagement',\n       replics: \"Object\"} ],\n  'cabalistic_bewitching_hero-1.18':\n   [ { number: 1.18,\n       sharing_roles: \"Object\",\n       header: 'Parting of Beatrix and Woman-devil',\n       replics: \"Object\"} ],\n  'cabalistic_bewitching_hero-1.2':\n   [ { number: 1.2,\n       header: 'Acquaintance with new pet',\n       replics: \"Object\"} ],\n  'cabalistic_bewitching_hero-1.3':\n   [ { number: 1.3,\n       header: 'Christian meets Judy and Cassandra the first time',\n       replics: \"Object\"} ],\n  'cabalistic_bewitching_hero-1.4': [ { number: 1.4, header: 'In the acquarium', replics: \"Object\"} ],\n  'cabalistic_bewitching_hero-1.5': [ { number: 1.5, header: 'Pity', replics: \"Object\"} ],\n  'cabalistic_bewitching_hero-1.6':\n   [ { number: 1.6,\n       sharing_roles: \"Object\",\n       header: 'Happy! Beatrix is alive',\n       replics: \"Object\"} ],\n  'cabalistic_bewitching_hero-1.7':\n   [ { number: 1.7,\n       sharing_roles: \"Object\",\n       header: 'Helen is a guest of Chrisian and mrs Jakins',\n       replics: \"Object\"} ],\n  'cabalistic_bewitching_hero-1.8':\n   [ { number: 1.8,\n       sharing_roles: \"Object\",\n       header: 'Planning holidays',\n       replics: \"Object\"} ],\n  'cabalistic_bewitching_hero-1.9':\n   [ { number: 1.9,\n       header: 'Discussion between Helen and Beatrix',\n       replics: \"Object\"} ],\n  'cabalistic_bewitching_hero-2.1':\n   [ { number: 2.1,\n       sharing_roles: \"Object\",\n       header: 'New company',\n       replics: \"Object\"} ],\n  'cabalistic_bewitching_hero-2.2':\n   [ { number: 2.2,\n       sharing_roles: \"Object\",\n       header: '',\n       replics: \"Object\"} ],\n  'cabalistic_bewitching_hero-2.3':\n   [ { number: 2.3,\n       sharing_roles: \"Object\",\n       header: '',\n       replics: \"Object\"} ],\n  'cabalistic_bewitching_hero-2.4': [ { number: 2.4, header: '', replics: \"Object\"} ],\n  'joshua_world-1':\n   [ { number: 1,\n       header: 'In the Stevenson\\'s family',\n       replics: \"Object\"} ],\n  'joshua_world-2':\n   [ { number: 1,\n       header: 'In the Stevenson\\'s family',\n       replics: \"Object\"} ],\n  'nihilistic_parody-1':\n   [ { number: 1,\n       header: 'In the Stevenson\\'s family',\n       replics: \"Object\"} ],\n  'nihilistic_parody-2':\n   [ { number: 2,\n       sharing_roles: \"Object\",\n       header: 'Nihilistic parody',\n       replics: \"Object\"} ] }\n",
+			"settings":
+			{
+				"buffer_size": 3635,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "build.js",
+			"settings":
+			{
+				"buffer_size": 5773,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"contents": "Searching 2 files for \"storeStoryDataObject\"\n\nC:\\Users\\sergei.klevtsov\\Projects\\-Private\\plays\\source\\scripts\\html.js:\n  255   * @return {Object} or false\n  256   */\n  257: function storeStoryDataObject(subfield, file_name, contents){\n  258      try {\n  259          // see below\n  ...\n  299              return (dir_name == 'default') ? \n  300                  storeHomepageDataObject(dir_name, file_name, file_contents)\n  301:                 : storeStoryDataObject(\n  302                      (dir_name == 'texts') ? \n  303                          storyHome \n\n2 matches in 1 file\n\n\nSearching 32 files for \"storeStoryDataObject\"\n\nC:\\Users\\sergei.klevtsov\\Projects\\-Private\\plays\\source\\scripts\\html.js:\n  255   * @return {Object} or false\n  256   */\n  257: function storeStoryDataObject(subfield, file_name, contents){\n  258      try {\n  259          // see below\n  ...\n  299              return (dir_name == 'default') ? \n  300                  storeHomepageDataObject(dir_name, file_name, file_contents)\n  301:                 : storeStoryDataObject(\n  302                      (dir_name == 'texts') ? \n  303                          storyHome \n\n2 matches in 1 file\n",
+			"settings":
+			{
+				"buffer_size": 1171,
+				"line_ending": "Windows",
+				"name": "Find Results",
+				"scratch": true
+			}
+		}
 	],
 	"build_system": "",
 	"build_system_choices":
@@ -72,10 +114,14 @@
 	},
 	"expanded_folders":
 	[
-		"/C/Users/sergei.klevtsov/Projects/-Private/plays"
+		"/C/Users/sergei.klevtsov/Projects/-Private/plays",
+		"/C/Users/sergei.klevtsov/Projects/-Private/plays/source",
+		"/C/Users/sergei.klevtsov/Projects/-Private/plays/source/scripts"
 	],
 	"file_history":
 	[
+		"/C/Users/sergei.klevtsov/Projects/-Private/plays/build/index.html",
+		"/C/Users/sergei.klevtsov/Projects/-Private/plays/build/nihilistic_parody-1.html",
 		"/C/Users/sergei.klevtsov/Projects/-Private/plays/build/nihilistic_parody-2.html",
 		"/C/Users/sergei.klevtsov/Projects/-Private/plays/build/joshua_world.html",
 		"/C/Users/sergei.klevtsov/Projects/-Private/plays/build/cabalistic_bewitching_hero.html",
@@ -189,13 +235,15 @@
 	],
 	"find":
 	{
-		"height": 31.0
+		"height": 38.0
 	},
 	"find_in_files":
 	{
 		"height": 90.0,
 		"where_history":
 		[
+			"C:\\Users\\sergei.klevtsov\\Projects\\-Private\\plays\\source",
+			"C:\\Users\\sergei.klevtsov\\Projects\\-Private\\plays\\source\\scripts",
 			"C:\\Users\\sergei.klevtsov\\Projects\\volvo_oxp_81",
 			"C:\\Users\\sergei.klevtsov\\Projects\\volvo_oxp_81\\frontend-new\\source\\css, *scss",
 			"C:\\Users\\sergei.klevtsov\\Projects\\volvo_oxp_81\\frontend-new\\source\\css, *.scss",
@@ -224,6 +272,10 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"file_name",
+			"[Object]",
+			"«Object»",
+			"storeStoryDataObject",
 			"^,",
 			"^\\s",
 			"^,,,",
@@ -295,9 +347,11 @@
 		"highlight": true,
 		"in_selection": false,
 		"preserve_case": false,
-		"regex": true,
+		"regex": false,
 		"replace_history":
 		[
+			"chapter_number",
+			"\"Object\"",
 			"",
 			" ",
 			"",
@@ -318,14 +372,163 @@
 	"groups":
 	[
 		{
+			"selected": 2,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "source/scripts/html.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 11289,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								9603,
+								9603
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true,
+							"word_wrap": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 6670.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 3635,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								43,
+								43
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "build.js",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5773,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1865,
+								1865
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 746.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1171,
+						"regions":
+						{
+							"match":
+							{
+								"flags": 112,
+								"regions":
+								[
+									[
+										182,
+										202
+									],
+									[
+										447,
+										467
+									],
+									[
+										769,
+										789
+									],
+									[
+										1034,
+										1054
+									]
+								],
+								"scope": ""
+							}
+						},
+						"selection":
+						[
+							[
+								779,
+								779
+							]
+						],
+						"settings":
+						{
+							"detect_indentation": false,
+							"line_numbers": false,
+							"output_tag": 2,
+							"result_base_dir": "",
+							"result_file_regex": "^([^ \t].*):$",
+							"result_line_regex": "^ +([0-9]+):",
+							"scroll_past_end": true,
+							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 374.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 3,
+					"type": "text"
+				}
 			]
 		}
 	],
 	"incremental_find":
 	{
-		"height": 31.0
+		"height": 30.0
 	},
 	"input":
 	{
@@ -362,7 +565,7 @@
 	"project": "play.sublime-project",
 	"replace":
 	{
-		"height": 58.0
+		"height": 70.0
 	},
 	"save_all_on_build": true,
 	"select_file":
@@ -420,7 +623,7 @@
 	"show_open_files": false,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 301.0,
+	"side_bar_width": 50.0,
 	"status_bar_visible": true,
 	"template_settings":
 	{

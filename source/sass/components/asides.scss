@@ -1,4 +1,8 @@
 #asides{
+    @media(max-width: ($width-mobile - 1)){
+        margin: auto;
+        width: 65%;
+    }
     @media(min-width: $width-mobile){
         display: flex;
         flex-wrap: wrap;
@@ -18,7 +22,9 @@
         padding-bottom: 18%;
         position: relative;
         transition: all ease 0.4s;
-        
+        @media(max-width: ($width-mobile - 1)){
+            margin-bottom: 7vw;
+        }    
         @mixin goGrow($delay){
             animation-name: grow;
             animation-duration: 1s;
@@ -58,16 +64,16 @@
         h4{
             background-color: rgba(0,0,0,0.5);
             bottom: 0;
-            color: white;
+            color: rgba(255, 255, 255, 0.7);
             cursor: default;
-            font-size: 26px;
+            font-size: 4vw;
             // todo: fix it:
             height: 39%;
             margin: auto;
-            opacity: 0.5;
             padding: 17% 0;
             position: absolute;
             text-align: center;
+            text-shadow: 0 0 4px rgba(0,0,0,1);
             transition: all ease 0.5s;
             width: 100%;
             &:hover{
@@ -78,14 +84,17 @@
                 padding-top: 40px;
                 & +p{
                     bottom: 0;
-                    font-size: 0.7vw;
+                    font-size: 2vw;
                     height: auto;
                     opacity: 1;
                     transition: all ease 0.5s;
+                    @media(min-width: $width-mobile){
+                        font-size: 10px;
+                    }
                 }
             }
             @media(min-width: $width-mobile){
-                font-size: 1.13vw;
+                font-size: 10px;
             }
         }
 
@@ -106,7 +115,10 @@
             animation-delay: initial !important;
             &.fade-out{
                 animation-name: fadeOut;
-            }        
+            }
+            &:not(.fade-out){
+                z-index: 1;
+            }
         }
 
     }

@@ -56,13 +56,12 @@ function populateLayout(main, body_class, title = "English: Amazing adventures o
     </main>
     <footer>
         <a href="index.html">Home</a> &nbsp; | 
-        <a href="how_to_use.html">How to use</a> &nbsp; | 
-        <a href="contacts.html">Contacts</a> &nbsp; | 
-        <a href="https://www.facebook.com">Facebook </a>
+        <a href="https://www.facebook.com/groups/englisn.comics">Facebook </a>
     </footer>
 </body>
-</html>`;
-    // console.log('html=>', html);
+</html>`; // console.log('html=>', html);
+    /* <a href="how_to_use.html">How to use</a> &nbsp; | 
+    <a href="contacts.html">Contacts</a> &nbsp; | */
     return html;
 }
 /**
