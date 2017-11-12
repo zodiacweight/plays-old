@@ -16,3 +16,7 @@
         background-color: $bg-color-hover;
     }
 }
+
+@mixin text_params{
+    margin: 12px auto;
+}

@@ -241,6 +241,8 @@ footer {
   margin: 20px 20px 40px 40px;
   padding: 20px 40px 40px 40px;
   width: 60%; }
+  #chapter-contents article p {
+    margin: 12px auto; }
   #chapter-contents h4 span {
     background-color: darkred;
     border-radius: 50%;
@@ -263,6 +265,8 @@ footer {
     text-decoration: none; }
     #chapter-contents h1 a:hover {
       text-decoration: underline; }
+  #chapter-contents header section {
+    margin: 12px auto; }
 
 #chapters-list-menu {
   margin-top: 8px;

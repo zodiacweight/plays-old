@@ -38,3 +38,9 @@ emails:
 
 The folders structure in <code>static/jsons/texts</code> should coincide to the file set in <code>static/jsons/default</code>.
 
+## UI plugins
+
+Vertical scrollbar: 
+
+[http://diokuz.github.io/baron/](http://diokuz.github.io/baron/), [https://github.com/Diokuz/baron](https://github.com/Diokuz/baron)
+

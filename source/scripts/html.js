@@ -58,9 +58,12 @@ function populateLayout(main, body_class, title = "English: Amazing adventures o
         <a href="index.html">Home</a> &nbsp; | 
         <a href="https://www.facebook.com/groups/englisn.comics">Facebook </a>
     </footer>
-</body>
-</html>`; // console.log('html=>', html);
-    /* <a href="how_to_use.html">How to use</a> &nbsp; | 
+    </body>
+    </html>`; // console.log('html=>', html);
+    /* 
+    <link rel="stylesheet" type="text/css" href="styles/libs/jquery.mCustomScrollbar.css">
+    <script src="js/libs/jquery.mCustomScrollbar.concat.min.js"></script>
+    <a href="how_to_use.html">How to use</a> &nbsp; | 
     <a href="contacts.html">Contacts</a> &nbsp; | */
     return html;
 }
