@@ -120,5 +120,9 @@ Vertical scrollbar, seems to be a best choice, if needed:
 
 4. Create buider for texts
 
-5. Clean up & document out build.js
+5. Clean up and document out build.js
+
+6. Test inder different browsers and devices
+
+7. Unit-testing 
 
