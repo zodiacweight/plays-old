@@ -1,0 +1,11 @@
+article {
+    p{
+        @include text_params;
+    }
+    strong[data-person]{
+        border-bottom: dashed 1px;
+        display: inline-block;
+        font-family: Verdana;
+        font-size: 0.9em;
+    }
+}

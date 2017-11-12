@@ -5,11 +5,6 @@
     margin: 20px 20px 40px 40px;
     padding: $common-offset 40px 40px 40px;
     width: 60%;
-    article{
-        p{
-            @include text_params;
-        }
-    }
     h4{
         span{
             @include sign;

@@ -85,6 +85,15 @@ main {
     margin-top: 30px;
     text-align: center; }
 
+article p {
+  margin: 12px auto; }
+
+article strong[data-person] {
+  border-bottom: dashed 1px;
+  display: inline-block;
+  font-family: Verdana;
+  font-size: 0.9em; }
+
 #asides {
   justify-content: space-between; }
   @media (max-width: 747px) {
@@ -241,8 +250,6 @@ footer {
   margin: 20px 20px 40px 40px;
   padding: 20px 40px 40px 40px;
   width: 60%; }
-  #chapter-contents article p {
-    margin: 12px auto; }
   #chapter-contents h4 span {
     background-color: darkred;
     border-radius: 50%;
@@ -329,11 +336,12 @@ footer {
     margin-right: 10px;
     white-space: nowrap; }
 
-#about-characters {
-  display: none; }
-
-#stories-preview {
-  display: none; }
+#about-characters::before {
+  content: "About charecters";
+  display: block;
+  font: 20px/1.5 Verdana;
+  margin-bottom: 0.5em;
+  margin-top: 0.75em; }
 
 #text .chapter-title {
   font-weight: bold; }

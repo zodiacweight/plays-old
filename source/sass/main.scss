@@ -1,8 +1,11 @@
-@import 'modules/variables';
+@import 'variables';
 @import 'mixins';
+// modules
 @import 'modules/elements';
 @import 'modules/animations';
+// components
 @import 'components/home';
+@import 'components/article';
 @import 'components/asides';
 @import 'components/footer';
 @import 'components/aside-chapters';

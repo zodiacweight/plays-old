@@ -1,3 +1,9 @@
 #about-characters{
-    display: none;
+    &::before  {
+        content: "About charecters";
+        display: block;
+        font: 20px/1.5 Verdana;
+        margin-bottom: 0.5em;
+        margin-top: 0.75em;
+    }
 }

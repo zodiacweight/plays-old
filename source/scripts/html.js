@@ -129,10 +129,10 @@ const populateStoryContents = {
     storyHome: function (contents, content){
         //
         return setChapterCommon(contents, 
-            `<section id="stories-preview" style="display: block;">
+            `<section id="stories-preview">
                 ${contents['preview']}
             </section>
-            <section id="about-characters" style="display: block;">
+            <section id="about-characters">
                 ${contents['about_characters']}
             </section>`, 
             `<h4 class="chapters-overview">Chapters:</h4>
