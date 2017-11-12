@@ -1,4 +1,4 @@
-# This beautifull website contains buch of wonderfull stories splited in 4 stories:
+# This beautiful website contains a bunch of wonderful stories split into 4 books:
 
 ## Cabalistic Bewitching hero
 
@@ -36,7 +36,7 @@ emails:
 
 * In order to exclude a particular story from stories list on the landing page, move a target <code>*.json file</code> from directory <code>static/jsons/default</code> to <code>static/jsons_postponed</code>. 
 
-The folders structure in <code>static/jsons/texts</code> should coincide to the file set in <code>static/jsons/default</code>.
+The folders structure in <code>static/jsons/texts</code> should coincide with the file set in <code>static/jsons/default</code>.
 
 ## JSONs mandatory structure
 
@@ -52,7 +52,7 @@ The folders structure in <code>static/jsons/texts</code> should coincide to the 
 
 * chapters
 
-Currently chapter names should contain numbers to diffirentiate their names in files names.
+Currently, chapter names should contain numbers to differentiate their names in files name.
 
 #### The example:
 
@@ -104,7 +104,7 @@ Currently chapter names should contain numbers to diffirentiate their names in f
 
 ## UI plugins
 
-Vertical scrollbar, seems to be a best choice, if needed: 
+A vertical scrollbar seems to be the best choice if needed: 
 
 [http://diokuz.github.io/baron/](http://diokuz.github.io/baron/), [https://github.com/Diokuz/baron](https://github.com/Diokuz/baron)
 
@@ -118,7 +118,7 @@ Vertical scrollbar, seems to be a best choice, if needed:
 
 2. Check everywhere if Author's words are set properly
 
-2. Separate combinet replicants in the filter
+2. Separate the combined replicants in the filter
 
 2. Add inner tags handler for <code>strong, i, em</code> etc
 
@@ -126,11 +126,11 @@ Vertical scrollbar, seems to be a best choice, if needed:
 
 3. Remove redundant fields from JSONs
 
-4. Create buider for texts
+4. Create a client-side builder for texts
 
 5. Clean up and document out build.js
 
-6. Test inder different browsers and devices
+6. Test UI under different browsers and devices
 
 7. Unit-testing 
 
