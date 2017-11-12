@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"max",
+				"max-width"
+			],
+			[
 				"co",
 				"console"
 			],
@@ -51,7 +55,7 @@
 			"file": "source/scripts/html.js",
 			"settings":
 			{
-				"buffer_size": 11289,
+				"buffer_size": 11522,
 				"line_ending": "Windows"
 			}
 		},
@@ -67,18 +71,79 @@
 			"file": "build.js",
 			"settings":
 			{
-				"buffer_size": 5773,
+				"buffer_size": 5886,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"contents": "Searching 2 files for \"storeStoryDataObject\"\n\nC:\\Users\\sergei.klevtsov\\Projects\\-Private\\plays\\source\\scripts\\html.js:\n  255   * @return {Object} or false\n  256   */\n  257: function storeStoryDataObject(subfield, file_name, contents){\n  258      try {\n  259          // see below\n  ...\n  299              return (dir_name == 'default') ? \n  300                  storeHomepageDataObject(dir_name, file_name, file_contents)\n  301:                 : storeStoryDataObject(\n  302                      (dir_name == 'texts') ? \n  303                          storyHome \n\n2 matches in 1 file\n\n\nSearching 32 files for \"storeStoryDataObject\"\n\nC:\\Users\\sergei.klevtsov\\Projects\\-Private\\plays\\source\\scripts\\html.js:\n  255   * @return {Object} or false\n  256   */\n  257: function storeStoryDataObject(subfield, file_name, contents){\n  258      try {\n  259          // see below\n  ...\n  299              return (dir_name == 'default') ? \n  300                  storeHomepageDataObject(dir_name, file_name, file_contents)\n  301:                 : storeStoryDataObject(\n  302                      (dir_name == 'texts') ? \n  303                          storyHome \n\n2 matches in 1 file\n",
+			"file": "/C/Users/sergei.klevtsov/Projects/-Private/english-comics/cabalistic_bewitching_hero.html",
 			"settings":
 			{
-				"buffer_size": 1171,
-				"line_ending": "Windows",
-				"name": "Find Results",
-				"scratch": true
+				"buffer_size": 7881,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "build/nihilistic_parody-2.html",
+			"settings":
+			{
+				"buffer_size": 26613,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "build/nihilistic_parody-1.html",
+			"settings":
+			{
+				"buffer_size": 18671,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "build/joshua_world-2.html",
+			"settings":
+			{
+				"buffer_size": 25184,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "build/joshua_world-1.html",
+			"settings":
+			{
+				"buffer_size": 12371,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "dbhnefkmyfzhtbyrfhyfwbz\n",
+			"settings":
+			{
+				"buffer_size": 24,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/C/Users/sergei.klevtsov/Projects/-Private/english-comics/styles/style.css",
+			"settings":
+			{
+				"buffer_size": 9395,
+				"encoding": "UTF-8",
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"contents": "<!doctype html>\n<html lang=\"en\">\n    <head>\n        <title>Tiny Scrollbar: A crossbrowser lightweight javascript/jQuery scrollbar.</title>\n\n        <meta charset=\"utf-8\">\n        <meta name=\"description\" content=\"A crossbrowser lightweight javascript/jQuery scrollbar.\" />\n\n        <link rel=\"stylesheet\" href=\"tinyscrollbar.css\" type=\"text/css\" media=\"screen\"/>\n\n        <script type=\"text/javascript\" src=\"https://code.jquery.com/jquery-latest.min.js\"></script>\n        <script type=\"text/javascript\" src=\"../../lib/jquery.tinyscrollbar.js\"></script>\n        <script src=\"jquery.tinyscrollbar.js\"></script>\n        <script type=\"text/javascript\">\n            $(document).ready(function()\n            {\n                var $scrollbar = $(\"#scrollbar1\");\n\n                $scrollbar.tinyscrollbar();\n            });\n        </script>\n    </head>\n    <body>\n        <div id=\"scrollbar1\">\n            <div class=\"scrollbar\"><div class=\"track\"><div class=\"thumb\"><div class=\"end\"></div></div></div></div>\n            <div class=\"viewport\">\n                 <div class=\"overview\">\n                    <h3>Magnis dis parturient montes</h3>\n                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut vitae velit at velit pretium sodales. Maecenas egestas imperdiet mauris, vel elementum turpis iaculis eu. Duis egestas augue quis ante ornare eu tincidunt magna interdum. Vestibulum posuere risus non ipsum sollicitudin quis viverra ante feugiat. Pellentesque non faucibus lorem. Nunc tincidunt diam nec risus ornare quis porttitor enim pretium. Ut adipiscing tempor massa, a ullamcorper massa bibendum at. Suspendisse potenti. In vestibulum enim orci, nec consequat turpis. Suspendisse sit amet tellus a quam volutpat porta. Mauris ornare augue ut diam tincidunt elementum. Vivamus commodo dapibus est, a gravida lorem pharetra eu. Maecenas ultrices cursus tellus sed congue. Cras nec nulla erat.</p>\n\n                    <p>Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque eget mauris libero. Nulla sit amet felis in sem posuere laoreet ut quis elit. Aenean mauris massa, pretium non bibendum eget, elementum sed nibh. Nulla ac felis et purus adipiscing rutrum. Pellentesque a bibendum sapien. Vivamus erat quam, gravida sed ultricies ac, scelerisque sed velit. Integer mollis urna sit amet ligula aliquam ac sodales arcu euismod. Fusce fermentum augue in nulla cursus non fermentum lorem semper. Quisque eu auctor lacus. Donec justo justo, mollis vel tempor vitae, consequat eget velit.</p>\n\n                    <p>Vivamus sed tellus quis orci dignissim scelerisque nec vitae est. Duis et elit ipsum. Aliquam pharetra auctor felis tempus tempor. Vivamus turpis dui, sollicitudin eget rhoncus in, luctus vel felis. Curabitur ultricies dictum justo at luctus. Nullam et quam et massa eleifend sollicitudin. Nulla mauris purus, sagittis id egestas eu, pellentesque et mi. Donec bibendum cursus nisi eget consequat. Nunc sit amet commodo metus. Integer consectetur lacus ac libero adipiscing ut tristique est viverra. Maecenas quam nibh, molestie nec pretium interdum, porta vitae magna. Maecenas at ligula eget neque imperdiet faucibus malesuada sed ipsum. Nulla auctor ligula sed nisl adipiscing vulputate. Curabitur ut ligula sed velit pharetra fringilla. Cras eu luctus est. Aliquam ac urna dui, eu rhoncus nibh. Nam id leo nisi, vel viverra nunc. Duis egestas pellentesque lectus, a placerat dolor egestas in. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec vitae ipsum non est iaculis suscipit.</p>\n\n                    <h3>Adipiscing risus </h3>\n                    <p>Quisque vel felis ligula. Cras viverra sapien auctor ante porta a tincidunt quam pulvinar. Nunc facilisis, enim id volutpat sodales, leo ipsum accumsan diam, eu adipiscing risus nisi eu quam. Ut in tortor vitae elit condimentum posuere vel et erat. Duis at fringilla dolor. Vivamus sem tellus, porttitor non imperdiet et, rutrum id nisl. Nunc semper facilisis porta. Curabitur ornare metus nec sapien molestie in mattis lorem ullamcorper. Ut congue, purus ac suscipit suscipit, magna diam sodales metus, tincidunt imperdiet diam odio non diam. Ut mollis lobortis vulputate. Nam tortor tortor, dictum sit amet porttitor sit amet, faucibus eu sem. Curabitur aliquam nisl sed est semper a fringilla velit porta. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Vestibulum in sapien id nulla volutpat sodales ac bibendum magna. Cras sollicitudin, massa at sodales sodales, lacus tortor vestibulum massa, eu consequat dui nulla et ipsum.</p>\n\n                    <p>Aliquam accumsan aliquam urna, id vulputate ante posuere eu. Nullam pretium convallis tincidunt. Duis vitae odio arcu, ut fringilla enim. Nam ante eros, vestibulum sit amet rhoncus et, vehicula quis tellus. Curabitur sed iaculis odio. Praesent vitae ligula id tortor ornare luctus. Integer placerat urna non ligula sollicitudin vestibulum. Nunc vestibulum auctor massa, at varius nibh scelerisque eget. Aliquam convallis, nunc non laoreet mollis, neque est mattis nisl, nec accumsan velit nunc ut arcu. Donec quis est mauris, eu auctor nulla. Fusce leo diam, tempus a varius sit amet, auctor ac metus. Nam turpis nulla, fermentum in rhoncus et, auctor id sem. Aliquam id libero eu neque elementum lobortis nec et odio.</p>\n                </div>\n            </div>\n        </div>\n    </body>\n</html>\n",
+			"file": "/C/Users/sergei.klevtsov/AppData/Local/Temp/Temp1_tinyscrollbar-2.5.0.zip/responsive/index.html",
+			"file_size": 5529,
+			"file_write_time": 131549294941772979,
+			"settings":
+			{
+				"buffer_size": 5486,
+				"line_ending": "Windows"
 			}
 		}
 	],
@@ -120,6 +185,8 @@
 	],
 	"file_history":
 	[
+		"/C/Users/sergei.klevtsov/Projects/-Private/english-comics/styles/libs/tinyscrollbar.css",
+		"/C/Users/sergei.klevtsov/Projects/-Private/english-comics/js/common.js",
 		"/C/Users/sergei.klevtsov/Projects/-Private/plays/build/index.html",
 		"/C/Users/sergei.klevtsov/Projects/-Private/plays/build/nihilistic_parody-1.html",
 		"/C/Users/sergei.klevtsov/Projects/-Private/plays/build/nihilistic_parody-2.html",
@@ -272,6 +339,19 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"»",
+			"«",
+			"ё",
+			"[а-яА-Я]",
+			"Джошуа",
+			"задумчиво",
+			"Эстебан",
+			"Луиза",
+			"Танита",
+			"overview",
+			"    width: 20%",
+			"#chapters",
+			"url(images/",
 			"file_name",
 			"[Object]",
 			"«Object»",
@@ -350,6 +430,14 @@
 		"regex": false,
 		"replace_history":
 		[
+			"\"",
+			"",
+			"Joshua",
+			"musingly",
+			"Esteban",
+			"Luisa",
+			"Tanita",
+			"url(../../images/libs/scrollbar/",
 			"chapter_number",
 			"\"Object\"",
 			"",
@@ -372,7 +460,7 @@
 	"groups":
 	[
 		{
-			"selected": 2,
+			"selected": 8,
 			"sheets":
 			[
 				{
@@ -381,15 +469,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 11289,
+						"buffer_size": 11522,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								9603,
-								9603
+								0,
+								0
 							]
 						],
 						"settings":
@@ -403,7 +491,7 @@
 						"translation.y": 6670.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
@@ -432,7 +520,7 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 10,
 					"type": "text"
 				},
 				{
@@ -441,7 +529,7 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 5773,
+						"buffer_size": 5886,
 						"regions":
 						{
 						},
@@ -462,65 +550,243 @@
 						"translation.y": 746.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
 					"buffer": 3,
+					"file": "/C/Users/sergei.klevtsov/Projects/-Private/english-comics/cabalistic_bewitching_hero.html",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1171,
+						"buffer_size": 7881,
 						"regions":
 						{
-							"match":
-							{
-								"flags": 112,
-								"regions":
-								[
-									[
-										182,
-										202
-									],
-									[
-										447,
-										467
-									],
-									[
-										769,
-										789
-									],
-									[
-										1034,
-										1054
-									]
-								],
-								"scope": ""
-							}
 						},
 						"selection":
 						[
 							[
-								779,
-								779
+								3767,
+								3767
 							]
 						],
 						"settings":
 						{
-							"detect_indentation": false,
-							"line_numbers": false,
-							"output_tag": 2,
-							"result_base_dir": "",
-							"result_file_regex": "^([^ \t].*):$",
-							"result_line_regex": "^ +([0-9]+):",
-							"scroll_past_end": true,
-							"syntax": "Packages/Default/Find Results.hidden-tmLanguage"
+							"syntax": "Packages/HTML/HTML.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 374.0,
+						"translation.y": 550.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 5,
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "build/nihilistic_parody-2.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 26613,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 4,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "build/nihilistic_parody-1.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 18671,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 3,
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "build/joshua_world-2.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 25184,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "build/joshua_world-1.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 12371,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 24,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								23,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JSON.sublime-syntax",
+							"word_wrap": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 9,
+					"file": "/C/Users/sergei.klevtsov/Projects/-Private/english-comics/styles/style.css",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 9395,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5902,
+								5902
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.sublime-syntax",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 4836.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 6,
+					"type": "text"
+				},
+				{
+					"buffer": 10,
+					"file": "/C/Users/sergei.klevtsov/AppData/Local/Temp/Temp1_tinyscrollbar-2.5.0.zip/responsive/index.html",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 5486,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								833,
+								609
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
 					"type": "text"
 				}
 			]
