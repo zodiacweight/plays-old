@@ -18,7 +18,7 @@
 
 Another source is here: [https://github.com/zodiacweight/remake_of_plays](https://github.com/zodiacweight/remake_of_plays)
 
-web-site: [https://english-comics.github.io](english-comics.github.io)
+web-site: [english-comics.github.io](https://english-comics.github.io)
 
 emails:
 
@@ -116,7 +116,7 @@ A vertical scrollbar seems to be the best choice if needed:
 
 1. Parse paragraphs
 
-2. Remove text from parentensis in the replica's author from filter. Probably just move it into the begining of the replica text. See example here: [https://english-comics.github.io/joshua_world-2.html](joshua_world-2)
+2. Remove text from parentensis in the replica's author from filter. Probably just move it into the begining of the replica text. See example here: [Joshua world 2](https://english-comics.github.io/joshua_world-2.html)
 
 2. Check everywhere if Author's words are set properly
 
