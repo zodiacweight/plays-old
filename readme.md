@@ -114,6 +114,14 @@ Vertical scrollbar, seems to be a best choice, if needed:
 
 1. Parse paragraphs
 
+2. Remove text from parentensis in the replica's author from filter
+
+2. Check everywhere if Author's words are set properly
+
+2. Separate combinet replicants in the filter
+
+2. Add inner tags handler for <code>strong, i, em</code> etc
+
 2. Handle images
 
 3. Remove redundant fields from JSONs
