@@ -116,6 +116,8 @@ A vertical scrollbar seems to be the best choice if needed:
 
 1. Parse paragraphs
 
+1. Check spelling everywhere. Consider using some online services
+
 2. Remove text from parentensis in the replica's author from filter. Probably just move it into the begining of the replica text. See example here: [Joshua world 2](https://english-comics.github.io/joshua_world-2.html)
 
 2. Check everywhere if Author's words are set properly
