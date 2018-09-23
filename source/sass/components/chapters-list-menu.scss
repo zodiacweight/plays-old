@@ -1,6 +1,15 @@
 #chapters-list-menu{
+    bottom: 0;
+    left: 0;
     margin-top: 8px;
+    min-width: $menu-min-width;
     padding: $common-offset;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    &:hover{
+        overflow: auto;
+    }
     h4{
         &.chapters-overview{
             display: none;
@@ -9,6 +18,7 @@
     .chapters-go-home{
         font-size: 22px;
         font-weight: normal;
+        margin-bottom: 20px;
         margin-top: 0;
         a {
             &:hover{

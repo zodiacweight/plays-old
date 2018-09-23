@@ -208,22 +208,31 @@ footer {
 
 #chapters {
   background: rgba(255, 255, 255, 0.35);
+  bottom: 0;
+  min-width: 200px;
   padding: 20px;
-  width: 20%;
-  min-width: 200px; }
-  #chapters .menu {
+  position: fixed;
+  top: 0;
+  width: 20%; }
+  #chapters:before {
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
     bottom: 0;
+    content: ' ';
+    height: 170px;
     left: 0;
-    min-width: 200px;
-    position: fixed;
-    top: 0;
-    width: calc(20% - 20px); }
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    z-index: 1; }
+
+#chapters:hover:before {
+  display: none; }
 
 #chapter-contents {
   background-color: rgba(255, 255, 255, 0.75);
   border-radius: 8px;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-  margin: 20px 20px 40px 40px;
+  margin: 20px 20px 40px calc(20% + 20px);
   padding: 20px 40px 40px 40px;
   width: 60%; }
   #chapter-contents h4 span {
@@ -250,13 +259,22 @@ footer {
       text-decoration: underline; }
 
 #chapters-list-menu {
+  bottom: 0;
+  left: 0;
   margin-top: 8px;
-  padding: 20px; }
+  min-width: 200px;
+  padding: 20px;
+  position: absolute;
+  top: 0;
+  width: 100%; }
+  #chapters-list-menu:hover {
+    overflow: auto; }
   #chapters-list-menu h4.chapters-overview {
     display: none; }
   #chapters-list-menu .chapters-go-home {
     font-size: 22px;
     font-weight: normal;
+    margin-bottom: 20px;
     margin-top: 0; }
     #chapters-list-menu .chapters-go-home a:hover {
       text-decoration: none; }

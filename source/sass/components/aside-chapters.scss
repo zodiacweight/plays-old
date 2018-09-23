@@ -1,15 +1,26 @@
-#chapters{
-    $min-width: 200px;
-    background: rgba(255,255,255,0.35);
+#chapters {
+    background: rgba(255, 255, 255, 0.35);
+    bottom: 0;
+    min-width: $menu-min-width;
     padding: $common-offset;
+    position: fixed;
+    top: 0;
     width: 20%;
-    min-width: $min-width;
-    .menu{
+    &:before {
+        background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
         bottom: 0;
+        content: ' ';
+        height: 170px;
         left: 0;
-        min-width: $min-width;
-        position: fixed;
-        top: 0;
-        width: calc(20% - #{$common-offset});
+        pointer-events: none;
+        position: absolute;
+        right: 0;
+        z-index: 1;
+    }
+}
+
+#chapters:hover {
+    &:before {
+        display: none;
     }
 }
